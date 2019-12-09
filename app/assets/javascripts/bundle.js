@@ -86,6 +86,71 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/session_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/session_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveErrors, signup, login, logout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
+/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.jsx");
+
+var RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+var LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
+var RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+var receiveCurrentUser = function receiveCurrentUser(currentUser) {
+  return {
+    type: RECEIVE_CURRENT_USER,
+    currentUser: currentUser
+  };
+};
+var logoutCurrentUser = function logoutCurrentUser() {
+  return {
+    type: LOGOUT_CURRENT_USER
+  };
+};
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_SESSION_ERRORS,
+    errors: errors
+  };
+};
+var signup = function signup(user) {
+  return function (dispatch) {
+    debugger;
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](user).then(function (user) {
+      return dispatch(receiveCurrentUser(user));
+    });
+  };
+};
+var login = function login(user) {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](user).then(function (user) {
+      return dispatch(receiveCurrentUser(user));
+    });
+  };
+};
+var logout = function logout() {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logout"]().then(function () {
+      return dispatch(logoutCurrentUser());
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/App.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/App.jsx ***!
@@ -102,7 +167,7 @@ __webpack_require__.r(__webpack_exports__);
  // import { AuthRoute } from '../util/route_util';
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome to Yelp!")));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome to Hoopr!")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -154,6 +219,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -163,10 +230,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
-  }), root); // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
-  // window.login = login;
-  // window.signup = signup;
+  }), root);
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["login"];
+  window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["signup"];
+  window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["logout"];
 });
 
 /***/ }),
@@ -193,6 +262,46 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/session_api_util.jsx":
+/*!********************************************!*\
+  !*** ./frontend/util/session_api_util.jsx ***!
+  \********************************************/
+/*! exports provided: signup, login, logout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
+//signup(user) login(user) logout()
+var signup = function signup(user) {
+  return $.ajax({
+    method: "POST",
+    url: "api/users",
+    data: {
+      user: user
+    }
+  });
+};
+var login = function login(user) {
+  return $.ajax({
+    method: "POST",
+    url: "api/session",
+    data: {
+      user: user
+    }
+  });
+};
+var logout = function logout() {
+  return $.ajax({
+    method: "DELETE",
+    url: "api/session"
+  });
+};
 
 /***/ }),
 

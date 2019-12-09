@@ -6,7 +6,7 @@ const App = () => {
   return(
     <div>
       <header>
-        <h1>Welcome to Yelp!</h1>
+        <h1>Welcome to Hoopr!</h1>
       </header>
     </div>
   )
