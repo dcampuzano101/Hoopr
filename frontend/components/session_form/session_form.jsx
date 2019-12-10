@@ -11,7 +11,7 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(){
-    this.props.submitForm();
+    this.props.submitForm(this.state);
   }
 
   update(field){
@@ -21,10 +21,28 @@ class SessionForm extends React.Component {
   }
 
   render(){
-    const { formType, submitForm,  } = this.props;
+    const { formType, submitForm } = this.props;
+    
     return(
       <div>
-        <h1></h1>
+        <h1>{formType}</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label>Username:
+            <input 
+            type="text"
+            value={this.state.username}
+            onChange={this.update("username")}
+            />
+          </label>
+          <label>Password:
+            <input
+              type="password"
+              value={this.state.password}
+              onChange={this.update("password")}
+            />
+          </label>
+          <button onClick={this.handleSubmit}></button>
+        </form>
       </div>
     );
   }
