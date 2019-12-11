@@ -1,4 +1,4 @@
-#login-header {
+#signin-header {
   background-color: #D32222;
   height: 60px;
 }
@@ -21,7 +21,7 @@ section h3 {
   margin: 5px;
 }
 
-.login-container {
+.signin-container {
   background-color: white;
   width: 405px;
   height: 455px;
@@ -33,7 +33,7 @@ section h3 {
   box-sizing: border-box;
 }
 
-.login-form {
+.signin-form {
   flex-direction: column;
 }
 
@@ -41,7 +41,7 @@ a{
   color: #0073BB;
 }
 
-.main-container{
+.signin-main-container{
   width: 990px;
   display: flex;
   margin: 0 auto;
@@ -72,7 +72,7 @@ a{
   color: gray;
 }
 
-#login {
+#signup {
   background-color: #D32222;
   width: 300px;
   height: 41px;
@@ -91,4 +91,20 @@ a{
 main p {
   text-align: center;
   padding: 15px;
+}
+
+.fname-lname {
+  display: flex;
+}
+
+.fname {
+  width: 96%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.lname {
+  width: 96%;
+  padding: 5px; 
+  box-sizing: border-box;
 }
