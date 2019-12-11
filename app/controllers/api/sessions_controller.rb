@@ -13,7 +13,7 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    if !current_user
+    if !logged_in?
       render json: 'not logged in', status: 404
     else
       logout

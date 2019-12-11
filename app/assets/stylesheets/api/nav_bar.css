@@ -1,0 +1,26 @@
+.nav-bar {
+  display: block;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 85%;
+
+}
+
+
+.nav-links {
+  /* padding: 9px 12px 10px; */
+  font-size: 14px;
+  /* margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px; */
+  display: inline-block;
+  margin: 20px;
+}
+
+.profile-pic {
+  width: 65px;
+  height: 65px;
+  float: right;
+}
