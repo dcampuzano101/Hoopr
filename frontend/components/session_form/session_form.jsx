@@ -29,7 +29,7 @@ class SessionForm extends React.Component {
       <>
         <header id="login-header">
           <div>
-            <p>THIS IS THE LOGIN PAGE</p>
+            <p>Hoopr logo goes here</p>
           </div>
         </header>
         <div className="main-container">
