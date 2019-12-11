@@ -14,11 +14,9 @@ const App = () => {
   //if currentUser render (session vs profile) in NAV component
   return(
     <div>
-      <header>
         <Route exact path="/" component={HeaderContainer} />
         <AuthRoute path="/login" component={LogInFormContainer} />
         <AuthRoute path="/signup" component={SignUpFormContainer} />
-      </header>
     </div>
   )
 }

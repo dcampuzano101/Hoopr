@@ -26,36 +26,53 @@ class SessionForm extends React.Component {
   render(){
     const { formType, errors } = this.props;
     return(
-      <div>
-        <h1>Log In to Hoopr!</h1>
-        <h3>New to yelp? <Link to="/signup">Sign up</Link></h3>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-            ))}
-        </ul>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <input 
-            placeholder="Email"
-            type="email"
-            value={this.state.email}
-            onChange={this.update("email")}
-            />
-          </label>
-          <label>
-            <input
-              placeholder="Password"
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-            />
-          </label>
-          <Link to="#">Forgot password?</Link>
-          <button>Login</button>
-          <div className="plain-text">New to yelp? <Link to="/signup">Sign up</Link></div>
-        </form>
-      </div>
+      <>
+        <header id="login-header">
+          <div>
+            <p>THIS IS THE LOGIN PAGE</p>
+          </div>
+        </header>
+        <div className="main-container">
+          <main>
+            <section className="login-form">
+              <h1>Log In to Hoopr!</h1>
+              <h3>New to yelp? <Link to="/signup" id="signup-link-1">Sign up</Link></h3>
+              <ul>
+                {errors.map((error, idx) => (
+                  <li key={idx}>{error}</li>
+                  ))}
+              </ul>
+              <form onSubmit={this.handleSubmit}>
+                <label>
+                  <input 
+                  placeholder="Email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                  className="plain-input"
+                  />
+                </label>
+                <label>
+                  <input
+                    placeholder="Password"
+                    type="password"
+                    value={this.state.password}
+                    onChange={this.update("password")}
+                    className="plain-input"
+                  />
+                </label>
+                <Link to="#" className="plain-text">Forgot password?</Link>
+                <button idName="login">Login</button>
+                <div className="plain-text">New to yelp? <Link to="/signup">Sign up</Link></div>
+              </form>
+            </section>
+          </main>
+
+        </div>
+        <footer>
+
+        </footer>
+      </>
     );
   }
 

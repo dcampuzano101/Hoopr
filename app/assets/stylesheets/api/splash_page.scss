@@ -1,0 +1,82 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 960px;
+  
+}
+
+.splash-header {
+  height: 600px;
+  background-image: image_url('bball-header.jpg');
+  background-size: cover;
+}
+
+
+.session-links {
+  float: right;
+  margin-top: 20px;
+  
+}
+
+
+.nav-bar section{
+    float: left;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.photo {
+  height: inherit;
+}
+
+.profile-pic {
+  width: 65px;
+  height: 65px;
+}
+
+.sign-up-btn {
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  border-radius: 8%;
+  margin:0 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all .4s;
+}
+
+.sign-up-btn:hover {
+    color: gray;
+    background-color:#FFFFFF;
+}
+
+
+.nav-links {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  
+  // padding-right: 10px;
+  // padding-left: 10px;
+  margin: 20px;
+  margin-top: 20px;
+
+}
+.nav-links a{
+  width: 500px;
+  font-size: 16px;
+  margin: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.nav-links:hover {
+  border-bottom: 1px solid white;
+}
+
+

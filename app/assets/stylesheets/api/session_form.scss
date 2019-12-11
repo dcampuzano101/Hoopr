@@ -1,0 +1,34 @@
+#login-header {
+  background-color: #D32222;
+  height: 63px;
+}
+
+
+section h1{
+  color: #D32222;
+  font-size: 24px;
+}
+
+section h3 {
+  color: black;
+  font-size: 16px;
+}
+
+.login-form {
+  background-color: lightgray;
+  width: 300px;
+  flex-direction: column;
+}
+
+h3 a{
+  color: #0073BB;
+}
+
+.main-container{
+  width: 100%;
+  display: flex;
+}
+
+main {
+  margin: 0 auto;
+}

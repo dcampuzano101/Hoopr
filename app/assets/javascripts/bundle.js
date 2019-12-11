@@ -182,7 +182,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App() {
   //if currentUser render (session vs profile) in NAV component
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
     component: _header_header_container__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -192,7 +192,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     path: "/signup",
     component: _signup_form_signup_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  })));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -259,10 +259,10 @@ function (_React$Component) {
             className: "session-links"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/login",
-            className: "log-in"
-          }, "Log in"), "\xA0or\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            className: "nav-links"
+          }, "Log in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/signup",
-            className: "sign-up"
+            className: "sign-up-btn"
           }, "Sign up"));
         };
 
@@ -280,11 +280,20 @@ function (_React$Component) {
         return currentUser ? profileIcon() : sessionLinks();
       };
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "splash-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "#",
         className: "nav-links"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Write a Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Talk")), display());
+      }, "Write a Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "#",
+        className: "nav-links"
+      }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "#",
+        className: "nav-links"
+      }, "Talk")), display()));
     }
   }]);
 
@@ -490,8 +499,15 @@ function (_React$Component) {
       var _this$props = this.props,
           formType = _this$props.formType,
           errors = _this$props.errors;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Log In to Hoopr!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "New to yelp? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/signup"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        id: "login-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THIS IS THE LOGIN PAGE"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "login-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Log In to Hoopr!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "New to yelp? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/signup",
+        id: "signup-link-1"
       }, "Sign up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errors.map(function (error, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx
@@ -502,19 +518,24 @@ function (_React$Component) {
         placeholder: "Email",
         type: "email",
         value: this.state.email,
-        onChange: this.update("email")
+        onChange: this.update("email"),
+        className: "plain-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Password",
         type: "password",
         value: this.state.password,
-        onChange: this.update("password")
+        onChange: this.update("password"),
+        className: "plain-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "#"
-      }, "Forgot password?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        to: "#",
+        className: "plain-text"
+      }, "Forgot password?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        idName: "login"
+      }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "plain-text"
       }, "New to yelp? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup"
-      }, "Sign up"))));
+      }, "Sign up")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
     }
   }]);
 
@@ -600,7 +621,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var formType = this.props.formType;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First Name:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",

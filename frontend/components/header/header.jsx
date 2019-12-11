@@ -11,9 +11,8 @@ class Header extends React.Component {
     const display = () => {
       const sessionLinks = () => (
         <div className="session-links">
-          <Link to="/login" className="log-in">Log in</Link>
-          &nbsp;or&nbsp;
-          <Link to="/signup" className="sign-up">Sign up</Link>
+          <Link to="/login" className="nav-links">Log in</Link>
+          <Link to="/signup" className="sign-up-btn">Sign up</Link>
         </div>
       );
 
@@ -26,14 +25,19 @@ class Header extends React.Component {
       return currentUser ? profileIcon() : sessionLinks();
     }
     return(
-      <div className="nav-bar">
-        <section className="nav-links">
-          <button>Write a Review</button>
-          <button>Events</button>
-          <button>Talk</button>
-        </section>
-        {display()}
-      </div>
+      <header className="splash-header">
+        {/* <img className="photo" src={window.test} /> */}
+        <div className="nav-bar">
+          <section>
+            <Link to="#" className="nav-links">Write a Review</Link>
+            <Link to="#" className="nav-links">Events</Link>
+            <Link to="#" className="nav-links">Talk</Link>
+          
+            
+          </section>
+            {display()}
+        </div>
+      </header>
     );
   }
 

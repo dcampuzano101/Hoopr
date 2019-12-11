@@ -28,7 +28,7 @@ class SignupForm extends React.Component {
     const { formType } = this.props;
     return (
       <div>
-        <h1>{formType}</h1>
+        
         <form onSubmit={this.handleSubmit}>
           <label>First Name:
             <input
