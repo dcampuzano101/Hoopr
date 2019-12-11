@@ -480,7 +480,8 @@ function (_React$Component) {
 
   _createClass(SessionForm, [{
     key: "handleSubmit",
-    value: function handleSubmit() {
+    value: function handleSubmit(e) {
+      e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.submitForm(user);
     }
@@ -503,8 +504,8 @@ function (_React$Component) {
         id: "login-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hoopr logo goes here"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "login-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "login-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Log In to Hoopr!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "New to yelp? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
         id: "signup-link-1"
@@ -513,6 +514,7 @@ function (_React$Component) {
           key: idx
         }, error);
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "login-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Email",
@@ -526,16 +528,18 @@ function (_React$Component) {
         value: this.state.password,
         onChange: this.update("password"),
         className: "plain-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "forgot-password"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "#",
         className: "plain-text"
-      }, "Forgot password?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        idName: "login"
+      }, "Forgot password?")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "login"
       }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "plain-text"
       }, "New to yelp? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup"
-      }, "Sign up")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
+      }, "Sign up")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THIS IS A STANDIN CONTAINER"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
     }
   }]);
 

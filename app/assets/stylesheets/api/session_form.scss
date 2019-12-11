@@ -1,34 +1,93 @@
 #login-header {
   background-color: #D32222;
-  height: 63px;
+  height: 60px;
 }
 
 
 section h1{
   color: #D32222;
   font-size: 24px;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 550;
 }
 
 section h3 {
   color: black;
   font-size: 16px;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 550;
+  margin: 5px;
+}
+
+.login-container {
+  background-color: white;
+  width: 405px;
+  height: 455px;
+  display: flex;
+  border-radius: 3px;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 50px;
+  box-sizing: border-box;
 }
 
 .login-form {
-  background-color: lightgray;
-  width: 300px;
   flex-direction: column;
 }
 
-h3 a{
+a{
   color: #0073BB;
 }
 
 .main-container{
-  width: 100%;
+  width: 990px;
   display: flex;
+  margin: 0 auto;
+  padding-top: 150px;
 }
 
-main {
-  margin: 0 auto;
+
+
+.plain-input {
+    width: 75%;
+    background-color: white;
+    border-radius: 3px;
+    align-items: center;
+    height: 41px;
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border: 1px solid gray;
+}
+
+.plain-text {
+  text-align: right;
+  margin-right: 5px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: gray;
+}
+
+#login {
+  background-color: #D32222;
+  width: 300px;
+  height: 41px;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.forgot-password {
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+main p {
+  text-align: center;
+  padding: 15px;
 }
