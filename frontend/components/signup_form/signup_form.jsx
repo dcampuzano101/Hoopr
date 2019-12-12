@@ -6,18 +6,18 @@ class SignupForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      username: "",
-      password: "",
-      email: "",
       first_name: "",
       last_name: "",
+      password: "",
+      email: "",
       zipcode: ""
     };
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.submitForm(this.state);
+    const user = Object.assign({}, this.state);
+    this.props.submitForm(user);
   }
 
   update(field) {
@@ -31,9 +31,7 @@ class SignupForm extends React.Component {
     return (
       <>
         <header id="signin-header">
-          <div>
-            <p>LOGO GOES HERE</p>
-          </div>
+          <Link to="/"><img className="logo" src={window.logo} /></Link>
         </header>
         <div className="main-signin-container">
           <section className="signin-container">
@@ -96,13 +94,13 @@ class SignupForm extends React.Component {
               <div className="plain-text">Already on Hoopr? <Link to="/login">Log in</Link></div>
             </form>
           </section>
-          <main>
-            <p>THIS IS A STANDIN CONTAINER</p>
+          <main className="sidepic-signup">
+            <img className="photo" src={window.test} />
           </main>
 
         </div>
         <footer>
-
+            
         </footer>
       </>
     );

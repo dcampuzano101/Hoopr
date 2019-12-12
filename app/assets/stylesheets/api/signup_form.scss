@@ -1,8 +1,15 @@
 #signin-header {
   background-color: #D32222;
   height: 60px;
+  display: flex;
+  justify-content: center;
 }
 
+.logo {
+  height: 80px;
+  width: 100px;
+  align-items: center;
+}
 
 section h1{
   color: #D32222;
@@ -27,6 +34,7 @@ section h3 {
   height: 455px;
   display: flex;
   border-radius: 3px;
+  display: flex;
   flex-direction: column;
   margin: 0 auto;
   padding: 0 50px;
@@ -88,10 +96,6 @@ a{
   
 }
 
-main p {
-  text-align: center;
-  padding: 15px;
-}
 
 .fname-lname {
   display: flex;
@@ -107,4 +111,10 @@ main p {
   width: 96%;
   padding: 5px; 
   box-sizing: border-box;
+}
+
+.sidepic-signup {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
 }

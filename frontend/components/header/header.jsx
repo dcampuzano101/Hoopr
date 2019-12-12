@@ -1,9 +1,19 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 class Header extends React.Component {
+  constructor(props){
+      super(props);
+
+      this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+  }
+
+  handleDemoSubmit(e) {
+    e.preventDefault();
+    const user = { email: "chefcurry@warriors.com", password: "splashbro" }
+    this.props.submitForm(user);
+  }
   
   render(){
-    debugger;
     const { currentUser, logout } = this.props;
     // console.log(this.props);
     // console.log(currentUser);
@@ -13,6 +23,7 @@ class Header extends React.Component {
         <div className="session-links">
           <Link to="/login" className="nav-links">Log in</Link>
           <Link to="/signup" className="sign-up-btn">Sign up</Link>
+          <button className="demo-login-btn" onClick={this.handleDemoSubmit}>demo login</button>
         </div>
       );
 
@@ -25,19 +36,25 @@ class Header extends React.Component {
       return currentUser ? profileIcon() : sessionLinks();
     }
     return(
-      <header className="splash-header">
-        {/* <img className="photo" src={window.test} /> */}
-        <div className="nav-bar">
-          <section>
-            <Link to="#" className="nav-links">Write a Review</Link>
-            <Link to="#" className="nav-links">Events</Link>
-            <Link to="#" className="nav-links">Talk</Link>
-          
+      <div>
+        <header className="splash-header">
+          {/* <img className="photo" src={window.test} /> */}
+          <div className="nav-bar">
+            <section>
+              <Link to="#" className="nav-links">Write a Review</Link>
+              <Link to="#" className="nav-links">Events</Link>
+              <Link to="#" className="nav-links">Talk</Link>
             
-          </section>
-            {display()}
-        </div>
-      </header>
+              
+            </section>
+              {display()}
+          </div>
+        </header>
+        <footer>
+          
+        </footer>
+      </div>
+
     );
   }
 

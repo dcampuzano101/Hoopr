@@ -18,6 +18,9 @@ class SessionForm extends React.Component {
 
   }
 
+
+
+
   update(field){
     return e => {
       this.setState( { [field]: e.currentTarget.value });
@@ -29,9 +32,7 @@ class SessionForm extends React.Component {
     return(
       <>
         <header id="login-header">
-          <div>
-            <p>Hoopr logo goes here</p>
-          </div>
+          <Link to="/"><img className="logo" src={window.logo} /></Link>
         </header>
         <div className="main-container">
           <section className="login-container">
@@ -68,13 +69,13 @@ class SessionForm extends React.Component {
               <div className="plain-text">New to yelp? <Link to="/signup">Sign up</Link></div>
             </form>
           </section>
-          <main>
-            <p>THIS IS A STANDIN CONTAINER</p>
+          <main className="sidepic">
+            <img className="photo" src={window.test} />
           </main>
 
         </div>
         <footer>
-
+          
         </footer>
       </>
     );

@@ -130,6 +130,8 @@ var signup = function signup(user) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
+    }, function (error) {
+      return dispatch(receiveErrors(error.responseJSON));
     });
   };
 };
@@ -138,7 +140,7 @@ var login = function login(user) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (error) {
-      return dispatch(receiveErrors(error.responseJSON));
+      return dispatch(receiveErrors(error));
     });
   };
 };
@@ -221,9 +223,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -237,16 +239,31 @@ var Header =
 function (_React$Component) {
   _inherits(Header, _React$Component);
 
-  function Header() {
+  function Header(props) {
+    var _this;
+
     _classCallCheck(this, Header);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Header).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
+    _this.handleDemoSubmit = _this.handleDemoSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Header, [{
+    key: "handleDemoSubmit",
+    value: function handleDemoSubmit(e) {
+      e.preventDefault();
+      var user = {
+        email: "chefcurry@warriors.com",
+        password: "splashbro"
+      };
+      this.props.submitForm(user);
+    }
+  }, {
     key: "render",
     value: function render() {
-      debugger;
+      var _this2 = this;
+
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           logout = _this$props.logout; // console.log(this.props);
@@ -263,7 +280,10 @@ function (_React$Component) {
           }, "Log in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/signup",
             className: "sign-up-btn"
-          }, "Sign up"));
+          }, "Sign up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "demo-login-btn",
+            onClick: _this2.handleDemoSubmit
+          }, "demo login"));
         };
 
         var profileIcon = function profileIcon() {
@@ -280,7 +300,7 @@ function (_React$Component) {
         return currentUser ? profileIcon() : sessionLinks();
       };
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "splash-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-bar"
@@ -293,7 +313,7 @@ function (_React$Component) {
       }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "#",
         className: "nav-links"
-      }, "Talk")), display()));
+      }, "Talk")), display())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
     }
   }]);
 
@@ -324,14 +344,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
-  debugger;
   return {
     currentUser: state.entities.users[state.session.id]
   };
 };
 
 var mdp = function mdp(dispatch) {
-  debugger;
   return {
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
@@ -340,6 +358,9 @@ var mdp = function mdp(dispatch) {
       return function (currentUser) {
         return dispatch(currentUser);
       };
+    },
+    submitForm: function submitForm(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     }
   };
 };
@@ -404,7 +425,7 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(_ref) {
   var errors = _ref.errors;
   return {
-    errors: errors.session,
+    errors: Object.values(errors.session),
     formType: 'login',
     navLink: react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       to: "/signup"
@@ -416,6 +437,9 @@ var mdp = function mdp(dispatch) {
   return {
     submitForm: function submitForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
+    },
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
     }
   };
 };
@@ -502,7 +526,12 @@ function (_React$Component) {
           errors = _this$props.errors;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         id: "login-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hoopr logo goes here"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "logo",
+        src: window.logo
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "login-container"
@@ -539,7 +568,12 @@ function (_React$Component) {
         className: "plain-text"
       }, "New to yelp? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup"
-      }, "Sign up")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THIS IS A STANDIN CONTAINER"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
+      }, "Sign up")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
+        className: "sidepic"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "photo",
+        src: window.test
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
     }
   }]);
 
@@ -599,11 +633,10 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SignupForm).call(this, props));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
-      username: "",
-      password: "",
-      email: "",
       first_name: "",
       last_name: "",
+      password: "",
+      email: "",
       zipcode: ""
     };
     return _this;
@@ -613,7 +646,8 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.submitForm(this.state);
+      var user = Object.assign({}, this.state);
+      this.props.submitForm(user);
     }
   }, {
     key: "update",
@@ -632,7 +666,12 @@ function (_React$Component) {
           errors = _this$props.errors;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         id: "signin-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "LOGO GOES HERE"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "logo",
+        src: window.logo
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-signin-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "signin-container"
@@ -681,7 +720,12 @@ function (_React$Component) {
         className: "plain-text"
       }, "Already on Hoopr? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login"
-      }, "Log in")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THIS IS A STANDIN CONTAINER"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
+      }, "Log in")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
+        className: "sidepic-signup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "photo",
+        src: window.test
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
     }
   }]);
 
@@ -887,7 +931,7 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
       return [];
 
     default:
-      return state;
+      return [];
   }
 };
 
@@ -918,6 +962,7 @@ var sessionReducer = function sessionReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      debugger;
       return {
         id: action.currentUser.id
       };

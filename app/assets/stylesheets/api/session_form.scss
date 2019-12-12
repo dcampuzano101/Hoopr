@@ -1,6 +1,8 @@
 #login-header {
   background-color: #D32222;
   height: 60px;
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -91,4 +93,34 @@ a{
 main p {
   text-align: center;
   padding: 15px;
+}
+
+.demo-login-btn {
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  border-radius: 8%;
+  margin:0 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: gray;
+  text-align:center;
+  transition: all .4s;
+}
+
+.demo-login-btn:hover {
+    color: white;
+    background-color: gray;
+}
+
+footer {
+  margin: 0 auto;
+}
+
+.sidepic {
+  background-image: image_url('signup_illustration.png');
+  align-items: center;
+
 }
