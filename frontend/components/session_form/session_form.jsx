@@ -18,7 +18,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.submitForm(user);
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClick = this.handleClick.bind(this);
 
   }
 
@@ -68,7 +68,8 @@ class SessionForm extends React.Component {
             <li key={idx}>{error}</li>
             
           ))}
-          <button onClick={this.handleClick} className="this.state.sessErrors">YOOOO</button>
+          <button id="clearerrors" onClick={this.handleClick} 
+            className="this.state.sessErrors"><img src={window.close} /></button>
         </ul>
         <div className="main-container">
           <section className="login-container">

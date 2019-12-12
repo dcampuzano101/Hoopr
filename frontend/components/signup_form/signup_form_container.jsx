@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SignupForm from './signup_form';
 import { Link } from 'react-router-dom';
-import { signup } from '../../actions/session_actions';
+import { signup, receiveClearErrors } from '../../actions/session_actions';
 import React from 'react';
 
 const msp = state => {
@@ -15,7 +15,8 @@ const msp = state => {
 
 const mdp = dispatch => {
   return ({
-    submitForm: user => dispatch(signup(user))
+    submitForm: user => dispatch(signup(user)),
+    clearErrors: () => dispatch(receiveClearErrors())
   });
 };
 

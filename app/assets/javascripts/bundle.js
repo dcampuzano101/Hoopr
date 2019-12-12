@@ -622,9 +622,12 @@ function (_React$Component) {
           key: idx
         }, error);
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "clearerrors",
         onClick: this.handleClick,
         className: "this.state.sessErrors"
-      }, "YOOOO")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.close
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "login-container"
@@ -721,12 +724,14 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SignupForm).call(this, props));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.state = {
       first_name: "",
       last_name: "",
       password: "",
       email: "",
-      zip_code: ""
+      zip_code: "",
+      sessErrors: "session-errors"
     };
     return _this;
   }
@@ -737,6 +742,7 @@ function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.submitForm(user);
+      this.handleClick = this.handleClick.bind(this);
     }
   }, {
     key: "update",
@@ -746,6 +752,27 @@ function (_React$Component) {
       return function (e) {
         _this2.setState(_defineProperty({}, field, e.target.value));
       };
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.errors.length !== this.props.errors.length) {
+        if (this.props.errors.length > 0) {
+          this.setState({
+            sessErrors: "session-errors show"
+          });
+        } else {
+          this.setState({
+            sessErrors: "session-errors"
+          });
+        }
+      }
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.preventDefault();
+      this.props.clearErrors();
     }
   }, {
     key: "render",
@@ -761,12 +788,16 @@ function (_React$Component) {
         className: "logo",
         src: window.logo
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "session-errors" + (errors.length > 0 ? " show" : "")
+        className: this.state.sessErrors
       }, errors.map(function (error, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx
         }, error);
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "clearerrors",
+        onClick: this.handleClick,
+        className: "this.state.sessErrors"
+      }, "YOOOO")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-signin-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "signin-container"
@@ -864,6 +895,9 @@ var mdp = function mdp(dispatch) {
   return {
     submitForm: function submitForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"])(user));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["receiveClearErrors"])());
     }
   };
 };
@@ -1016,6 +1050,7 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
+      debugger;
       return action.errors.responseJSON;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CLEAR_ERRORS"]:

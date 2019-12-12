@@ -5,12 +5,14 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       first_name: "",
       last_name: "",
       password: "",
       email: "",
-      zip_code: ""
+      zip_code: "",
+      sessErrors: "session-errors"
     };
   }
 
@@ -18,12 +20,29 @@ class SignupForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.submitForm(user);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   update(field) {
     return e => {
       this.setState({ [field]: e.target.value });
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors.length !== this.props.errors.length) {
+
+      if (this.props.errors.length > 0) {
+        this.setState({ sessErrors: "session-errors show" });
+      } else {
+        this.setState({ sessErrors: "session-errors" });
+      }
+    }
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.clearErrors();
   }
 
   render() {
@@ -33,10 +52,12 @@ class SignupForm extends React.Component {
         <header id="signin-header">
           <Link to="/"><img className="logo" src={window.logo} /></Link>
         </header>
-        <ul className={"session-errors" + (errors.length > 0 ? " show" : "")}>
+        <ul className={this.state.sessErrors}>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
+
           ))}
+          <button id="clearerrors" onClick={this.handleClick} className="this.state.sessErrors">YOOOO</button>
         </ul>
         <div className="main-signin-container">
           <section className="signin-container">

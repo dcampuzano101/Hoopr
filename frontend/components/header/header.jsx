@@ -68,7 +68,7 @@ class Header extends React.Component {
                 placeholder="Brooklyn, NY"
               />
               <div className="ball-container">
-                <button className="search-btn"><img className="search-ball" src={window.ball} /></button>
+              <button className="search-btn"><img className="search-ball" src={window.ball} /></button>
               </div>
             </div>
           </div>
