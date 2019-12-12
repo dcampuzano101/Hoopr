@@ -5,9 +5,12 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    // this.handleErrors = this.handleErrors.bind(this);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      sessErrors: "session-errors"
     };
   }
 
@@ -15,7 +18,30 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.submitForm(user);
+    this.handleClick = this.handleClick.bind(this)
 
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.errors.length !== this.props.errors.length) {
+      
+      if (this.props.errors.length > 0) {
+        this.setState({ sessErrors: "session-errors show" });
+      } else {
+        this.setState({ sessErrors: "session-errors" });
+      }
+    }
+  }
+
+  // handleErrors() {
+  //   if (this.props.errors.length > 0) {
+  //     this.setState( { sessErrors: "session-errors show" });
+  //   }
+  // }
+
+  handleClick(e){
+    e.preventDefault();
+    this.props.clearErrors();
   }
 
 
@@ -23,26 +49,31 @@ class SessionForm extends React.Component {
 
   update(field){
     return e => {
-      this.setState( { [field]: e.currentTarget.value });
+      this.setState( { [field]: e.target.value });
     };
   }
 
   render(){
     const { formType, errors } = this.props;
+
+    // errors.length > 0 ? this.handleErrors() : null;
+    
     return(
       <>
         <header id="login-header">
           <Link to="/"><img className="logo" src={window.logo} /></Link>
         </header>
+        <ul className={this.state.sessErrors}>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+            
+          ))}
+          <button onClick={this.handleClick} className="this.state.sessErrors">YOOOO</button>
+        </ul>
         <div className="main-container">
           <section className="login-container">
             <h1>Log In to Hoopr!</h1>
-            <h3>New to yelp? <Link to="/signup" id="signup-link-1">Sign up</Link></h3>
-            <ul>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-                ))}
-            </ul>
+            <h3>New to Hoopr? <Link to="/signup" id="signup-link-1">Sign up</Link></h3>
             <form className="login-form" onSubmit={this.handleSubmit}>
               <label>
                 <input 
@@ -66,7 +97,7 @@ class SessionForm extends React.Component {
                 <Link to="#" className="plain-text">Forgot password?</Link>
               </span>
               <button id="login">Login</button>
-              <div className="plain-text">New to yelp? <Link to="/signup">Sign up</Link></div>
+              <div className="plain-text">New to Hoopr? <Link to="/signup">Sign up</Link></div>
             </form>
           </section>
           <main className="sidepic">

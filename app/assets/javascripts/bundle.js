@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveErrors, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, RECEIVE_CLEAR_ERRORS, receiveCurrentUser, receiveClearErrors, logoutCurrentUser, receiveErrors, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,7 +98,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CLEAR_ERRORS", function() { return RECEIVE_CLEAR_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveClearErrors", function() { return receiveClearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
@@ -109,10 +111,16 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 var LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 var RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+var RECEIVE_CLEAR_ERRORS = "RECEIVE_CLEAR_ERRORS";
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser: currentUser
+  };
+};
+var receiveClearErrors = function receiveClearErrors() {
+  return {
+    type: RECEIVE_CLEAR_ERRORS
   };
 };
 var logoutCurrentUser = function logoutCurrentUser() {
@@ -131,7 +139,7 @@ var signup = function signup(user) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (error) {
-      return dispatch(receiveErrors(error.responseJSON));
+      return dispatch(receiveErrors(error));
     });
   };
 };
@@ -288,13 +296,27 @@ function (_React$Component) {
 
         var profileIcon = function profileIcon() {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "right-nav-bar"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "#"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "fav-icon",
+            src: window.cloud
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "#"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "fav-icon",
+            src: window.whistle
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "profile-pic"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: "https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg",
             alt: "profile"
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "nav-links",
+            id: "logout",
             onClick: logout
-          }, "Logout"));
+          }, "Logout")));
         };
 
         return currentUser ? profileIcon() : sessionLinks();
@@ -313,14 +335,42 @@ function (_React$Component) {
       }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "#",
         className: "nav-links"
-      }, "Talk")), display())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
+      }, "Talk")), display()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "static-search"
+      }, "Find"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "search-field",
+        type: "search",
+        placeholder: "basketball courts, parks.. "
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "divider"
+      }, "|"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "static-search"
+      }, "Near"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "search-field",
+        type: "search",
+        placeholder: "Brooklyn, NY"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ball-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "search-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "search-ball",
+        src: window.ball
+      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null));
     }
   }]);
 
   return Header;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Header);
+/* harmony default export */ __webpack_exports__["default"] = (Header); //              <input
+// type = "submit"
+// className = "search-btn"
+//   />
 
 /***/ }),
 
@@ -425,7 +475,7 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(_ref) {
   var errors = _ref.errors;
   return {
-    errors: Object.values(errors.session),
+    errors: errors.session,
     formType: 'login',
     navLink: react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       to: "/signup"
@@ -440,6 +490,9 @@ var mdp = function mdp(dispatch) {
     },
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["receiveClearErrors"])());
     }
   };
 };
@@ -495,9 +548,12 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this)); // this.handleErrors = this.handleErrors.bind(this);
+
     _this.state = {
       email: "",
-      password: ""
+      password: "",
+      sessErrors: "session-errors"
     };
     return _this;
   }
@@ -508,6 +564,33 @@ function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.submitForm(user);
+      this.handleClick = this.handleClick.bind(this);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.errors.length !== this.props.errors.length) {
+        if (this.props.errors.length > 0) {
+          this.setState({
+            sessErrors: "session-errors show"
+          });
+        } else {
+          this.setState({
+            sessErrors: "session-errors"
+          });
+        }
+      }
+    } // handleErrors() {
+    //   if (this.props.errors.length > 0) {
+    //     this.setState( { sessErrors: "session-errors show" });
+    //   }
+    // }
+
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.preventDefault();
+      this.props.clearErrors();
     }
   }, {
     key: "update",
@@ -515,7 +598,7 @@ function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+        _this2.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
@@ -523,7 +606,8 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           formType = _this$props.formType,
-          errors = _this$props.errors;
+          errors = _this$props.errors; // errors.length > 0 ? this.handleErrors() : null;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         id: "login-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -531,18 +615,23 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo",
         src: window.logo
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "login-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Log In to Hoopr!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "New to yelp? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/signup",
-        id: "signup-link-1"
-      }, "Sign up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errors.map(function (error, idx) {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: this.state.sessErrors
+      }, errors.map(function (error, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx
         }, error);
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleClick,
+        className: "this.state.sessErrors"
+      }, "YOOOO")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "login-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Log In to Hoopr!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "New to Hoopr? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/signup",
+        id: "signup-link-1"
+      }, "Sign up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "login-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -566,7 +655,7 @@ function (_React$Component) {
         id: "login"
       }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "plain-text"
-      }, "New to yelp? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "New to Hoopr? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup"
       }, "Sign up")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
         className: "sidepic"
@@ -637,7 +726,7 @@ function (_React$Component) {
       last_name: "",
       password: "",
       email: "",
-      zipcode: ""
+      zip_code: ""
     };
     return _this;
   }
@@ -655,7 +744,7 @@ function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+        _this2.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
@@ -671,15 +760,17 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo",
         src: window.logo
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main-signin-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "signin-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Sign Up for Hoopr!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Connect and shoot hoops locally with Hoopr!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errors.map(function (error, idx) {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "session-errors" + (errors.length > 0 ? " show" : "")
+      }, errors.map(function (error, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx
         }, error);
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-signin-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "signin-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Sign Up for Hoopr!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Connect and shoot hoops locally with Hoopr!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "signin-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -925,13 +1016,16 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
-      return action.errors;
+      return action.errors.responseJSON;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CLEAR_ERRORS"]:
+      return [];
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return [];
 
     default:
-      return [];
+      return state;
   }
 };
 

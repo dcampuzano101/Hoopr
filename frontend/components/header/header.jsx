@@ -28,9 +28,13 @@ class Header extends React.Component {
       );
 
       const profileIcon = () => (
-        <div className="profile-pic">
-          <img src="https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg" alt="profile"  />
-          <button onClick={logout}>Logout</button>
+        <div className="right-nav-bar">
+          <Link to="#"><img className="fav-icon" src={window.cloud} /></Link>
+          <Link to="#"><img className="fav-icon" src={window.whistle} /></Link>
+          <div className="profile-pic">
+            <img src="https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg" alt="profile"  />
+            <button className="nav-links" id="logout" onClick={logout}>Logout</button>
+          </div>
         </div>
       )
       return currentUser ? profileIcon() : sessionLinks();
@@ -38,7 +42,6 @@ class Header extends React.Component {
     return(
       <div>
         <header className="splash-header">
-          {/* <img className="photo" src={window.test} /> */}
           <div className="nav-bar">
             <section>
               <Link to="#" className="nav-links">Write a Review</Link>
@@ -48,6 +51,26 @@ class Header extends React.Component {
               
             </section>
               {display()}
+          </div>
+          <div className="search">
+            <div className="search-bar">
+              <span id="static-search">Find</span>
+              <input
+                className="search-field"
+                type="search"
+                placeholder="basketball courts, parks.. "
+              />
+              <span id="divider">|</span>
+              <span id="static-search">Near</span>
+              <input
+                className="search-field"
+                type="search"
+                placeholder="Brooklyn, NY"
+              />
+              <div className="ball-container">
+                <button className="search-btn"><img className="search-ball" src={window.ball} /></button>
+              </div>
+            </div>
           </div>
         </header>
         <footer>
@@ -61,3 +84,8 @@ class Header extends React.Component {
 }
 
 export default Header;
+
+//              <input
+// type = "submit"
+// className = "search-btn"
+//   />

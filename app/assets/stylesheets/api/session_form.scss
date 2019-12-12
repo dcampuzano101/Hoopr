@@ -120,7 +120,26 @@ footer {
 }
 
 .sidepic {
-  background-image: image_url('signup_illustration.png');
+  // background-image: image_url('signup_illustration.png');
   align-items: center;
+}
+
+.session-errors {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  background-color: #FCD6D3;
+  padding: 25px;
+  border-radius: 3px;
+  display: flex;
+  opacity: .8;
+  width: 990px;
+  margin: 0 auto;
+  display: none;
+}
+
+.session-errors.show {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
 
 }

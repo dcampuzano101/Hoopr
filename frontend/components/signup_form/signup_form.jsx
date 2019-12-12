@@ -10,7 +10,7 @@ class SignupForm extends React.Component {
       last_name: "",
       password: "",
       email: "",
-      zipcode: ""
+      zip_code: ""
     };
   }
 
@@ -22,7 +22,7 @@ class SignupForm extends React.Component {
 
   update(field) {
     return e => {
-      this.setState({ [field]: e.currentTarget.value });
+      this.setState({ [field]: e.target.value });
     };
   }
 
@@ -33,15 +33,16 @@ class SignupForm extends React.Component {
         <header id="signin-header">
           <Link to="/"><img className="logo" src={window.logo} /></Link>
         </header>
+        <ul className={"session-errors" + (errors.length > 0 ? " show" : "")}>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
         <div className="main-signin-container">
           <section className="signin-container">
             <h1>Sign Up for Hoopr!</h1>
             <h3>Connect and shoot hoops locally with Hoopr!</h3>
-            <ul>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
-            </ul>
+
             <form className="signin-form" onSubmit={this.handleSubmit}>
               <div className="fname-lname">
               <label>
