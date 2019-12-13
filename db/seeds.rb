@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Business.destroy_all
+
 user1 = User.create({ 
   email: 'kingjames@lakers.com',
   password: 'michaeljordan',
@@ -36,3 +39,35 @@ user4 = User.create({
   last_name: 'Doncic',
   zip_code: 11008
 })
+
+
+
+b1 = Business.create({
+  name: 'Rucker Park',
+  email: 'ruckerpark@harlem.com',
+  price_range: '$',
+  owner_id: user1.id
+})
+
+b2 = Business.create({
+  name: 'The Cage',
+  email: 'west4@thecage.com',
+  price_range: '$',
+  owner_id: user2.id
+})
+
+b3 = Business.create({
+  name: 'Canal St. Courts',
+  email: 'hudsonriverparkway@canalst.com',
+  price_range: '$',
+  owner_id: user3.id
+})
+
+b4 = Business.create({
+  name: 'Brooklyn Bridge Park Basketball Courts',
+  email: 'bball@bbp.com',
+  price_range: '$',
+  owner_id: user4.id
+})
+
+
