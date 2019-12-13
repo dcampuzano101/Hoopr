@@ -2,7 +2,7 @@ class Api::BusinessesController < ApplicationController
   
   def create
       @business = Business.new(business_params)
-  if @user.save
+  if @business.save
         render json: @business
       else
         render json: @business.errors.full_messages, status: 404
@@ -23,7 +23,7 @@ class Api::BusinessesController < ApplicationController
 
   private
   def business_params
-      params.require(:business).permit(:name, :email, :price_range);
+      params.require(:business).permit(:name, :email, :price_range, :owner_id);
   end
 
 end

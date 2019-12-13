@@ -1,24 +1,27 @@
 //Business API util
 
-export const fetchBizs = () => {
+export const fetchBusinesses = () => {
+  debugger;
   return $.ajax({
     method: "GET",
     url: "api/businesses",
   });
 };
 
-export const fetchBiz = bizId => {
+export const fetchBusiness = businessId => {
+  debugger;
   return $.ajax({
     method: "GET",
-    url: `api/businesses/${bizId}`
+    url: `api/businesses/${businessId}`
   });
 };
 
 
-export const createBiz = (business) => {
+export const createBusiness = (business) => {
+  debugger;
   return $.ajax({
     method: "POST",
-    url: "api/businesses",
+    url: "/api/businesses",
     data: { business }
   });
 };

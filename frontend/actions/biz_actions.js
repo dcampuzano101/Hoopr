@@ -1,39 +1,40 @@
 import * as BIZAPI from '../util/business_api_util';
 import { receiveErrors } from './session_actions';
 
-export const RECEIVE_BIZS = "RECEIVE_BIZS";
-export const RECEIVE_BIZ = "RECEIVE_BIZ";
+export const RECEIVE_BUSINESSES = "RECEIVE_BUSINESSES";
+export const RECEIVE_BUSINESS = "RECEIVE_BUSINESS";
 
 
-export const receiveBizs = (businesses) => {
+export const receiveBusinesses = (businesses) => {
   return ({
-    type: RECEIVE_BIZS,
+    type: RECEIVE_BUSINESSES,
     businesses
   });
 };
 
-export const receiveBiz = (business) => {
+export const receiveBusiness = (business) => {
   return({
-    type: RECEIVE_BIZ,
+    type: RECEIVE_BUSINESS,
     business
   });
 };
 
-export const requestBizs = () => dispatch => {
-  return BIZAPI.fetchBizs()
-    .then(() => dispatch(receiveBizs()));
-};
-
-export const requestBiz = (bizId) => dispatch => {
-  return BIZAPI.fetchBiz(bizId)
-    .then((bizId) => dispatch(requestBiz(bizId)));
-};
-
-export const createBiz = (business) => dispatch => {
+export const requestBusinesses = () => dispatch => {
   debugger;
-  return BIZAPI.createBiz(business)
-    .then(business => dispatch(receiveBiz(business)),
-      error => dispatch(receiveErrors(error))
+  return BIZAPI.fetchBusinesses()
+    .then((businesses) => dispatch(receiveBusinesses(businesses)));
+};
+
+export const requestBusiness = (businessId) => dispatch => {
+  debugger;
+  return BIZAPI.fetchBusiness(businessId)
+    .then((business) => dispatch(receiveBusiness(business)));
+};
+
+export const createBusiness = (business) => dispatch => {
+  debugger;
+  return BIZAPI.createBusiness(business)
+    .then(business => dispatch(receiveBusiness(business))
     );
 };
 

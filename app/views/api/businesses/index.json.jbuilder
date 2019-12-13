@@ -1,6 +1,6 @@
 @businesses.each do |business|
-  json.set! business.id do
+    json.set! business.id do
     json.partial! 'business', business: business
-    json.reviewIds []
+    # json.reviewIds []
   end
 end

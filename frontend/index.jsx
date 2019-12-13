@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import { login, signup, logout } from './actions/session_actions';
-import { requestBiz, requestBizs, createBiz } from './actions/biz_actions.js';
+import { requestBusiness, requestBusinesses, createBusiness } from './actions/biz_actions.js';
 
 
 
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.login = login;
   window.signup = signup;
   window.logout = logout;
-  window.requestBiz = requestBiz;
-  window.requstBizs = requestBizs;
-  window.createBiz = createBiz;
+  window.requestBusiness = requestBusiness;
+  window.requestBusinesses = requestBusinesses;
+  window.createBusiness = createBusiness;
 
   
   ReactDOM.render(<Root store={store} />, root);
