@@ -122,7 +122,6 @@ var receiveBusiness = function receiveBusiness(business) {
 };
 var requestBusinesses = function requestBusinesses() {
   return function (dispatch) {
-    debugger;
     return _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBusinesses"]().then(function (businesses) {
       return dispatch(receiveBusinesses(businesses));
     });
@@ -130,7 +129,6 @@ var requestBusinesses = function requestBusinesses() {
 };
 var requestBusiness = function requestBusiness(businessId) {
   return function (dispatch) {
-    debugger;
     return _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBusiness"](businessId).then(function (business) {
       return dispatch(receiveBusiness(business));
     });
@@ -138,7 +136,6 @@ var requestBusiness = function requestBusiness(businessId) {
 };
 var createBusiness = function createBusiness(business) {
   return function (dispatch) {
-    debugger;
     return _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__["createBusiness"](business).then(function (business) {
       return dispatch(receiveBusiness(business));
     });

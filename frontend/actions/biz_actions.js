@@ -20,19 +20,16 @@ export const receiveBusiness = (business) => {
 };
 
 export const requestBusinesses = () => dispatch => {
-  debugger;
   return BIZAPI.fetchBusinesses()
     .then((businesses) => dispatch(receiveBusinesses(businesses)));
 };
 
 export const requestBusiness = (businessId) => dispatch => {
-  debugger;
   return BIZAPI.fetchBusiness(businessId)
     .then((business) => dispatch(receiveBusiness(business)));
 };
 
 export const createBusiness = (business) => dispatch => {
-  debugger;
   return BIZAPI.createBusiness(business)
     .then(business => dispatch(receiveBusiness(business))
     );
