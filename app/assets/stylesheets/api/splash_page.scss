@@ -34,6 +34,11 @@
   height: inherit;
 }
 
+.session-links.biz-page{
+  position: relative;
+  left: 30px;
+}
+
 .profile-pic {
   width: 65px;
   height: 65px;
@@ -63,6 +68,28 @@
     background-color:#FFFFFF;
 }
 
+.log-in-btn {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  padding: 0 15px 10px 15px;
+  
+  // padding-right: 10px;
+  // padding-left: 10px;
+  margin-top: 20px;
+}
+.log-in-btn a{
+  width: 500px;
+  font-size: 16px;
+  margin: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.log-in-btn:hover {
+  border-bottom: 1px solid white;
+}
+
 
 .nav-links {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -74,7 +101,6 @@
   // padding-right: 10px;
   // padding-left: 10px;
   margin-top: 20px;
-
 }
 .nav-links a{
   width: 500px;
@@ -178,3 +204,4 @@ body{
   display: flex;
   align-items: center;
 }
+

@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 class Header extends React.Component {
   constructor(props){
       super(props);
+      console.log(props);
 
       this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
@@ -20,10 +21,10 @@ class Header extends React.Component {
     // console.log(Boolean(currentUser));
     const display = () => {
       const sessionLinks = () => (
-        <div className="session-links">
-          <Link to="/login" className="nav-links">Log in</Link>
-          <Link to="/signup" className="sign-up-btn">Sign up</Link>
-          <button className="demo-login-btn" onClick={this.handleDemoSubmit}>demo login</button>
+        <div className={"session-links " + this.props.extraClass}>
+          <Link to="/login" className={"log-in-btn " + this.props.extraClass}>Log in</Link>
+          <Link to="/signup" className={"sign-up-btn " + this.props.extraClass}>Sign up</Link>
+          <button className={"demo-login-btn " + this.props.extraClass}onClick={this.handleDemoSubmit}>demo login</button>
         </div>
       );
 
@@ -41,34 +42,34 @@ class Header extends React.Component {
     }
     return(
       <div>
-        <header className="splash-header">
+        <header className={"splash-header " + this.props.extraClass}>
           <div className="nav-bar">
             <section>
-              <Link to="#" className="nav-links">Write a Review</Link>
-              <Link to="#" className="nav-links">Events</Link>
-              <Link to="#" className="nav-links">Talk</Link>
+              <Link to="#" className={"nav-links " + this.props.extraClass}>Write a Review</Link>
+              <Link to="#" className={"nav-links " + this.props.extraClass}>Events</Link>
+              <Link to="#" className={"nav-links " + this.props.extraClass}>Talk</Link>
             
               
             </section>
               {display()}
           </div>
-          <div className="search">
-            <div className="search-bar">
+          <div className={"search " + this.props.extraClass}>
+            <div className={"search-bar " + this.props.extraClass}>
               <span id="static-search">Find</span>
               <input
-                className="search-field"
+                className={"search-field " + this.props.extraClass}
                 type="search"
                 placeholder="basketball courts, parks.. "
               />
               <span id="divider">|</span>
               <span id="static-search">Near</span>
               <input
-                className="search-field"
+                className={"search-field " + this.props.extraClass}
                 type="search"
                 placeholder="Brooklyn, NY"
               />
               <div className="ball-container">
-              <button className="search-btn"><img className="search-ball" src={window.ball} /></button>
+              <button className={"search-btn " + this.props.extraClass}><img className="search-ball" src={window.ball} /></button>
               </div>
             </div>
           </div>

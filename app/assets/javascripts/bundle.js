@@ -236,10 +236,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_form_session_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/session_form */ "./frontend/components/session_form/session_form.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./header/header_container */ "./frontend/components/header/header_container.js");
-/* harmony import */ var _signup_form_signup_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./signup_form/signup_form_container */ "./frontend/components/signup_form/signup_form_container.jsx");
-/* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
+/* harmony import */ var _business_page_biz_page_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./business_page/biz_page_container */ "./frontend/components/business_page/biz_page_container.js");
+/* harmony import */ var _business_page_biz_info_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./business_page/biz_info_container */ "./frontend/components/business_page/biz_info_container.js");
+/* harmony import */ var _signup_form_signup_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./signup_form/signup_form_container */ "./frontend/components/signup_form/signup_form_container.jsx");
+/* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 
  // import { AuthRoute } from '../util/route_util';
+
+
 
 
 
@@ -256,14 +260,225 @@ var App = function App() {
     component: _header_header_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     path: "/login",
-    component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_9__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     path: "/signup",
-    component: _signup_form_signup_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _signup_form_signup_form_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/businesses/:id",
+    component: _business_page_biz_page_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/business_page/biz_info.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/business_page/biz_info.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var BizInfo =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BizInfo, _React$Component);
+
+  function BizInfo(props) {
+    _classCallCheck(this, BizInfo);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BizInfo).call(this, props));
+  }
+
+  _createClass(BizInfo, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "LOLOLOLOLOLOLOL"));
+    }
+  }]);
+
+  return BizInfo;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BizInfo);
+
+/***/ }),
+
+/***/ "./frontend/components/business_page/biz_info_container.js":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/business_page/biz_info_container.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+/* harmony import */ var _biz_info__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./biz_info */ "./frontend/components/business_page/biz_info.jsx");
+
+
+
+
+var msp = function msp(state, ownProps) {
+  var extraClass = "biz-page";
+  debugger;
+  return {};
+};
+
+var mdp = function mdp(dispatch) {
+  debugger;
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_biz_info__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/business_page/biz_page.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/business_page/biz_page.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
+/* harmony import */ var _biz_info__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./biz_info */ "./frontend/components/business_page/biz_info.jsx");
+/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var BizPage =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BizPage, _React$Component);
+
+  function BizPage(props) {
+    var _this;
+
+    _classCallCheck(this, BizPage);
+
+    debugger;
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizPage).call(this, props));
+    console.log(props);
+    _this.handleDemoSubmit = _this.handleDemoSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(BizPage, [{
+    key: "handleDemoSubmit",
+    value: function handleDemoSubmit(e) {
+      e.preventDefault();
+      var user = {
+        email: "chefcurry@warriors.com",
+        password: "splashbro"
+      };
+      this.props.submitForm(user);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        extraClass: this.props.extraClass
+      }));
+    }
+  }]);
+
+  return BizPage;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BizPage);
+
+/***/ }),
+
+/***/ "./frontend/components/business_page/biz_page_container.js":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/business_page/biz_page_container.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+/* harmony import */ var _biz_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./biz_page */ "./frontend/components/business_page/biz_page.jsx");
+
+
+
+
+var msp = function msp(state, ownProps) {
+  var extraClass = "biz-page";
+  return {
+    business: state.entities.businesses[ownProps.match.params.businessId],
+    extraClass: extraClass
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    requestBusiness: function requestBusiness(businessId) {
+      return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["requestBusiness"])(businessId));
+    },
+    submitForm: function submitForm(user) {
+      return dispatch(login(user));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_biz_page__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -311,6 +526,7 @@ function (_React$Component) {
     _classCallCheck(this, Header);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
+    console.log(props);
     _this.handleDemoSubmit = _this.handleDemoSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -339,15 +555,15 @@ function (_React$Component) {
       var display = function display() {
         var sessionLinks = function sessionLinks() {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "session-links"
+            className: "session-links " + _this2.props.extraClass
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/login",
-            className: "nav-links"
+            className: "log-in-btn " + _this2.props.extraClass
           }, "Log in"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             to: "/signup",
-            className: "sign-up-btn"
+            className: "sign-up-btn " + _this2.props.extraClass
           }, "Sign up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "demo-login-btn",
+            className: "demo-login-btn " + _this2.props.extraClass,
             onClick: _this2.handleDemoSubmit
           }, "demo login"));
         };
@@ -381,26 +597,26 @@ function (_React$Component) {
       };
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
-        className: "splash-header"
+        className: "splash-header " + this.props.extraClass
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "#",
-        className: "nav-links"
+        className: "nav-links " + this.props.extraClass
       }, "Write a Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "#",
-        className: "nav-links"
+        className: "nav-links " + this.props.extraClass
       }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "#",
-        className: "nav-links"
+        className: "nav-links " + this.props.extraClass
       }, "Talk")), display()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search"
+        className: "search " + this.props.extraClass
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search-bar"
+        className: "search-bar " + this.props.extraClass
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "static-search"
       }, "Find"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "search-field",
+        className: "search-field " + this.props.extraClass,
         type: "search",
         placeholder: "basketball courts, parks.. "
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -408,13 +624,13 @@ function (_React$Component) {
       }, "|"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "static-search"
       }, "Near"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "search-field",
+        className: "search-field " + this.props.extraClass,
         type: "search",
         placeholder: "Brooklyn, NY"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ball-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "search-btn"
+        className: "search-btn " + this.props.extraClass
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "search-ball",
         src: window.ball
@@ -453,7 +669,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    extraClass: "someClass"
   };
 };
 

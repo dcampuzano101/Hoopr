@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import SessionForm from './session_form/session_form';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import HeaderContainer from './header/header_container';
+import BizPage from './business_page/biz_page_container';
+import BizInfo from './business_page/biz_info_container';
 
 
 import SignUpFormContainer from './signup_form/signup_form_container';
@@ -17,6 +19,8 @@ const App = () => {
         <Route exact path="/" component={HeaderContainer} />
         <AuthRoute path="/login" component={LogInFormContainer} />
         <AuthRoute path="/signup" component={SignUpFormContainer} />
+        <Route path="/businesses/:id" component={BizPage} />
+        {/* <Route path="/businesses/:id" component={BizInfo} /> */}
     </div>
   )
 }
