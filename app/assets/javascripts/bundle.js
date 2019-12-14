@@ -376,7 +376,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
 /* harmony import */ var _biz_info__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./biz_info */ "./frontend/components/business_page/biz_info.jsx");
-/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -400,6 +401,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var BizPage =
 /*#__PURE__*/
 function (_React$Component) {
@@ -413,7 +415,9 @@ function (_React$Component) {
     debugger;
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizPage).call(this, props));
     console.log(props);
-    _this.handleDemoSubmit = _this.handleDemoSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDemoSubmit = _this.handleDemoSubmit.bind(_assertThisInitialized(_this)); // const biz = props.requestBusiness(props)
+
+    var submitForm = _this.props.submitForm;
     return _this;
   }
 
@@ -425,14 +429,72 @@ function (_React$Component) {
         email: "chefcurry@warriors.com",
         password: "splashbro"
       };
-      this.props.submitForm(user);
+      Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["login"])(user);
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.requestBusiness(this.props.match.params.id);
+    }
+  }, {
+    key: "grabBizInfo",
+    value: function grabBizInfo() {
+      var _this$props = this.props,
+          businessId = _this$props.businessId,
+          requestBusiness = _this$props.requestBusiness;
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        extraClass: this.props.extraClass
-      }));
+      var _this$props2 = this.props,
+          business = _this$props2.business,
+          requestBusiness = _this$props2.requestBusiness;
+
+      if (this.props.business) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          extraClass: this.props.extraClass
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "gallery-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "hoop",
+          src: window.hoop
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "ai",
+          src: window.ai
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "venice",
+          src: window.venice
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "shoot",
+          src: window.shoot
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "show-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-info-container"
+        }, "BIZNAME: RUCKER EMAIL: HELLO@LOL.COM PHONE: 917-917-1987"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "sticky-info"
+        }, "What goes here??"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "location-info"
+        }, "LOCATION: MANHATTAN HOURS: ALLDAY24/7 ADDRESS: WEST4th"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "create-review-photo"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "CREATE REVIEW"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "ADD PHOTO")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-items"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "REVIEWS GO HERE"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+          className: "footer-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+          to: "#"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "fav-icon",
+          src: window.cloud
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+          to: "#"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "fav-icon",
+          src: window.whistle
+        }))));
+      } else {
+        return null;
+      }
     }
   }]);
 
@@ -460,9 +522,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  var extraClass = "biz-page";
+  var extraClass = "biz-page"; // console.log(ownProps.match.params.id);
+  // const bizId = ownProps.match.params.id;
+
   return {
-    business: state.entities.businesses[ownProps.match.params.businessId],
+    business: state.entities.businesses[ownProps.match.params.id],
+    businessId: ownProps.match.params.id,
     extraClass: extraClass
   };
 };

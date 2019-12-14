@@ -4,8 +4,12 @@ import BizPage from './biz_page';
 
 const msp = (state, ownProps) => {
   const extraClass = "biz-page";
+  // console.log(ownProps.match.params.id);
+  // const bizId = ownProps.match.params.id;
+
     return ({
-    business: state.entities.businesses[ownProps.match.params.businessId],
+    business: state.entities.businesses[ownProps.match.params.id],
+    businessId: ownProps.match.params.id,
     extraClass
   });
 };
