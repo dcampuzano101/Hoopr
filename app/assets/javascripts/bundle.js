@@ -471,11 +471,31 @@ function (_React$Component) {
           className: "show-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-info-container"
-        }, "BIZNAME: RUCKER EMAIL: HELLO@LOL.COM PHONE: 917-917-1987"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, business.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Rating: ", business.rating, "16 reviews"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+          to: "#"
+        }, business.court_type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "info-buttons"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "write-review-modal"
+        }, " \u2605 Write a Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "add-photo"
+        }, " \uD83D\uDCF7 Add Photo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "sticky-info"
-        }, "What goes here??"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "sticky-links"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "phone",
+          src: window.phone
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.telephone))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "location-info"
-        }, "LOCATION: MANHATTAN HOURS: ALLDAY24/7 ADDRESS: WEST4th"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Location & Hours"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "map-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "map",
+          src: window.map
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "hours"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Mon"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Tues"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Wed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Thurs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fri"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Sat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Sun"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "create-review-photo"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "CREATE REVIEW"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "ADD PHOTO")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-items"

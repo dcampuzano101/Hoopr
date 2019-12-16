@@ -27,9 +27,6 @@ class BizPage extends React.Component {
 
   grabBizInfo(){
     const { businessId, requestBusiness } = this.props;
-
-
-
   }
 
   render(){
@@ -47,17 +44,48 @@ class BizPage extends React.Component {
           </div>
           <div className="show-container">
             <div className="biz-info-container">
-              BIZNAME: RUCKER
-              EMAIL: HELLO@LOL.COM
-              PHONE: 917-917-1987
+              <h1>{business.name}</h1>
+              <h3>Rating: {business.rating}
+               16 reviews</h3>
+              <h3><Link to="#">{business.court_type}</Link></h3>
+              <section className="info-buttons">
+                <button className="write-review-modal"> &#9733; Write a Review</button>
+                <button className="add-photo"> &#128247; Add Photo</button>
+              </section>
             </div>
             <div className="sticky-info">
-              What goes here??
+              <div className="sticky-links">
+                <img className="phone" src={window.phone} />
+                <span>{business.telephone}</span>
+                {/* <hr id="sticky-hr" /> */}
+              </div>
+             
+              
             </div>
+            <hr/>
             <div className="location-info">
-              LOCATION: MANHATTAN
-              HOURS: ALLDAY24/7
-              ADDRESS: WEST4th
+              <h3>Location & Hours</h3>
+              <div className="map-container">
+                <img className="map" src={window.map} />
+                <div className="hours">
+                  <p>Mon</p> 
+                  <span>{business.start_time} - {business.end_time}</span>
+                  <p>Tues</p> 
+                  <span>{business.start_time} - {business.end_time}</span>
+                  <p>Wed</p>
+                  <span>{business.start_time} - {business.end_time}</span>
+                  <p>Thurs</p> 
+                  <span>{business.start_time} - {business.end_time}</span>
+                  <p>Fri</p>
+                  <span>{business.start_time} - {business.end_time}</span>
+                  <p>Sat</p> 
+                  <span>{business.start_time} - {business.end_time}</span>
+                  <p>Sun</p> 
+                  <span>{business.start_time} - {business.end_time}</span>
+                </div>
+              </div>
+              
+
             </div>
             <div className="create-review-photo">
               <button>CREATE REVIEW</button>

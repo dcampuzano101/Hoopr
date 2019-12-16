@@ -46,28 +46,48 @@ b1 = Business.create({
   name: 'Rucker Park',
   email: 'ruckerpark@harlem.com',
   price_range: '$',
-  owner_id: user1.id
+  owner_id: user1.id,
+  rating: 3,
+  court_type: 'Outdoor',
+  start_time: '6:00 am',
+  end_time: '8:00 pm',
+  telephone: '(718) 917-1987'
 })
 
 b2 = Business.create({
   name: 'The Cage',
   email: 'west4@thecage.com',
   price_range: '$',
-  owner_id: user2.id
+  owner_id: user2.id,
+  rating: 3,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  telephone: '(646) 646-1986'
 })
 
 b3 = Business.create({
   name: 'Canal St. Courts',
   email: 'hudsonriverparkway@canalst.com',
   price_range: '$',
-  owner_id: user3.id
+  owner_id: user3.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: '6:00 am',
+  end_time: '9:30 pm',
+  telephone: '(718) 516-2019'
 })
 
 b4 = Business.create({
   name: 'Brooklyn Bridge Park Basketball Courts',
   email: 'bball@bbp.com',
   price_range: '$',
-  owner_id: user4.id
+  owner_id: user4.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: '6:00 am',
+  end_time: '10:30 pm',
+  telephone: '(917) 212-1996'
 })
 
 
