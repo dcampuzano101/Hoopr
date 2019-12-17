@@ -110,7 +110,7 @@
   width: 960px;
   display: grid;
   grid-template-columns: 70% 30%;
-  border: 1px solid black;
+  // border: 1px solid black;
   margin: 0 auto;
   grid-gap: 15px;
 }
@@ -134,12 +134,13 @@
 }
 
 .sticky-info {
-  border: 1px solid red;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   display: grid;
   grid-column: 2/2;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
+  border-radius: 3px;
 }
 
 .sticky-links{
@@ -182,7 +183,7 @@
 }
 
 .biz-info-container {
-  border: 2px solid blue;
+  // border: 2px solid blue;
   grid-column: 1/2;
 }
 
@@ -246,7 +247,7 @@ grid-column: 1/2;
 
 .location-info {
   grid-column: 1/2;
-  border: 2px solid green;
+  // border: 2px solid green;
 }
 
 .create-review-photo{
@@ -262,7 +263,7 @@ grid-column: 1/2;
 }
 
 .footer-container {
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: baseline;
   grid-template-columns: 33%

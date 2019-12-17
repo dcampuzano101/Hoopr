@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
 // import { AuthRoute } from '../util/route_util';
@@ -7,6 +8,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import HeaderContainer from './header/header_container';
 import BizPage from './business_page/biz_page_container';
 import BizInfo from './business_page/biz_info_container';
+import Modal from '../components/modal/modal';
 
 
 import SignUpFormContainer from './signup_form/signup_form_container';
@@ -20,6 +22,7 @@ const App = () => {
         <AuthRoute path="/login" component={LogInFormContainer} />
         <AuthRoute path="/signup" component={SignUpFormContainer} />
         <Route path="/businesses/:id" component={BizPage} />
+        <Route path="/businesses/:id" component={Modal} />
         {/* <Route path="/businesses/:id" component={BizInfo} /> */}
     </div>
   )

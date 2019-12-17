@@ -1,0 +1,111 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 600px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+
+.review-form-container {
+  display: grid;
+  margin: 20px;
+
+}
+.review-form-container h1{
+  font-size: 36px;
+  color: #0073BB;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-bottom: 100px;
+  margin-bottom: 8px;
+}
+
+.form-wrapper {
+  max-width: 700px;
+  height: 350px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  display: grid;
+  grid-template-rows: 20% 80%; 
+  
+}
+
+.review-rating {
+  grid-row: 1/3;
+}
+
+.review-body {
+  font-weight: 400;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  grid-row: 2/3;
+  padding: 10px;
+}
+
+textarea {
+  overflow: auto;
+}
+
+.fas.fa-basketball-ball{
+  color: orange;
+}
+
+.ball-icon {
+  width: 25px;
+  height: 25px;
+  filter: invert(71%) sepia(13%) saturate(7184%) hue-rotate(331deg) brightness(106%) contrast(101%);
+  padding: 2px;
+}
+
+.ball-icon:hover{
+  width: 25px;
+  height: 25px;
+  filter: invert(14%) sepia(72%) saturate(5218%) hue-rotate(354deg) brightness(97%) contrast(84%);
+}
+
+.ball-rating {
+  display: flex;
+  align-self: center;
+  padding: 10px;
+}
+
+.review-submit{
+  background-color: #D32323;
+  padding: 10px;
+  width: 150px;
+  border-radius: 3px;
+  font-weight: 400;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  align-self: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+.review-form {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all .4s;
+  font-size: 12px;
+  color: #D32323;
+  padding: 5px 8px;
+  // margin: 0 16px 0 0;
+  border-radius: 3px;
+  height: 18px;
+  text-align: center;
+}
+
+.review-form:hover {
+  background-color: #FDF6F6;
+}

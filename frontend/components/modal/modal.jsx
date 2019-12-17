@@ -1,11 +1,12 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 // import LoginFormContainer from '../session_form/login_form_container';
-import { ReviewFormContainer } from '../review/review_form_container';
+import ReviewFormContainer from '../review/review_form_container';
 
 function Modal({ modal, closeModal }) {
+  debugger;
   if (!modal) {
     return null;
   }

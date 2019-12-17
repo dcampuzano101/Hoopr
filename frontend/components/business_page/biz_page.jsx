@@ -38,7 +38,7 @@ class BizPage extends React.Component {
 
     const sessionLinks = () => (
       <nav className="review-form">
-        <button onClick={() => openModal('createReview')}>Write a Review</button>
+        <button onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
       </nav>
     );
 
@@ -100,6 +100,13 @@ class BizPage extends React.Component {
             </div>
             <hr/>
             <div className="create-review-photo">
+              <div className="ball-rating">
+                <img className="ball-icon" src={window.ballicon} />
+                <img className="ball-icon" src={window.ballicon} />
+                <img className="ball-icon" src={window.ballicon} />
+                <img className="ball-icon" src={window.ballicon} />
+                <img className="ball-icon" src={window.ballicon} />
+              </div>
               {sessionLinks()}
             </div>
             <div className="review-items">
