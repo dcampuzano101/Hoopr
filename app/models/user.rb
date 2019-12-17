@@ -57,4 +57,7 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  has_many :reviews
+  
+
 end

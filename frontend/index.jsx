@@ -4,6 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { login, signup, logout } from './actions/session_actions';
 import { requestBusiness, requestBusinesses, createBusiness } from './actions/biz_actions.js';
+import { requestReview, createReview, updateReview } from './actions/review_actions';
 
 
 
@@ -39,6 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.requestBusiness = requestBusiness;
   window.requestBusinesses = requestBusinesses;
   window.createBusiness = createBusiness;
+  window.createReview = createReview;
+  window.updateReview = updateReview;
+  window.requestReview = requestReview;
 
   
   ReactDOM.render(<Root store={store} />, root);

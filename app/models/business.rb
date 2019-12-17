@@ -9,12 +9,15 @@
 #  price_range :string           not null
 #  latitude    :float
 #  longitude   :float
-#  telephone   :integer
 #  website     :string
 #  address     :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  rating      :integer
+#  court_type  :string
+#  start_time  :string
+#  end_time    :string
+#  telephone   :string
 #
 
 class Business < ApplicationRecord
@@ -27,5 +30,6 @@ class Business < ApplicationRecord
     class_name: 'User'
 
   has_many :reviews
+  
 
 end

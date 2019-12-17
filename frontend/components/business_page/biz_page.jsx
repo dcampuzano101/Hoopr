@@ -3,6 +3,7 @@ import Header from '../header/header';
 import BizInfo from './biz_info';
 import { Link } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
+import { openModal } from '../../actions/modal_actions';
 
 
 class BizPage extends React.Component {
@@ -10,16 +11,19 @@ class BizPage extends React.Component {
     debugger;
     super(props);
     console.log(props);
-    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+    // this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
     // const biz = props.requestBusiness(props)
     const { submitForm } = this.props;
   }
 
-  handleDemoSubmit(e) {
-    e.preventDefault();
-    const user = { email: "chefcurry@warriors.com", password: "splashbro" };
-    login(user);
+  handleDemoSubmit(user) {
+    // debugger;
+    // e.preventDefault();
+    // const user = { email: "chefcurry@warriors.com", password: "splashbro" };
+    this.props.submitForm(user);
   }
+
+
 
   componentDidMount(){
     this.props.requestBusiness(this.props.match.params.id);
@@ -30,12 +34,19 @@ class BizPage extends React.Component {
   }
 
   render(){
-    const { business, requestBusiness } = this.props;
+    const { business, openModal, requestBusiness } = this.props;
+
+    const sessionLinks = () => (
+      <nav className="review-form">
+        <button onClick={() => openModal('createReview')}>Write a Review</button>
+      </nav>
+    );
 
     if (this.props.business) {
       return (
         <div>
-          <Header extraClass={this.props.extraClass} />
+          <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
+            logout={this.props.logout}/>
           <div className="gallery-container">
             <img className="hoop" src={window.hoop} />
             <img className="ai" src={window.ai} />
@@ -57,6 +68,8 @@ class BizPage extends React.Component {
               <div className="sticky-links">
                 <img className="phone" src={window.phone} />
                 <span>{business.telephone}</span>
+                <img className="web" src={window.web} />
+                <span><Link to={business.website}>{business.name}</Link></span>
                 {/* <hr id="sticky-hr" /> */}
               </div>
              
@@ -84,12 +97,10 @@ class BizPage extends React.Component {
                   <span>{business.start_time} - {business.end_time}</span>
                 </div>
               </div>
-              
-
             </div>
+            <hr/>
             <div className="create-review-photo">
-              <button>CREATE REVIEW</button>
-              <button>ADD PHOTO</button>
+              {sessionLinks()}
             </div>
             <div className="review-items">
               <p>REVIEWS GO HERE</p>

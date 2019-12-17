@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Business.destroy_all
+Review.destroy_all
 
 user1 = User.create({ 
   email: 'kingjames@lakers.com',
@@ -51,7 +52,8 @@ b1 = Business.create({
   court_type: 'Outdoor',
   start_time: '6:00 am',
   end_time: '8:00 pm',
-  telephone: '(718) 917-1987'
+  telephone: '(718) 917-1987',
+  website: 'https://www.nycgovparks.org/parks/holcombe-rucker-park'
 })
 
 b2 = Business.create({
@@ -63,7 +65,8 @@ b2 = Business.create({
   court_type: 'Outdoor',
   start_time: 'Sunrise',
   end_time: 'Dusk',
-  telephone: '(646) 646-1986'
+  telephone: '(646) 646-1986',
+  website: 'https://www.nycgovparks.org/parks/west-4th-street-courts'
 })
 
 b3 = Business.create({
@@ -75,11 +78,13 @@ b3 = Business.create({
   court_type: 'Outdoor',
   start_time: '6:00 am',
   end_time: '9:30 pm',
-  telephone: '(718) 516-2019'
+  telephone: '(718) 516-2019',
+  website: 'https://hudsonriverpark.org/explore-the-park/activities/basketball-at-canal-st'
 })
 
 b4 = Business.create({
-  name: 'Brooklyn Bridge Park Basketball Courts',
+  name: 'Brooklyn Bridg
+  e Park Basketball Courts',
   email: 'bball@bbp.com',
   price_range: '$',
   owner_id: user4.id,
@@ -87,7 +92,8 @@ b4 = Business.create({
   court_type: 'Outdoor',
   start_time: '6:00 am',
   end_time: '10:30 pm',
-  telephone: '(917) 212-1996'
+  telephone: '(917) 212-1996',
+  website: 'https://www.brooklynbridgepark.org/activities/basketball'
 })
 
 
