@@ -73,6 +73,12 @@ textarea {
   width: 25px;
   height: 25px;
   filter: invert(14%) sepia(72%) saturate(5218%) hue-rotate(354deg) brightness(97%) contrast(84%);
+  cursor: pointer;
+}
+
+.ball-icon.is-selected{
+  filter: invert(14%) sepia(72%) saturate(5218%) hue-rotate(354deg) brightness(97%) contrast(84%);
+  cursor: pointer;
 }
 
 .ball-rating {

@@ -11,9 +11,12 @@ class ReviewForm extends React.Component {
       business_id: currentBiz.id,
       body: "",
       user_id: currentUser.id,
-      rating: ""
+      rating: null,
+      temp_rating: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.ball_out = this.ball_out.bind(this);
+    this.ball_over = this.ball_over.bind(this);
   }
 
   update(field) {
@@ -28,6 +31,12 @@ class ReviewForm extends React.Component {
     });
   }
 
+  ball_over(rating) {
+    return e => this.setState({
+      temp_rating: rating
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const review = Object.assign({}, this.state);
@@ -39,31 +48,35 @@ class ReviewForm extends React.Component {
     this.props.requestBusiness(this.props.currentBiz.id);
   }
 
-
   render(){
+    const basketballs = [];
+
+    for (let i = 1; i <= 5; i++) {
+      let klass = 'ball-icon';
+      if (this.state.temp_rating >= i && this.state.temp_rating != null) {
+          klass += ' is-selected';
+      }
+      const icon = 
+        <img 
+          className={klass}
+          src={window.ballicon}
+          onClick={this.rate(i)}
+          key={i}
+          onMouseOver={this.ball_over(i)} 
+        />;
+      basketballs.push(icon);
+    }
+
     const { currentBiz } = this.props;
     if (this.props)
     return(
       <div>
         <div className="review-form-container">
           <Link to={`/businesses/${currentBiz.id}`}><h1>{currentBiz.name}</h1></Link>
-          {/* <img className="ball-icon" src={window.ballicon} />
-          <i className="fas fa-basketball-ball"></i> */}
             <form onSubmit={this.handleSubmit}>
             <section className="form-wrapper">
-              {/* <label>Rating:
-                <input type="number"
-                  value={this.state.rating}
-                  onChange={this.update('rating')}
-                  className="review-rating"
-                />
-              </label> */}
               <div className="ball-rating">
-                <img className="ball-icon" src={window.ballicon} onClick={this.rate("1")} />
-                <img className="ball-icon" src={window.ballicon} onClick={this.rate("2")} />
-                <img className="ball-icon" src={window.ballicon} onClick={this.rate("3")} />
-                <img className="ball-icon" src={window.ballicon} onClick={this.rate("4")} />
-                <img className="ball-icon" src={window.ballicon} onClick={this.rate("5")} />
+                  {basketballs}
               </div>
               <label>
                 

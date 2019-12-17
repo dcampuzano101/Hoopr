@@ -1036,9 +1036,12 @@ function (_React$Component) {
       business_id: currentBiz.id,
       body: "",
       user_id: currentUser.id,
-      rating: ""
+      rating: null,
+      temp_rating: null
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.ball_out = this.ball_out.bind(this);
+
+    _this.ball_over = _this.ball_over.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1063,6 +1066,17 @@ function (_React$Component) {
       };
     }
   }, {
+    key: "ball_over",
+    value: function ball_over(rating) {
+      var _this4 = this;
+
+      return function (e) {
+        return _this4.setState({
+          temp_rating: rating
+        });
+      };
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
@@ -1078,6 +1092,25 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var basketballs = [];
+
+      for (var i = 1; i <= 5; i++) {
+        var klass = 'ball-icon';
+
+        if (this.state.temp_rating >= i && this.state.temp_rating != null) {
+          klass += ' is-selected';
+        }
+
+        var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: klass,
+          src: window.ballicon,
+          onClick: this.rate(i),
+          key: i,
+          onMouseOver: this.ball_over(i)
+        });
+        basketballs.push(icon);
+      }
+
       var currentBiz = this.props.currentBiz;
       if (this.props) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "review-form-container"
@@ -1089,27 +1122,7 @@ function (_React$Component) {
         className: "form-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ball-rating"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "ball-icon",
-        src: window.ballicon,
-        onClick: this.rate("1")
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "ball-icon",
-        src: window.ballicon,
-        onClick: this.rate("2")
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "ball-icon",
-        src: window.ballicon,
-        onClick: this.rate("3")
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "ball-icon",
-        src: window.ballicon,
-        onClick: this.rate("4")
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "ball-icon",
-        src: window.ballicon,
-        onClick: this.rate("5")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         placeholder: "I decided to stop by the park. Perfect opportunity to sweat out last night's tacos and cerveza. The gang was all there shooting hoops. One of the best spots to play pick up in nyc. 4/5 Would come back." // maxlength="5000"
         ,
         value: this.state.body,
