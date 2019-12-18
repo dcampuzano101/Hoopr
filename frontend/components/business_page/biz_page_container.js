@@ -8,7 +8,7 @@ const msp = (state, ownProps) => {
   const extraClass = "biz-page";
   // console.log(ownProps.match.params.id);
   // const bizId = ownProps.match.params.id;
-
+  debugger;
     return ({
     business: state.entities.businesses[ownProps.match.params.id],
     businessId: ownProps.match.params.id,

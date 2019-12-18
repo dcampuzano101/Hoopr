@@ -6,6 +6,9 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_API_KEY']}" %>
+    <%= stylesheet_link_tag 'application', media: 'all' %> <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application' %>
     <script src="https://kit.fontawesome.com/9efd3d81b7.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
       window.test = '<%= image_url('signup_illustration.png') %>'

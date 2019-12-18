@@ -2,8 +2,10 @@ import React from 'react';
 import Header from '../header/header';
 import BizInfo from './biz_info';
 import { Link } from 'react-router-dom';
-import { login } from '../../actions/session_actions';
+import { login, logoutCurrentUser } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
+import BizMap from '../../components/biz_map/biz_map';
+// import Review from './review_list_item_container';
 
 
 class BizPage extends React.Component {
@@ -14,6 +16,7 @@ class BizPage extends React.Component {
     // this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
     // const biz = props.requestBusiness(props)
     const { submitForm } = this.props;
+    console.log(props);
   }
 
   handleDemoSubmit(user) {
@@ -23,9 +26,15 @@ class BizPage extends React.Component {
     this.props.submitForm(user);
   }
 
-
+  componentDidUpdate(prevProps){
+    debugger;
+    if (this.props.match.params.url != prevProps.match.params.url) {
+      this.props.requestBusiness(this.props.match.params.id);
+    }
+  }
 
   componentDidMount(){
+    debugger;
     this.props.requestBusiness(this.props.match.params.id);
   }
 
@@ -34,6 +43,7 @@ class BizPage extends React.Component {
   }
 
   render(){
+
     const { business, openModal, requestBusiness } = this.props;
 
     const sessionLinks = () => (
@@ -41,8 +51,18 @@ class BizPage extends React.Component {
         <button onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
       </nav>
     );
-
     if (this.props.business) {
+      let reviews;
+
+      if (business.reviews.length) {
+        reviews = business.reviews.map(review =>
+          <div>
+            {/* <li>{review.user.first_name} {review.user.last_name}</li> */}
+            <li>{review.rating}</li>
+            <li>{review.body}</li>
+          </div>
+        )
+      }
       return (
         <div>
           <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
@@ -78,6 +98,9 @@ class BizPage extends React.Component {
             <hr/>
             <div className="location-info">
               <h3>Location & Hours</h3>
+              <div className="biz-map">
+                {/* <BizMap /> */}
+              </div>
               <div className="map-container">
                 <img className="map" src={window.map} />
                 <div className="hours">
@@ -110,6 +133,7 @@ class BizPage extends React.Component {
               {sessionLinks()}
             </div>
             <div className="review-items">
+              {reviews}
               <p>REVIEWS GO HERE</p>
             </div>
           </div>

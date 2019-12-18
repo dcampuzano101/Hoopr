@@ -9,6 +9,7 @@ import HeaderContainer from './header/header_container';
 import BizPage from './business_page/biz_page_container';
 import BizInfo from './business_page/biz_info_container';
 import Modal from '../components/modal/modal';
+import BizMap from '../components/biz_map/biz_map';
 
 
 import SignUpFormContainer from './signup_form/signup_form_container';
@@ -23,7 +24,9 @@ const App = () => {
         <AuthRoute path="/signup" component={SignUpFormContainer} />
         <Route path="/businesses/:id" component={BizPage} />
         <Route path="/businesses/:id" component={Modal} />
+        <Route path="/businesses/:id" component={BizMap} />
         {/* <Route path="/businesses/:id" component={BizInfo} /> */}
+
     </div>
   )
 }
