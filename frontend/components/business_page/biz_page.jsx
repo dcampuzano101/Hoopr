@@ -28,7 +28,7 @@ class BizPage extends React.Component {
 
   componentDidUpdate(prevProps){
     debugger;
-    if (this.props.match.params.url != prevProps.match.params.url) {
+    if (this.props.match.params.id != prevProps.match.params.id) {
       this.props.requestBusiness(this.props.match.params.id);
     }
   }
