@@ -5,62 +5,115 @@ import { Link } from 'react-router-dom';
 import { login, logoutCurrentUser } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
 import BizMap from '../../components/biz_map/biz_map';
+import BizPageContainer from './biz_page_container';
 // import Review from './review_list_item_container';
+
 
 
 class BizPage extends React.Component {
   constructor(props){
-    debugger;
+    
     super(props);
-    console.log(props);
-    // this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
-    // const biz = props.requestBusiness(props)
-    const { submitForm } = this.props;
-    console.log(props);
+
+    this.state = {
+      rating: null,
+      temp_rating: null
+    }
   }
 
   handleDemoSubmit(user) {
-    // debugger;
-    // e.preventDefault();
-    // const user = { email: "chefcurry@warriors.com", password: "splashbro" };
     this.props.submitForm(user);
   }
 
   componentDidUpdate(prevProps){
-    debugger;
     if (this.props.match.params.id != prevProps.match.params.id) {
       this.props.requestBusiness(this.props.match.params.id);
     }
   }
 
   componentDidMount(){
-    debugger;
+    
     this.props.requestBusiness(this.props.match.params.id);
   }
 
-  grabBizInfo(){
-    const { businessId, requestBusiness } = this.props;
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
   }
 
-  render(){
+  rate(numRating) {
+    return e => this.setState({
+      rating: numRating
+    });
+  }
 
-    const { business, openModal, requestBusiness } = this.props;
+  ball_over(rating) {
+    return e => this.setState({
+      temp_rating: rating
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const review = Object.assign({}, this.state);
+    this.props.processForm(review).then(this.props.closeModal);
+  }
+
+  // componentDidMount() {
+  //   //possibly have to render null first
+  //   this.props.requestBusiness(this.props.currentBiz.id);
+  // }
+
+
+
+
+  render(){
+    const basketballs = [];
+
+    for (let i = 1; i <= 5; i++) {
+      let klass = 'ball-icon';
+      if (this.state.temp_rating >= i && this.state.temp_rating != null) {
+        klass += ' is-selected';
+      }
+      const icon =
+        <img
+          className={klass}
+          src={window.ballicon}
+          onClick={this.rate(i)}
+          key={i}
+          onMouseOver={this.ball_over(i)}
+        />;
+      basketballs.push(icon);
+    }
+
+    const { business, openModal, reviews, users } = this.props;
 
     const sessionLinks = () => (
       <nav className="review-form">
         <button onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
       </nav>
     );
-    if (this.props.business) {
-      let reviews;
-
-      if (business.reviews.length) {
-        reviews = business.reviews.map(review =>
-          <div>
-            {/* <li>{review.user.first_name} {review.user.last_name}</li> */}
-            <li>{review.rating}</li>
-            <li>{review.body}</li>
-          </div>
+    if (business.id) {
+      debugger;
+      let reviewLis;
+      if (reviews.length) {
+        reviewLis = reviews.map(review =>
+          (
+          <>
+            <section className="profile-info">
+              <h3>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}.</h3>
+              <img src="https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg" alt="profile" />
+            </section>
+            
+            <div className="rating-review">
+              <section className="static-rating">{basketballs}</section>
+              {/* <li>{review.rating}</li> */}
+              <li key={review.id}>{review.body}</li>
+              <hr/>
+            </div>
+          </>
+          )
         )
       }
       return (
@@ -132,9 +185,17 @@ class BizPage extends React.Component {
               </div>
               {sessionLinks()}
             </div>
-            <div className="review-items">
-              {reviews}
-              <p>REVIEWS GO HERE</p>
+            <div className="review-container">
+              <div className="review-items">
+                <div className="profile-section">
+                  {/* <li>{review.</li> */}
+                </div>
+                <div className="review-item">
+
+                  {reviewLis}
+                </div>
+
+              </div>
             </div>
           </div>
 

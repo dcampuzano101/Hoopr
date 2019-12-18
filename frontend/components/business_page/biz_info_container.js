@@ -4,14 +4,14 @@ import BizInfo from './biz_info';
 
 const msp = (state, ownProps) => {
   const extraClass = "biz-page";
-  debugger;
+  
   return({
 
   });
 };
 
 const mdp = dispatch => {
-  debugger;
+  
   return({
 
   });

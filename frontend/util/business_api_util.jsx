@@ -1,7 +1,7 @@
 //Business API util
 
 export const fetchBusinesses = () => {
-  debugger;
+  
   return $.ajax({
     method: "GET",
     url: "api/businesses",
@@ -9,7 +9,7 @@ export const fetchBusinesses = () => {
 };
 
 export const fetchBusiness = businessId => {
-  debugger;
+  
   return $.ajax({
     method: "GET",
     url: `api/businesses/${businessId}`
@@ -18,7 +18,7 @@ export const fetchBusiness = businessId => {
 
 
 export const createBusiness = (business) => {
-  debugger;
+  
   return $.ajax({
     method: "POST",
     url: "/api/businesses",

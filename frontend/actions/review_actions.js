@@ -4,16 +4,16 @@ import {  } from './biz_actions';
 
 export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 
-export const receiveReview = (review) => {
+export const receiveReview = (payload) => {
   return({
     type: RECEIVE_REVIEW,
-    review
+    payload
   });
 };
 
 export const requestReview = (reviewId) => dispatch => {
   return ReviewAPI.fetchReview(reviewId)
-    .then((review) => dispatch(receiveReview(review)));
+    .then((payload) => dispatch(receiveReview(payload)));
 };
 
 export const createReview = (review) => dispatch => {

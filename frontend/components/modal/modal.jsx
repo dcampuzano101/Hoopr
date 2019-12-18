@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import ReviewFormContainer from '../review/review_form_container';
 
 function Modal({ modal, closeModal }) {
-  debugger;
+  
   if (!modal) {
     return null;
   }

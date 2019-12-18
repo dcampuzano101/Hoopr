@@ -257,7 +257,7 @@ grid-column: 1/2;
   justify-content: center;
 }
 
-.review-items{
+.review-container{
   grid-column: 1/2;
   border: 1px solid black;
 }
@@ -274,4 +274,38 @@ grid-column: 1/2;
   height: 200px;
 }
 
+// .review-items{
+//   display: grid;
+//   grid-template-columns: 40% 60%;
+// }
+
+.profile-section{
+  grid-column: 1/2;
+}
+
+.review-item{
+  grid-column: 1/2;
+}
+
+.profile-info{
+  align-self: flex-start;
+}
+
+.profile-info img{
+  width: 50px;
+  height: 50px;
+}
+
+.rating-review {
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+
+.static-rating {
+  grid-row: 1/2;
+}
+
+.review-body {
+  align-self: flex-end;
+}
 //#a71c1c

@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  debugger;
+  
   return {
     requestBusiness: (businessId) => dispatch(requestBusiness(businessId)),
     processForm: (review) => dispatch(createReview(review)),

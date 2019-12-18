@@ -12,10 +12,10 @@ export const receiveBusinesses = (businesses) => {
   });
 };
 
-export const receiveBusiness = (business) => {
+export const receiveBusiness = (payload) => {
   return({
     type: RECEIVE_BUSINESS,
-    business
+    payload
   });
 };
 
@@ -26,12 +26,12 @@ export const requestBusinesses = () => dispatch => {
 
 export const requestBusiness = (businessId) => dispatch => {
   return BIZAPI.fetchBusiness(businessId)
-    .then((business) => dispatch(receiveBusiness(business)));
+    .then((payload) => dispatch(receiveBusiness(payload)));
 };
 
 export const createBusiness = (business) => dispatch => {
   return BIZAPI.createBusiness(business)
-    .then(business => dispatch(receiveBusiness(business))
+    .then(payload => dispatch(receiveBusiness(payload))
     );
 };
 

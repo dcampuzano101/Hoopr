@@ -1,7 +1,7 @@
 //Review API Util
 
 export const createReview = (review) => {
-  debugger;
+  
   return $.ajax({
     method: "POST",
     url: `/api/businesses/${review.business_id}/reviews`,
