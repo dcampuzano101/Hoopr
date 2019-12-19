@@ -1,11 +1,12 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_REVIEW } from '../actions/review_actions';
-import { RECEIVE_BUSINESS } from '../actions/biz_actions';
+import { RECEIVE_BUSINESS, RECEIVE_BUSINESSES } from '../actions/biz_actions';
 
 const usersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
 
   switch (action.type) {
+    case RECEIVE_BUSINESSES:
     case RECEIVE_BUSINESS:
       return Object.assign({}, oldState, action.payload.users );
     case RECEIVE_REVIEW:

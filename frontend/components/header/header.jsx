@@ -13,12 +13,20 @@ class Header extends React.Component {
     const user = { email: "chefcurry@warriors.com", password: "splashbro" }
     this.props.submitForm(user);
   }
+
+  randomBiz(obj) {
+    let keys = Object.keys(obj);
+    return obj[keys[keys.length * Math.random() << 0]];
+  }
   
   render(){
+    // const bizKeys = Object.keys(this.props.businesses);
+    // const b1 = this.props.businesses[bizKeys[0]];
+    // const b2 = this.props.businesses[bizKeys[1]];
+    // const b3 = this.props.businesses[bizKeys[2]];
+    // console.log(b1);
     const { currentUser, logout } = this.props;
-    // console.log(this.props);
-    // console.log(currentUser);
-    // console.log(Boolean(currentUser));
+
     const display = () => {
       const sessionLinks = () => (
         <div className={"session-links " + this.props.extraClass}>
@@ -48,8 +56,6 @@ class Header extends React.Component {
               <Link to="#" className={"nav-links " + this.props.extraClass}>Write a Review</Link>
               <Link to="#" className={"nav-links " + this.props.extraClass}>Events</Link>
               <Link to="#" className={"nav-links " + this.props.extraClass}>Talk</Link>
-            
-              
             </section>
               {display()}
           </div>
@@ -74,14 +80,16 @@ class Header extends React.Component {
             </div>
           </div>
         </header>
-        <footer>
-          
-        </footer>
-      </div>
+       
 
+
+        {/* <footer className="footer-container home-page">
+          <Link to="#"><img className="fav-icon" src={window.cloud} /></Link>
+          <Link to="#"><img className="fav-icon" src={window.whistle} /></Link>
+        </footer> */}
+      </div>
     );
   }
-
 }
 
 export default Header;

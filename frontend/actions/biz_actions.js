@@ -5,10 +5,10 @@ export const RECEIVE_BUSINESSES = "RECEIVE_BUSINESSES";
 export const RECEIVE_BUSINESS = "RECEIVE_BUSINESS";
 
 
-export const receiveBusinesses = (businesses) => {
+export const receiveBusinesses = (payload) => {
   return ({
     type: RECEIVE_BUSINESSES,
-    businesses
+    payload
   });
 };
 
@@ -21,7 +21,7 @@ export const receiveBusiness = (payload) => {
 
 export const requestBusinesses = () => dispatch => {
   return BIZAPI.fetchBusinesses()
-    .then((businesses) => dispatch(receiveBusinesses(businesses)));
+    .then((payload) => dispatch(receiveBusinesses(payload)));
 };
 
 export const requestBusiness = (businessId) => dispatch => {

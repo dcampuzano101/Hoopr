@@ -10,7 +10,7 @@ const bizReducer = (oldState = {}, action) => {
 
     case RECEIVE_BUSINESSES:
       
-      return Object.assign({}, oldState, action.businesses);
+      return Object.assign({}, oldState, action.payload.businesses);
   
     default:
       return oldState;

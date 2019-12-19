@@ -46,6 +46,13 @@
   border-radius: 2px;
 }
 
+.profile-pic.biz-page img{
+  width: 20px;
+  height: 20px;
+  padding: 15px;
+  border-radius: 2px;
+}
+
 
 
 .sign-up-btn {
@@ -195,6 +202,7 @@ body{
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   height: 15px;
+  margin-right: -1;
   // display: flex;
   // align-items: center;
   
@@ -205,3 +213,64 @@ body{
   align-items: center;
 }
 
+.footer-container.home-page{
+  display: flex;
+  align-self: baseline;
+}
+
+.hoopr-brooklyn-container{
+  display: grid;
+  justify-items: center;
+  width: 700px;
+  grid-template-columns: 100%;
+  margin: 0 auto;
+}
+
+.hoopr-brooklyn-container h3{
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #D33439
+}
+
+.hr-row.splash {
+  height: 1px;
+  background-color: rgba(0, 0, 0, .1);
+  grid-column-start: 1;
+  grid-column-end: 3;
+
+  overflow: hidden;
+  display: grid;
+  width: 98%;
+  justify-self: center;
+}
+
+.bk-neighborhoods {
+  grid-column: 1;
+  justify-content: center;
+}
+
+#neighborhood-links{
+  color: #857F7C;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 10px 15px;
+  // margin-bottom: 10px;
+  display: inline-block;
+}
+
+#neighborhood-links:hover{
+  border-bottom: 2px solid #D33439;
+}
+
+.search-btn:hover{
+  background-color: #a71c1c
+}
+
+.biz-index-items-container{
+  display: grid;
+  justify-items: center;
+  width: 700px;
+  grid-template-columns: 100%;
+  margin: 0 auto;
+}

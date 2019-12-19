@@ -13,11 +13,19 @@
   width:300px;
   margin: 0 auto;
   margin-top: 10px;
+  // display: grid;
+  // grid-template-columns: 10% 35% 10% 35% 10%;
+  // justify-self: center;
+  // width: 600px;
+  // margin: 0 auto;
+  // height: 20px;
+
 }
 
 .search-field.biz-page{
   width: 170px;
   float: left;
+  // grid-column: 2/5;
 }
 
 .map-container {

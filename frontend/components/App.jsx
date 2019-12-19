@@ -7,7 +7,8 @@ import SessionForm from './session_form/session_form';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import HeaderContainer from './header/header_container';
 import BizPage from './business_page/biz_page_container';
-import BizInfo from './business_page/biz_info_container';
+import BizIndexItemContainer from './header/business_index_items_container';
+import Footer from './header/footer';
 import Modal from '../components/modal/modal';
 import BizMap from '../components/biz_map/biz_map';
 
@@ -24,6 +25,8 @@ const App = () => {
         <AuthRoute path="/signup" component={SignUpFormContainer} />
         <Route path="/businesses/:id" component={BizPage} />
         <Route path="/businesses/:id" component={Modal} />
+        <Route exact path="/" component={BizIndexItemContainer} />
+        <Route exact path="/" component={Footer} />
         {/* <Route path="/businesses/:id" component={BizMap} /> */}
         {/* <Route path="/businesses/:id" component={BizInfo} /> */}
 

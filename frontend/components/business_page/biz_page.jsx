@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../header/header';
-import BizInfo from './biz_info';
 import { Link } from 'react-router-dom';
 import { login, logoutCurrentUser } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
@@ -205,10 +204,7 @@ class BizPage extends React.Component {
             </div>
           </div>
 
-          <footer className="footer-container">
-            <Link to="#"><img className="fav-icon" src={window.cloud} /></Link>
-            <Link to="#"><img className="fav-icon" src={window.whistle} /></Link>
-          </footer>
+
         </div>
       );
     } else {
