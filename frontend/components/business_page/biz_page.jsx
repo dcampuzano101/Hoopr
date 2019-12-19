@@ -4,7 +4,7 @@ import BizInfo from './biz_info';
 import { Link } from 'react-router-dom';
 import { login, logoutCurrentUser } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
-import BizMap from '../../components/biz_map/biz_map';
+// import BizMap from '../../components/biz_map/biz_map';
 import BizPageContainer from './biz_page_container';
 // import Review from './review_list_item_container';
 
@@ -32,7 +32,6 @@ class BizPage extends React.Component {
   }
 
   componentDidMount(){
-    
     this.props.requestBusiness(this.props.match.params.id);
   }
 
@@ -69,51 +68,51 @@ class BizPage extends React.Component {
 
 
   render(){
-    const basketballs = [];
+   
 
-    for (let i = 1; i <= 5; i++) {
-      let klass = 'ball-icon';
-      if (this.state.temp_rating >= i && this.state.temp_rating != null) {
-        klass += ' is-selected';
-      }
-      const icon =
-        <img
-          className={klass}
-          src={window.ballicon}
-          onClick={this.rate(i)}
-          key={i}
-          onMouseOver={this.ball_over(i)}
-        />;
-      basketballs.push(icon);
-    }
+
 
     const { business, openModal, reviews, users } = this.props;
 
     const sessionLinks = () => (
       <nav className="review-form">
-        <button onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
+        <button className="rvw-btn" onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
       </nav>
     );
     if (business.id) {
+
       debugger;
       let reviewLis;
       if (reviews.length) {
-        reviewLis = reviews.map(review =>
-          (
+        reviewLis = reviews.map(review =>{
+          const basketballs = [];
+          for (let i = 1; i <= 5; i++) {
+            let klass = 'ball-icon';
+            if (review.rating >= i) {
+              klass += ' is-selected';
+            }
+            const icon =
+              <img
+                key={i}
+                className={klass}
+                src={window.ballicon}
+              />;
+            basketballs.push(icon);
+          }
+
+          return (
           <>
             <section className="profile-info">
               <h3>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}.</h3>
-              <img src="https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg" alt="profile" />
+              <img src="https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg" alt="profile" /> 
             </section>
-            
             <div className="rating-review">
               <section className="static-rating">{basketballs}</section>
-              {/* <li>{review.rating}</li> */}
-              <li key={review.id}>{review.body}</li>
-              <hr/>
+              <h3 key={review.id}>{review.body}</h3>
             </div>
+            <div className="hr-row"></div>
           </>
-          )
+          )}
         )
       }
       return (
@@ -129,8 +128,7 @@ class BizPage extends React.Component {
           <div className="show-container">
             <div className="biz-info-container">
               <h1>{business.name}</h1>
-              <h3>Rating: {business.rating}
-               16 reviews</h3>
+              <h3>Rating: {business.rating} - 16 reviews</h3>
               <h3><Link to="#">{business.court_type}</Link></h3>
               <section className="info-buttons">
                 <button className="write-review-modal"> &#9733; Write a Review</button>
@@ -141,14 +139,15 @@ class BizPage extends React.Component {
               <div className="sticky-links">
                 <img className="phone" src={window.phone} />
                 <span>{business.telephone}</span>
+                <div className="hr-row-sticky"></div>
                 <img className="web" src={window.web} />
                 <span><Link to={business.website}>{business.name}</Link></span>
-                {/* <hr id="sticky-hr" /> */}
+                <div className="hr-row-sticky"></div>
               </div>
              
               
             </div>
-            <hr/>
+            <div className="hr-row-top"></div>
             <div className="location-info">
               <h3>Location & Hours</h3>
               <div className="biz-map">
@@ -174,7 +173,17 @@ class BizPage extends React.Component {
                 </div>
               </div>
             </div>
-            <hr/>
+            <div className="hr-row-top"></div>
+            {/* <div className="review-container">
+              <div className="review-items">
+                <div className="profile-section">
+                </div>
+                <div className="review-item">
+                  {reviewLis}
+                </div>
+              </div>
+            </div> */}
+
             <div className="create-review-photo">
               <div className="ball-rating">
                 <img className="ball-icon" src={window.ballicon} />
@@ -188,13 +197,10 @@ class BizPage extends React.Component {
             <div className="review-container">
               <div className="review-items">
                 <div className="profile-section">
-                  {/* <li>{review.</li> */}
                 </div>
                 <div className="review-item">
-
                   {reviewLis}
                 </div>
-
               </div>
             </div>
           </div>

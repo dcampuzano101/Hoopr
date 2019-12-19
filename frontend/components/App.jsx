@@ -24,7 +24,7 @@ const App = () => {
         <AuthRoute path="/signup" component={SignUpFormContainer} />
         <Route path="/businesses/:id" component={BizPage} />
         <Route path="/businesses/:id" component={Modal} />
-        <Route path="/businesses/:id" component={BizMap} />
+        {/* <Route path="/businesses/:id" component={BizMap} /> */}
         {/* <Route path="/businesses/:id" component={BizInfo} /> */}
 
     </div>
