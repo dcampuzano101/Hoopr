@@ -1,7 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Image of Hoopr-logo]
+(https://hoopr.herokuapp.com/assets/hoopr_logo-4226649bf78ff71ec2459fabfd440f8a7dc6bf96c69360ebd06348b4a645b0c3.png)
 
 Things you may want to cover:
 
