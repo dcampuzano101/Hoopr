@@ -3,7 +3,6 @@ import { requestBusinesses } from '../../actions/biz_actions';
 import BizIndexItem from './business_index_item';
 
 const msp = state => {
-  debugger;
   console.log(state);
 
   return ({

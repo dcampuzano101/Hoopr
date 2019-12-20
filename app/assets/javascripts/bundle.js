@@ -523,14 +523,11 @@ function (_React$Component) {
       e.preventDefault();
       var review = Object.assign({}, this.state);
       this.props.processForm(review).then(this.props.closeModal);
-    } // componentDidMount() {
-    //   //possibly have to render null first
-    //   this.props.requestBusiness(this.props.currentBiz.id);
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
+      debugger;
       var _this$props = this.props,
           business = _this$props.business,
           openModal = _this$props.openModal,
@@ -549,7 +546,6 @@ function (_React$Component) {
       };
 
       if (business.id) {
-        debugger;
         var reviewLis;
 
         if (reviews.length) {
@@ -615,9 +611,14 @@ function (_React$Component) {
           to: "#"
         }, business.court_type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
           className: "info-buttons"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          className: "review-form"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "write-review-modal"
-        }, " \u2605 Write a Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "rvw-btn biz-info",
+          onClick: function onClick() {
+            return openModal('createReview');
+          }
+        }, "\u2605 Write a Review")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "add-photo"
         }, " \uD83D\uDCF7 Add Photo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "sticky-info"
@@ -631,17 +632,17 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "web",
           src: window.web
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: business.website
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: business.website
         }, business.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hr-row-sticky"
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: ""
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hr-row-top"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "location-info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Location & Hours"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-map"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "map-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "map",
@@ -720,8 +721,8 @@ var msp = function msp(state, ownProps) {
   // const bizId = ownProps.match.params.id;
 
   var business = state.entities.businesses[ownProps.match.params.id] || {};
-  var reviewObj = state.entities.reviews;
-  debugger;
+  var reviewObj = state.entities.reviews; // debugger;
+
   return {
     business: business,
     // businessId: ownProps.match.params.id,
@@ -822,14 +823,14 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var businesses = this.props.businesses;
       var bizKeys = Object.keys(businesses);
       var b1 = businesses[bizKeys[0]];
       var b2 = businesses[bizKeys[1]];
-      var b3 = businesses[bizKeys[2]];
+      var b3 = businesses[bizKeys[2]]; // if (Object.keys(businesses).length) {
 
-      if (Object.keys(businesses).length) {
+      if (b1 && b2 && b3) {
+        // debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hoopr-brooklyn-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Hoopr Brooklyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -857,8 +858,39 @@ function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-items-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.name))));
+          className: "biz-index-item b1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "rucker",
+          src: window.rucker
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/businesses/".concat(b1.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.rating))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-item b2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "cage",
+          src: window.cage
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/businesses/".concat(b2.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b2.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b2.rating))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-item b3"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "canal",
+          src: window.canal
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/businesses/".concat(b3.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b3.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b3.rating)))));
       } else {
         return null;
       }
@@ -889,7 +921,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
-  debugger;
   console.log(state);
   return {
     businesses: state.entities.businesses
@@ -1104,17 +1135,10 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "splash-header " + this.props.extraClass
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "new-header-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "#",
-        className: "nav-links " + this.props.extraClass
-      }, "Write a Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "#",
-        className: "nav-links " + this.props.extraClass
-      }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "#",
-        className: "nav-links " + this.props.extraClass
-      }, "Talk")), display()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, display()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search " + this.props.extraClass
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-bar " + this.props.extraClass
@@ -1139,7 +1163,30 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "search-ball",
         src: window.ball
-      })))))));
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "#",
+        className: "nav-links " + this.props.extraClass
+      }, "Write a Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "#",
+        className: "nav-links " + this.props.extraClass
+      }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "#",
+        className: "nav-links " + this.props.extraClass
+      }, "Talk")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        id: "logo-wrapper",
+        to: "/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "logo-biz-page",
+        src: window.logo
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "logo-header-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        id: "logo-header",
+        to: "/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "logo-header " + this.props.extraClass,
+        src: window.logo
+      }))))));
     }
   }]);
 
@@ -1326,7 +1373,8 @@ function (_React$Component) {
     console.log("REVIEWFORMPROPS: ".concat(_this.props));
     var _this$props = _this.props,
         currentBiz = _this$props.currentBiz,
-        currentUser = _this$props.currentUser;
+        currentUser = _this$props.currentUser; // debugger;
+
     _this.state = {
       business_id: currentBiz.id,
       body: "",
@@ -1416,7 +1464,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "form-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ball-rating"
+        className: "ball-rating modal"
       }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         placeholder: "I decided to stop by the park. Perfect opportunity to sweat out last night's tacos and cerveza. The gang was all there shooting hoops. One of the best spots to play pick up in nyc. 4/5 Would come back." // maxlength="5000"
         ,
@@ -1466,6 +1514,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  // debugger;
   return {
     // errors: errors.session,
     formType: 'createReview',
@@ -2011,9 +2060,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+var count = 0;
 document.addEventListener("DOMContentLoaded", function () {
+  count += 1;
+  console.log(count);
   var root = document.getElementById("root");
-  var store;
+  var store; // debugger;
 
   if (window.currentUser) {
     var _window = window,
@@ -2063,7 +2115,9 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/review_actions */ "./frontend/actions/review_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2074,6 +2128,10 @@ var bizReducer = function bizReducer() {
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BUSINESS"]:
+      return Object.assign({}, oldState, _defineProperty({}, action.payload.business.id, action.payload.business));
+
+    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_REVIEW"]:
+      // debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.payload.business.id, action.payload.business));
 
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BUSINESSES"]:
@@ -2188,7 +2246,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var reviewsReducer = function reviewsReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(oldState);
+  Object.freeze(oldState); // debugger;
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BUSINESSES"]:
@@ -2386,9 +2444,8 @@ var usersReducer = function usersReducer() {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_BUSINESSES"]:
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_BUSINESS"]:
       return Object.assign({}, oldState, action.payload.users);
-
-    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_REVIEW"]:
-      return Object.assign({}, oldState, _defineProperty({}, action.payload.user.id, action.payload.user));
+    // case RECEIVE_REVIEW:
+    //   return Object.assign({}, oldState, { [action.payload.user.id]: action.payload.user });
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, oldState, _defineProperty({}, action.currentUser.id, action.currentUser));

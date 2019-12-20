@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
   // const bizId = ownProps.match.params.id;
   const business = state.entities.businesses[ownProps.match.params.id] || {};
   const reviewObj = state.entities.reviews;
-  debugger;
+  // debugger;
     return ({
     business,
     // businessId: ownProps.match.params.id,

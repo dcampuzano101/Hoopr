@@ -2,17 +2,20 @@
   height: 75px;
   background-image: none;
   background: #D32222;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .search-bar.biz-page{
-  position: relative;
-  left: -35px;
+  // position: relative;
+  // left: 85px;
+  // top: -10px;
 }
 
 .search.biz-page{
   width:300px;
-  margin: 0 auto;
-  margin-top: 10px;
+  // margin: 0 auto;
+  // margin-top: 10px;
   // display: grid;
   // grid-template-columns: 10% 35% 10% 35% 10%;
   // justify-self: center;
@@ -214,6 +217,7 @@
 }
 .info-buttons {
   height: 35px;
+  display: flex;
 }
 hr {
 grid-column: 1/2;
@@ -239,15 +243,34 @@ grid-column: 1/2;
   background-color: #FDF6F6;
 }
 
+.rvw-btn.biz-info {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all .4s;
+  font-size: 12px;
+  color: #D32323;
+  padding: 5px 8px;
+  margin: 0 16px 0 0;
+  border-radius: 3px;
+  height: 18px;
+}
+
+.rvw-btn.biz-info:hover {
+  background-color: #FDF6F6;
+}
+
+
+
 .add-photo {
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition: all .4s;
   font-size: 12px;
-  color: #666;
+  color: #D32323;
   padding: 5px 8px;
+  margin: 0 16px 0 0;
   border-radius: 3px;
   height: 18px;
-  margin: 0 16px 0 0;
+  display: inline-block;
+  margin: 5px;
 }
 
 .add-photo:hover {
@@ -311,7 +334,7 @@ grid-column: 1/2;
 }
 
 .review-form{
-  width: 200px;
+  width: 150px;
 }
 
 .profile-info h3{
@@ -401,14 +424,16 @@ grid-column: 1/2;
 }
 
 .ball-rating {
+  display: flex;
   grid-column: 2/2;
   background-color: #F5F5F5;
 }
 
 .review-form{
   grid-column: 2/2;
-  width: 300px;
+  width: 130px;
   background-color: #F5F5F5;
+  margin: 5px;
 }
 
 .write-review-photo-upload{
@@ -416,3 +441,47 @@ grid-column: 1/2;
   background-color: #F5F5F5; 
 }
 //#a71c1c
+
+.logo-biz-page{
+  display: flex; 
+  position: absolute;
+  height: 75px;
+  width: 75px;
+}
+
+#logo-biz-page {
+  width: 135px;
+  height: 75px;
+  // position: absolute;
+
+}
+#logo-biz-page {
+  z-index: 10;
+}
+
+.logo-header.biz-page{
+  display:none;
+}
+
+.new-header-container{
+  display: flex;
+  flex-direction: row-reverse;
+  width: 866px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.splash-header.someClass {
+  .new-header-container {
+    position: relative;
+    .search {
+      position: absolute;
+      top: 304px;
+      left: 83px;
+    }
+    #logo-wrapper {
+      display: none;
+    }
+  }
+}

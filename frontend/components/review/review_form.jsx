@@ -7,6 +7,7 @@ class ReviewForm extends React.Component {
     super(props);
     console.log(`REVIEWFORMPROPS: ${this.props}`);
     const { currentBiz, currentUser } = this.props;
+    // debugger;
     this.state = {
       business_id: currentBiz.id,
       body: "",
@@ -75,7 +76,7 @@ class ReviewForm extends React.Component {
           <Link to={`/businesses/${currentBiz.id}`}><h1>{currentBiz.name}</h1></Link>
             <form onSubmit={this.handleSubmit}>
             <section className="form-wrapper">
-              <div className="ball-rating">
+              <div className="ball-rating modal">
                   {basketballs}
               </div>
               <label>

@@ -81,10 +81,12 @@ textarea {
   cursor: pointer;
 }
 
-.ball-rating {
+.ball-rating.modal{
   display: flex;
-  align-self: center;
+  // align-self: center;
   padding: 10px;
+  grid-column: 1/2;
+  justify-self: center;
 }
 
 .review-submit{

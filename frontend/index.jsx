@@ -6,12 +6,15 @@ import { login, signup, logout } from './actions/session_actions';
 import { requestBusiness, requestBusinesses, createBusiness } from './actions/biz_actions.js';
 import { requestReview, createReview, updateReview } from './actions/review_actions';
 
-
+let count = 0;
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  count += 1;
+  console.log(count);
   const root = document.getElementById("root");
   let store;
+  // debugger;
   if (window.currentUser) {
     const { currentUser } = window;
     const { id } = currentUser;

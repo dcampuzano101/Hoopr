@@ -15,7 +15,6 @@ class BizIndexItem extends React.Component {
   }
 
   render(){
-    debugger;
     const { businesses } = this.props;
 
     const bizKeys = Object.keys(businesses);
@@ -24,7 +23,9 @@ class BizIndexItem extends React.Component {
     const b3 = businesses[bizKeys[2]];
 
 
-      if (Object.keys(businesses).length) {
+      // if (Object.keys(businesses).length) {
+      if (b1 && b2 && b3) {
+        // debugger;
         return (
         <>
           <div className="hoopr-brooklyn-container">
@@ -41,9 +42,34 @@ class BizIndexItem extends React.Component {
           </div>
 
           <div className="biz-index-items-container">
-            <div className="biz-index-item">
-              <h3>{b1.name}</h3>
+            <div className="biz-index-item b1">
+              <div className="row-1">
+                  <img className="rucker" src={window.rucker} />
+              </div>
+              <div className="row-2">
+                <Link to={`/businesses/${b1.id}`}><h3>{b1.name}</h3></Link>
+                <h3>{b1.rating}</h3>
+              </div>
+            </div>
 
+            <div className="biz-index-item b2">
+              <div className="row-1">
+                <img className="cage" src={window.cage} />
+              </div>
+              <div className="row-2">
+                <Link to={`/businesses/${b2.id}`}><h3>{b2.name}</h3></Link>
+                <h3>{b2.rating}</h3>
+              </div>
+            </div>
+
+            <div className="biz-index-item b3">
+              <div className="row-1">
+                <img className="canal" src={window.canal} />
+              </div>
+              <div className="row-2">
+                <Link to={`/businesses/${b3.id}`}><h3>{b3.name}</h3></Link>
+                <h3>{b3.rating}</h3>
+              </div>
             </div>
           </div>
 

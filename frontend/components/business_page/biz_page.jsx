@@ -58,17 +58,9 @@ class BizPage extends React.Component {
     this.props.processForm(review).then(this.props.closeModal);
   }
 
-  // componentDidMount() {
-  //   //possibly have to render null first
-  //   this.props.requestBusiness(this.props.currentBiz.id);
-  // }
-
-
-
-
   render(){
    
-
+    debugger;
 
 
     const { business, openModal, reviews, users } = this.props;
@@ -79,8 +71,6 @@ class BizPage extends React.Component {
       </nav>
     );
     if (business.id) {
-
-      debugger;
       let reviewLis;
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
@@ -116,8 +106,10 @@ class BizPage extends React.Component {
       }
       return (
         <div>
+          {/* <Link id=""to="/"><img id="logo-biz-page" src={window.logo} /></Link> */}
           <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
             logout={this.props.logout}/>
+          
           <div className="gallery-container">
             <img className="hoop" src={window.hoop} />
             <img className="ai" src={window.ai} />
@@ -130,7 +122,9 @@ class BizPage extends React.Component {
               <h3>Rating: {business.rating} - 16 reviews</h3>
               <h3><Link to="#">{business.court_type}</Link></h3>
               <section className="info-buttons">
-                <button className="write-review-modal"> &#9733; Write a Review</button>
+                <nav className="review-form">
+                  <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
+                </nav>
                 <button className="add-photo"> &#128247; Add Photo</button>
               </section>
             </div>
@@ -140,18 +134,18 @@ class BizPage extends React.Component {
                 <span>{business.telephone}</span>
                 <div className="hr-row-sticky"></div>
                 <img className="web" src={window.web} />
-                <span><Link to={business.website}>{business.name}</Link></span>
+                <span><a href={business.website}>{business.name}</a></span>
                 <div className="hr-row-sticky"></div>
               </div>
              
-              
+              <a href=""></a>
             </div>
             <div className="hr-row-top"></div>
             <div className="location-info">
               <h3>Location & Hours</h3>
-              <div className="biz-map">
+              {/* <div className="biz-map"> */}
                 {/* <BizMap /> */}
-              </div>
+              {/* </div> */}
               <div className="map-container">
                 <img className="map" src={window.map} />
                 <div className="hours">
