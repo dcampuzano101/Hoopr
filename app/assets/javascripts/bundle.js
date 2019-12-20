@@ -538,7 +538,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
           className: "review-form"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "rvw-btn",
+          className: "rvw-btn biz-info",
           onClick: function onClick() {
             return openModal('createReview');
           }
@@ -618,9 +618,7 @@ function (_React$Component) {
           onClick: function onClick() {
             return openModal('createReview');
           }
-        }, "\u2605 Write a Review")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "add-photo"
-        }, " \uD83D\uDCF7 Add Photo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "\u2605 Write a Review")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "sticky-info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "sticky-links"
@@ -868,7 +866,7 @@ function (_React$Component) {
           className: "row-2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/businesses/".concat(b1.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.rating))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.court_type))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-item b2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row-1"

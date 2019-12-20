@@ -49,6 +49,7 @@ class BizIndexItem extends React.Component {
               <div className="row-2">
                 <Link to={`/businesses/${b1.id}`}><h3>{b1.name}</h3></Link>
                 <h3>{b1.rating}</h3>
+                <h3>{b1.court_type}</h3>
               </div>
             </div>
 

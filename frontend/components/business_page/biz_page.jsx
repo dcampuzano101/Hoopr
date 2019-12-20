@@ -67,7 +67,7 @@ class BizPage extends React.Component {
 
     const sessionLinks = () => (
       <nav className="review-form">
-        <button className="rvw-btn" onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
+        <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
       </nav>
     );
     if (business.id) {
@@ -125,7 +125,7 @@ class BizPage extends React.Component {
                 <nav className="review-form">
                   <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
                 </nav>
-                <button className="add-photo"> &#128247; Add Photo</button>
+                {/* <button className="add-photo"> &#128247; Add Photo</button> */}
               </section>
             </div>
             <div className="sticky-info">

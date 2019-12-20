@@ -334,7 +334,7 @@ grid-column: 1/2;
 }
 
 .review-form{
-  width: 150px;
+  // width: 150px;
 }
 
 .profile-info h3{
@@ -431,9 +431,10 @@ grid-column: 1/2;
 
 .review-form{
   grid-column: 2/2;
-  width: 130px;
-  background-color: #F5F5F5;
-  margin: 5px;
+  // display: none;
+  // width: 130px;
+  // // background-color: #F5F5F5;
+  // margin: 5px;
 }
 
 .write-review-photo-upload{
