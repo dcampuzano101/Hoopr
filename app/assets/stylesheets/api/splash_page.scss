@@ -18,6 +18,9 @@
   opacity: .9;
 }
 
+.links-header{
+  z-index: 5;
+}
 
 .session-links {
   float: right;
@@ -25,6 +28,7 @@
   
 }
 
+.logo-header-div
 
 .nav-bar section{
     float: left;
@@ -364,6 +368,7 @@ body{
     position: absolute;
     top: 20px;
     width: 100%;
+    z-index: 3;
     // width: 260px;
     // margin: 0 auto;
     // display: flex;

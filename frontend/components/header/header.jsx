@@ -75,7 +75,7 @@ class Header extends React.Component {
                 </div>
               </div>
             </div>
-            <section>
+            <section className="links-header">
               <Link to="#" className={"nav-links " + this.props.extraClass}>Write a Review</Link>
               <Link to="#" className={"nav-links " + this.props.extraClass}>Events</Link>
               <Link to="#" className={"nav-links " + this.props.extraClass}>Talk</Link>
