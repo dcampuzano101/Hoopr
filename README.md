@@ -1,41 +1,43 @@
 # README
-<div style="display: flex; align-self:center"><img src="https://hoopr.herokuapp.com/assets/hoopr_logo-4226649bf78ff71ec2459fabfd440f8a7dc6bf96c69360ebd06348b4a645b0c3.png" /></div>
+<div style="align-text:center"><img src="https://hoopr.herokuapp.com/assets/hoopr_logo-4226649bf78ff71ec2459fabfd440f8a7dc6bf96c69360ebd06348b4a645b0c3.png" /></div>
 
 <!-- ![Image of Hoopr-logo](https://hoopr.herokuapp.com/assets/hoopr_logo-4226649bf78ff71ec2459fabfd440f8a7dc6bf96c69360ebd06348b4a645b0c3.png) -->
 
 </hr>
 
-Hoopr is a place where basketball enthusiasts can find parks and gyms to play the sport they love. Know before you go: Hoopr allows users to write reviews and check if a park or gym meets their needs.
+#### Hoopr is a place where basketball enthusiasts can find parks and gyms to play the sport they love. Know before you go: Hoopr allows users to write reviews and check if a park or gym meets their needs.
 
-Only available in the NYC area.
+*Only available in the NYC area.*
 </hr>
 
-Link to live site:
-    *https://hoopr.herokuapp.com/#/
+#### Hoopr: https://hoopr.herokuapp.com/#/
+
 </hr>
 
-Technologies:
-    *Ruby on Rails: used to set up Hoopr's backend structure.
+## Technologies:
 
-    *PostgreSQL: used to host our database.
+* Ruby on Rails: used to set up Hoopr's backend structure.
 
-    *Javascript: primary language used for our front-end logic.
+* PostgreSQL: used to host our database.
 
-    *jQuery/Ajax: used primarily to make requests to our database.
+* Javascript: primary language used for our front-end logic.
 
-    *React/Redux: used to create functional rendering / displays of our data to users. 
+* jQuery/Ajax: used primarily to make requests to our database.
 
-    *CSS: used to style HTML elements.
+* React/Redux: used to create functional rendering / displays of our data to users. 
+
+* CSS: used to style HTML elements.
 </hr>
 
 
-User Authentication:
+## User Authentication:
 
-  Implemented a multi-step login process that allows Hoopr users to create profiles securely without having to worry about their personal and sensitive information being leaked. We do this through the encryption of passwords and never storing any of their passwords directly into our database. 
+  * Implemented a multi-step login process that allows Hoopr users to create profiles securely without having to worry about their personal and sensitive information being leaked. We do this through the encryption of passwords and never storing any of their passwords directly into our database. 
 
-Reviews:
-  Modal that allows users that are logged in to create a review and rate a basketball court. The rating system temporarily sets the state as users choose their rating. The rating then persists and is automatically added to the profile of the basketball court.
+## Reviews:
+  * Modal that allows users that are logged in to create a review and rate a basketball court. The rating system temporarily sets the state as users choose their rating. The rating then persists and is automatically added to the profile of the basketball court.
 </hr>
+
 ![Image of Reviews](https://media.giphy.com/media/Ti143B8hRwxb8wf8q5/giphy.gif)
 
 Code snippets to highlight your best code (markdown code snippets, NOT screenshots):
