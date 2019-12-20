@@ -76,7 +76,7 @@ class BizPage extends React.Component {
         reviewLis = reviews.map(review =>{
           const basketballs = [];
           for (let i = 1; i <= 5; i++) {
-            let klass = 'ball-icon';
+            let klass = 'ball-icon-header';
             if (review.rating >= i) {
               klass += ' is-selected';
             }
@@ -136,6 +136,8 @@ class BizPage extends React.Component {
                 <img className="web" src={window.web} />
                 <span><a href={business.website}>{business.name}</a></span>
                 <div className="hr-row-sticky"></div>
+                <img className="whistle" src={window.whistle} />
+                <span>Call your own Fouls</span>
               </div>
              
               <a href=""></a>
@@ -178,14 +180,16 @@ class BizPage extends React.Component {
             </div> */}
 
             <div className="create-review-photo">
-              <div className="ball-rating">
-                <img className="ball-icon" src={window.ballicon} />
-                <img className="ball-icon" src={window.ballicon} />
-                <img className="ball-icon" src={window.ballicon} />
-                <img className="ball-icon" src={window.ballicon} />
-                <img className="ball-icon" src={window.ballicon} />
+              <div className="review-container-info">
+                <div className="ball-rating">
+                  <img className="ball-icon" src={window.ballicon} />
+                  <img className="ball-icon" src={window.ballicon} />
+                  <img className="ball-icon" src={window.ballicon} />
+                  <img className="ball-icon" src={window.ballicon} />
+                  <img className="ball-icon" src={window.ballicon} />
+                </div>
+                {sessionLinks()}
               </div>
-              {sessionLinks()}
             </div>
             <div className="review-container">
               <div className="review-items">

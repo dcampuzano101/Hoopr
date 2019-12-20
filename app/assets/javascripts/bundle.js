@@ -363,6 +363,10 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _header_footer__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/businesses/:id",
+    component: _header_footer__WEBPACK_IMPORTED_MODULE_8__["default"]
   }));
 };
 
@@ -553,7 +557,7 @@ function (_React$Component) {
             var basketballs = [];
 
             for (var i = 1; i <= 5; i++) {
-              var klass = 'ball-icon';
+              var klass = 'ball-icon-header';
 
               if (review.rating >= i) {
                 klass += ' is-selected';
@@ -634,7 +638,10 @@ function (_React$Component) {
           href: business.website
         }, business.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hr-row-sticky"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "whistle",
+          src: window.whistle
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Call your own Fouls")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           href: ""
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hr-row-top"
@@ -652,6 +659,8 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "create-review-photo"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-container-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "ball-rating"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "ball-icon",
@@ -668,7 +677,7 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "ball-icon",
           src: window.ballicon
-        })), sessionLinks()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })), sessionLinks())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-items"
@@ -828,7 +837,59 @@ function (_React$Component) {
       var b3 = businesses[bizKeys[2]]; // if (Object.keys(businesses).length) {
 
       if (b1 && b2 && b3) {
-        // debugger;
+        var basketball1 = [];
+
+        for (var i = 1; i <= 5; i++) {
+          var klass = 'ball-icon-header';
+
+          if (b1.rating >= i) {
+            klass += ' is-selected';
+          }
+
+          var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: i,
+            className: klass,
+            src: window.ballicon
+          });
+          basketball1.push(icon);
+        }
+
+        var basketball2 = [];
+
+        for (var _i = 1; _i <= 5; _i++) {
+          var _klass = 'ball-icon-header';
+
+          if (b2.rating >= _i) {
+            _klass += ' is-selected';
+          }
+
+          var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: _i,
+            className: _klass,
+            src: window.ballicon
+          });
+
+          basketball2.push(_icon);
+        }
+
+        var basketball3 = [];
+
+        for (var _i2 = 1; _i2 <= 5; _i2++) {
+          var _klass2 = 'ball-icon-header';
+
+          if (b3.rating >= _i2) {
+            _klass2 += ' is-selected';
+          }
+
+          var _icon2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: _i2,
+            className: _klass2,
+            src: window.ballicon
+          });
+
+          basketball3.push(_icon2);
+        }
+
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hoopr-brooklyn-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Hoopr Brooklyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -865,8 +926,11 @@ function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row-2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "b-name",
           to: "/businesses/".concat(b1.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.rating), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.court_type))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "static-rating-splash"
+        }, basketball1))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-item b2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row-1"
@@ -876,8 +940,11 @@ function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row-2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "b-name",
           to: "/businesses/".concat(b2.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b2.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b2.rating))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b2.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "static-rating-splash"
+        }, basketball2))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-item b3"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row-1"
@@ -887,8 +954,11 @@ function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row-2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "b-name",
           to: "/businesses/".concat(b3.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b3.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b3.rating)))));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b3.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "static-rating-splash"
+        }, basketball3)))));
       } else {
         return null;
       }

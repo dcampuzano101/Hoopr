@@ -62,6 +62,17 @@ textarea {
   color: orange;
 }
 
+.ball-icon-header {
+  width: 25px;
+  height: 25px;
+  filter: invert(71%) sepia(13%) saturate(7184%) hue-rotate(331deg) brightness(106%) contrast(101%);
+  padding: 2px;
+}
+.ball-icon-header.is-selected{
+  filter: invert(14%) sepia(72%) saturate(5218%) hue-rotate(354deg) brightness(97%) contrast(84%);
+  cursor: pointer;
+}
+
 .ball-icon {
   width: 25px;
   height: 25px;
@@ -115,5 +126,5 @@ textarea {
 }
 
 .review-form:hover {
-  background-color: #FDF6F6;
+  // background-color: #FDF6F6;
 }

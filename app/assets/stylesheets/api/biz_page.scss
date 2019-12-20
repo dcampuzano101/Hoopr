@@ -22,6 +22,7 @@
   // width: 600px;
   // margin: 0 auto;
   // height: 20px;
+  margin-right: 50px;
 
 }
 
@@ -99,9 +100,12 @@
   font-size: 12px;
 }
 
+.search-btn.biz-page{
+  background-color: #BD1F1E
+}
 
 .search-btn.biz-page:hover{
-  background-color: #a71c1c
+  background-color: #A71B1C
 }
 
 
@@ -249,9 +253,10 @@ grid-column: 1/2;
   font-size: 12px;
   color: #D32323;
   padding: 5px 8px;
-  margin: 0 16px 0 0;
+  // margin: 0 16px 0 0;
   border-radius: 3px;
-  height: 18px;
+  height: 18px; 
+  margin-left: 15px;
 }
 
 .rvw-btn.biz-info:hover {
@@ -283,11 +288,14 @@ grid-column: 1/2;
   // border: 2px solid green;
 }
 
-
+.review-container-info {
+  display: grid;
+  justify-content: center;
+}
 
 .review-container{
   grid-column: 1/2;
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 
 .footer-container {
@@ -412,21 +420,22 @@ grid-column: 1/2;
 }
 
 .create-review-photo{
-  grid-column: 1/2;
-  border: 1px solid turquoise;
-  display: grid;
-  justify-content: center;
+  // grid-column: 1/2;
+  border: 1px solid rgba(0, 0, 0, .2);
+  // display: grid;
+  // justify-content: center;
   padding: 15px 0;
   grid-template-columns: 40% 60%;
   justify-items: center;  
   grid-column: 1/2;
+  border-radius: 4px;
 
 }
 
 .ball-rating {
   display: flex;
   grid-column: 2/2;
-  background-color: #F5F5F5;
+  // background-color: #F5F5F5;
 }
 
 .review-form{

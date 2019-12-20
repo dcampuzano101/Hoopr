@@ -27,6 +27,7 @@ const App = () => {
         <Route path="/businesses/:id" component={Modal} />
         <Route exact path="/" component={BizIndexItemContainer} />
         <Route exact path="/" component={Footer} />
+        <Route exact path="/businesses/:id" component={Footer} />
         {/* <Route path="/businesses/:id" component={BizMap} /> */}
         {/* <Route path="/businesses/:id" component={BizInfo} /> */}
 

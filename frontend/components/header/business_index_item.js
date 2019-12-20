@@ -25,7 +25,48 @@ class BizIndexItem extends React.Component {
 
       // if (Object.keys(businesses).length) {
       if (b1 && b2 && b3) {
-        // debugger;
+        const basketball1 = [];
+        for (let i = 1; i <= 5; i++) {
+          let klass = 'ball-icon-header';
+          if (b1.rating >= i) {
+            klass += ' is-selected';
+          }
+          const icon =
+            <img
+              key={i}
+              className={klass}
+              src={window.ballicon}
+            />;
+          basketball1.push(icon);
+        }
+          const basketball2 = [];
+          for (let i = 1; i <= 5; i++) {
+          let klass = 'ball-icon-header';
+            if (b2.rating >= i) {
+              klass += ' is-selected';
+            }
+            const icon =
+              <img
+                key={i}
+                className={klass}
+                src={window.ballicon}
+              />;
+          basketball2.push(icon);
+          }
+          const basketball3 = [];
+          for (let i = 1; i <= 5; i++) {
+            let klass = 'ball-icon-header';
+          if (b3.rating >= i) {
+            klass += ' is-selected';
+          }
+            const icon =
+              <img
+                key={i}
+                className={klass}
+                src={window.ballicon}
+              />;
+          basketball3.push(icon);
+        }
         return (
         <>
           <div className="hoopr-brooklyn-container">
@@ -47,9 +88,9 @@ class BizIndexItem extends React.Component {
                   <img className="rucker" src={window.rucker} />
               </div>
               <div className="row-2">
-                <Link to={`/businesses/${b1.id}`}><h3>{b1.name}</h3></Link>
-                <h3>{b1.rating}</h3>
-                <h3>{b1.court_type}</h3>
+                <Link className="b-name" to={`/businesses/${b1.id}`}><h3>{b1.name}</h3></Link>
+                <section className="static-rating-splash">{basketball1}</section>
+                {/* <h3>Court Type: {b1.court_type}</h3> */}
               </div>
             </div>
 
@@ -58,8 +99,8 @@ class BizIndexItem extends React.Component {
                 <img className="cage" src={window.cage} />
               </div>
               <div className="row-2">
-                <Link to={`/businesses/${b2.id}`}><h3>{b2.name}</h3></Link>
-                <h3>{b2.rating}</h3>
+                <Link className="b-name" to={`/businesses/${b2.id}`}><h3>{b2.name}</h3></Link>
+                <section className="static-rating-splash">{basketball2}</section>
               </div>
             </div>
 
@@ -68,14 +109,11 @@ class BizIndexItem extends React.Component {
                 <img className="canal" src={window.canal} />
               </div>
               <div className="row-2">
-                <Link to={`/businesses/${b3.id}`}><h3>{b3.name}</h3></Link>
-                <h3>{b3.rating}</h3>
+                <Link className="b-name" to={`/businesses/${b3.id}`}><h3>{b3.name}</h3></Link>
+                <section className="static-rating-splash">{basketball3}</section>
               </div>
             </div>
           </div>
-
-
-
         </>
       );
       } else {
