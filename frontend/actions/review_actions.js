@@ -3,10 +3,18 @@ import {  } from './biz_actions';
 
 
 export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
+export const REMOVE_REVIEW = "REMOVE_REVIEW";
 
 export const receiveReview = (payload) => {
   return({
     type: RECEIVE_REVIEW,
+    payload
+  });
+};
+
+export const removeReview = payload => {
+  return({
+    type: REMOVE_REVIEW,
     payload
   });
 };
@@ -23,5 +31,10 @@ export const createReview = (review) => dispatch => {
 
 export const updateReview = (review) => dispatch => {
   return ReviewAPI.updateReview(review)
-    .then((review) => dispatch(receiveReview(review)));
+    .then((payload) => dispatch(receiveReview(payload)));
+};
+
+export const deleteReview = (reviewId, businessId) => dispatch => {
+  return ReviewAPI.deleteReview(reviewId, businessId)
+    .then((payload) => dispatch(removeReview(payload)));
 };

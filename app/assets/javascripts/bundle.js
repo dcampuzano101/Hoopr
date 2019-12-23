@@ -177,24 +177,34 @@ var openModal = function openModal(modal) {
 /*!********************************************!*\
   !*** ./frontend/actions/review_actions.js ***!
   \********************************************/
-/*! exports provided: RECEIVE_REVIEW, receiveReview, requestReview, createReview, updateReview */
+/*! exports provided: RECEIVE_REVIEW, REMOVE_REVIEW, receiveReview, removeReview, requestReview, createReview, updateReview, deleteReview */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_REVIEW", function() { return RECEIVE_REVIEW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_REVIEW", function() { return REMOVE_REVIEW; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveReview", function() { return receiveReview; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeReview", function() { return removeReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestReview", function() { return requestReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createReview", function() { return createReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateReview", function() { return updateReview; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteReview", function() { return deleteReview; });
 /* harmony import */ var _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/review_api_util */ "./frontend/util/review_api_util.jsx");
 /* harmony import */ var _biz_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./biz_actions */ "./frontend/actions/biz_actions.js");
 
 
 var RECEIVE_REVIEW = "RECEIVE_REVIEW";
+var REMOVE_REVIEW = "REMOVE_REVIEW";
 var receiveReview = function receiveReview(payload) {
   return {
     type: RECEIVE_REVIEW,
+    payload: payload
+  };
+};
+var removeReview = function removeReview(payload) {
+  return {
+    type: REMOVE_REVIEW,
     payload: payload
   };
 };
@@ -214,8 +224,15 @@ var createReview = function createReview(review) {
 };
 var updateReview = function updateReview(review) {
   return function (dispatch) {
-    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["updateReview"](review).then(function (review) {
-      return dispatch(receiveReview(review));
+    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["updateReview"](review).then(function (payload) {
+      return dispatch(receiveReview(payload));
+    });
+  };
+};
+var deleteReview = function deleteReview(reviewId, businessId) {
+  return function (dispatch) {
+    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteReview"](reviewId, businessId).then(function (payload) {
+      return dispatch(removeReview(payload));
     });
   };
 };
@@ -531,7 +548,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
+      // debugger;
       var _this$props = this.props,
           business = _this$props.business,
           openModal = _this$props.openModal,
@@ -574,8 +591,8 @@ function (_React$Component) {
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
               className: "profile-info"
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[review.user_id].first_name, " ", users[review.user_id].last_name[0], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-              src: "https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg",
-              alt: "profile"
+              className: "yelp-profile",
+              src: window.pf
             })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               className: "rating-review"
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -1188,8 +1205,8 @@ function (_React$Component) {
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "profile-pic"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: "https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg",
-            alt: "profile"
+            className: "yelp-profile",
+            src: window.pf
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             className: "nav-links",
             id: "logout",
@@ -2167,6 +2184,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.createBusiness = _actions_biz_actions_js__WEBPACK_IMPORTED_MODULE_5__["createBusiness"];
   window.createReview = _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__["createReview"];
   window.updateReview = _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__["updateReview"];
+  window.deleteReview = _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__["deleteReview"];
   window.requestReview = _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__["requestReview"];
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
@@ -2203,6 +2221,14 @@ var bizReducer = function bizReducer() {
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_REVIEW"]:
       // debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.payload.business.id, action.payload.business));
+
+    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_REVIEW"]:
+      var newState = Object.assign({}, oldState);
+      var newReviewIds = newState[action.payload.business.id].reviewIds.filter(function (id) {
+        return id !== action.payload.review.id;
+      });
+      newState[action.payload.business.id].reviewIds = newReviewIds;
+      return newState;
 
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BUSINESSES"]:
       return Object.assign({}, oldState, action.payload.businesses);
@@ -2317,6 +2343,7 @@ var reviewsReducer = function reviewsReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState); // debugger;
+  // debugger;
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BUSINESSES"]:
@@ -2325,6 +2352,12 @@ var reviewsReducer = function reviewsReducer() {
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
       return Object.assign({}, oldState, _defineProperty({}, action.payload.review.id, action.payload.review));
+
+    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_REVIEW"]:
+      debugger;
+      var newState = Object.assign({}, oldState);
+      delete newState[action.payload.review.id];
+      return newState;
 
     default:
       return oldState;
@@ -2598,7 +2631,7 @@ var createBusiness = function createBusiness(business) {
 /*!*******************************************!*\
   !*** ./frontend/util/review_api_util.jsx ***!
   \*******************************************/
-/*! exports provided: createReview, updateReview, fetchReview */
+/*! exports provided: createReview, updateReview, fetchReview, deleteReview */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2606,6 +2639,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createReview", function() { return createReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateReview", function() { return updateReview; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchReview", function() { return fetchReview; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteReview", function() { return deleteReview; });
 //Review API Util
 var createReview = function createReview(review) {
   return $.ajax({
@@ -2619,7 +2653,7 @@ var createReview = function createReview(review) {
 var updateReview = function updateReview(review) {
   return $.ajax({
     method: "PATCH",
-    url: "api/reviews/".concat(review.id),
+    url: "api/businesses/".concat(review.business_id, "/reviews/").concat(review.id),
     data: {
       review: review
     }
@@ -2629,6 +2663,12 @@ var fetchReview = function fetchReview(reviewId) {
   return $.ajax({
     method: "GET",
     url: "api/reviews/".concat(reviewId)
+  });
+};
+var deleteReview = function deleteReview(reviewId, businessId) {
+  return $.ajax({
+    method: "DELETE",
+    url: "api/businesses/".concat(businessId, "/reviews/").concat(reviewId)
   });
 };
 

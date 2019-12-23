@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { login, signup, logout } from './actions/session_actions';
 import { requestBusiness, requestBusinesses, createBusiness } from './actions/biz_actions.js';
-import { requestReview, createReview, updateReview } from './actions/review_actions';
+import { requestReview, createReview, updateReview, deleteReview } from './actions/review_actions';
 
 let count = 0;
 
@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.createBusiness = createBusiness;
   window.createReview = createReview;
   window.updateReview = updateReview;
+  window.deleteReview = deleteReview;
   window.requestReview = requestReview;
 
   

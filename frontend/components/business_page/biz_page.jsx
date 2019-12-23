@@ -60,7 +60,7 @@ class BizPage extends React.Component {
 
   render(){
    
-    debugger;
+    // debugger;
 
 
     const { business, openModal, reviews, users } = this.props;
@@ -93,7 +93,7 @@ class BizPage extends React.Component {
           <>
             <section className="profile-info">
               <h3>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}.</h3>
-              <img src="https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg" alt="profile" /> 
+              <img className="yelp-profile" src={window.pf} />
             </section>
             <div className="rating-review">
               <section className="static-rating">{basketballs}</section>

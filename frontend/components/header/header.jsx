@@ -41,7 +41,7 @@ class Header extends React.Component {
           <Link to="#"><img className="fav-icon" src={window.cloud} /></Link>
           <Link to="#"><img className="fav-icon" src={window.whistle} /></Link>
           <div className="profile-pic">
-            <img src="https://s3-media2.fl.yelpcdn.com/photo/TLM2bUDHKT9Byu5L0bUCCA/90s.jpg" alt="profile"  />
+            <img className="yelp-profile" src={window.pf} />
             <button className="nav-links" id="logout" onClick={logout}>Logout</button>
           </div>
         </div>
