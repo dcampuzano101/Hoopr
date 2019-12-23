@@ -6,7 +6,7 @@ import { openModal } from '../../actions/modal_actions';
 // import BizMap from '../../components/biz_map/biz_map';
 import BizPageContainer from './biz_page_container';
 // import Review from './review_list_item_container';
-
+import UpdateForm from '../update_form/update_form_container';
 
 
 class BizPage extends React.Component {
@@ -99,6 +99,7 @@ class BizPage extends React.Component {
               <section className="static-rating">{basketballs}</section>
               <h3 key={review.id}>{review.body}</h3>
             </div>
+            <UpdateForm review={review}/>
             <div className="hr-row"></div>
           </>
           )}
