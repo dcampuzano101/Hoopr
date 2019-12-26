@@ -2173,10 +2173,12 @@ function (_React$Component) {
     debugger;
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UpdateForm).call(this, props));
     var _this$props = _this.props,
+        review = _this$props.review,
         currentBiz = _this$props.currentBiz,
         currentUser = _this$props.currentUser; // debugger;
 
     _this.state = {
+      id: review.id,
       business_id: currentBiz.id,
       body: "",
       user_id: currentUser.id,
@@ -2297,7 +2299,7 @@ function (_React$Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "review-submit",
         type: "submit",
-        value: "Post Review"
+        value: "Update Review"
       }))));
     }
   }]);
@@ -2415,6 +2417,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _update_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./update_form */ "./frontend/components/update_form/update_form.jsx");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -2440,22 +2444,12 @@ var mdp = function mdp(dispatch) {
     },
     otherForm: react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("button", {
       onClick: function onClick() {
-        return dispatch(openModal('updateReview'));
+        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])('updateReview'));
       }
     }, "Update Review"),
-    closeModal: function (_closeModal) {
-      function closeModal() {
-        return _closeModal.apply(this, arguments);
-      }
-
-      closeModal.toString = function () {
-        return _closeModal.toString();
-      };
-
-      return closeModal;
-    }(function () {
-      return dispatch(closeModal());
-    })
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["closeModal"])());
+    }
   };
 };
 

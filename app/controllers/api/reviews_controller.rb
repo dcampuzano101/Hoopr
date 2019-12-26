@@ -17,6 +17,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def update
+    debugger;
     @review = Review.find_by(id: params[:id])
     if @review.update(review_params)
       render :show
@@ -35,6 +36,6 @@ class Api::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating, :body, :business_id, :user_id)
+    params.require(:review).permit(:rating, :body, :business_id, :user_id, :temp_rating)
   end
 end

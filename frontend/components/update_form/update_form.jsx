@@ -5,9 +5,10 @@ class UpdateForm extends React.Component{
   constructor(props){
     debugger;
     super(props);
-    const { currentBiz, currentUser } = this.props;
+    const { review, currentBiz, currentUser } = this.props;
     // debugger;
     this.state = {
+      id: review.id,
       business_id: currentBiz.id,
       body: "",
       user_id: currentUser.id,
@@ -120,7 +121,7 @@ class UpdateForm extends React.Component{
                   </textarea>
                 </label>
               </section>
-              <input className="review-submit" type="submit" value="Post Review" />
+              <input className="review-submit" type="submit" value="Update Review" />
             </form>
           </div>
         </div>

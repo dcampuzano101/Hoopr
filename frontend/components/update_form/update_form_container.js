@@ -3,7 +3,8 @@ import { updateReview } from '../../actions/review_actions';
 import { requestBusiness } from '../../actions/biz_actions';
 import UpdateForm from './update_form';
 import React from 'react';
-
+import { openModal, closeModal } from '../../actions/modal_actions';
+ 
 const msp = (state, ownProps) => {
   debugger;
   return({
