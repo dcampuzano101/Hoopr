@@ -10,7 +10,6 @@ const bizReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, { [action.payload.business.id]: action.payload.business });
 
     case RECEIVE_REVIEW:
-      // debugger;
       return Object.assign({}, oldState, { [action.payload.business.id]: action.payload.business });
     
     case REMOVE_REVIEW:

@@ -2593,7 +2593,6 @@ var bizReducer = function bizReducer() {
       return Object.assign({}, oldState, _defineProperty({}, action.payload.business.id, action.payload.business));
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_REVIEW"]:
-      // debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.payload.business.id, action.payload.business));
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_REVIEW"]:
@@ -2733,6 +2732,7 @@ var reviewsReducer = function reviewsReducer() {
       return Object.assign({}, oldState, action.payload.reviews);
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
+      debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.payload.review.id, action.payload.review));
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_REVIEW"]:

@@ -12,7 +12,8 @@ const reviewsReducer = (oldState = {}, action) => {
     case RECEIVE_BUSINESS:
       return Object.assign({}, oldState, action.payload.reviews);
     case RECEIVE_REVIEW:
-      return Object.assign({}, oldState, { [action.payload.review.id]: action.payload.review });
+      debugger;
+      return Object.assign({}, oldState, { [action.payload.review.id]: action.payload.review, });
     case REMOVE_REVIEW:
       debugger;
       let newState = Object.assign({}, oldState);

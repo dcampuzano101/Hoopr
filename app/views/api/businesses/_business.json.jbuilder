@@ -1,12 +1,20 @@
 # json.extract! business, :id, :name, :owner_id, :email, :price_range, :latitude, :longitude, :telephone, :website, :address, :rating, :court_type, :start_time, :end_time, :website
 
 # json.reviewIds business.review_ids
+ratingsNums = [];
 
+json.business do 
+  business.reviews.each do |review|
+    ratingsNums.push(review.rating)
+  end
+end
 
 json.business do
   json.extract! business, :id, :name, :owner_id, :email, :price_range, :latitude, :longitude, :telephone, :website, :address, :rating, :court_type, :start_time, :end_time, :website
 
   json.reviewIds business.review_ids
+
+  json.ratings ratingsNums
 end
 
 users = [];
@@ -29,5 +37,14 @@ json.set! :users do
   end
 end
 
+# ratings = [];
+
+# json.business do 
+#   json.set! :ratings do
+#     business.reviews.each do |review|
+#       json.extract! review, :rating
+#     end
+#   end
+# end
 
 
