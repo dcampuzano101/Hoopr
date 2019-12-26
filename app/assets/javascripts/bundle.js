@@ -164,10 +164,12 @@ var closeModal = function closeModal() {
     type: CLOSE_MODAL
   };
 };
-var openModal = function openModal(modal) {
+var openModal = function openModal(modal, props) {
+  console.log(props);
   return {
     type: OPEN_MODAL,
-    modal: modal
+    modal: modal,
+    props: props
   };
 };
 
@@ -442,9 +444,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _biz_page_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./biz_page_container */ "./frontend/components/business_page/biz_page_container.js");
-/* harmony import */ var _update_form_update_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../update_form/update_form_container */ "./frontend/components/update_form/update_form_container.js");
+/* harmony import */ var _biz_page_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./biz_page_container */ "./frontend/components/business_page/biz_page_container.js");
+/* harmony import */ var _update_form_update_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../update_form/update_form_container */ "./frontend/components/update_form/update_form_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -468,8 +469,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
- // import BizMap from '../../components/biz_map/biz_map';
+ // import { openModal } from '../../actions/modal_actions';
+// import BizMap from '../../components/biz_map/biz_map';
 
  // import Review from './review_list_item_container';
 
@@ -569,6 +570,19 @@ function (_React$Component) {
         }, "\u2605 Write a Review"));
       };
 
+      var updateLinks = function updateLinks(review) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          className: "review-form"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "rvw-btn biz-info",
+          onClick: function onClick() {
+            return openModal('updateReview', {
+              id: review.id
+            });
+          }
+        }, "\u2605 Edit Review"));
+      };
+
       if (business.id) {
         var reviewLis;
 
@@ -602,9 +616,7 @@ function (_React$Component) {
               className: "static-rating"
             }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
               key: review.id
-            }, review.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_update_form_update_form_container__WEBPACK_IMPORTED_MODULE_6__["default"], {
-              review: review
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            }, review.body)), updateLinks(review), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               className: "hr-row"
             }));
           });
@@ -773,8 +785,8 @@ var mdp = function mdp(dispatch) {
     submitForm: function submitForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
     },
-    openModal: function openModal(modal) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
+    openModal: function openModal(modal, props) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal, props));
     },
     requestBusinesses: function (_requestBusinesses) {
       function requestBusinesses() {
@@ -1359,6 +1371,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _review_review_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../review/review_form_container */ "./frontend/components/review/review_form_container.jsx");
+/* harmony import */ var _update_form_update_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../update_form/update_form_container */ "./frontend/components/update_form/update_form_container.js");
 
 
 
@@ -1366,19 +1379,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Modal(_ref) {
-  var modal = _ref.modal,
-      closeModal = _ref.closeModal;
 
-  if (!modal) {
+function Modal(_ref) {
+  var name = _ref.name,
+      closeModal = _ref.closeModal,
+      props = _ref.props;
+  console.log(name, props);
+
+  if (!name) {
     return null;
   }
 
   var component;
 
-  switch (modal) {
+  switch (name) {
     case 'createReview':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+      break;
+
+    case 'updateReview':
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_update_form_update_form_container__WEBPACK_IMPORTED_MODULE_5__["default"], props);
       break;
 
     default:
@@ -1398,7 +1418,8 @@ function Modal(_ref) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    modal: state.ui.modal
+    name: state.ui.modal.name,
+    props: state.ui.modal.props
   };
 };
 
@@ -2418,6 +2439,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -2426,11 +2449,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
+  var review = state.entities.reviews[ownProps.id];
   debugger;
   return {
-    review: ownProps.review,
+    review: review,
     currentUser: state.entities.users[state.session.id],
-    currentBiz: state.entities.businesses[ownProps.review.business_id]
+    currentBiz: state.entities.businesses[review.business_id]
   };
 };
 
@@ -2453,7 +2477,7 @@ var mdp = function mdp(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_update_form__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_update_form__WEBPACK_IMPORTED_MODULE_3__["default"])));
 
 /***/ }),
 
@@ -2638,21 +2662,29 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 
+var initialState = {
+  name: '',
+  props: {}
+};
 
 var modalReducer = function modalReducer() {
-  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(oldState);
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_MODAL"]:
-      return null;
+      return initialState;
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL"]:
-      return action.modal;
+      console.log(action);
+      return {
+        name: action.modal,
+        props: action.props
+      };
 
     default:
-      return oldState;
+      return state;
   }
 };
 

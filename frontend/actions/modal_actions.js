@@ -7,10 +7,12 @@ export const closeModal = () => {
   });
 };
 
-export const openModal = (modal) => {
+export const openModal = (modal, props) => {
+  console.log(props);
   return({
     type: OPEN_MODAL,
-    modal
+    modal,
+    props
   });
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../header/header';
 import { Link } from 'react-router-dom';
 import { login, logoutCurrentUser } from '../../actions/session_actions';
-import { openModal } from '../../actions/modal_actions';
+// import { openModal } from '../../actions/modal_actions';
 // import BizMap from '../../components/biz_map/biz_map';
 import BizPageContainer from './biz_page_container';
 // import Review from './review_list_item_container';
@@ -64,10 +64,16 @@ class BizPage extends React.Component {
 
 
     const { business, openModal, reviews, users } = this.props;
-
     const sessionLinks = () => (
       <nav className="review-form">
         <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
+      </nav>
+    );
+
+    const updateLinks = (review) => (
+
+      <nav className="review-form">
+        <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id})}>&#9733; Edit Review</button>
       </nav>
     );
     if (business.id) {
@@ -99,7 +105,8 @@ class BizPage extends React.Component {
               <section className="static-rating">{basketballs}</section>
               <h3 key={review.id}>{review.body}</h3>
             </div>
-            <UpdateForm review={review}/>
+            {/* <UpdateForm review={review}/> */}
+              {updateLinks(review)}
             <div className="hr-row"></div>
           </>
           )}

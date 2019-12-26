@@ -28,7 +28,7 @@ const mdp = dispatch => {
     logout: () => dispatch(logout()),
     requestBusiness: businessId => dispatch(requestBusiness(businessId)),
     submitForm: user => dispatch(login(user)),
-    openModal: modal => dispatch(openModal(modal)),
+    openModal: (modal, props) => dispatch(openModal(modal, props)),
     requestBusinesses: () => dispatch(requestBusinesses())
   });
 };

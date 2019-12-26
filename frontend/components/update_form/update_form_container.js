@@ -4,13 +4,15 @@ import { requestBusiness } from '../../actions/biz_actions';
 import UpdateForm from './update_form';
 import React from 'react';
 import { openModal, closeModal } from '../../actions/modal_actions';
+import { withRouter } from 'react-router-dom';
  
 const msp = (state, ownProps) => {
+  let review = state.entities.reviews[ownProps.id];
   debugger;
   return({
-    review: ownProps.review,
+    review,
     currentUser: state.entities.users[state.session.id],
-    currentBiz: state.entities.businesses[ownProps.review.business_id]
+    currentBiz: state.entities.businesses[review.business_id]
   });
 };
 
@@ -28,4 +30,4 @@ const mdp = dispatch => {
 };
 
 
-export default connect(msp, mdp)(UpdateForm);
+export default withRouter(connect(msp, mdp)(UpdateForm));
