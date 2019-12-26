@@ -3,7 +3,7 @@ import { requestBusiness } from '../../actions/biz_actions';
 import { login, logout } from '../../actions/session_actions';
 import BizPage from './biz_page';
 import { openModal } from '../../actions/modal_actions'
-import { requestReview } from '../../actions/review_actions';
+import { deleteReview } from '../../actions/review_actions';
 import { selectReviewsForBiz } from '../../reducers/selectors';
 
 const msp = (state, ownProps) => {
@@ -29,7 +29,8 @@ const mdp = dispatch => {
     requestBusiness: businessId => dispatch(requestBusiness(businessId)),
     submitForm: user => dispatch(login(user)),
     openModal: (modal, props) => dispatch(openModal(modal, props)),
-    requestBusinesses: () => dispatch(requestBusinesses())
+    requestBusinesses: () => dispatch(requestBusinesses()),
+    deleteReview: (reviewId, businessId) => dispatch(deleteReview(reviewId, businessId))
   });
 };
 

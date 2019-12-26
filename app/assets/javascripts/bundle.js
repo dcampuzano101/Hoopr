@@ -552,12 +552,31 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger;
+      var basketballStatic = [];
+
+      for (var i = 1; i <= 5; i++) {
+        var klass = 'ball-icon';
+
+        if (this.state.temp_rating >= i && this.state.temp_rating != null) {
+          klass += ' is-selected';
+        }
+
+        var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: klass,
+          src: window.ballicon,
+          onClick: this.rate(i),
+          key: i,
+          onMouseOver: this.ball_over(i)
+        });
+        basketballStatic.push(icon);
+      }
+
       var _this$props = this.props,
           business = _this$props.business,
           openModal = _this$props.openModal,
           reviews = _this$props.reviews,
-          users = _this$props.users;
+          users = _this$props.users,
+          deleteReview = _this$props.deleteReview;
 
       var sessionLinks = function sessionLinks() {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -580,7 +599,12 @@ function (_React$Component) {
               id: review.id
             });
           }
-        }, "\u2605 Edit Review"));
+        }, "\u2605 Edit Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "rvw-btn biz-info",
+          onClick: function onClick() {
+            return deleteReview(review.id, business.id);
+          }
+        }, "\u2605 Delete Review"));
       };
 
       if (business.id) {
@@ -590,19 +614,20 @@ function (_React$Component) {
           reviewLis = reviews.map(function (review) {
             var basketballs = [];
 
-            for (var i = 1; i <= 5; i++) {
-              var klass = 'ball-icon-header';
+            for (var _i = 1; _i <= 5; _i++) {
+              var _klass = 'ball-icon-header';
 
-              if (review.rating >= i) {
-                klass += ' is-selected';
+              if (review.rating >= _i) {
+                _klass += ' is-selected';
               }
 
-              var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                key: i,
-                className: klass,
+              var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                key: _i,
+                className: _klass,
                 src: window.ballicon
               });
-              basketballs.push(icon);
+
+              basketballs.push(_icon);
             }
 
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -696,22 +721,7 @@ function (_React$Component) {
           className: "review-container-info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "ball-rating"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "ball-icon",
-          src: window.ballicon
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "ball-icon",
-          src: window.ballicon
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "ball-icon",
-          src: window.ballicon
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "ball-icon",
-          src: window.ballicon
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "ball-icon",
-          src: window.ballicon
-        })), sessionLinks())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, basketballStatic), sessionLinks())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-items"
@@ -800,7 +810,10 @@ var mdp = function mdp(dispatch) {
       return requestBusinesses;
     }(function () {
       return dispatch(requestBusinesses());
-    })
+    }),
+    deleteReview: function deleteReview(reviewId, businessId) {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_5__["deleteReview"])(reviewId, businessId));
+    }
   };
 };
 

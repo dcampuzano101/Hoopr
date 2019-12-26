@@ -11,13 +11,11 @@ import UpdateForm from '../update_form/update_form_container';
 
 class BizPage extends React.Component {
   constructor(props){
-    
     super(props);
-
     this.state = {
       rating: null,
       temp_rating: null
-    }
+    };
   }
 
   handleDemoSubmit(user) {
@@ -59,11 +57,25 @@ class BizPage extends React.Component {
   }
 
   render(){
-   
-    // debugger;
+    const basketballStatic = [];
 
+    for (let i = 1; i <= 5; i++) {
+      let klass = 'ball-icon';
+      if (this.state.temp_rating >= i && this.state.temp_rating != null) {
+        klass += ' is-selected';
+      }
+      const icon =
+        <img
+          className={klass}
+          src={window.ballicon}
+          onClick={this.rate(i)}
+          key={i}
+          onMouseOver={this.ball_over(i)}
+        />;
+      basketballStatic.push(icon);
+    }
 
-    const { business, openModal, reviews, users } = this.props;
+    const { business, openModal, reviews, users, deleteReview } = this.props;
     const sessionLinks = () => (
       <nav className="review-form">
         <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
@@ -74,6 +86,7 @@ class BizPage extends React.Component {
 
       <nav className="review-form">
         <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id})}>&#9733; Edit Review</button>
+        <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
       </nav>
     );
     if (business.id) {
@@ -190,11 +203,12 @@ class BizPage extends React.Component {
             <div className="create-review-photo">
               <div className="review-container-info">
                 <div className="ball-rating">
+                  {basketballStatic}
+                  {/* <img className="ball-icon" src={window.ballicon} />
                   <img className="ball-icon" src={window.ballicon} />
                   <img className="ball-icon" src={window.ballicon} />
                   <img className="ball-icon" src={window.ballicon} />
-                  <img className="ball-icon" src={window.ballicon} />
-                  <img className="ball-icon" src={window.ballicon} />
+                  <img className="ball-icon" src={window.ballicon} /> */}
                 </div>
                 {sessionLinks()}
               </div>
