@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { login, logoutCurrentUser } from '../../actions/session_actions';
 // import { openModal } from '../../actions/modal_actions';
 // import BizMap from '../../components/biz_map/biz_map';
+import BizMapContainer from '../biz_map/biz_map_container';
 import BizPageContainer from './biz_page_container';
 // import Review from './review_list_item_container';
 import UpdateForm from '../update_form/update_form_container';
@@ -170,7 +171,8 @@ class BizPage extends React.Component {
                 {/* <BizMap /> */}
               {/* </div> */}
               <div className="map-container">
-                <img className="map" src={window.map} />
+                {/* <img className="map" src={window.map} /> */}
+                <BizMapContainer />
                 <div className="hours">
                   <p>Mon</p> 
                   <span>{business.start_time} - {business.end_time}</span>

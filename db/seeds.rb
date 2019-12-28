@@ -53,7 +53,9 @@ b1 = Business.create({
   start_time: '6:00 am',
   end_time: '8:00 pm',
   telephone: '(718) 917-1987',
-  website: 'https://www.nycgovparks.org/parks/holcombe-rucker-park'
+  website: 'https://www.nycgovparks.org/parks/holcombe-rucker-park',
+  latitude: 40.829045,
+  longitude: -73.935837
 })
 
 b2 = Business.create({
@@ -66,7 +68,9 @@ b2 = Business.create({
   start_time: 'Sunrise',
   end_time: 'Dusk',
   telephone: '(646) 646-1986',
-  website: 'https://www.nycgovparks.org/parks/west-4th-street-courts'
+  website: 'https://www.nycgovparks.org/parks/west-4th-street-courts',
+  latitude: 40.731392,
+  longitude: -74.001019
 })
 
 b3 = Business.create({
@@ -79,12 +83,13 @@ b3 = Business.create({
   start_time: '6:00 am',
   end_time: '9:30 pm',
   telephone: '(718) 516-2019',
-  website: 'https://hudsonriverpark.org/explore-the-park/activities/basketball-at-canal-st'
+  website: 'https://hudsonriverpark.org/explore-the-park/activities/basketball-at-canal-st',
+  latitude: 40.725586,
+  longitude: -74.011522
 })
 
 b4 = Business.create({
-  name: 'Brooklyn Bridg
-  e Park Basketball Courts',
+  name: 'Brooklyn Bridge Park Basketball Courts',
   email: 'bball@bbp.com',
   price_range: '$',
   owner_id: user4.id,
@@ -93,7 +98,9 @@ b4 = Business.create({
   start_time: '6:00 am',
   end_time: '10:30 pm',
   telephone: '(917) 212-1996',
-  website: 'https://www.brooklynbridgepark.org/activities/basketball'
+  website: 'https://www.brooklynbridgepark.org/activities/basketball',
+  latitude: 40.699434,
+  longitude: -73.998738
 })
 
 

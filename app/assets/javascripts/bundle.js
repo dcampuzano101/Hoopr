@@ -338,7 +338,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_footer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./header/footer */ "./frontend/components/header/footer.jsx");
 /* harmony import */ var _components_modal_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/modal/modal */ "./frontend/components/modal/modal.jsx");
 /* harmony import */ var _components_biz_map_biz_map__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/biz_map/biz_map */ "./frontend/components/biz_map/biz_map.jsx");
-/* harmony import */ var _components_biz_map_biz_map__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_components_biz_map_biz_map__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _signup_form_signup_form_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./signup_form/signup_form_container */ "./frontend/components/signup_form/signup_form_container.jsx");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 
@@ -397,36 +396,139 @@ var App = function App() {
 /*!*************************************************!*\
   !*** ./frontend/components/biz_map/biz_map.jsx ***!
   \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// import React from 'react';
-// import { withRouter} from 'react-router-dom';
-// class BizMap extends React.Component {
-//   //...
-//   componentDidMount() {
-//     // set the map to show SF
-//     const mapOptions = {
-//       center: { lat: 37.7758, lng: -122.435 }, // this is SF
-//       zoom: 13
-//     };
-//     let center = {
-//       lat: 37.7758, 
-//       lng: -122.435
-//     };
-//     // wrap this.mapNode in a Google Map
-//     this.map = new google.maps.Map(this.mapNode, mapOptions);
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <div ref={map => this.mapNode = map}>  
-//         </div>
-//       </div>
-//     )
-//   }
-// }
-// export default withRouter(BizMap);
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var BizMap =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BizMap, _React$Component);
+
+  function BizMap(props) {
+    var _this;
+
+    _classCallCheck(this, BizMap);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizMap).call(this, props));
+    _this.addBizLocation = _this.addBizLocation.bind(_assertThisInitialized(_this));
+    console.log(props);
+    debugger;
+    return _this;
+  }
+
+  _createClass(BizMap, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      if (this.props.center) {
+        var map = react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.findDOMNode(this.refs.map);
+        var mapOptions = {
+          center: this.props.center,
+          zoom: 18
+        };
+        this.map = new google.maps.Map(map, mapOptions);
+      }
+
+      Object.values(this.props.businesses).forEach(function (business) {
+        _this2.addBizLocation(business);
+      });
+    }
+  }, {
+    key: "addBizLocation",
+    value: function addBizLocation(business) {
+      var lat = business.latitude;
+      var lng = business.longitude;
+      var position = new google.maps.LatLng({
+        lat: lat,
+        lng: lng
+      });
+      var marker = new google.maps.Marker({
+        position: position,
+        map: this.map
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "map-google",
+        className: "map-google",
+        ref: "map"
+      });
+    }
+  }]);
+
+  return BizMap;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BizMap);
+
+/***/ }),
+
+/***/ "./frontend/components/biz_map/biz_map_container.js":
+/*!**********************************************************!*\
+  !*** ./frontend/components/biz_map/biz_map_container.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _biz_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./biz_map */ "./frontend/components/biz_map/biz_map.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+var msp = function msp(state, ownProps) {
+  console.log(ownProps);
+  var biz = state.entities.businesses[ownProps.match.params.id];
+  debugger;
+  var center = {};
+
+  if (Object.values(state.entities.businesses)[0]) {
+    center = {
+      lat: biz.latitude,
+      lng: biz.longitude
+    };
+  }
+
+  return {
+    businesses: state.entities.businesses,
+    center: center
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp)(_biz_map__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
@@ -444,8 +546,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _biz_page_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./biz_page_container */ "./frontend/components/business_page/biz_page_container.js");
-/* harmony import */ var _update_form_update_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../update_form/update_form_container */ "./frontend/components/update_form/update_form_container.js");
+/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
+/* harmony import */ var _biz_page_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./biz_page_container */ "./frontend/components/business_page/biz_page_container.js");
+/* harmony import */ var _update_form_update_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../update_form/update_form_container */ "./frontend/components/update_form/update_form_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -471,6 +574,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
  // import { openModal } from '../../actions/modal_actions';
 // import BizMap from '../../components/biz_map/biz_map';
+
 
  // import Review from './review_list_item_container';
 
@@ -708,10 +812,7 @@ function (_React$Component) {
           className: "location-info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Location & Hours"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "map-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "map",
-          src: window.map
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hours"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Mon"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Tues"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Wed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Thurs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fri"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Sat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Sun"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hr-row-top"
