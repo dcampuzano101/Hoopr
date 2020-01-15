@@ -1996,19 +1996,16 @@ function (_React$Component) {
         type: "email",
         value: this.state.email,
         onChange: this.update("email"),
-        className: "plain-input"
+        className: "plain-input",
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Password",
         type: "password",
         value: this.state.password,
         onChange: this.update("password"),
-        className: "plain-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "forgot-password"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "#",
-        className: "plain-text"
-      }, "Forgot password?")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "plain-input",
+        required: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "login"
       }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "plain-text"
@@ -2165,19 +2162,22 @@ function (_React$Component) {
         placeholder: "First Name",
         value: this.state.first_name,
         onChange: this.update("first_name"),
-        className: "plain-input fname"
+        className: "plain-input fname",
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Last Name",
         value: this.state.last_name,
         onChange: this.update("last_name"),
-        className: "plain-input lname"
+        className: "plain-input lname",
+        required: true
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         placeholder: "Email",
         type: "email",
         value: this.state.email,
         onChange: this.update("email"),
-        className: "plain-input"
+        className: "plain-input",
+        required: true
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         placeholder: "Password",

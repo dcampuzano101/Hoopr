@@ -103,4 +103,92 @@ b4 = Business.create({
   longitude: -73.998738
 })
 
+b5 = Business.create({
+  name: 'American Playground',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user3.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  telephone: '(718) 460-1987',
+  website: 'https://www.nycgovparks.org/parks/american-playground',
+  latitude: 40.728884,
+  longitude: -73.957725
+})
 
+b6 = Business.create({
+  name: 'Maria Hernandez Park',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user4.id,
+  rating: 3,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  telephone: '(718) 929-2020',
+  website: 'https://www.nycgovparks.org/parks/maria-hernandez-park',
+  latitude: 40.703405,
+  longitude: -73.924269
+})
+
+b7 = Business.create({
+  name: 'Cooper Park',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user2.id,
+  rating: 5,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  telephone: '(718) 317-2020',
+  website: 'https://www.nycgovparks.org/parks/cooper-park',
+  latitude: 40.715921,
+  longitude: -73.936259
+})
+
+b7 = Business.create({
+  name: 'Dean Playground',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user3.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  telephone: '(718) 917-6464',
+  website: 'https://www.nycgovparks.org/parks/dean-playground',
+  latitude: 40.680816,
+  longitude: -73.973160
+})
+
+b7 = Business.create({
+  name: 'Brower Park',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user1.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  telephone: '(718) 917-6464',
+  website: 'https://www.nycgovparks.org/parks/brower-park',
+  latitude: 40.673467,
+  longitude: -73.943803
+})
+
+b7 = Business.create({
+  name: 'Christopher "Biggie" Wallace Basketball Courts',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user2.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  telephone: '(718) 917-6464',
+  website: 'https://www.nycgovparks.org/parks/crispus-attucks-playground/',
+  latitude: 40.681569,
+  longitude: -73.959064
+})

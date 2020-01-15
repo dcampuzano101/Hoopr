@@ -78,11 +78,28 @@
 }
 
 .log-in-btn.biz-page{
+  // font-size: 12px;
+  // border: 1px solid rgba(0, 0, 0, 0.2);
+  // bottom: 4px;
+  // margin-top: 20px; 
+  // position: relative;
+  // border-radius: 3px;
+
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid black;
+  border-radius: 8%;
+  margin:0 10px 5px 5px;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color:#FFFFFF;
+  text-align:center;
+  // transition: all .4s;
   font-size: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  bottom: 4px;
-  margin-top: 20px; 
-  position: relative;
+  // color: black;
+  // background: white;
 }
 
 .sign-up-btn.biz-page{
