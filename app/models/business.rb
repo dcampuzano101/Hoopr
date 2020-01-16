@@ -25,6 +25,7 @@ class Business < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :price_range, presence: true
+  validates :neighborhood, presence: true
 
   belongs_to :owner,
     class_name: 'User'

@@ -337,7 +337,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_business_index_items_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./header/business_index_items_container */ "./frontend/components/header/business_index_items_container.jsx");
 /* harmony import */ var _header_footer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./header/footer */ "./frontend/components/header/footer.jsx");
 /* harmony import */ var _components_modal_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/modal/modal */ "./frontend/components/modal/modal.jsx");
-/* harmony import */ var _components_biz_map_biz_map__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/biz_map/biz_map */ "./frontend/components/biz_map/biz_map.jsx");
+/* harmony import */ var _components_biz_index_biz_index_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/biz_index/biz_index_container */ "./frontend/components/biz_index/biz_index_container.js");
 /* harmony import */ var _signup_form_signup_form_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./signup_form/signup_form_container */ "./frontend/components/signup_form/signup_form_container.jsx");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 
@@ -368,6 +368,10 @@ var App = function App() {
     path: "/signup",
     component: _signup_form_signup_form_container__WEBPACK_IMPORTED_MODULE_11__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/businesses/",
+    component: _components_biz_index_biz_index_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/businesses/:id",
     component: _business_page_biz_page_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -389,6 +393,175 @@ var App = function App() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/biz_index/biz_index.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/biz_index/biz_index.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var BizIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BizIndex, _React$Component);
+
+  function BizIndex(props) {
+    _classCallCheck(this, BizIndex);
+
+    console.log(props);
+    return _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props));
+  }
+
+  _createClass(BizIndex, [{
+    key: "handleDemoSubmit",
+    value: function handleDemoSubmit(user) {
+      this.props.submitForm(user);
+    } // componentDidUpdate(prevProps) {
+    //   console.log(prevProps);
+    //   if (this.props.match.params.url !== prevProps.match.params.url) {
+    //     this.props.requestBusinesses();
+    //   }
+    // }
+
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.requestBusinesses();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          businesses = _this$props.businesses,
+          users = _this$props.users;
+      if (!businesses) return null;
+      debugger;
+      var businessLis = Object.values(businesses).map(function (biz) {
+        var basketballs = [];
+
+        for (var i = 1; i <= 5; i++) {
+          var klass = 'ball-icon-header';
+
+          if (biz.rating >= i) {
+            klass += ' is-selected';
+          }
+
+          var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: i,
+            className: klass,
+            src: window.ballicon
+          });
+          basketballs.push(icon);
+        }
+
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-item-wrapper"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-pic"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "canal",
+          src: window.canal
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "static-rating-splash"
+        }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        extraClass: this.props.extraClass,
+        submitForm: this.props.submitForm,
+        currentUser: this.props.currentUser,
+        logout: this.props.logout
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "biz-index-map"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BIG OL MAP")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "biz-index-container"
+      }, businessLis));
+    }
+  }]);
+
+  return BizIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BizIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/biz_index/biz_index_container.js":
+/*!**************************************************************!*\
+  !*** ./frontend/components/biz_index/biz_index_container.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _biz_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./biz_index */ "./frontend/components/biz_index/biz_index.jsx");
+
+
+
+
+
+var msp = function msp(state, ownProps) {
+  var extraClass = "biz-index";
+  var businesses = state.entities.businesses || {};
+  return {
+    businesses: businesses,
+    extraClass: extraClass,
+    currentUser: state.entities.users[state.session.id],
+    users: state.entities.users
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
+    },
+    submitForm: function submitForm(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
+    },
+    requestBusinesses: function requestBusinesses() {
+      return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["requestBusinesses"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_biz_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -791,8 +964,8 @@ function (_React$Component) {
           className: "sticky-links"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "phone",
-          src: window.phone
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.telephone), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          src: window.home
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.neighborhood), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hr-row-sticky"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "web",

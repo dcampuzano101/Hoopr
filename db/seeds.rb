@@ -52,7 +52,7 @@ b1 = Business.create({
   court_type: 'Outdoor',
   start_time: '6:00 am',
   end_time: '8:00 pm',
-  telephone: '(718) 917-1987',
+  neighborhood: 'Harlem',
   website: 'https://www.nycgovparks.org/parks/holcombe-rucker-park',
   latitude: 40.829045,
   longitude: -73.935837
@@ -67,7 +67,7 @@ b2 = Business.create({
   court_type: 'Outdoor',
   start_time: 'Sunrise',
   end_time: 'Dusk',
-  telephone: '(646) 646-1986',
+  neighborhood: 'West Village',
   website: 'https://www.nycgovparks.org/parks/west-4th-street-courts',
   latitude: 40.731392,
   longitude: -74.001019
@@ -82,7 +82,7 @@ b3 = Business.create({
   court_type: 'Outdoor',
   start_time: '6:00 am',
   end_time: '9:30 pm',
-  telephone: '(718) 516-2019',
+  neighborhood: 'Lower-Manhattan',
   website: 'https://hudsonriverpark.org/explore-the-park/activities/basketball-at-canal-st',
   latitude: 40.725586,
   longitude: -74.011522
@@ -97,7 +97,7 @@ b4 = Business.create({
   court_type: 'Outdoor',
   start_time: '6:00 am',
   end_time: '10:30 pm',
-  telephone: '(917) 212-1996',
+  neighborhood: 'Brooklyn Heights',
   website: 'https://www.brooklynbridgepark.org/activities/basketball',
   latitude: 40.699434,
   longitude: -73.998738
@@ -112,7 +112,7 @@ b5 = Business.create({
   court_type: 'Outdoor',
   start_time: 'Sunrise',
   end_time: 'Dusk',
-  telephone: '(718) 460-1987',
+  neighborhood: 'Greenpoint',
   website: 'https://www.nycgovparks.org/parks/american-playground',
   latitude: 40.728884,
   longitude: -73.957725
@@ -127,7 +127,7 @@ b6 = Business.create({
   court_type: 'Outdoor',
   start_time: 'Sunrise',
   end_time: 'Dusk',
-  telephone: '(718) 929-2020',
+  neighborhood: 'Bushwick',
   website: 'https://www.nycgovparks.org/parks/maria-hernandez-park',
   latitude: 40.703405,
   longitude: -73.924269
@@ -142,7 +142,7 @@ b7 = Business.create({
   court_type: 'Outdoor',
   start_time: 'Sunrise',
   end_time: 'Dusk',
-  telephone: '(718) 317-2020',
+  neighborhood: 'Williamsburg',
   website: 'https://www.nycgovparks.org/parks/cooper-park',
   latitude: 40.715921,
   longitude: -73.936259
@@ -157,7 +157,7 @@ b7 = Business.create({
   court_type: 'Outdoor',
   start_time: 'Sunrise',
   end_time: 'Dusk',
-  telephone: '(718) 917-6464',
+  neighborhood: 'Park Slope',
   website: 'https://www.nycgovparks.org/parks/dean-playground',
   latitude: 40.680816,
   longitude: -73.973160
@@ -172,7 +172,7 @@ b7 = Business.create({
   court_type: 'Outdoor',
   start_time: 'Sunrise',
   end_time: 'Dusk',
-  telephone: '(718) 917-6464',
+  neighborhood: 'Crown Heights',
   website: 'https://www.nycgovparks.org/parks/brower-park',
   latitude: 40.673467,
   longitude: -73.943803
@@ -187,7 +187,7 @@ b7 = Business.create({
   court_type: 'Outdoor',
   start_time: 'Sunrise',
   end_time: 'Dusk',
-  telephone: '(718) 917-6464',
+  neighborhood: 'Bed-Stuy',
   website: 'https://www.nycgovparks.org/parks/crispus-attucks-playground/',
   latitude: 40.681569,
   longitude: -73.959064

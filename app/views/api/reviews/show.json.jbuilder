@@ -17,7 +17,7 @@ end
 
 json.business do
   # json.partial! "api/businesses/business", business: @review.business
-  json.extract! @review.business, :id, :name, :owner_id, :email, :price_range, :latitude, :longitude, :telephone, :website, :address, :rating, :court_type, :start_time, :end_time, :website
+  json.extract! @review.business, :id, :name, :owner_id, :email, :price_range, :latitude, :longitude, :neighborhood, :website, :address, :rating, :court_type, :start_time, :end_time, :website
 
   json.reviewIds @review.business.review_ids
 end

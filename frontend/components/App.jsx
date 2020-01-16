@@ -10,7 +10,7 @@ import BizPage from './business_page/biz_page_container';
 import BizIndexItemContainer from './header/business_index_items_container';
 import Footer from './header/footer';
 import Modal from '../components/modal/modal';
-import BizMap from '../components/biz_map/biz_map';
+import BizIndex from '../components/biz_index/biz_index_container';
 
 
 import SignUpFormContainer from './signup_form/signup_form_container';
@@ -23,11 +23,13 @@ const App = () => {
         <Route exact path="/" component={HeaderContainer} />
         <AuthRoute path="/login" component={LogInFormContainer} />
         <AuthRoute path="/signup" component={SignUpFormContainer} />
+        <Route exact path="/businesses/" component={BizIndex} />
         <Route path="/businesses/:id" component={BizPage} />
         <Route path="/businesses/:id" component={Modal} />
         <Route exact path="/" component={BizIndexItemContainer} />
         <Route exact path="/" component={Footer} />
         <Route exact path="/businesses/:id" component={Footer} />
+
         {/* <Route path="/businesses/:id" component={BizMap} /> */}
         {/* <Route path="/businesses/:id" component={BizInfo} /> */}
 

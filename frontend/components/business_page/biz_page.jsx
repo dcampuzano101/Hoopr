@@ -152,8 +152,8 @@ class BizPage extends React.Component {
             </div>
             <div className="sticky-info">
               <div className="sticky-links">
-                <img className="phone" src={window.phone} />
-                <span>{business.telephone}</span>
+                <img className="phone" src={window.home} />
+                <span>{business.neighborhood}</span>
                 <div className="hr-row-sticky"></div>
                 <img className="web" src={window.web} />
                 <span><a href={business.website}>{business.name}</a></span>
