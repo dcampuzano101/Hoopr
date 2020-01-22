@@ -8,6 +8,8 @@
   // width: 960px;
   position: relative;
   z-index: 5;
+  left: 25px;
+  bottom: 9px;
   
 }
 
@@ -255,6 +257,7 @@ body{
   width: 700px;
   grid-template-columns: 100%;
   margin: 0 auto;
+  height: 90px;
 }
 
 .hoopr-brooklyn-container h3{
@@ -268,7 +271,7 @@ body{
   background-color: rgba(0, 0, 0, .1);
   grid-column-start: 1;
   grid-column-end: 3;
-
+  box-sizing: border-box;
   overflow: hidden;
   display: grid;
   width: 98%;
@@ -286,7 +289,6 @@ body{
   font-size: 12px;
   font-weight: 400;
   padding: 10px 15px;
-  // margin-bottom: 10px;
   display: inline-block;
 }
 

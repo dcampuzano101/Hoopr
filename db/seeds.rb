@@ -52,7 +52,7 @@ b1 = Business.create({
   court_type: 'Outdoor',
   start_time: '6:00 am',
   end_time: '8:00 pm',
-  telephone: '(718) 917-1987',
+  neighborhood: 'Harlem',
   website: 'https://www.nycgovparks.org/parks/holcombe-rucker-park',
   latitude: 40.829045,
   longitude: -73.935837
@@ -67,7 +67,7 @@ b2 = Business.create({
   court_type: 'Outdoor',
   start_time: 'Sunrise',
   end_time: 'Dusk',
-  telephone: '(646) 646-1986',
+  neighborhood: 'West Village',
   website: 'https://www.nycgovparks.org/parks/west-4th-street-courts',
   latitude: 40.731392,
   longitude: -74.001019
@@ -82,7 +82,7 @@ b3 = Business.create({
   court_type: 'Outdoor',
   start_time: '6:00 am',
   end_time: '9:30 pm',
-  telephone: '(718) 516-2019',
+  neighborhood: 'Lower-Manhattan',
   website: 'https://hudsonriverpark.org/explore-the-park/activities/basketball-at-canal-st',
   latitude: 40.725586,
   longitude: -74.011522
@@ -97,10 +97,98 @@ b4 = Business.create({
   court_type: 'Outdoor',
   start_time: '6:00 am',
   end_time: '10:30 pm',
-  telephone: '(917) 212-1996',
+  neighborhood: 'Brooklyn Heights',
   website: 'https://www.brooklynbridgepark.org/activities/basketball',
   latitude: 40.699434,
   longitude: -73.998738
 })
 
+b5 = Business.create({
+  name: 'American Playground',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user3.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  neighborhood: 'Greenpoint',
+  website: 'https://www.nycgovparks.org/parks/american-playground',
+  latitude: 40.728884,
+  longitude: -73.957725
+})
 
+b6 = Business.create({
+  name: 'Maria Hernandez Park',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user4.id,
+  rating: 3,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  neighborhood: 'Bushwick',
+  website: 'https://www.nycgovparks.org/parks/maria-hernandez-park',
+  latitude: 40.703405,
+  longitude: -73.924269
+})
+
+b7 = Business.create({
+  name: 'Cooper Park',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user2.id,
+  rating: 5,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  neighborhood: 'Williamsburg',
+  website: 'https://www.nycgovparks.org/parks/cooper-park',
+  latitude: 40.715921,
+  longitude: -73.936259
+})
+
+b7 = Business.create({
+  name: 'Dean Playground',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user3.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  neighborhood: 'Park Slope',
+  website: 'https://www.nycgovparks.org/parks/dean-playground',
+  latitude: 40.680816,
+  longitude: -73.973160
+})
+
+b7 = Business.create({
+  name: 'Brower Park',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user1.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  neighborhood: 'Crown Heights',
+  website: 'https://www.nycgovparks.org/parks/brower-park',
+  latitude: 40.673467,
+  longitude: -73.943803
+})
+
+b7 = Business.create({
+  name: 'Christopher "Biggie" Wallace Basketball Courts',
+  email: 'n/a',
+  price_range: '$',
+  owner_id: user2.id,
+  rating: 4,
+  court_type: 'Outdoor',
+  start_time: 'Sunrise',
+  end_time: 'Dusk',
+  neighborhood: 'Bed-Stuy',
+  website: 'https://www.nycgovparks.org/parks/crispus-attucks-playground/',
+  latitude: 40.681569,
+  longitude: -73.959064
+})

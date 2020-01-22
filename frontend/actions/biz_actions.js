@@ -24,6 +24,7 @@ export const requestBusinesses = () => dispatch => {
     .then((payload) => dispatch(receiveBusinesses(payload)));
 };
 
+
 export const requestBusiness = (businessId) => dispatch => {
   return BIZAPI.fetchBusiness(businessId)
     .then((payload) => dispatch(receiveBusiness(payload)));

@@ -73,6 +73,7 @@ class SignupForm extends React.Component {
                   value={this.state.first_name}
                   onChange={this.update("first_name")}
                   className="plain-input fname"
+                  required
                 />
               </label>
               <label>
@@ -82,6 +83,7 @@ class SignupForm extends React.Component {
                   value={this.state.last_name}
                   onChange={this.update("last_name")}
                   className="plain-input lname"
+                  required
                 />
               </label>
               </div>
@@ -92,6 +94,7 @@ class SignupForm extends React.Component {
                   value={this.state.email}
                   onChange={this.update("email")}
                   className="plain-input"
+                  required
                 />
               </label>
               <label>

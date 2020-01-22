@@ -83,6 +83,7 @@ class SessionForm extends React.Component {
                 value={this.state.email}
                 onChange={this.update("email")}
                 className="plain-input"
+                required
                 />
               </label>
               <label>
@@ -92,11 +93,9 @@ class SessionForm extends React.Component {
                   value={this.state.password}
                   onChange={this.update("password")}
                   className="plain-input"
+                  required
                 />
               </label>
-              <span className="forgot-password">
-                <Link to="#" className="plain-text">Forgot password?</Link>
-              </span>
               <button id="login">Login</button>
               <div className="plain-text">New to Hoopr? <Link to="/signup">Sign up</Link></div>
             </form>
