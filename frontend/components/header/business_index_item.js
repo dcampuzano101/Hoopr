@@ -38,7 +38,7 @@ class BizIndexItem extends React.Component {
               src={window.ballicon}
             />;
           basketball1.push(icon);
-        }
+        } 
           const basketball2 = [];
           for (let i = 1; i <= 5; i++) {
           let klass = 'ball-icon-header';

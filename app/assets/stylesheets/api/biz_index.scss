@@ -1,0 +1,46 @@
+
+.biz-index-map {
+  height: 400px;
+  background-color: pink;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.biz-index-map p{
+  font-size: 32px;
+}
+
+.biz-index-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background-color: lightgrey;
+  margin: auto;
+}
+
+.biz-index-item-wrapper {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  border: 2px solid;
+  margin: 10px;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.biz-index-pic img{
+  grid-column: 1/2;
+  border-radius: 3px;
+}
+
+.biz-index-info {
+  grid-column: 2/2;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
