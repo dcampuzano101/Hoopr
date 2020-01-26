@@ -360,6 +360,22 @@ grid-column: 1/2;
   background-color: #FDF6F6;
 }
 
+.log-btn.biz-info {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all .4s;
+  font-size: 12px;
+  color: #D32323;
+  padding: 5px 8px;
+  // margin: 0 16px 0 0;
+  border-radius: 3px;
+  height: 18px; 
+  margin-left: 15px;
+}
+
+.log-btn.biz-info:hover {
+  background-color: #FDF6F6;
+}
+
 
 
 .add-photo {

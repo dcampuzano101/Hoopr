@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../header/header';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { login, logoutCurrentUser } from '../../actions/session_actions';
 // import { openModal } from '../../actions/modal_actions';
 // import BizMap from '../../components/biz_map/biz_map';
@@ -13,6 +13,7 @@ import UpdateForm from '../update_form/update_form_container';
 class BizPage extends React.Component {
   constructor(props){
     super(props);
+    debugger;
     this.state = {
       rating: null,
       temp_rating: null
@@ -58,6 +59,14 @@ class BizPage extends React.Component {
   }
 
   render(){
+    // debugger;
+    let authReview;
+    // console.log(currentUser);
+    if (this.props.currentUser) {
+      authReview = <button className="rvw-btn biz-info" onClick={() => openModal('createReview', {tempRating: this.state.temp_rating})}>&#9733; Write a Review</button>
+    } else {
+      authReview = <Link className="log-btn biz-info" to="/login">&#9733; Write a Review</Link>
+    }
     const basketballStatic = [];
 
     for (let i = 1; i <= 5; i++) {
@@ -76,24 +85,41 @@ class BizPage extends React.Component {
       basketballStatic.push(icon);
     }
 
-    const { business, openModal, reviews, users, deleteReview } = this.props;
+    const { business, openModal, reviews, users, deleteReview, currentUser } = this.props;
     const sessionLinks = () => (
       <nav className="review-form">
-        <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
+        {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
+        {authReview}
       </nav>
     );
 
-    const updateLinks = (review) => (
+    // const updateLinks = (review) => (
+    //   <nav className="review-form">
+    //     <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
+    //     <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
+    //   </nav>
+    // );
 
-      <nav className="review-form">
-        <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id})}>&#9733; Edit Review</button>
-        <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
-      </nav>
-    );
+
     if (business.id) {
       let reviewLis;
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
+          let updateLinks;
+          if(this.props.currentUser) {
+            if (this.props.currentUser.id === review.user_id) {
+              updateLinks = (review) => (
+              <nav className="review-form">
+                <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
+                <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
+              </nav>
+              )
+            }
+           } else {
+              updateLinks = () => (
+              <div></div>
+              )
+          }
           const basketballs = [];
           for (let i = 1; i <= 5; i++) {
             let klass = 'ball-icon-header';
@@ -145,7 +171,8 @@ class BizPage extends React.Component {
               <h3><Link to="#">{business.court_type}</Link></h3>
               <section className="info-buttons">
                 <nav className="review-form">
-                  <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button>
+                  {authReview}
+                  {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
                 </nav>
                 {/* <button className="add-photo"> &#128247; Add Photo</button> */}
               </section>
@@ -161,17 +188,12 @@ class BizPage extends React.Component {
                 <img className="whistle" src={window.whistle} />
                 <span>Call your own Fouls</span>
               </div>
-             
               <a href=""></a>
             </div>
             <div className="hr-row-top"></div>
             <div className="location-info">
               <h3>Location & Hours</h3>
-              {/* <div className="biz-map"> */}
-                {/* <BizMap /> */}
-              {/* </div> */}
               <div className="map-container">
-                {/* <img className="map" src={window.map} /> */}
                 <BizMapContainer />
                 <div className="hours">
                   <p>Mon</p> 
@@ -192,25 +214,10 @@ class BizPage extends React.Component {
               </div>
             </div>
             <div className="hr-row-top"></div>
-            {/* <div className="review-container">
-              <div className="review-items">
-                <div className="profile-section">
-                </div>
-                <div className="review-item">
-                  {reviewLis}
-                </div>
-              </div>
-            </div> */}
-
             <div className="create-review-photo">
               <div className="review-container-info">
                 <div className="ball-rating">
                   {basketballStatic}
-                  {/* <img className="ball-icon" src={window.ballicon} />
-                  <img className="ball-icon" src={window.ballicon} />
-                  <img className="ball-icon" src={window.ballicon} />
-                  <img className="ball-icon" src={window.ballicon} />
-                  <img className="ball-icon" src={window.ballicon} /> */}
                 </div>
                 {sessionLinks()}
               </div>
@@ -225,8 +232,6 @@ class BizPage extends React.Component {
               </div>
             </div>
           </div>
-
-
         </div>
       );
     } else {

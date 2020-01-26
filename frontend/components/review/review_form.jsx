@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 class ReviewForm extends React.Component {
   constructor(props){
     super(props);
-    console.log(`REVIEWFORMPROPS: ${this.props}`);
+    console.log(this.props);
     const { currentBiz, currentUser } = this.props;
-    // debugger;
+    debugger;
     this.state = {
       business_id: currentBiz.id,
       body: "",
       user_id: currentUser.id,
       rating: null,
-      temp_rating: null
+      temp_rating: this.props.tempRating
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     // this.ball_out = this.ball_out.bind(this);
@@ -63,7 +63,7 @@ class ReviewForm extends React.Component {
           src={window.ballicon}
           onClick={this.rate(i)}
           key={i}
-          onMouseOver={this.ball_over(i)} 
+          onMouseOver={this.ball_over(i)}
         />;
       basketballs.push(icon);
     }
