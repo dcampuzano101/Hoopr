@@ -76,9 +76,9 @@ class Header extends React.Component {
               </div>
             </div>
             <section className="links-header">
-              <Link to="#" className={"nav-links " + this.props.extraClass}>Write a Review</Link>
-              <Link to="#" className={"nav-links " + this.props.extraClass}>Events</Link>
-              <Link to="#" className={"nav-links " + this.props.extraClass}>Talk</Link>
+              {/* <Link to="#" className={"nav-links " + this.props.extraClass}>Write a Review</Link> */}
+              <Link to="/businesses" className={"nav-links " + this.props.extraClass}>All Parks</Link>
+              <Link to="#" className={"nav-links " + this.props.extraClass}>About</Link>
             </section>
             <Link id="logo-wrapper" to="/"><img id="logo-biz-page" src={window.logo} /></Link>
             <div className="logo-header-div">

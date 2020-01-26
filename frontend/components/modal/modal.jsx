@@ -14,7 +14,7 @@ function Modal({ name, closeModal, props }) {
   let component;
   switch (name) {
     case 'createReview':
-      component = <ReviewFormContainer />;
+      component = <ReviewFormContainer {...props} />;
       break;
 
     case 'updateReview':

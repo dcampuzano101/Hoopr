@@ -764,6 +764,7 @@ function (_React$Component) {
     _classCallCheck(this, BizPage);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizPage).call(this, props));
+    debugger;
     _this.state = {
       rating: null,
       temp_rating: null
@@ -829,6 +830,27 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this5 = this;
+
+      // debugger;
+      var authReview; // console.log(currentUser);
+
+      if (this.props.currentUser) {
+        authReview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "rvw-btn biz-info",
+          onClick: function onClick() {
+            return openModal('createReview', {
+              tempRating: _this5.state.temp_rating
+            });
+          }
+        }, "\u2605 Write a Review");
+      } else {
+        authReview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          className: "log-btn biz-info",
+          to: "/login"
+        }, "\u2605 Write a Review");
+      }
+
       var basketballStatic = [];
 
       for (var i = 1; i <= 5; i++) {
@@ -853,42 +875,56 @@ function (_React$Component) {
           openModal = _this$props.openModal,
           reviews = _this$props.reviews,
           users = _this$props.users,
-          deleteReview = _this$props.deleteReview;
+          deleteReview = _this$props.deleteReview,
+          currentUser = _this$props.currentUser;
 
       var sessionLinks = function sessionLinks() {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
           className: "review-form"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "rvw-btn biz-info",
-          onClick: function onClick() {
-            return openModal('createReview');
-          }
-        }, "\u2605 Write a Review"));
-      };
+        }, authReview);
+      }; // const updateLinks = (review) => (
+      //   <nav className="review-form">
+      //     <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
+      //     <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
+      //   </nav>
+      // );
 
-      var updateLinks = function updateLinks(review) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-          className: "review-form"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "rvw-btn biz-info",
-          onClick: function onClick() {
-            return openModal('updateReview', {
-              id: review.id
-            });
-          }
-        }, "\u2605 Edit Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "rvw-btn biz-info",
-          onClick: function onClick() {
-            return deleteReview(review.id, business.id);
-          }
-        }, "\u2605 Delete Review"));
-      };
 
       if (business.id) {
         var reviewLis;
 
         if (reviews.length) {
           reviewLis = reviews.map(function (review) {
+            var updateLinks;
+
+            if (_this5.props.currentUser) {
+              if (_this5.props.currentUser.id === review.user_id) {
+                updateLinks = function updateLinks(review) {
+                  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+                    className: "review-form"
+                  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+                    className: "rvw-btn biz-info",
+                    onClick: function onClick() {
+                      return openModal('updateReview', {
+                        id: review.id
+                      }, {
+                        tempRating: _this5.state.temp_rating
+                      });
+                    }
+                  }, "\u2605 Edit Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+                    className: "rvw-btn biz-info",
+                    onClick: function onClick() {
+                      return deleteReview(review.id, business.id);
+                    }
+                  }, "\u2605 Delete Review"));
+                };
+              }
+            } else {
+              updateLinks = function updateLinks() {
+                return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+              };
+            }
+
             var basketballs = [];
 
             for (var _i = 1; _i <= 5; _i++) {
@@ -953,12 +989,7 @@ function (_React$Component) {
           className: "info-buttons"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
           className: "review-form"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "rvw-btn biz-info",
-          onClick: function onClick() {
-            return openModal('createReview');
-          }
-        }, "\u2605 Write a Review")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, authReview))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "sticky-info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "sticky-links"
@@ -1555,15 +1586,12 @@ function (_React$Component) {
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "links-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/businesses",
+        className: "nav-links " + this.props.extraClass
+      }, "All Parks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "#",
         className: "nav-links " + this.props.extraClass
-      }, "Write a Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "#",
-        className: "nav-links " + this.props.extraClass
-      }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "#",
-        className: "nav-links " + this.props.extraClass
-      }, "Talk")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "About")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         id: "logo-wrapper",
         to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1681,7 +1709,7 @@ function Modal(_ref) {
 
   switch (name) {
     case 'createReview':
-      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], props);
       break;
 
     case 'updateReview':
@@ -1770,17 +1798,17 @@ function (_React$Component) {
     _classCallCheck(this, ReviewForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ReviewForm).call(this, props));
-    console.log("REVIEWFORMPROPS: ".concat(_this.props));
+    console.log(_this.props);
     var _this$props = _this.props,
         currentBiz = _this$props.currentBiz,
-        currentUser = _this$props.currentUser; // debugger;
-
+        currentUser = _this$props.currentUser;
+    debugger;
     _this.state = {
       business_id: currentBiz.id,
       body: "",
       user_id: currentUser.id,
       rating: null,
-      temp_rating: null
+      temp_rating: _this.props.tempRating
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.ball_out = this.ball_out.bind(this);
 
@@ -1914,7 +1942,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // debugger;
+  debugger;
   return {
     // errors: errors.session,
     formType: 'createReview',
@@ -35889,7 +35917,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
