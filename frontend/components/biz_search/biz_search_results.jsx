@@ -6,7 +6,7 @@ class BizSearch extends React.Component {
   constructor(props){
     console.log(props);
     super(props);
-    
+    debugger;
   }
 
   handleDemoSubmit(user) {
@@ -23,6 +23,13 @@ class BizSearch extends React.Component {
   componentDidMount() {
     this.props.requestBusinesses();
   }
+
+  componentDidUpdate(prevProps){
+    if (this.props.match.params.id != prevProps.match.params.id) {
+      this.props.requestBusinesses();
+    }
+  }
+
 
   render() {
     const { businesses, users } = this.props;

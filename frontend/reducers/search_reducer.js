@@ -5,11 +5,14 @@ const defaultState = Object.freeze({
     businessIds: []
 })
 
-export default (state = defaultState, action) => {
+const searchReducer = (state = defaultState, action) => {
+    // debugger;
     switch(action.type) {
         case RECEIVE_SEARCH:
-            return action.payload.searchResult
+            return Object.assign({}, state, action.payload.searchResult);
         default: 
             return state;
     }
 }
+
+export default searchReducer;

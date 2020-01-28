@@ -7,8 +7,8 @@ export const receiveSearch = (payload) => ({
     payload
 })
 
-export const search = (query) => {
-    return searchRequest(query).then(
-        payload => dispatchEvent(receiveSearch(payload))
-    )
+export const search = (query) => dispatch => {
+    debugger;
+    return searchRequest(query)
+    .then(payload => dispatch(receiveSearch(payload)));
 }

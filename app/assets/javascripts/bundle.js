@@ -263,9 +263,12 @@ var receiveSearch = function receiveSearch(payload) {
   };
 };
 var search = function search(query) {
-  return Object(_util_search_api_util__WEBPACK_IMPORTED_MODULE_0__["searchRequest"])(query).then(function (payload) {
-    return dispatchEvent(receiveSearch(payload));
-  });
+  return function (dispatch) {
+    debugger;
+    return Object(_util_search_api_util__WEBPACK_IMPORTED_MODULE_0__["searchRequest"])(query).then(function (payload) {
+      return dispatch(receiveSearch(payload));
+    });
+  };
 };
 
 /***/ }),
@@ -780,10 +783,14 @@ function (_React$Component) {
   _inherits(BizSearch, _React$Component);
 
   function BizSearch(props) {
+    var _this;
+
     _classCallCheck(this, BizSearch);
 
     console.log(props);
-    return _possibleConstructorReturn(this, _getPrototypeOf(BizSearch).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizSearch).call(this, props));
+    debugger;
+    return _this;
   }
 
   _createClass(BizSearch, [{
@@ -801,6 +808,13 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestBusinesses();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.match.params.id != prevProps.match.params.id) {
+        this.props.requestBusinesses();
+      }
     }
   }, {
     key: "render",
@@ -871,9 +885,15 @@ function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _biz_search_results__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./biz_search_results */ "./frontend/components/biz_search/biz_search_results.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _biz_search_results__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./biz_search_results */ "./frontend/components/biz_search/biz_search_results.jsx");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
+
+
+
 
 
 
@@ -882,9 +902,10 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   debugger;
   var extraClass = "biz-index";
-  var businessObj = state.entities.search;
+  var businesses = state.entities.businesses;
+  var businessObj = state.entities.search.businessIds;
   return {
-    // businesses,
+    businesses: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_5__["selectBusinessesForSearch"])(businessObj, businesses),
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
     users: state.entities.users
@@ -894,18 +915,21 @@ var msp = function msp(state, ownProps) {
 var mdp = function mdp(dispatch) {
   return {
     logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
     },
     submitForm: function submitForm(user) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     },
     requestBusinesses: function requestBusinesses() {
-      return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["requestBusinesses"])());
+      return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_2__["requestBusinesses"])());
+    },
+    search: function search(query) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_6__["search"])(query));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_biz_search_results__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_biz_search_results__WEBPACK_IMPORTED_MODULE_4__["default"])));
 
 /***/ }),
 
@@ -1281,9 +1305,11 @@ var msp = function msp(state, ownProps) {
   // const bizId = ownProps.match.params.id;
 
   var business = state.entities.businesses[ownProps.match.params.id] || {};
-  var reviewObj = state.entities.reviews; // debugger;
+  var reviewObj = state.entities.reviews;
+  var query = ownProps.match.params || {}; // debugger;
 
   return {
+    query: query,
     business: business,
     // businessId: ownProps.match.params.id,
     extraClass: extraClass,
@@ -1678,8 +1704,10 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
     console.log(props);
-    var query = _this.props.match.params.query; //notsure about this yet.
+    var _ref = "",
+        query = _ref.query; //notsure about this yet.
 
+    console.log(query);
     _this.state = {
       query: query
     };
@@ -1708,6 +1736,7 @@ function (_React$Component) {
   }, {
     key: "updateSearch",
     value: function updateSearch(e) {
+      debugger;
       e.preventDefault();
       var query = e.currentTarget.value; // this.setState({ query });
       // this.props.history.push('/search' + query )
@@ -1715,13 +1744,15 @@ function (_React$Component) {
   }, {
     key: "handleSearch",
     value: function handleSearch(e) {
+      debugger;
       var query = document.getElementById('search-field').value;
       console.log(query);
       this.setState({
         query: query
       });
       query ? this.props.search(query) : query = "";
-      this.props.history.push('/search' + query);
+      this.props.history.push('/search/' + query);
+      debugger;
     }
   }, {
     key: "render",
@@ -1789,8 +1820,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "static-search"
       }, "Find"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "search-field",
         className: "search-field " + this.props.extraClass,
-        type: "search",
+        type: "text",
         value: this.state.query,
         placeholder: "basketball courts, parks.. "
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -1799,7 +1831,7 @@ function (_React$Component) {
         id: "static-search"
       }, "Near"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "search-field " + this.props.extraClass,
-        type: "search",
+        type: "text",
         placeholder: "Brooklyn, NY"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ball-container"
@@ -3331,18 +3363,22 @@ var defaultState = Object.freeze({
   query: "",
   businessIds: []
 });
-/* harmony default export */ __webpack_exports__["default"] = (function () {
+
+var searchReducer = function searchReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
+  // debugger;
   switch (action.type) {
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SEARCH"]:
-      return action.payload.searchResult;
+      return Object.assign({}, state, action.payload.searchResult);
 
     default:
       return state;
   }
-});
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (searchReducer);
 
 /***/ }),
 
@@ -3361,6 +3397,7 @@ var selectReviewsForBiz = function selectReviewsForBiz() {
   var review_ids = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var reviews = arguments.length > 1 ? arguments[1] : undefined;
   var result = [];
+  debugger;
   review_ids.forEach(function (id) {
     result.push(reviews[id]);
   });
@@ -3370,9 +3407,11 @@ var selectBusinessesForSearch = function selectBusinessesForSearch() {
   var businessIds = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var businesses = arguments.length > 1 ? arguments[1] : undefined;
   var result = [];
+  debugger;
   businessIds.forEach(function (id) {
     result.push(businesses[id]);
   });
+  return result;
 };
 
 /***/ }),
@@ -3698,9 +3737,12 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchRequest", function() { return searchRequest; });
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+
 var searchRequest = function searchRequest() {
   var query = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   return $.ajax({
+    // type: RECEIVE_SEARCH,
     url: "api/search/".concat(query)
   });
 };

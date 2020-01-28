@@ -6,7 +6,8 @@ class Header extends React.Component {
       console.log(props);
 
 
-      let { query } = this.props.match.params; //notsure about this yet.
+      let { query } = ""; //notsure about this yet.
+      console.log(query)
       this.state = { query };
       this.updateSearch = this.updateSearch.bind(this);
       this.handleSearch = this.handleSearch.bind(this);
@@ -26,6 +27,7 @@ class Header extends React.Component {
   }
 
   updateSearch(e) {
+    debugger;
     e.preventDefault();
     let query = e.currentTarget.value;
     // this.setState({ query });
@@ -33,14 +35,15 @@ class Header extends React.Component {
   }
 
   handleSearch(e) {
+    debugger;
     let query = document.getElementById('search-field').value
     console.log(query);
     this.setState({ query });
     
     
     (query) ? this.props.search(query) : query = "";
-    this.props.history.push('/search' + query )
-
+    this.props.history.push('/search/' + query );
+    debugger;
   }
   
   render(){
@@ -78,8 +81,9 @@ class Header extends React.Component {
               <div className={"search-bar " + this.props.extraClass}>
                 <span id="static-search">Find</span>
                 <input
+                  id="search-field"
                   className={"search-field " + this.props.extraClass}
-                  type="search"
+                  type="text"
                   value={this.state.query}
                   placeholder="basketball courts, parks.. "
                 />
@@ -87,7 +91,7 @@ class Header extends React.Component {
                 <span id="static-search">Near</span>
                 <input
                   className={"search-field " + this.props.extraClass}
-                  type="search"
+                  type="text"
                   placeholder="Brooklyn, NY"
                 />
                 <div className="ball-container">
