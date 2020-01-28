@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
-// import { AuthRoute } from '../util/route_util';
 import { Provider } from 'react-redux';
 import SessionForm from './session_form/session_form';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
@@ -11,6 +10,7 @@ import BizIndexItemContainer from './header/business_index_items_container';
 import Footer from './header/footer';
 import Modal from '../components/modal/modal';
 import BizIndex from '../components/biz_index/biz_index_container';
+import BizSearch from '../components/biz_search/biz_search_results_container';
 
 
 import SignUpFormContainer from './signup_form/signup_form_container';
@@ -29,7 +29,7 @@ const App = () => {
         <Route exact path="/" component={BizIndexItemContainer} />
         <Route exact path="/" component={Footer} />
         <Route exact path="/businesses/:id" component={Footer} />
-
+        <Route exact path="/search/:query" component={BizSearch} />
         {/* <Route path="/businesses/:id" component={BizMap} /> */}
         {/* <Route path="/businesses/:id" component={BizInfo} /> */}
 
