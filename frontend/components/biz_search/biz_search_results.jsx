@@ -6,6 +6,15 @@ class BizSearch extends React.Component {
   constructor(props){
     console.log(props);
     super(props);
+    let { query } = "" || this.props.match.params;
+    
+    
+
+    console.log(query)
+    this.state = { query };
+    this.updateSearch = this.updateSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+
     debugger;
   }
 
@@ -13,15 +22,9 @@ class BizSearch extends React.Component {
     this.props.submitForm(user);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps);
-  //   if (this.props.match.params.url !== prevProps.match.params.url) {
-  //     this.props.requestBusinesses();
-  //   }
-  // }
-
   componentDidMount() {
     this.props.requestBusinesses();
+    (this.state.query.length > 0) ? this.props.search(this.state.query) : query = "";
   }
 
   componentDidUpdate(prevProps){
@@ -30,56 +33,79 @@ class BizSearch extends React.Component {
     }
   }
 
+  updateSearch(e) {
+    debugger;
+    e.preventDefault();
+    let query = e.currentTarget.value;
+    // this.setState({ query });
+    // this.props.history.push('/search' + query )
+  }
+
+  handleSearch(e) {
+    debugger;
+    let query = document.getElementById('search-field').value
+    console.log(query);
+    this.setState({ query });
+    
+    
+    (query) ? this.props.search(query) : query = "";
+    this.props.history.push('/search/' + query );
+    debugger;
+  }
 
   render() {
     const { businesses, users } = this.props;
-    if (!businesses) return null;
-    debugger;
-    let businessLis = Object.values(businesses).map(biz => {
-      const basketballs = [];
-      for (let i = 1; i <= 5; i++) {
-        let klass = 'ball-icon-header';
-        if (biz.rating >= i) {
-          klass += ' is-selected';
+    if (businesses) {
+      debugger;
+      let businessLis = Object.values(businesses).map(biz => {
+        const basketballs = [];
+        for (let i = 1; i <= 5; i++) {
+          let klass = 'ball-icon-header';
+          if (biz.rating >= i) {
+            klass += ' is-selected';
+          }
+          const icon =
+            <img
+              key={i}
+              className={klass}
+              src={window.ballicon}
+            />;
+          basketballs.push(icon);
         }
-        const icon =
-          <img
-            key={i}
-            className={klass}
-            src={window.ballicon}
-          />;
-        basketballs.push(icon);
-      } 
+
+        return(
+          <>
+          <div className="biz-index-item-wrapper">
+            <div className="biz-index-pic">
+              <img className="canal" src={window.canal} />
+            </div>
+            <div className="biz-index-info">
+              <h1>{biz.name}</h1>
+              <section className="static-rating-splash">{basketballs}</section>
+              <h1>{biz.neighborhood}</h1>
+            </div>
+
+          </div>
+          </>
+        )});
       return(
-        <>
-        <div className="biz-index-item-wrapper">
-          <div className="biz-index-pic">
-            <img className="canal" src={window.canal} />
+        <div>
+          <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
+            logout={this.props.logout} />
+          <div className="biz-index-map">
+            <p>BIG OL MAP</p>
           </div>
-          <div className="biz-index-info">
-            <h1>{biz.name}</h1>
-            <section className="static-rating-splash">{basketballs}</section>
-            <h1>{biz.neighborhood}</h1>
+          <div className="biz-index-container">
+          
+            {businessLis}
           </div>
-
         </div>
-        </>
-      )});
-
-    return(
-      <div>
-        <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
-          logout={this.props.logout} />
-        <div className="biz-index-map">
-          <p>BIG OL MAP</p>
-        </div>
-        <div className="biz-index-container">
-        
-          {businessLis}
-        </div>
-      </div>
-    )
+      )
+    } else {
+      return (null)
+    }
   }
+  
 
 
 }

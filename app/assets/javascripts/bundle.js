@@ -765,9 +765,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -789,6 +789,16 @@ function (_React$Component) {
 
     console.log(props);
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizSearch).call(this, props));
+
+    var _ref =  false || _this.props.match.params,
+        query = _ref.query;
+
+    console.log(query);
+    _this.state = {
+      query: query
+    };
+    _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
+    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
     debugger;
     return _this;
   }
@@ -797,17 +807,12 @@ function (_React$Component) {
     key: "handleDemoSubmit",
     value: function handleDemoSubmit(user) {
       this.props.submitForm(user);
-    } // componentDidUpdate(prevProps) {
-    //   console.log(prevProps);
-    //   if (this.props.match.params.url !== prevProps.match.params.url) {
-    //     this.props.requestBusinesses();
-    //   }
-    // }
-
+    }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestBusinesses();
+      this.state.query.length > 0 ? this.props.search(this.state.query) : query = "";
     }
   }, {
     key: "componentDidUpdate",
@@ -817,54 +822,79 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "updateSearch",
+    value: function updateSearch(e) {
+      debugger;
+      e.preventDefault();
+      var query = e.currentTarget.value; // this.setState({ query });
+      // this.props.history.push('/search' + query )
+    }
+  }, {
+    key: "handleSearch",
+    value: function handleSearch(e) {
+      debugger;
+      var query = document.getElementById('search-field').value;
+      console.log(query);
+      this.setState({
+        query: query
+      });
+      query ? this.props.search(query) : query = "";
+      this.props.history.push('/search/' + query);
+      debugger;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
-      if (!businesses) return null;
-      debugger;
-      var businessLis = Object.values(businesses).map(function (biz) {
-        var basketballs = [];
 
-        for (var i = 1; i <= 5; i++) {
-          var klass = 'ball-icon-header';
+      if (businesses) {
+        debugger;
+        var businessLis = Object.values(businesses).map(function (biz) {
+          var basketballs = [];
 
-          if (biz.rating >= i) {
-            klass += ' is-selected';
+          for (var i = 1; i <= 5; i++) {
+            var klass = 'ball-icon-header';
+
+            if (biz.rating >= i) {
+              klass += ' is-selected';
+            }
+
+            var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              key: i,
+              className: klass,
+              src: window.ballicon
+            });
+            basketballs.push(icon);
           }
 
-          var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            key: i,
-            className: klass,
-            src: window.ballicon
-          });
-          basketballs.push(icon);
-        }
-
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-item-wrapper"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-pic"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "canal",
-          src: window.canal
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-info"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "static-rating-splash"
-        }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        extraClass: this.props.extraClass,
-        submitForm: this.props.submitForm,
-        currentUser: this.props.currentUser,
-        logout: this.props.logout
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "biz-index-map"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BIG OL MAP")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "biz-index-container"
-      }, businessLis));
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-item-wrapper"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-pic"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "canal",
+            src: window.canal
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-info"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+            className: "static-rating-splash"
+          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
+        });
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          extraClass: this.props.extraClass,
+          submitForm: this.props.submitForm,
+          currentUser: this.props.currentUser,
+          logout: this.props.logout
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-map"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BIG OL MAP")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-container"
+        }, businessLis));
+      } else {
+        return null;
+      }
     }
   }]);
 
