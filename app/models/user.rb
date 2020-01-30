@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6}, allow_nil: true
   validates :zip_code, presence: true 
 
+  has_one_attached :profile_photo
 
   after_initialize :ensure_session_token
 
