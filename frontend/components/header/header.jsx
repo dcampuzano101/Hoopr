@@ -5,6 +5,13 @@ class Header extends React.Component {
       super(props);
       console.log(props);
 
+
+      let { query } = ""; //notsure about this yet.
+      console.log(query)
+      this.state = { query };
+      this.updateSearch = this.updateSearch.bind(this);
+      this.handleSearch = this.handleSearch.bind(this);
+
       this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
 
@@ -18,13 +25,28 @@ class Header extends React.Component {
     let keys = Object.keys(obj);
     return obj[keys[keys.length * Math.random() << 0]];
   }
+
+  updateSearch(e) {
+    debugger;
+    e.preventDefault();
+    let query = e.currentTarget.value;
+    // this.setState({ query });
+    // this.props.history.push('/search' + query )
+  }
+
+  handleSearch(e) {
+    debugger;
+    let query = document.getElementById('search-field').value
+    console.log(query);
+    this.setState({ query });
+    
+    
+    (query) ? this.props.search(query) : query = "";
+    this.props.history.push('/search/' + query );
+    debugger;
+  }
   
   render(){
-    // const bizKeys = Object.keys(this.props.businesses);
-    // const b1 = this.props.businesses[bizKeys[0]];
-    // const b2 = this.props.businesses[bizKeys[1]];
-    // const b3 = this.props.businesses[bizKeys[2]];
-    // console.log(b1);
     const { currentUser, logout } = this.props;
 
     const display = () => {
@@ -59,19 +81,21 @@ class Header extends React.Component {
               <div className={"search-bar " + this.props.extraClass}>
                 <span id="static-search">Find</span>
                 <input
+                  id="search-field"
                   className={"search-field " + this.props.extraClass}
-                  type="search"
+                  type="text"
+                  value={this.state.query}
                   placeholder="basketball courts, parks.. "
                 />
                 <span id="divider">|</span>
                 <span id="static-search">Near</span>
                 <input
                   className={"search-field " + this.props.extraClass}
-                  type="search"
+                  type="text"
                   placeholder="Brooklyn, NY"
                 />
                 <div className="ball-container">
-                <button className={"search-btn " + this.props.extraClass}><img className="search-ball" src={window.ball} /></button>
+                <button className={"search-btn " + this.props.extraClass} onClick={this.handleSearch}><img className="search-ball" src={window.ball} /></button>
                 </div>
               </div>
             </div>
@@ -86,21 +110,9 @@ class Header extends React.Component {
             </div>
           </div>
         </header>
-       
-
-
-        {/* <footer className="footer-container home-page">
-          <Link to="#"><img className="fav-icon" src={window.cloud} /></Link>
-          <Link to="#"><img className="fav-icon" src={window.whistle} /></Link>
-        </footer> */}
       </div>
     );
   }
 }
 
 export default Header;
-
-//              <input
-// type = "submit"
-// className = "search-btn"
-//   />

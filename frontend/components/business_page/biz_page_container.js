@@ -12,8 +12,10 @@ const msp = (state, ownProps) => {
   // const bizId = ownProps.match.params.id;
   const business = state.entities.businesses[ownProps.match.params.id] || {};
   const reviewObj = state.entities.reviews;
+  let query = ownProps.match.params || {}
   // debugger;
     return ({
+    query,
     business,
     // businessId: ownProps.match.params.id,
     extraClass,
