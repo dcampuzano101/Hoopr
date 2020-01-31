@@ -446,6 +446,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -463,6 +464,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -502,49 +504,51 @@ function (_React$Component) {
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
-      if (!businesses) return null;
-      debugger;
-      var businessLis = Object.values(businesses).map(function (biz) {
-        var basketballs = [];
 
-        for (var i = 1; i <= 5; i++) {
-          var klass = 'ball-icon-header';
+      if (businesses) {
+        debugger;
+        var businessLis = Object.values(businesses).map(function (biz) {
+          var basketballs = [];
 
-          if (biz.rating >= i) {
-            klass += ' is-selected';
+          for (var i = 1; i <= 5; i++) {
+            var klass = 'ball-icon-header';
+
+            if (biz.rating >= i) {
+              klass += ' is-selected';
+            }
+
+            var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              key: i,
+              className: klass,
+              src: window.ballicon
+            });
+            basketballs.push(icon);
           }
 
-          var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            key: i,
-            className: klass,
-            src: window.ballicon
-          });
-          basketballs.push(icon);
-        }
-
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-item-wrapper"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-pic"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "canal",
-          src: window.canal
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-info"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "static-rating-splash"
-        }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        extraClass: this.props.extraClass,
-        submitForm: this.props.submitForm,
-        currentUser: this.props.currentUser,
-        logout: this.props.logout
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "biz-index-map"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BIG OL MAP")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "biz-index-container"
-      }, businessLis));
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-item-wrapper"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-pic"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "canal",
+            src: window.canal
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-info"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+            className: "static-rating-splash"
+          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
+        });
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          extraClass: this.props.extraClass,
+          submitForm: this.props.submitForm,
+          currentUser: this.props.currentUser,
+          logout: this.props.logout
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-container"
+        }, businessLis));
+      } else {
+        return null;
+      }
     }
   }]);
 
@@ -662,7 +666,7 @@ function (_React$Component) {
         var map = react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.findDOMNode(this.refs.map);
         var mapOptions = {
           center: this.props.center,
-          zoom: 18
+          zoom: this.props.zoom
         };
         this.map = new google.maps.Map(map, mapOptions);
       }
@@ -674,6 +678,7 @@ function (_React$Component) {
   }, {
     key: "addBizLocation",
     value: function addBizLocation(business) {
+      debugger;
       var lat = business.latitude;
       var lng = business.longitude;
       var position = new google.maps.LatLng({
@@ -688,11 +693,15 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "map-google",
-        className: "map-google",
-        ref: "map"
-      });
+      if (this.props.center) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "map-google",
+          className: "map-google",
+          ref: "map"
+        });
+      } else {
+        return null;
+      }
     }
   }]);
 
@@ -724,17 +733,40 @@ var msp = function msp(state, ownProps) {
   var biz = state.entities.businesses[ownProps.match.params.id];
   debugger;
   var center = {};
+  var zoom = 18; // if (ownProps.location.pathname === '/businesses') {
+  //     center = {
+  //         lat: 40.716437,
+  //         lng: -73.956658
+  //     }
+  //     zoom = 12;
+  // } else {
+  //     center = {
+  //         lat: Object.values(state.entities.businesses)[0].latitude,
+  //         lng: Object.values(state.entities.businesses)[0].longitude
+  //     }
+  //     zoom = 18;
+  // }
 
   if (Object.values(state.entities.businesses)[0]) {
-    center = {
-      lat: biz.latitude,
-      lng: biz.longitude
-    };
+    if (ownProps.location.pathname === '/businesses') {
+      center = {
+        lat: 40.716437,
+        lng: -73.956658
+      };
+      zoom = 12;
+    } else {
+      center = {
+        lat: Object.values(state.entities.businesses)[0].latitude,
+        lng: Object.values(state.entities.businesses)[0].longitude
+      };
+      zoom = 18;
+    }
   }
 
   return {
     businesses: state.entities.businesses,
-    center: center
+    center: center,
+    zoom: zoom
   };
 };
 

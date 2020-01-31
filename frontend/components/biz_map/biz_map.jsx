@@ -15,7 +15,7 @@ class BizMap extends React.Component {
             const map = ReactDOM.findDOMNode(this.refs.map);
             const mapOptions = {
                 center: this.props.center,
-                zoom: 18
+                zoom: this.props.zoom
             }
             this.map = new google.maps.Map(map, mapOptions);
         }
@@ -28,6 +28,7 @@ class BizMap extends React.Component {
     }
 
     addBizLocation(business){
+        debugger;
         const lat = business.latitude;
         const lng = business.longitude;
 
@@ -44,9 +45,13 @@ class BizMap extends React.Component {
     }
 
     render() {
-        return (
-            <div id="map-google" className="map-google" ref="map"></div>
-        )
+        if (this.props.center) {
+            return (
+                <div id="map-google" className="map-google" ref="map"></div>
+            )
+        } else {
+            return (null)
+        }
     }
 }
 
