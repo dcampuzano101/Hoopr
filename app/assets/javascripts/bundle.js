@@ -476,10 +476,15 @@ function (_React$Component) {
   _inherits(BizIndex, _React$Component);
 
   function BizIndex(props) {
+    var _this;
+
     _classCallCheck(this, BizIndex);
 
     console.log(props);
-    return _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props)); // this.moveTo = this.moveTo.bind(this);
+
+    _this.child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    return _this;
   }
 
   _createClass(BizIndex, [{
@@ -497,7 +502,15 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestBusinesses();
-    }
+    } // moveTo(lat, lng) {
+    //   let latLng = new google.maps.LatLng(lat, lng); 
+    //   this.map.panTo(latLng); 
+    // }
+    // onMouseOver(lat, lng){
+    //   debugger;
+    //   this.child.current.moveTo(lat, lng);
+    // };
+
   }, {
     key: "render",
     value: function render() {
@@ -543,7 +556,9 @@ function (_React$Component) {
           submitForm: this.props.submitForm,
           currentUser: this.props.currentUser,
           logout: this.props.logout
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          ref: this.child
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-container"
         }, businessLis));
       } else {
@@ -666,7 +681,13 @@ function (_React$Component) {
         var map = react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.findDOMNode(this.refs.map);
         var mapOptions = {
           center: this.props.center,
-          zoom: this.props.zoom
+          zoom: this.props.zoom,
+          streetViewControl: false,
+          fullscreenControl: false,
+          mapTypeControl: false,
+          scaleControl: true,
+          // mapTypeId: 'terrain',
+          scrollwheel: false
         };
         this.map = new google.maps.Map(map, mapOptions);
       }
@@ -674,6 +695,12 @@ function (_React$Component) {
       Object.values(this.props.businesses).forEach(function (business) {
         _this2.addBizLocation(business);
       });
+    }
+  }, {
+    key: "moveTo",
+    value: function moveTo(lat, lng) {
+      var latLng = new google.maps.LatLng(lat, lng);
+      this.map.panTo(latLng);
     }
   }, {
     key: "addBizLocation",
@@ -689,7 +716,10 @@ function (_React$Component) {
         position: position,
         map: this.map
       });
-    }
+    } // // panMap(lat, lng){
+    // //     this.map.panTo
+    // // }
+
   }, {
     key: "render",
     value: function render() {
@@ -726,26 +756,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
-
+ // function moveTo(lat, lng) {
+//     let latLng = new google.maps.LatLng(lat, lng); 
+//     this.map.panTo(latLng); 
+// }
 
 var msp = function msp(state, ownProps) {
   console.log(ownProps);
   var biz = state.entities.businesses[ownProps.match.params.id];
   debugger;
   var center = {};
-  var zoom = 18; // if (ownProps.location.pathname === '/businesses') {
-  //     center = {
-  //         lat: 40.716437,
-  //         lng: -73.956658
-  //     }
-  //     zoom = 12;
-  // } else {
-  //     center = {
-  //         lat: Object.values(state.entities.businesses)[0].latitude,
-  //         lng: Object.values(state.entities.businesses)[0].longitude
-  //     }
-  //     zoom = 18;
-  // }
+  var zoom = 18;
 
   if (Object.values(state.entities.businesses)[0]) {
     if (ownProps.location.pathname === '/businesses') {
@@ -768,7 +789,12 @@ var msp = function msp(state, ownProps) {
     center: center,
     zoom: zoom
   };
-};
+}; // const mdp = dispatch => {
+//     return({
+//         moveTo: (lat, lng) => dispatch(moveTo(lat, lng))
+//     });
+// }
+
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp)(_biz_map__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
@@ -3804,7 +3830,6 @@ __webpack_require__.r(__webpack_exports__);
 var searchRequest = function searchRequest() {
   var query = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   return $.ajax({
-    // type: RECEIVE_SEARCH,
     url: "api/search/".concat(query)
   });
 };

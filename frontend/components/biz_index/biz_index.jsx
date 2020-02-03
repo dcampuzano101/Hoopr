@@ -7,7 +7,8 @@ class BizIndex extends React.Component {
   constructor(props){
     console.log(props);
     super(props);
-    
+    // this.moveTo = this.moveTo.bind(this);
+    this.child = React.createRef();
   }
 
   handleDemoSubmit(user) {
@@ -24,6 +25,15 @@ class BizIndex extends React.Component {
   componentDidMount() {
     this.props.requestBusinesses();
   }
+  // moveTo(lat, lng) {
+  //   let latLng = new google.maps.LatLng(lat, lng); 
+  //   this.map.panTo(latLng); 
+  // }
+
+  // onMouseOver(lat, lng){
+  //   debugger;
+  //   this.child.current.moveTo(lat, lng);
+  // };
 
   render() {
     const { businesses, users } = this.props;
@@ -65,7 +75,7 @@ class BizIndex extends React.Component {
           <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
             logout={this.props.logout} />
           <div>
-            <BizMapContainer />
+            <BizMapContainer ref={this.child}/>
           </div>
           <div className="biz-index-container">
           
