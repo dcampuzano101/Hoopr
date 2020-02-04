@@ -15,7 +15,12 @@ class BizMap extends React.Component {
             const map = ReactDOM.findDOMNode(this.refs.map);
             const mapOptions = {
                 center: this.props.center,
-                zoom: this.props.zoom
+                zoom: this.props.zoom,
+                streetViewControl: false,
+                fullscreenControl: false,
+                mapTypeControl: false,
+                scaleControl: true,
+                scrollwheel: false
             }
             this.map = new google.maps.Map(map, mapOptions);
         }

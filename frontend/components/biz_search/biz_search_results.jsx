@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../header/header';
 import { Link } from 'react-router-dom';
+import BizMapContainer from '../biz_map/biz_map_container';
 
 class BizSearch extends React.Component {
   constructor(props){
@@ -92,8 +93,8 @@ class BizSearch extends React.Component {
         <div>
           <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
             logout={this.props.logout} />
-          <div className="biz-index-map">
-            <p>BIG OL MAP</p>
+          <div>
+            <BizMapContainer />
           </div>
           <div className="biz-index-container">
           

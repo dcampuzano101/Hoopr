@@ -572,6 +572,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _biz_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./biz_index */ "./frontend/components/biz_index/biz_index.jsx");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
+
 
 
 
@@ -598,6 +600,9 @@ var mdp = function mdp(dispatch) {
     },
     requestBusinesses: function requestBusinesses() {
       return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["requestBusinesses"])());
+    },
+    search: function search(query) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["search"])(query));
     }
   };
 };
@@ -666,7 +671,12 @@ function (_React$Component) {
         var map = react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.findDOMNode(this.refs.map);
         var mapOptions = {
           center: this.props.center,
-          zoom: this.props.zoom
+          zoom: this.props.zoom,
+          streetViewControl: false,
+          fullscreenControl: false,
+          mapTypeControl: false,
+          scaleControl: true,
+          scrollwheel: false
         };
         this.map = new google.maps.Map(map, mapOptions);
       }
@@ -748,7 +758,7 @@ var msp = function msp(state, ownProps) {
   // }
 
   if (Object.values(state.entities.businesses)[0]) {
-    if (ownProps.location.pathname === '/businesses') {
+    if (ownProps.location.pathname === '/businesses' || Object.values(state.entities.businesses).length > 0) {
       center = {
         lat: 40.716437,
         lng: -73.956658
@@ -787,6 +797,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -804,6 +815,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -919,9 +931,7 @@ function (_React$Component) {
           submitForm: this.props.submitForm,
           currentUser: this.props.currentUser,
           logout: this.props.logout
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-map"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "BIG OL MAP")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-container"
         }, businessLis));
       } else {
@@ -1354,6 +1364,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
 /* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
+
 
 
 
@@ -1410,6 +1422,9 @@ var mdp = function mdp(dispatch) {
     }),
     deleteReview: function deleteReview(reviewId, businessId) {
       return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_5__["deleteReview"])(reviewId, businessId));
+    },
+    search: function search(query) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_7__["search"])(query));
     }
   };
 };

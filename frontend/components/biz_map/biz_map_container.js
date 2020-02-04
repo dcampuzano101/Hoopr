@@ -26,7 +26,7 @@ const msp = (state, ownProps) => {
     // }
 
     if (Object.values(state.entities.businesses)[0]) {
-        if (ownProps.location.pathname === '/businesses') {
+        if (( ownProps.location.pathname === '/businesses' ) || ( Object.values(state.entities.businesses).length > 0 )) {
             center = {
                 lat: 40.716437,
                 lng: -73.956658

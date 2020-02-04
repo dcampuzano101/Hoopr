@@ -5,6 +5,8 @@ import BizPage from './biz_page';
 import { openModal } from '../../actions/modal_actions';
 import { deleteReview } from '../../actions/review_actions';
 import { selectReviewsForBiz } from '../../reducers/selectors';
+import { search } from '../../actions/search_actions';
+
 
 const msp = (state, ownProps) => {
   const extraClass = "biz-page";
@@ -32,7 +34,8 @@ const mdp = dispatch => {
     submitForm: user => dispatch(login(user)),
     openModal: (modal, props) => dispatch(openModal(modal, props)),
     requestBusinesses: () => dispatch(requestBusinesses()),
-    deleteReview: (reviewId, businessId) => dispatch(deleteReview(reviewId, businessId))
+    deleteReview: (reviewId, businessId) => dispatch(deleteReview(reviewId, businessId)),
+    search: query => dispatch(search(query))
   });
 };
 
