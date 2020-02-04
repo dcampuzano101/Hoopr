@@ -6,21 +6,31 @@ class SignupForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleFile = this.handleFile.bind(this);
     this.state = {
       first_name: "",
       last_name: "",
       password: "",
       email: "",
       zip_code: "",
-      sessErrors: "session-errors"
+      sessErrors: "session-errors",
+      photoFile: null
     };
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.submitForm(user);
-    this.handleClick = this.handleClick.bind(this);
+    const user = Object.assign({}, this.state); 
+    const formData = new FormData();
+    formData.append('user[first_name]', this.state.first_name)
+    formData.append('user[last_name]', this.state.last_name)
+    formData.append('user[email]', this.state.email)
+    formData.append('user[zip_code]', this.state.zip_code)
+    formData.append('user[password]', this.state.password)
+    formData.append('user[profile_photo]', this.state.photoFile)
+
+    debugger;
+    this.props.submitForm(formData);
   }
 
   update(field) {
@@ -40,6 +50,18 @@ class SignupForm extends React.Component {
     }
   }
 
+  handleFile(e) {
+    debugger;
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({photoFile: file, photoUrl: fileReader.result});
+    };
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
+
   handleClick(e) {
     e.preventDefault();
     this.props.clearErrors();
@@ -47,6 +69,7 @@ class SignupForm extends React.Component {
 
   render() {
     const { formType, errors } = this.props;
+    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
     return (
       <>
         <header id="signin-header">
@@ -114,6 +137,12 @@ class SignupForm extends React.Component {
                   onChange={this.update("zip_code")}
                   className="plain-input"
                 />
+                <input 
+                  type="file"
+                  onChange={this.handleFile}
+                />
+                <h3>profile photo preview</h3>
+                {preview}
               </label>
               <button id="signup">Sign Up</button>
               <div className="plain-text">Already on Hoopr? <Link to="/login">Log in</Link></div>

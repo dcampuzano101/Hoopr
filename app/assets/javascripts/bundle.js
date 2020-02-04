@@ -2667,13 +2667,15 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SignupForm).call(this, props));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     _this.state = {
       first_name: "",
       last_name: "",
       password: "",
       email: "",
       zip_code: "",
-      sessErrors: "session-errors"
+      sessErrors: "session-errors",
+      photoFile: null
     };
     return _this;
   }
@@ -2683,8 +2685,15 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.submitForm(user);
-      this.handleClick = this.handleClick.bind(this);
+      var formData = new FormData();
+      formData.append('user[first_name]', this.state.first_name);
+      formData.append('user[last_name]', this.state.last_name);
+      formData.append('user[email]', this.state.email);
+      formData.append('user[zip_code]', this.state.zip_code);
+      formData.append('user[password]', this.state.password);
+      formData.append('user[profile_photo]', this.state.photoFile);
+      debugger;
+      this.props.submitForm(formData);
     }
   }, {
     key: "update",
@@ -2711,6 +2720,26 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      var _this3 = this;
+
+      debugger;
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        _this3.setState({
+          photoFile: file,
+          photoUrl: fileReader.result
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    }
+  }, {
     key: "handleClick",
     value: function handleClick(e) {
       e.preventDefault();
@@ -2722,6 +2751,9 @@ function (_React$Component) {
       var _this$props = this.props,
           formType = _this$props.formType,
           errors = _this$props.errors;
+      var preview = this.state.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.photoUrl
+      }) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         id: "signin-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -2781,7 +2813,10 @@ function (_React$Component) {
         value: this.state.zip_code,
         onChange: this.update("zip_code"),
         className: "plain-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: this.handleFile
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "profile photo preview"), preview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "signup"
       }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "plain-text"
@@ -3887,13 +3922,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 //signup(user) login(user) logout()
-var signup = function signup(user) {
+var signup = function signup(formData) {
   return $.ajax({
     method: "POST",
     url: "api/users",
-    data: {
-      user: user
-    }
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 var login = function login(user) {
