@@ -476,10 +476,15 @@ function (_React$Component) {
   _inherits(BizIndex, _React$Component);
 
   function BizIndex(props) {
+    var _this;
+
     _classCallCheck(this, BizIndex);
 
     console.log(props);
-    return _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props)); // this.moveTo = this.moveTo.bind(this);
+
+    _this.child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    return _this;
   }
 
   _createClass(BizIndex, [{
@@ -497,7 +502,15 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestBusinesses();
-    }
+    } // moveTo(lat, lng) {
+    //   let latLng = new google.maps.LatLng(lat, lng); 
+    //   this.map.panTo(latLng); 
+    // }
+    // onMouseOver(lat, lng){
+    //   debugger;
+    //   this.child.current.moveTo(lat, lng);
+    // };
+
   }, {
     key: "render",
     value: function render() {
@@ -543,7 +556,9 @@ function (_React$Component) {
           submitForm: this.props.submitForm,
           currentUser: this.props.currentUser,
           logout: this.props.logout
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          ref: this.child
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-container"
         }, businessLis));
       } else {
@@ -616,109 +631,9 @@ var mdp = function mdp(dispatch) {
   !*** ./frontend/components/biz_map/biz_map.jsx ***!
   \*************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-var BizMap =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(BizMap, _React$Component);
-
-  function BizMap(props) {
-    var _this;
-
-    _classCallCheck(this, BizMap);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizMap).call(this, props));
-    _this.addBizLocation = _this.addBizLocation.bind(_assertThisInitialized(_this));
-    console.log(props);
-    debugger;
-    return _this;
-  }
-
-  _createClass(BizMap, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      if (this.props.center) {
-        var map = react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.findDOMNode(this.refs.map);
-        var mapOptions = {
-          center: this.props.center,
-          zoom: this.props.zoom,
-          streetViewControl: false,
-          fullscreenControl: false,
-          mapTypeControl: false,
-          scaleControl: true,
-          scrollwheel: false
-        };
-        this.map = new google.maps.Map(map, mapOptions);
-      }
-
-      Object.values(this.props.businesses).forEach(function (business) {
-        _this2.addBizLocation(business);
-      });
-    }
-  }, {
-    key: "addBizLocation",
-    value: function addBizLocation(business) {
-      debugger;
-      var lat = business.latitude;
-      var lng = business.longitude;
-      var position = new google.maps.LatLng({
-        lat: lat,
-        lng: lng
-      });
-      var marker = new google.maps.Marker({
-        position: position,
-        map: this.map
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      if (this.props.center) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          id: "map-google",
-          className: "map-google",
-          ref: "map"
-        });
-      } else {
-        return null;
-      }
-    }
-  }]);
-
-  return BizMap;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (BizMap);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/dcampuzano/Documents/Hoopr/frontend/components/biz_map/biz_map.jsx: Unexpected token (23:0)\n\n\u001b[0m \u001b[90m 21 | \u001b[39m                mapTypeControl\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 22 | \u001b[39m                scaleControl\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 24 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 | \u001b[39m                \u001b[90m// mapTypeId: 'terrain',\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 26 | \u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>\u001b[39m cd779b916c22c159d5561fa75958955d66cd2250\u001b[0m\n    at Object.raise (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:6983:17)\n    at Object.unexpected (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:8376:16)\n    at Object.parseIdentifierName (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10337:18)\n    at Object.parseIdentifier (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10315:23)\n    at Object.parseMaybePrivateName (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9659:19)\n    at Object.parsePropertyName (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10127:98)\n    at Object.parseObjectMember (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10028:10)\n    at Object.parseObj (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9958:25)\n    at Object.parseExprAtom (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9580:28)\n    at Object.parseExprAtom (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:4097:20)\n    at Object.parseExprSubscripts (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9213:23)\n    at Object.parseMaybeUnary (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9193:21)\n    at Object.parseExprOps (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9059:23)\n    at Object.parseMaybeConditional (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9032:23)\n    at Object.parseMaybeAssign (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:8978:21)\n    at Object.parseVar (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11317:26)\n    at Object.parseVarStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11136:10)\n    at Object.parseStatementContent (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10733:21)\n    at Object.parseStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10666:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11242:25)\n    at Object.parseBlockBody (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11229:10)\n    at Object.parseBlock (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11213:10)\n    at Object.parseStatementContent (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10742:21)\n    at Object.parseStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10666:17)\n    at Object.parseIfStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11020:28)\n    at Object.parseStatementContent (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10711:21)\n    at Object.parseStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10666:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11242:25)\n    at Object.parseBlockBody (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11229:10)\n    at Object.parseBlock (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11213:10)");
 
 /***/ }),
 
@@ -736,26 +651,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
-
+ // function moveTo(lat, lng) {
+//     let latLng = new google.maps.LatLng(lat, lng); 
+//     this.map.panTo(latLng); 
+// }
 
 var msp = function msp(state, ownProps) {
   console.log(ownProps);
   var biz = state.entities.businesses[ownProps.match.params.id];
   debugger;
   var center = {};
-  var zoom = 18; // if (ownProps.location.pathname === '/businesses') {
-  //     center = {
-  //         lat: 40.716437,
-  //         lng: -73.956658
-  //     }
-  //     zoom = 12;
-  // } else {
-  //     center = {
-  //         lat: Object.values(state.entities.businesses)[0].latitude,
-  //         lng: Object.values(state.entities.businesses)[0].longitude
-  //     }
-  //     zoom = 18;
-  // }
+  var zoom = 18;
 
   if (Object.values(state.entities.businesses)[0]) {
     if (ownProps.location.pathname === '/businesses' || Object.values(state.entities.businesses).length > 0) {
@@ -778,7 +684,12 @@ var msp = function msp(state, ownProps) {
     center: center,
     zoom: zoom
   };
-};
+}; // const mdp = dispatch => {
+//     return({
+//         moveTo: (lat, lng) => dispatch(moveTo(lat, lng))
+//     });
+// }
+
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp)(_biz_map__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
@@ -3819,7 +3730,6 @@ __webpack_require__.r(__webpack_exports__);
 var searchRequest = function searchRequest() {
   var query = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   return $.ajax({
-    // type: RECEIVE_SEARCH,
     url: "api/search/".concat(query)
   });
 };

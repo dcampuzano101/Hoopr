@@ -20,6 +20,10 @@ class BizMap extends React.Component {
                 fullscreenControl: false,
                 mapTypeControl: false,
                 scaleControl: true,
+<<<<<<< HEAD
+=======
+                // mapTypeId: 'terrain',
+>>>>>>> cd779b916c22c159d5561fa75958955d66cd2250
                 scrollwheel: false
             }
             this.map = new google.maps.Map(map, mapOptions);
@@ -30,6 +34,11 @@ class BizMap extends React.Component {
         Object.values(this.props.businesses).forEach( business => {
             this.addBizLocation(business)
         })
+    }
+
+    moveTo(lat, lng) {
+        let latLng = new google.maps.LatLng(lat, lng); 
+        this.map.panTo(latLng); 
     }
 
     addBizLocation(business){
@@ -46,8 +55,12 @@ class BizMap extends React.Component {
             position: position,
             map: this.map
         });
-
     }
+
+    // // panMap(lat, lng){
+    // //     this.map.panTo
+    // // }
+
 
     render() {
         if (this.props.center) {
