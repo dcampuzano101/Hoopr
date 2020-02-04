@@ -6,7 +6,6 @@ const defaultState = Object.freeze({
 })
 
 const searchReducer = (state = defaultState, action) => {
-    // debugger;
     switch(action.type) {
         case RECEIVE_SEARCH:
             return Object.assign({}, state, action.payload.searchResult);

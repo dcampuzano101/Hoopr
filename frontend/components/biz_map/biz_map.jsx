@@ -11,6 +11,28 @@ class BizMap extends React.Component {
     }
 
     componentDidMount() {
+        // if (this.props.center) {
+        //     const map = ReactDOM.findDOMNode(this.refs.map);
+        //     const mapOptions = {
+        //         center: this.props.center,
+        //         zoom: this.props.zoom,
+        //         streetViewControl: false,
+        //         fullscreenControl: false,
+        //         mapTypeControl: false,
+        //         scaleControl: true,
+        //         scrollwheel: false
+        //     }
+        //     this.map = new google.maps.Map(map, mapOptions);
+        // }
+
+        
+
+        // Object.values(this.props.businesses).forEach( business => {
+        //     this.addBizLocation(business)
+        // })
+    }
+
+    componentDidUpdate(prevProps) {
         if (this.props.center) {
             const map = ReactDOM.findDOMNode(this.refs.map);
             const mapOptions = {
@@ -20,10 +42,6 @@ class BizMap extends React.Component {
                 fullscreenControl: false,
                 mapTypeControl: false,
                 scaleControl: true,
-<<<<<<< HEAD
-=======
-                // mapTypeId: 'terrain',
->>>>>>> cd779b916c22c159d5561fa75958955d66cd2250
                 scrollwheel: false
             }
             this.map = new google.maps.Map(map, mapOptions);

@@ -17,13 +17,8 @@ const bizReducer = (oldState = {}, action) => {
       const newReviewIds = newState[action.payload.business.id].reviewIds.filter((id) => id !== action.payload.review.id);
       newState[action.payload.business.id].reviewIds = newReviewIds;
       return newState;
-
-    
-
     case RECEIVE_BUSINESSES:
-      
       return Object.assign({}, oldState, action.payload.businesses);
-  
     default:
       return oldState;
   }

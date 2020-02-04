@@ -9,8 +9,6 @@ const usersReducer = (oldState = {}, action) => {
     case RECEIVE_BUSINESSES:
     case RECEIVE_BUSINESS:
       return Object.assign({}, oldState, action.payload.users );
-    // case RECEIVE_REVIEW:
-    //   return Object.assign({}, oldState, { [action.payload.user.id]: action.payload.user });
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, oldState, { [action.currentUser.id]: action.currentUser});
 

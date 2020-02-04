@@ -631,9 +631,137 @@ var mdp = function mdp(dispatch) {
   !*** ./frontend/components/biz_map/biz_map.jsx ***!
   \*************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/dcampuzano/Documents/Hoopr/frontend/components/biz_map/biz_map.jsx: Unexpected token (23:0)\n\n\u001b[0m \u001b[90m 21 | \u001b[39m                mapTypeControl\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 22 | \u001b[39m                scaleControl\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 24 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 | \u001b[39m                \u001b[90m// mapTypeId: 'terrain',\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 26 | \u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>\u001b[39m cd779b916c22c159d5561fa75958955d66cd2250\u001b[0m\n    at Object.raise (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:6983:17)\n    at Object.unexpected (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:8376:16)\n    at Object.parseIdentifierName (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10337:18)\n    at Object.parseIdentifier (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10315:23)\n    at Object.parseMaybePrivateName (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9659:19)\n    at Object.parsePropertyName (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10127:98)\n    at Object.parseObjectMember (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10028:10)\n    at Object.parseObj (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9958:25)\n    at Object.parseExprAtom (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9580:28)\n    at Object.parseExprAtom (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:4097:20)\n    at Object.parseExprSubscripts (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9213:23)\n    at Object.parseMaybeUnary (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9193:21)\n    at Object.parseExprOps (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9059:23)\n    at Object.parseMaybeConditional (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:9032:23)\n    at Object.parseMaybeAssign (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:8978:21)\n    at Object.parseVar (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11317:26)\n    at Object.parseVarStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11136:10)\n    at Object.parseStatementContent (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10733:21)\n    at Object.parseStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10666:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11242:25)\n    at Object.parseBlockBody (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11229:10)\n    at Object.parseBlock (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11213:10)\n    at Object.parseStatementContent (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10742:21)\n    at Object.parseStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10666:17)\n    at Object.parseIfStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11020:28)\n    at Object.parseStatementContent (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10711:21)\n    at Object.parseStatement (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:10666:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11242:25)\n    at Object.parseBlockBody (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11229:10)\n    at Object.parseBlock (/Users/dcampuzano/Documents/Hoopr/node_modules/@babel/parser/lib/index.js:11213:10)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var BizMap =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BizMap, _React$Component);
+
+  function BizMap(props) {
+    var _this;
+
+    _classCallCheck(this, BizMap);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizMap).call(this, props));
+    _this.addBizLocation = _this.addBizLocation.bind(_assertThisInitialized(_this));
+    console.log(props);
+    debugger;
+    return _this;
+  }
+
+  _createClass(BizMap, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {// if (this.props.center) {
+      //     const map = ReactDOM.findDOMNode(this.refs.map);
+      //     const mapOptions = {
+      //         center: this.props.center,
+      //         zoom: this.props.zoom,
+      //         streetViewControl: false,
+      //         fullscreenControl: false,
+      //         mapTypeControl: false,
+      //         scaleControl: true,
+      //         scrollwheel: false
+      //     }
+      //     this.map = new google.maps.Map(map, mapOptions);
+      // }
+      // Object.values(this.props.businesses).forEach( business => {
+      //     this.addBizLocation(business)
+      // })
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var _this2 = this;
+
+      if (this.props.center) {
+        var map = react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.findDOMNode(this.refs.map);
+        var mapOptions = {
+          center: this.props.center,
+          zoom: this.props.zoom,
+          streetViewControl: false,
+          fullscreenControl: false,
+          mapTypeControl: false,
+          scaleControl: true,
+          scrollwheel: false
+        };
+        this.map = new google.maps.Map(map, mapOptions);
+      }
+
+      Object.values(this.props.businesses).forEach(function (business) {
+        _this2.addBizLocation(business);
+      });
+    }
+  }, {
+    key: "moveTo",
+    value: function moveTo(lat, lng) {
+      var latLng = new google.maps.LatLng(lat, lng);
+      this.map.panTo(latLng);
+    }
+  }, {
+    key: "addBizLocation",
+    value: function addBizLocation(business) {
+      debugger;
+      var lat = business.latitude;
+      var lng = business.longitude;
+      var position = new google.maps.LatLng({
+        lat: lat,
+        lng: lng
+      });
+      var marker = new google.maps.Marker({
+        position: position,
+        map: this.map
+      });
+    } // // panMap(lat, lng){
+    // //     this.map.panTo
+    // // }
+
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.props.center) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "map-google",
+          className: "map-google",
+          ref: "map"
+        });
+      } else {
+        return null;
+      }
+    }
+  }]);
+
+  return BizMap;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BizMap);
 
 /***/ }),
 
@@ -663,22 +791,35 @@ var msp = function msp(state, ownProps) {
   var center = {};
   var zoom = 18;
 
+  if (state.entities.search.businessIds.length === 1) {
+    biz = state.entities.businesses[state.entities.search.businessIds[0]];
+  }
+
   if (Object.values(state.entities.businesses)[0]) {
-    if (ownProps.location.pathname === '/businesses' || Object.values(state.entities.businesses).length > 0) {
+    if (ownProps.location.pathname === '/businesses' || state.entities.search.businessIds.length > 1) {
       center = {
         lat: 40.716437,
         lng: -73.956658
       };
       zoom = 12;
-    } else {
+    } else if (state.entities.search.businessIds.length === 1) {
+      biz = state.entities.businesses[state.entities.search.businessIds[0]];
       center = {
-        lat: Object.values(state.entities.businesses)[0].latitude,
-        lng: Object.values(state.entities.businesses)[0].longitude
+        lat: biz.latitude,
+        lng: biz.longitude
       };
       zoom = 18;
-    }
+    } // else {
+    //     center = {
+    //         lat: Object.values(state.entities.businesses)[0].latitude,
+    //         lng: Object.values(state.entities.businesses)[0].longitude
+    //     }
+    //     zoom = 18;
+    // }
+
   }
 
+  debugger;
   return {
     businesses: state.entities.businesses,
     center: center,
@@ -3274,8 +3415,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var reviewsReducer = function reviewsReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(oldState); // debugger;
-  // debugger;
+  Object.freeze(oldState);
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BUSINESSES"]:
@@ -3356,7 +3496,6 @@ var searchReducer = function searchReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
-  // debugger;
   switch (action.type) {
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SEARCH"]:
       return Object.assign({}, state, action.payload.searchResult);
@@ -3526,8 +3665,6 @@ var usersReducer = function usersReducer() {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_BUSINESSES"]:
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_BUSINESS"]:
       return Object.assign({}, oldState, action.payload.users);
-    // case RECEIVE_REVIEW:
-    //   return Object.assign({}, oldState, { [action.payload.user.id]: action.payload.user });
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, oldState, _defineProperty({}, action.currentUser.id, action.currentUser));

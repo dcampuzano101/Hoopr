@@ -4,9 +4,6 @@ import { RECEIVE_BUSINESS, RECEIVE_BUSINESSES } from '../actions/biz_actions';
 
 const reviewsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-
-  // debugger;
-  // debugger;
   switch (action.type) {
     case RECEIVE_BUSINESSES:
     case RECEIVE_BUSINESS:
