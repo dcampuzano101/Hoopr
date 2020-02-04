@@ -56,6 +56,7 @@ class BizSearch extends React.Component {
 
   render() {
     const { businesses, users } = this.props;
+    debugger;
     if (businesses) {
       debugger;
       let businessLis = Object.values(businesses).map(biz => {
