@@ -20,7 +20,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           query: {
-            presets: ['@babel/env', '@babel/react', '@babel/plugin-proposal-class-properties']
+            presets: ['@babel/env', '@babel/react'],
+            plugins: ["@babel/plugin-proposal-class-properties"]
           }
         },
       }
