@@ -1855,6 +1855,7 @@ function (_React$Component) {
         password: "splashbro"
       };
       this.props.submitForm(user);
+      this.forceUpdate();
     }
   }, {
     key: "randomBiz",
@@ -3633,6 +3634,7 @@ var _nullUser = Object.freeze({
 var sessionReducer = function sessionReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullUser;
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  debugger;
   Object.freeze(state);
 
   switch (action.type) {
@@ -3695,6 +3697,7 @@ var usersReducer = function usersReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
+  debugger;
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_BUSINESSES"]:
@@ -3703,6 +3706,7 @@ var usersReducer = function usersReducer() {
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, oldState, _defineProperty({}, action.currentUser.id, action.currentUser));
+    // return Object.assign({}, oldState, { [action.payload.id]: action.payload});
 
     default:
       return oldState;

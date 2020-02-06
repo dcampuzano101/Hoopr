@@ -19,6 +19,7 @@ class Header extends React.Component {
     e.preventDefault();
     const user = { email: "chefcurry@warriors.com", password: "splashbro" }
     this.props.submitForm(user);
+    this.forceUpdate();
   }
 
   randomBiz(obj) {
@@ -33,6 +34,8 @@ class Header extends React.Component {
     // this.setState({ query });
     // this.props.history.push('/search' + query )
   }
+
+
 
   handleSearch(e) {
     debugger;
