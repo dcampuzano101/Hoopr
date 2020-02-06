@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 json.extract! user, :id, :email, :first_name, :last_name, :profile_photo
 
 if user.profile_photo.attached?
@@ -16,3 +17,6 @@ end
 
 
 
+=======
+json.extract! user, :id, :email, :first_name, :last_name
+>>>>>>> parent of c48b130... sends pro_photo as JSON in jbuilder

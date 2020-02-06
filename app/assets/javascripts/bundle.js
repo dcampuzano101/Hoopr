@@ -943,7 +943,6 @@ function (_React$Component) {
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
-      debugger;
 
       if (businesses) {
         debugger;
