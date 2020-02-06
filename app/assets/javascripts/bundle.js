@@ -809,13 +809,14 @@ var msp = function msp(state, ownProps) {
         lng: biz.longitude
       };
       zoom = 18;
-    } else {
-      center = {
-        lat: biz.latitude,
-        lng: biz.longitude
-      };
-      zoom = 18;
-    }
+    } // else {
+    //     center = {
+    //         lat: Object.values(state.entities.businesses)[0].latitude,
+    //         lng: Object.values(state.entities.businesses)[0].longitude
+    //     }
+    //     zoom = 18;
+    // }
+
   }
 
   debugger;
