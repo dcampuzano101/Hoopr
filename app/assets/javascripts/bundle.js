@@ -920,8 +920,7 @@ function (_React$Component) {
     value: function updateSearch(e) {
       debugger;
       e.preventDefault();
-      var query = e.currentTarget.value; // this.setState({ query });
-      // this.props.history.push('/search' + query )
+      var query = e.currentTarget.value;
     }
   }, {
     key: "handleSearch",

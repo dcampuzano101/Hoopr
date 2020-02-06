@@ -37,8 +37,6 @@ class BizSearch extends React.Component {
     debugger;
     e.preventDefault();
     let query = e.currentTarget.value;
-    // this.setState({ query });
-    // this.props.history.push('/search' + query )
   }
 
   handleSearch(e) {
