@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../header/header';
-import { Link } from 'react-router-dom';
 import BizMapContainer from '../biz_map/biz_map_container';
 
 class BizSearch extends React.Component {
