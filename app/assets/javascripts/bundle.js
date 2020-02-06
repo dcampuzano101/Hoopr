@@ -809,13 +809,14 @@ var msp = function msp(state, ownProps) {
         lng: biz.longitude
       };
       zoom = 18;
-    } else {
-      center = {
-        lat: biz.latitude,
-        lng: biz.longitude
-      };
-      zoom = 18;
-    }
+    } // else {
+    //     center = {
+    //         lat: Object.values(state.entities.businesses)[0].latitude,
+    //         lng: Object.values(state.entities.businesses)[0].longitude
+    //     }
+    //     zoom = 18;
+    // }
+
   }
 
   debugger;
@@ -847,8 +848,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
+/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -866,7 +866,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -921,8 +920,7 @@ function (_React$Component) {
     value: function updateSearch(e) {
       debugger;
       e.preventDefault();
-      var query = e.currentTarget.value; // this.setState({ query });
-      // this.props.history.push('/search' + query )
+      var query = e.currentTarget.value;
     }
   }, {
     key: "handleSearch",
@@ -943,7 +941,6 @@ function (_React$Component) {
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
-      debugger;
 
       if (businesses) {
         debugger;
@@ -983,7 +980,7 @@ function (_React$Component) {
           submitForm: this.props.submitForm,
           currentUser: this.props.currentUser,
           logout: this.props.logout
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-container"
         }, businessLis));
       } else {
@@ -1855,6 +1852,7 @@ function (_React$Component) {
         password: "splashbro"
       };
       this.props.submitForm(user);
+      this.forceUpdate();
     }
   }, {
     key: "randomBiz",
@@ -3633,6 +3631,7 @@ var _nullUser = Object.freeze({
 var sessionReducer = function sessionReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullUser;
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  debugger;
   Object.freeze(state);
 
   switch (action.type) {
@@ -3695,6 +3694,7 @@ var usersReducer = function usersReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
+  debugger;
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_BUSINESSES"]:
@@ -3703,6 +3703,7 @@ var usersReducer = function usersReducer() {
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, oldState, _defineProperty({}, action.currentUser.id, action.currentUser));
+    // return Object.assign({}, oldState, { [action.payload.id]: action.payload});
 
     default:
       return oldState;

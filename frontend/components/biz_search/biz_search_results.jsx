@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../header/header';
-import { Link } from 'react-router-dom';
 import BizMapContainer from '../biz_map/biz_map_container';
 
 class BizSearch extends React.Component {
@@ -38,8 +37,6 @@ class BizSearch extends React.Component {
     debugger;
     e.preventDefault();
     let query = e.currentTarget.value;
-    // this.setState({ query });
-    // this.props.history.push('/search' + query )
   }
 
   handleSearch(e) {
@@ -56,7 +53,6 @@ class BizSearch extends React.Component {
 
   render() {
     const { businesses, users } = this.props;
-    debugger;
     if (businesses) {
       debugger;
       let businessLis = Object.values(businesses).map(biz => {
