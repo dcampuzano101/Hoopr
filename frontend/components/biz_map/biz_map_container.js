@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
     console.log(ownProps)
     let biz = state.entities.businesses[ownProps.match.params.id];
     debugger;
-    let center = {}
+    let center = {  }
     let zoom = 18
 
     if (state.entities.search.businessIds.length === 1) {
@@ -35,7 +35,10 @@ const msp = (state, ownProps) => {
             }
             zoom = 18;
         } 
-        else {
+    }
+    debugger
+    if (biz) {
+        if (biz.id.toString() === ownProps.match.params.id) {
             center = {
                 lat: biz.latitude,
                 lng: biz.longitude
