@@ -4,7 +4,7 @@ import { RECEIVE_REVIEW, REMOVE_REVIEW } from '../actions/review_actions';
 
 const bizReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-  
+  debugger;
   switch (action.type) {
     case RECEIVE_BUSINESS:
       return Object.assign({}, oldState, { [action.payload.business.id]: action.payload.business });

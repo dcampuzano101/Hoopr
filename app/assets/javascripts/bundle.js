@@ -809,14 +809,19 @@ var msp = function msp(state, ownProps) {
         lng: biz.longitude
       };
       zoom = 18;
-    } // else {
-    //     center = {
-    //         lat: Object.values(state.entities.businesses)[0].latitude,
-    //         lng: Object.values(state.entities.businesses)[0].longitude
-    //     }
-    //     zoom = 18;
-    // }
+    }
+  }
 
+  debugger;
+
+  if (biz) {
+    if (biz.id.toString() === ownProps.match.params.id) {
+      center = {
+        lat: biz.latitude,
+        lng: biz.longitude
+      };
+      zoom = 18;
+    }
   }
 
   debugger;
@@ -941,8 +946,9 @@ function (_React$Component) {
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
+      debugger;
 
-      if (businesses) {
+      if (businesses.length > 0) {
         debugger;
         var businessLis = Object.values(businesses).map(function (biz) {
           var basketballs = [];
@@ -3311,6 +3317,7 @@ var bizReducer = function bizReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
+  debugger;
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BUSINESS"]:
