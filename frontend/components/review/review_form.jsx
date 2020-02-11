@@ -12,7 +12,7 @@ class ReviewForm extends React.Component {
       business_id: currentBiz.id,
       body: "",
       user_id: currentUser.id,
-      rating: null,
+      rating: this.props.tempRating,
       temp_rating: this.props.tempRating
     };
     this.handleSubmit = this.handleSubmit.bind(this);

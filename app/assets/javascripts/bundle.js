@@ -2244,7 +2244,7 @@ function (_React$Component) {
       business_id: currentBiz.id,
       body: "",
       user_id: currentUser.id,
-      rating: null,
+      rating: _this.props.tempRating,
       temp_rating: _this.props.tempRating
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.ball_out = this.ball_out.bind(this);
