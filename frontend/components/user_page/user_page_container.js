@@ -15,7 +15,7 @@ const msp = (state, ownProps) => {
         // businessId: ownProps.match.params.id,
         extraClass,
         currentUser: state.entities.users[state.session.id],
-        reviews: selectReviewsForUser(user.reviewIds, reviewObj),
+        reviews: state.entities.reviews,
         users: state.entities.users
       });
 };

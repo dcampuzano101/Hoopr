@@ -3321,6 +3321,7 @@ function (_React$Component) {
     _classCallCheck(this, UserPage);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UserPage).call(this, props));
+    debugger;
     _this.state = {
       rating: null,
       temp_rating: null
@@ -3434,11 +3435,13 @@ function (_React$Component) {
       //   </nav>
       // );
 
-      if (user.id) {
+      debugger;
+
+      if (Object.values(reviews)) {
         var reviewLis;
 
-        if (reviews.length) {
-          reviewLis = reviews.map(function (review) {
+        if (Object.values(reviews).length) {
+          reviewLis = Object.values(reviews).map(function (review) {
             var updateLinks;
 
             if (_this5.props.currentUser) {
@@ -3504,6 +3507,7 @@ function (_React$Component) {
           });
         }
 
+        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
           extraClass: this.props.extraClass,
           submitForm: this.props.submitForm,
@@ -3511,7 +3515,7 @@ function (_React$Component) {
           logout: this.props.logout
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "show-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "HELLO REVIEWS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-items"
@@ -3562,7 +3566,7 @@ var msp = function msp(state, ownProps) {
     // businessId: ownProps.match.params.id,
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
-    reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectReviewsForUser"])(user.reviewIds, reviewObj),
+    reviews: state.entities.reviews,
     users: state.entities.users
   };
 };

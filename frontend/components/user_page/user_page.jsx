@@ -13,6 +13,7 @@ import Header from '../header/header';
 class UserPage extends React.Component {
   constructor(props){
     super(props);
+    debugger;
     this.state = {
       rating: null,
       temp_rating: null
@@ -99,11 +100,11 @@ class UserPage extends React.Component {
     //   </nav>
     // );
 
-
-    if (user.id) {
+    debugger;
+    if (Object.values(reviews)) {
       let reviewLis;
-      if (reviews.length) {
-        reviewLis = reviews.map(review =>{
+      if (Object.values(reviews).length) {
+        reviewLis = Object.values(reviews).map(review =>{
           let updateLinks;
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
@@ -151,6 +152,7 @@ class UserPage extends React.Component {
           )}
         )
       }
+      debugger;
       return (
         <div>
           {/* <Link id=""to="/"><img id="logo-biz-page" src={window.logo} /></Link> */}
@@ -221,6 +223,7 @@ class UserPage extends React.Component {
                 {sessionLinks()}
               </div>
             </div> */}
+            <h3>HELLO REVIEWS</h3>
             <div className="review-container">
               <div className="review-items">
                 <div className="profile-section">
