@@ -5,6 +5,13 @@
   display: flex;
   flex-direction: row-reverse;
 }
+.splash-header.user-page {
+  height: 75px;
+  background-image: none;
+  background: #D32222;
+  display: flex;
+  flex-direction: row-reverse;
+}
 .splash-header.biz-index {
   height: 75px;
   background-image: none;
@@ -20,6 +27,19 @@
 }
 
 .search.biz-page{
+  width:300px;
+  // margin: 0 auto;
+  // margin-top: 10px;
+  // display: grid;
+  // grid-template-columns: 10% 35% 10% 35% 10%;
+  // justify-self: center;
+  // width: 600px;
+  // margin: 0 auto;
+  // height: 20px;
+  margin-right: 50px;
+
+}
+.search.user-page{
   width:300px;
   // margin: 0 auto;
   // margin-top: 10px;
@@ -48,6 +68,11 @@
 }
 
 .search-field.biz-page{
+  width: 170px;
+  float: left;
+  // grid-column: 2/5;
+}
+.search-field.user-page{
   width: 170px;
   float: left;
   // grid-column: 2/5;
@@ -99,6 +124,10 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   background: #bd1f1f 
 }
+.log-in-btn.user-page:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background: #bd1f1f 
+}
 
 .log-in-btn.biz-index:hover {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -109,11 +138,39 @@
   display: none;
 }
 
+.nav-links.user-page{
+  display: none;
+}
+
 .nav-links.biz-index{
   display: none;
 }
 
 .log-in-btn.biz-page{
+  // font-size: 12px;
+  // border: 1px solid rgba(0, 0, 0, 0.2);
+  // bottom: 4px;
+  // margin-top: 20px; 
+  // position: relative;
+  // border-radius: 3px;
+
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid black;
+  border-radius: 8%;
+  margin:0 10px 5px 5px;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color:#FFFFFF;
+  text-align:center;
+  // transition: all .4s;
+  font-size: 12px;
+  // color: black;
+  // background: white;
+}
+.log-in-btn.user-page{
   // font-size: 12px;
   // border: 1px solid rgba(0, 0, 0, 0.2);
   // bottom: 4px;
@@ -168,6 +225,11 @@
   color: black;
   background: white;
 }
+.sign-up-btn.user-page{
+  font-size: 12px;
+  color: black;
+  background: white;
+}
 
 .sign-up-btn.biz-index{
   font-size: 12px;
@@ -179,6 +241,10 @@
     color: black;
     background-color:#FFFFFF;
 }
+.sign-up-btn.user-page:hover {
+  color: black;
+  background-color:#FFFFFF;
+}
 
 .sign-up-btn.biz-index:hover {
     color: black;
@@ -186,6 +252,9 @@
 }
 
 .demo-login-btn.biz-page{
+  font-size: 12px;
+}
+.demo-login-btn.user-page{
   font-size: 12px;
 }
 
@@ -196,12 +265,18 @@
 .search-btn.biz-page{
   background-color: #BD1F1E
 }
+.search-btn.user-page{
+  background-color: #BD1F1E
+}
 
 .search-btn.biz-index{
   background-color: #BD1F1E
 }
 
 .search-btn.biz-page:hover{
+  background-color: #A71B1C
+}
+.search-btn.user-page:hover{
   background-color: #A71B1C
 }
 
@@ -572,6 +647,12 @@ grid-column: 1/2;
   height: 75px;
   width: 75px;
 }
+.logo-user-page{
+  display: flex; 
+  position: absolute;
+  height: 75px;
+  width: 75px;
+}
 
 .logo-biz-index{
   display: flex; 
@@ -585,13 +666,24 @@ grid-column: 1/2;
   height: 75px;
   // position: absolute;
 }
+#logo-user-page {
+  width: 135px;
+  height: 75px;
+  // position: absolute;
+}
 
 
 #logo-biz-page {
   z-index: 10;
 }
+#logo-user-page {
+  z-index: 10;
+}
 
 .logo-header.biz-page{
+  display:none;
+}
+.logo-header.user-page{
   display:none;
 }
 .logo-header.biz-index{
