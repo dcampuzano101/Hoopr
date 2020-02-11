@@ -3321,6 +3321,7 @@ function (_React$Component) {
     _classCallCheck(this, UserPage);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UserPage).call(this, props));
+    console.log(props);
     debugger;
     _this.state = {
       rating: null,
@@ -3422,7 +3423,8 @@ function (_React$Component) {
           reviews = _this$props.reviews,
           users = _this$props.users,
           deleteReview = _this$props.deleteReview,
-          currentUser = _this$props.currentUser; // const sessionLinks = () => (
+          currentUser = _this$props.currentUser,
+          profilePhotoUrl = _this$props.profilePhotoUrl; // const sessionLinks = () => (
       //   <nav className="review-form">
       //     {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
       //     {authReview}
@@ -3494,7 +3496,7 @@ function (_React$Component) {
               className: "profile-info"
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[review.user_id].first_name, " ", users[review.user_id].last_name[0], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
               className: "yelp-profile",
-              src: window.pf
+              src: "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b7f20f9e3305df3219363d93fa9fa1f4f207d705/linked_pf.jpeg"
             })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               className: "rating-review"
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -3515,7 +3517,10 @@ function (_React$Component) {
           logout: this.props.logout
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "show-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "HELLO REVIEWS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: profilePhotoUrl,
+          alt: ""
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "HELLO REVIEWS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-items"
@@ -3560,6 +3565,8 @@ var msp = function msp(state, ownProps) {
   var user = state.entities.users[ownProps.match.params.id] || {};
   var reviewObj = state.entities.reviews;
   var query = ownProps.match.params || {};
+  var profilePhotoUrl = "";
+  debugger;
   return {
     query: query,
     user: user,
@@ -3567,7 +3574,8 @@ var msp = function msp(state, ownProps) {
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
     reviews: state.entities.reviews,
-    users: state.entities.users
+    users: state.entities.users,
+    profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
   };
 };
 

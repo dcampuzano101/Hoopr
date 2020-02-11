@@ -13,6 +13,7 @@ import Header from '../header/header';
 class UserPage extends React.Component {
   constructor(props){
     super(props);
+    console.log(props);
     debugger;
     this.state = {
       rating: null,
@@ -85,7 +86,7 @@ class UserPage extends React.Component {
       basketballStatic.push(icon);
     }
 
-    const { user, openModal, reviews, users, deleteReview, currentUser } = this.props;
+    const { user, openModal, reviews, users, deleteReview, currentUser, profilePhotoUrl } = this.props;
     // const sessionLinks = () => (
     //   <nav className="review-form">
     //     {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
@@ -139,7 +140,7 @@ class UserPage extends React.Component {
           <>
             <section className="profile-info">
               <h3>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}.</h3>
-              <img className="yelp-profile" src={window.pf} />
+              <img className="yelp-profile" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b7f20f9e3305df3219363d93fa9fa1f4f207d705/linked_pf.jpeg" />
             </section>
             <div className="rating-review">
               <section className="static-rating">{basketballs}</section>
@@ -223,6 +224,7 @@ class UserPage extends React.Component {
                 {sessionLinks()}
               </div>
             </div> */}
+            <img src={profilePhotoUrl} alt=""/>
             <h3>HELLO REVIEWS</h3>
             <div className="review-container">
               <div className="review-items">

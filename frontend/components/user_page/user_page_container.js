@@ -9,6 +9,8 @@ const msp = (state, ownProps) => {
     const user = state.entities.users[ownProps.match.params.id] || {};
     const reviewObj = state.entities.reviews;
     let query = ownProps.match.params || {};
+    let profilePhotoUrl = "";
+    debugger;
     return ({
         query,
         user,
@@ -16,7 +18,8 @@ const msp = (state, ownProps) => {
         extraClass,
         currentUser: state.entities.users[state.session.id],
         reviews: state.entities.reviews,
-        users: state.entities.users
+        users: state.entities.users,
+        profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
       });
 };
 
