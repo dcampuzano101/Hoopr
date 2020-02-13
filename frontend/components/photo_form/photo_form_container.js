@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
   
   return {
     requestBusiness: (businessId) => dispatch(requestBusiness(businessId)),
-    processForm: (photo) => dispatch(createPhoto(photo)),
+    processForm: (photo, businessId) => dispatch(createPhoto(photo, businessId)),
     otherForm: (
       <button onClick={() => dispatch(openModal('createPhoto'))}>
           Upload Photo

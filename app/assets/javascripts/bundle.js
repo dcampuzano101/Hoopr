@@ -2465,6 +2465,7 @@ function (_React$Component) {
           cols: "32"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "file",
+          name: "file",
           onChange: this.handleFile
         }), preview)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           className: "review-submit",
@@ -2524,8 +2525,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     requestBusiness: function requestBusiness(businessId) {
       return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_5__["requestBusiness"])(businessId));
     },
-    processForm: function processForm(photo) {
-      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["createPhoto"])(photo));
+    processForm: function processForm(photo, businessId) {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["createPhoto"])(photo, businessId));
     },
     otherForm: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
       onClick: function onClick() {

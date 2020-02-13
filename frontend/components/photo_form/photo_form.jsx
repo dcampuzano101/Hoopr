@@ -160,6 +160,7 @@ class PhotoForm extends React.Component {
                                 <label>
                                     <input 
                                         type="file"
+                                        name="file"
                                         onChange={this.handleFile}
                                     />
                                     {preview}
