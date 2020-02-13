@@ -4178,7 +4178,7 @@ var sessionReducer = function sessionReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return {
-        id: action.currentUser.id
+        id: action.payload.id
       };
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
@@ -4235,6 +4235,7 @@ var usersReducer = function usersReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
+  debugger;
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER"]:
@@ -4256,9 +4257,9 @@ var usersReducer = function usersReducer() {
       return Object.assign({}, oldState, action.payload.users);
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      debugger;
-      return Object.assign({}, oldState, _defineProperty({}, action.currentUser.id, action.currentUser));
-    // return Object.assign({}, oldState, { [action.payload.id]: action.payload});
+      debugger; // return Object.assign({}, oldState, { [action.currentUser.id]: action.currentUser});
+
+      return Object.assign({}, oldState, _defineProperty({}, action.payload.id, action.payload));
 
     default:
       return oldState;
