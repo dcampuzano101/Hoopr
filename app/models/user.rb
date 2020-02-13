@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_photo
 
+  has_many :photos
+
   after_initialize :ensure_session_token
 
   attr_reader :password

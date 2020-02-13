@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 // import LoginFormContainer from '../session_form/login_form_container';
 import ReviewFormContainer from '../review/review_form_container';
 import UpdateForm from '../update_form/update_form_container';
+import PhotoFormContainer from '../photo_form/photo_form_container';
 
 function Modal({ name, closeModal, props }) {
   console.log(name, props);
@@ -16,7 +17,9 @@ function Modal({ name, closeModal, props }) {
     case 'createReview':
       component = <ReviewFormContainer {...props} />;
       break;
-
+    case 'createPhoto':
+      component = <PhotoFormContainer {...props} />;
+      break;
     case 'updateReview':
       
       component = <UpdateForm {...props} />;

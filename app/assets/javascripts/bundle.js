@@ -216,11 +216,11 @@ var requestPhoto = function requestPhoto(photoId) {
   };
 }; /////REPLACE (MAYBE dispatch payload instead of photo)
 
-var createPhoto = function createPhoto(photo) {
+var createPhoto = function createPhoto(photo, businessId) {
   return function (dispatch) {
     debugger;
-    return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["createPhoto"](photo).then(function (review) {
-      return dispatch(receivePhoto(photo));
+    return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["createPhoto"](photo, businessId).then(function (photo, businessId) {
+      return dispatch(receivePhoto(photo, businessId));
     });
   };
 }; ///////REPLACE 
@@ -1294,14 +1294,19 @@ function (_React$Component) {
       var authReview; // console.log(currentUser);
 
       if (this.props.currentUser) {
-        authReview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        authReview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "rvw-btn biz-info",
           onClick: function onClick() {
             return openModal('createReview', {
               tempRating: _this5.state.temp_rating
             });
           }
-        }, "\u2605 Write a Review");
+        }, "\u2605 Write a Review"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "add-photo",
+          onClick: function onClick() {
+            return openModal('createPhoto');
+          }
+        }, " \uD83D\uDCF7 Add Photo"));
       } else {
         authReview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           className: "log-btn biz-info",
@@ -2183,10 +2188,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _review_review_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../review/review_form_container */ "./frontend/components/review/review_form_container.jsx");
 /* harmony import */ var _update_form_update_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../update_form/update_form_container */ "./frontend/components/update_form/update_form_container.js");
+/* harmony import */ var _photo_form_photo_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../photo_form/photo_form_container */ "./frontend/components/photo_form/photo_form_container.js");
 
 
 
  // import LoginFormContainer from '../session_form/login_form_container';
+
 
 
 
@@ -2206,6 +2213,10 @@ function Modal(_ref) {
   switch (name) {
     case 'createReview':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_review_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], props);
+      break;
+
+    case 'createPhoto':
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_photo_form_photo_form_container__WEBPACK_IMPORTED_MODULE_6__["default"], props);
       break;
 
     case 'updateReview':
@@ -2243,6 +2254,291 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(Modal)));
+
+/***/ }),
+
+/***/ "./frontend/components/photo_form/photo_form.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/photo_form/photo_form.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var PhotoForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(PhotoForm, _React$Component);
+
+  function PhotoForm(props) {
+    var _this;
+
+    _classCallCheck(this, PhotoForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PhotoForm).call(this, props));
+    debugger;
+    console.log(_this.props);
+    var _this$props = _this.props,
+        currentBiz = _this$props.currentBiz,
+        currentUser = _this$props.currentUser;
+    debugger;
+    _this.state = {
+      business_id: currentBiz.id,
+      description: "",
+      user_id: currentUser.id,
+      photoFile: null
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this)); // this.ball_out = this.ball_out.bind(this);
+    // this.ball_over = this.ball_over.bind(this);
+
+    return _this;
+  }
+
+  _createClass(PhotoForm, [{
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    } //   rate(numRating) {
+    //     return e => this.setState({
+    //       rating: numRating
+    //     });
+    //   }
+    //   ball_over(rating) {
+    //     return e => this.setState({
+    //       temp_rating: rating
+    //     });
+    //   }
+
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      var _this3 = this;
+
+      debugger;
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        _this3.setState({
+          photoFile: file,
+          photoUrl: fileReader.result
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var photo = Object.assign({}, this.state);
+      var formData = new FormData();
+      formData.append('photo[user_id]', this.state.user_id);
+      formData.append('photo[business_id]', this.state.business_id);
+      formData.append('photo[description]', this.state.description);
+      formData.append('photo[photo_file]', this.state.photoFile);
+      debugger;
+      this.props.processForm(formData, this.state.business_id).then(this.props.closeModal); // this.props.submitForm(formData);
+      // e.preventDefault();
+      // const photo = Object.assign({}, this.state);
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      //possibly have to render null first
+      this.props.requestBusiness(this.props.currentBiz.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      // const basketballs = [];
+      // for (let i = 1; i <= 5; i++) {
+      //   let klass = 'ball-icon';
+      //   if (this.state.temp_rating >= i && this.state.temp_rating != null) {
+      //       klass += ' is-selected';
+      //   }
+      //   const icon = 
+      //     <img 
+      //       className={klass}
+      //       src={window.ballicon}
+      //       onClick={this.rate(i)}
+      //       key={i}
+      //       onMouseOver={this.ball_over(i)}
+      //     />;
+      //   basketballs.push(icon);
+      // }
+      // const { currentBiz } = this.props;
+      // if (this.props)
+      // return(
+      //   <div>
+      //     <div className="review-form-container">
+      //       <Link to={`/businesses/${currentBiz.id}`}><h1>{currentBiz.name}</h1></Link>
+      //         <form onSubmit={this.handleSubmit}>
+      //         <section className="form-wrapper">
+      //           <div className="ball-rating modal">
+      //               {basketballs}
+      //           </div>
+      //           <label>
+      //             <textarea
+      //               placeholder="I decided to stop by the park. Perfect opportunity to sweat out last night's tacos and cerveza. The gang was all there shooting hoops. One of the best spots to play pick up in nyc. 4/5 Would come back."
+      //               // maxlength="5000"
+      //               value={this.state.body}
+      //               onChange={this.update('body')}
+      //               className="review-body"
+      //               rows="10"
+      //               cols="65">
+      //             </textarea>
+      //           </label>
+      //         </section>
+      //         <input className="review-submit" type="submit" value="Post Review" />
+      //         </form>
+      //     </div>
+      //   </div>
+      // );
+      var _this$props2 = this.props,
+          formType = _this$props2.formType,
+          currentBiz = _this$props2.currentBiz,
+          currentUser = _this$props2.currentUser;
+      var preview = this.state.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Photo Preview"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.photoUrl
+      })) : null;
+
+      if (this.props) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+          id: "signin-header"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "logo",
+          src: window.logo
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-form-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/businesses/".concat(currentBiz.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, currentBiz.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "form-wrapper"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+          placeholder: "Description of photo" // maxlength="5000"
+          ,
+          value: this.state.body,
+          onChange: this.update('description'),
+          className: "review-body",
+          rows: "5",
+          cols: "32"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "file",
+          onChange: this.handleFile
+        }), preview)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "review-submit",
+          type: "submit",
+          value: "Upload Photo"
+        })))));
+      } else {
+        return null;
+      }
+    }
+  }]);
+
+  return PhotoForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PhotoForm);
+
+/***/ }),
+
+/***/ "./frontend/components/photo_form/photo_form_container.js":
+/*!****************************************************************!*\
+  !*** ./frontend/components/photo_form/photo_form_container.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/photo_actions */ "./frontend/actions/photo_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _photo_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./photo_form */ "./frontend/components/photo_form/photo_form.jsx");
+/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
+  return {
+    // errors: errors.session,
+    formType: 'createPhoto',
+    currentUser: state.entities.users[state.session.id],
+    currentBiz: state.entities.businesses[ownProps.match.params.id]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    requestBusiness: function requestBusiness(businessId) {
+      return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_5__["requestBusiness"])(businessId));
+    },
+    processForm: function processForm(photo) {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["createPhoto"])(photo));
+    },
+    otherForm: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      onClick: function onClick() {
+        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])('createPhoto'));
+      }
+    }, "Upload Photo"),
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_photo_form__WEBPACK_IMPORTED_MODULE_4__["default"])));
 
 /***/ }),
 
@@ -2877,7 +3173,7 @@ function (_React$Component) {
         id: "clearerrors",
         onClick: this.handleClick,
         className: "this.state.sessErrors"
-      }, "YOOOO")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Hit the X to close")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-signin-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "signin-container"
@@ -3716,7 +4012,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_biz_actions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/biz_actions.js */ "./frontend/actions/biz_actions.js");
 /* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/review_actions */ "./frontend/actions/review_actions.js");
+/* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./actions/photo_actions */ "./frontend/actions/photo_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3764,6 +4062,8 @@ document.addEventListener("DOMContentLoaded", function () {
   window.updateReview = _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__["updateReview"];
   window.deleteReview = _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__["deleteReview"];
   window.requestReview = _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__["requestReview"];
+  window.createPhoto = _actions_photo_actions__WEBPACK_IMPORTED_MODULE_7__["createPhoto"];
+  window.deletePhoto = _actions_photo_actions__WEBPACK_IMPORTED_MODULE_7__["deletePhoto"];
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
@@ -4348,10 +4648,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhoto", function() { return fetchPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePhoto", function() { return deletePhoto; });
 //Review API Util
-var createPhoto = function createPhoto(formData) {
+var createPhoto = function createPhoto(formData, businessId) {
+  debugger;
   return $.ajax({
     method: "POST",
-    url: "api/businesses/".concat(formData.business.id, "/photos"),
+    url: "api/businesses/".concat(businessId, "/photos"),
     data: formData,
     contentType: false,
     processData: false

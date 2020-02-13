@@ -31,6 +31,8 @@ class Business < ApplicationRecord
     class_name: 'User'
 
   has_many :reviews
+
+  has_many :photos
   
 
 end

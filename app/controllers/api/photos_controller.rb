@@ -2,7 +2,7 @@ class Api::PhotosController < ApplicationController
     before_action :logged_in?
   
     def create
-      @photo = current_user.photos.new(review_params)
+      @photo = Photo.new(photo_params)
   
       if @photo.save
         #should i render the biz show page??
@@ -35,6 +35,6 @@ class Api::PhotosController < ApplicationController
     private
   
     def photo_params
-      params.require(:photo).permit(:business_id, :user_id, :description)
+      params.require(:photo).permit(:business_id, :user_id, :description, :photo_file)
     end
   end

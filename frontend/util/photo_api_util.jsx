@@ -1,9 +1,10 @@
 //Review API Util
 
-export const createPhoto = (formData) => {
+export const createPhoto = (formData, businessId) => {
+    debugger
     return $.ajax({
       method: "POST",
-      url: `api/businesses/${formData.business.id}/photos`,
+      url: `api/businesses/${businessId}/photos`,
       data: formData,
       contentType: false,
       processData: false

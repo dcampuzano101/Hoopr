@@ -63,7 +63,11 @@ class BizPage extends React.Component {
     let authReview;
     // console.log(currentUser);
     if (this.props.currentUser) {
-      authReview = <button className="rvw-btn biz-info" onClick={() => openModal('createReview', {tempRating: this.state.temp_rating})}>&#9733; Write a Review</button>
+      authReview =
+      <> 
+        <button className="rvw-btn biz-info" onClick={() => openModal('createReview', {tempRating: this.state.temp_rating})}>&#9733; Write a Review</button>
+        <button className="add-photo" onClick={() => openModal('createPhoto')}> &#128247; Add Photo</button>
+      </>
     } else {
       authReview = <Link className="log-btn biz-info" to="/login">&#9733; Write a Review</Link>
     }

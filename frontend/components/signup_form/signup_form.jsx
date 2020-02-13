@@ -80,7 +80,7 @@ class SignupForm extends React.Component {
             <li key={idx}>{error}</li>
 
           ))}
-          <button id="clearerrors" onClick={this.handleClick} className="this.state.sessErrors">YOOOO</button>
+          <button id="clearerrors" onClick={this.handleClick} className="this.state.sessErrors">Hit the X to close</button>
         </ul>
         <div className="main-signin-container">
           <section className="signin-container">

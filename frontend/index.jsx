@@ -5,6 +5,7 @@ import Root from './components/root';
 import { login, signup, logout } from './actions/session_actions';
 import { requestBusiness, requestBusinesses, createBusiness } from './actions/biz_actions.js';
 import { requestReview, createReview, updateReview, deleteReview } from './actions/review_actions';
+import { requestPhoto, createPhoto, deletePhoto } from './actions/photo_actions';
 
 let count = 0;
 
@@ -47,6 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.updateReview = updateReview;
   window.deleteReview = deleteReview;
   window.requestReview = requestReview;
+  window.createPhoto = createPhoto;
+  window.deletePhoto = deletePhoto;
 
   
   ReactDOM.render(<Root store={store} />, root);

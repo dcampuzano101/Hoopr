@@ -22,10 +22,10 @@ export const requestPhoto = (photoId) => dispatch => {
     .then((payload) => dispatch(receivePhoto(payload)));
 };
 /////REPLACE (MAYBE dispatch payload instead of photo)
-export const createPhoto = (photo) => dispatch => {
+export const createPhoto = (photo, businessId) => dispatch => {
   debugger;
-  return PhotoAPI.createPhoto(photo)
-    .then(review => dispatch(receivePhoto(photo)));
+  return PhotoAPI.createPhoto(photo, businessId)
+    .then((photo, businessId) => dispatch(receivePhoto(photo, businessId)));
 };
 ///////REPLACE 
 
