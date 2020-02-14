@@ -1,4 +1,4 @@
-//Review API Util
+//Photo API Util
 
 export const createPhoto = (formData, businessId) => {
     debugger

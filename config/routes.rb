@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     get '/search/:query', to: 'searches#search'
-    post '/businesses/:business_id/photos', to: 'businesses#uploadPhoto'
+    post '/businesses/:business_id/photos', to: 'photos#create'
 		resource :search, only: :show
 
     resources :businesses, only: [:create, :show, :index] do

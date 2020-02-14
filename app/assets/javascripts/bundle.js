@@ -2315,7 +2315,7 @@ function (_React$Component) {
       business_id: currentBiz.id,
       description: "",
       user_id: currentUser.id,
-      photoFile: null
+      photoFiles: []
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this)); // this.ball_out = this.ball_out.bind(this);
@@ -2342,26 +2342,23 @@ function (_React$Component) {
     //       temp_rating: rating
     //     });
     //   }
+    // this.setState({photoFile: file, photoUrl: fileReader.result});
 
   }, {
     key: "handleFile",
     value: function handleFile(e) {
-      var _this3 = this;
+      debugger;
+      e.preventDefault(); // const file = e.currentTarget.files[0];  
+      // const fileReader = new FileReader();
+      // fileReader.onloadend = () => {
 
       debugger;
-      var file = e.currentTarget.files[0];
-      var fileReader = new FileReader();
-
-      fileReader.onloadend = function () {
-        _this3.setState({
-          photoFile: file,
-          photoUrl: fileReader.result
-        });
-      };
-
-      if (file) {
-        fileReader.readAsDataURL(file);
-      }
+      this.setState({
+        photoFiles: Array.from(e.currentTarget.files)
+      }); // };
+      // if (file) {
+      //     fileReader.readAsDataURL(file);
+      // }
     }
   }, {
     key: "handleSubmit",
@@ -2371,8 +2368,11 @@ function (_React$Component) {
       var formData = new FormData();
       formData.append('photo[user_id]', this.state.user_id);
       formData.append('photo[business_id]', this.state.business_id);
-      formData.append('photo[description]', this.state.description);
-      formData.append('photo[photo_file]', this.state.photoFile);
+      formData.append('photo[description]', this.state.description); // formData.append('photo[photo_file]', this.state.photoFile)
+
+      this.state.photoFiles.forEach(function (file) {
+        formData.append('photo[images][]', file);
+      });
       debugger;
       this.props.processForm(formData, this.state.business_id).then(this.props.closeModal); // this.props.submitForm(formData);
       // e.preventDefault();
@@ -4648,7 +4648,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPhoto", function() { return createPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhoto", function() { return fetchPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePhoto", function() { return deletePhoto; });
-//Review API Util
+//Photo API Util
 var createPhoto = function createPhoto(formData, businessId) {
   debugger;
   return $.ajax({

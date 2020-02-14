@@ -6,9 +6,13 @@ class Api::PhotosController < ApplicationController
   
       if @photo.save
         #should i render the biz show page??
-        render :show
+        #render :show
+        render json: 'successful upload'
+
       else
+#        render json: @photo, status: :unprocessable_entity
         render json: @photo, status: :unprocessable_entity
+
       end
     end
   
@@ -35,6 +39,6 @@ class Api::PhotosController < ApplicationController
     private
   
     def photo_params
-      params.require(:photo).permit(:business_id, :user_id, :description, :photo_file)
+      params.require(:photo).permit(:business_id, :user_id, :description, :photo_file, images:[])
     end
   end
