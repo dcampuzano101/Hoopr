@@ -23,7 +23,7 @@ export const requestPhoto = (photoId) => dispatch => {
 };
 /////REPLACE (MAYBE dispatch payload instead of photo)
 export const createPhoto = (photo, businessId) => dispatch => {
-  debugger;
+  // debugger;
   return PhotoAPI.createPhoto(photo, businessId)
     .then((photo, businessId) => dispatch(receivePhoto(photo, businessId)));
 };

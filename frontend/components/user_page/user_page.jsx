@@ -28,12 +28,14 @@ class UserPage extends React.Component {
   componentDidUpdate(prevProps){
     if (this.props.match.params.id != prevProps.match.params.id) {
       this.props.requestUser(this.props.match.params.id);
+      this.props.requestUsers();
     }
   }
 
-  componentDidMount(){
-    this.props.requestUser(this.props.match.params.id);
-  }
+  // componentDidMount(){
+  //   this.props.requestUser(this.props.match.params.id);
+  //   this.props.requestUsers();
+  // }
 
   update(field) {
     return e => this.setState({

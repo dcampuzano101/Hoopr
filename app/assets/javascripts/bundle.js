@@ -160,7 +160,7 @@ __webpack_require__.r(__webpack_exports__);
 var CLOSE_MODAL = "CLOSE_MODAL";
 var OPEN_MODAL = "OPEN_MODAL";
 var closeModal = function closeModal() {
-  debugger;
+  // debugger;
   return {
     type: CLOSE_MODAL
   };
@@ -218,7 +218,7 @@ var requestPhoto = function requestPhoto(photoId) {
 
 var createPhoto = function createPhoto(photo, businessId) {
   return function (dispatch) {
-    debugger;
+    // debugger;
     return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["createPhoto"](photo, businessId).then(function (photo, businessId) {
       return dispatch(receivePhoto(photo, businessId));
     });
@@ -279,7 +279,7 @@ var requestReview = function requestReview(reviewId) {
 };
 var createReview = function createReview(review) {
   return function (dispatch) {
-    debugger;
+    // debugger;
     return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["createReview"](review).then(function (review) {
       return dispatch(receiveReview(review));
     });
@@ -622,7 +622,7 @@ function (_React$Component) {
           users = _this$props.users;
 
       if (businesses) {
-        debugger;
+        // debugger;
         var businessLis = Object.values(businesses).map(function (biz) {
           var basketballs = [];
 
@@ -775,8 +775,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizMap).call(this, props));
     _this.addBizLocation = _this.addBizLocation.bind(_assertThisInitialized(_this));
-    console.log(props);
-    debugger;
+    console.log(props); // debugger;
+
     return _this;
   }
 
@@ -831,7 +831,7 @@ function (_React$Component) {
   }, {
     key: "addBizLocation",
     value: function addBizLocation(business) {
-      debugger;
+      // debugger;
       var lat = business.latitude;
       var lng = business.longitude;
       var position = new google.maps.LatLng({
@@ -889,8 +889,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state, ownProps) {
   console.log(ownProps);
-  var biz = state.entities.businesses[ownProps.match.params.id];
-  debugger;
+  var biz = state.entities.businesses[ownProps.match.params.id]; // debugger;
+
   var center = {};
   var zoom = 18;
 
@@ -913,9 +913,8 @@ var msp = function msp(state, ownProps) {
       };
       zoom = 18;
     }
-  }
+  } // debugger
 
-  debugger;
 
   if (biz) {
     if (biz.id.toString() === ownProps.match.params.id) {
@@ -925,9 +924,9 @@ var msp = function msp(state, ownProps) {
       };
       zoom = 18;
     }
-  }
+  } // debugger;
 
-  debugger;
+
   return {
     businesses: state.entities.businesses,
     center: center,
@@ -1000,8 +999,8 @@ function (_React$Component) {
       query: query
     };
     _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
-    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
-    debugger;
+    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this)); // debugger;
+
     return _this;
   }
 
@@ -1026,33 +1025,31 @@ function (_React$Component) {
   }, {
     key: "updateSearch",
     value: function updateSearch(e) {
-      debugger;
+      // debugger;
       e.preventDefault();
       var query = e.currentTarget.value;
     }
   }, {
     key: "handleSearch",
     value: function handleSearch(e) {
-      debugger;
+      // debugger;
       var query = document.getElementById('search-field').value;
       console.log(query);
       this.setState({
         query: query
       });
       query ? this.props.search(query) : query = "";
-      this.props.history.push('/search/' + query);
-      debugger;
+      this.props.history.push('/search/' + query); // debugger;
     }
   }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           businesses = _this$props.businesses,
-          users = _this$props.users;
-      debugger;
+          users = _this$props.users; // debugger;
 
       if (businesses.length > 0) {
-        debugger;
+        // debugger;
         var businessLis = Object.values(businesses).map(function (biz) {
           var basketballs = [];
 
@@ -1130,7 +1127,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  debugger;
+  // debugger;
   var extraClass = "biz-index";
   var businesses = state.entities.businesses;
   var businessObj = state.entities.search.businessIds;
@@ -1355,6 +1352,7 @@ function (_React$Component) {
 
       if (business.id) {
         var reviewLis;
+        debugger;
 
         if (reviews.length) {
           reviewLis = reviews.map(function (review) {
@@ -1362,6 +1360,8 @@ function (_React$Component) {
 
             if (_this5.props.currentUser) {
               if (_this5.props.currentUser.id === review.user_id) {
+                debugger;
+
                 updateLinks = function updateLinks(review) {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
                     className: "review-form"
@@ -1381,45 +1381,47 @@ function (_React$Component) {
                     }
                   }, "\u2605 Delete Review"));
                 };
-              }
-            } else {
-              updateLinks = function updateLinks() {
-                return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-              };
-            }
+              } else {
+                debugger;
 
-            var basketballs = [];
-
-            for (var _i = 1; _i <= 5; _i++) {
-              var _klass = 'ball-icon-header';
-
-              if (review.rating >= _i) {
-                _klass += ' is-selected';
+                updateLinks = function updateLinks() {
+                  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+                };
               }
 
-              var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                key: _i,
-                className: _klass,
-                src: window.ballicon
-              });
+              var basketballs = [];
 
-              basketballs.push(_icon);
+              for (var _i = 1; _i <= 5; _i++) {
+                var _klass = 'ball-icon-header';
+
+                if (review.rating >= _i) {
+                  _klass += ' is-selected';
+                }
+
+                var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                  key: _i,
+                  className: _klass,
+                  src: window.ballicon
+                });
+
+                basketballs.push(_icon);
+              }
+
+              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+                className: "profile-info"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[review.user_id].first_name, " ", users[review.user_id].last_name[0], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                className: "yelp-profile",
+                src: window.pf
+              })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "rating-review"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+                className: "static-rating"
+              }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+                key: review.id
+              }, review.body)), updateLinks(review), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "hr-row"
+              }));
             }
-
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-              className: "profile-info"
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[review.user_id].first_name, " ", users[review.user_id].last_name[0], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-              className: "yelp-profile",
-              src: window.pf
-            })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              className: "rating-review"
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-              className: "static-rating"
-            }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-              key: review.id
-            }, review.body)), updateLinks(review), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              className: "hr-row"
-            }));
           });
         }
 
@@ -1977,7 +1979,7 @@ function (_React$Component) {
   }, {
     key: "updateSearch",
     value: function updateSearch(e) {
-      debugger;
+      // debugger;
       e.preventDefault();
       var query = e.currentTarget.value; // this.setState({ query });
       // this.props.history.push('/search' + query )
@@ -1985,15 +1987,14 @@ function (_React$Component) {
   }, {
     key: "handleSearch",
     value: function handleSearch(e) {
-      debugger;
+      // debugger;
       var query = document.getElementById('search-field').value;
       console.log(query);
       this.setState({
         query: query
       });
       query ? this.props.search(query) : query = "";
-      this.props.history.push('/search/' + query);
-      debugger;
+      this.props.history.push('/search/' + query); // debugger;
     }
   }, {
     key: "render",
@@ -3696,13 +3697,13 @@ function (_React$Component) {
     value: function componentDidUpdate(prevProps) {
       if (this.props.match.params.id != prevProps.match.params.id) {
         this.props.requestUser(this.props.match.params.id);
+        this.props.requestUsers();
       }
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.requestUser(this.props.match.params.id);
-    }
+    } // componentDidMount(){
+    //   this.props.requestUser(this.props.match.params.id);
+    //   this.props.requestUsers();
+    // }
+
   }, {
     key: "update",
     value: function update(field) {
@@ -3929,7 +3930,7 @@ var msp = function msp(state, ownProps) {
     // businessId: ownProps.match.params.id,
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
-    reviews: state.entities.reviews,
+    reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectReviewsForUser"])(reviewObj, state.entities.reviews),
     users: state.entities.users,
     profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
   };
@@ -4091,8 +4092,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var bizReducer = function bizReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(oldState);
-  debugger;
+  Object.freeze(oldState); // debugger;
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BUSINESS"]:
@@ -4233,7 +4233,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var photosReducer = function photosReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  debugger;
+  // debugger;
   Object.freeze(oldState);
 
   switch (action.type) {
@@ -4242,11 +4242,11 @@ var photosReducer = function photosReducer() {
       return Object.assign({}, oldState, action.payload.photos);
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTO"]:
-      debugger;
+      // debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.payload.photo.id, action.payload.photo));
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PHOTO"]:
-      debugger;
+      // debugger;
       var newState = Object.assign({}, oldState);
       delete newState[action.payload.photo.id];
       return newState;
@@ -4279,7 +4279,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var reviewsReducer = function reviewsReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  debugger;
+  // debugger;
   Object.freeze(oldState);
 
   switch (action.type) {
@@ -4288,11 +4288,11 @@ var reviewsReducer = function reviewsReducer() {
       return Object.assign({}, oldState, action.payload.reviews);
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
-      debugger;
+      // debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.payload.review.id, action.payload.review));
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_REVIEW"]:
-      debugger;
+      // debugger;
       var newState = Object.assign({}, oldState);
       delete newState[action.payload.review.id];
       return newState;
@@ -4389,8 +4389,8 @@ __webpack_require__.r(__webpack_exports__);
 var selectReviewsForBiz = function selectReviewsForBiz() {
   var review_ids = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var reviews = arguments.length > 1 ? arguments[1] : undefined;
-  var result = [];
-  debugger;
+  var result = []; // debugger;
+
   review_ids.forEach(function (id) {
     result.push(reviews[id]);
   });
@@ -4401,7 +4401,7 @@ var selectReviewsForUser = function selectReviewsForUser() {
   var reviews = arguments.length > 1 ? arguments[1] : undefined;
   var result = [];
   debugger;
-  review_ids.forEach(function (id) {
+  Object.keys(review_ids).forEach(function (id) {
     result.push(reviews[id]);
   });
   return result;
@@ -4535,8 +4535,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var usersReducer = function usersReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(oldState);
-  debugger;
+  Object.freeze(oldState); // debugger;
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER"]:
@@ -4558,8 +4557,8 @@ var usersReducer = function usersReducer() {
       return Object.assign({}, oldState, action.payload.users);
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      debugger; // return Object.assign({}, oldState, { [action.currentUser.id]: action.currentUser});
-
+      // debugger;
+      // return Object.assign({}, oldState, { [action.currentUser.id]: action.currentUser});
       return Object.assign({}, oldState, _defineProperty({}, action.payload.id, action.payload));
 
     default:
