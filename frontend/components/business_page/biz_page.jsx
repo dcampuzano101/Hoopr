@@ -13,7 +13,7 @@ import UpdateForm from '../update_form/update_form_container';
 class BizPage extends React.Component {
   constructor(props){
     super(props);
-    debugger;
+    ////debugger;
     this.state = {
       rating: null,
       temp_rating: null
@@ -59,7 +59,7 @@ class BizPage extends React.Component {
   }
 
   render(){
-    // debugger;
+    // ////debugger;
     let authReview;
     // console.log(currentUser);
     if (this.props.currentUser) {
@@ -107,13 +107,13 @@ class BizPage extends React.Component {
 
     if (business.id) {
       let reviewLis;
-      debugger;
+      //debugger;
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
           let updateLinks;
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
-              debugger;
+              //debugger;
               updateLinks = (review) => (
               <nav className="review-form">
                 <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
@@ -121,7 +121,7 @@ class BizPage extends React.Component {
               </nav>
               )
             } else {
-             debugger;
+             //debugger;
               updateLinks = () => (
               <div></div>
               )

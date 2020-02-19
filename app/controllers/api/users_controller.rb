@@ -21,7 +21,10 @@ class Api::UsersController < ApplicationController
     end
 
     def show  
+
       @user = User.with_attached_profile_photo.find(params[:id])
+      @reviews = @user.reviews
+
     end
 
     private

@@ -19,7 +19,7 @@ export const selectReviewsForUser = (review_ids = [], reviews) => {
 
 export const selectBusinessesForSearch = ( businessIds = [], businesses) => {
   let result = [];
-  debugger;
+  // debugger;
   businessIds.forEach(id => {
     result.push(businesses[id])
   });

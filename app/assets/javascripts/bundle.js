@@ -1218,8 +1218,8 @@ function (_React$Component) {
 
     _classCallCheck(this, BizPage);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizPage).call(this, props));
-    debugger;
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizPage).call(this, props)); ////debugger;
+
     _this.state = {
       rating: null,
       temp_rating: null
@@ -1287,7 +1287,7 @@ function (_React$Component) {
     value: function render() {
       var _this5 = this;
 
-      // debugger;
+      // ////debugger;
       var authReview; // console.log(currentUser);
 
       if (this.props.currentUser) {
@@ -1351,8 +1351,7 @@ function (_React$Component) {
 
 
       if (business.id) {
-        var reviewLis;
-        debugger;
+        var reviewLis; //debugger;
 
         if (reviews.length) {
           reviewLis = reviews.map(function (review) {
@@ -1360,8 +1359,7 @@ function (_React$Component) {
 
             if (_this5.props.currentUser) {
               if (_this5.props.currentUser.id === review.user_id) {
-                debugger;
-
+                //debugger;
                 updateLinks = function updateLinks(review) {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
                     className: "review-form"
@@ -1382,8 +1380,7 @@ function (_React$Component) {
                   }, "\u2605 Delete Review"));
                 };
               } else {
-                debugger;
-
+                //debugger;
                 updateLinks = function updateLinks() {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
                 };
@@ -1947,8 +1944,8 @@ function (_React$Component) {
     _classCallCheck(this, Header);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
-    console.log(props);
-    debugger;
+    console.log(props); //debugger;
+
     var _ref = "",
         query = _ref.query; //notsure about this yet.
 
@@ -2004,7 +2001,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      debugger;
+      // debugger;
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           logout = _this$props.logout;
@@ -4410,8 +4407,8 @@ var selectReviewsForUser = function selectReviewsForUser() {
 var selectBusinessesForSearch = function selectBusinessesForSearch() {
   var businessIds = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var businesses = arguments.length > 1 ? arguments[1] : undefined;
-  var result = [];
-  debugger;
+  var result = []; // debugger;
+
   businessIds.forEach(function (id) {
     result.push(businesses[id]);
   });
