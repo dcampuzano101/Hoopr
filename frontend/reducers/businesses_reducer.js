@@ -1,5 +1,6 @@
 import { RECEIVE_BUSINESS, RECEIVE_BUSINESSES } from '../actions/biz_actions';
 import { RECEIVE_REVIEW, REMOVE_REVIEW } from '../actions/review_actions';
+import { RECEIVE_USER, RECEIVE_USERS } from '../actions/session_actions'
 
 
 const bizReducer = (oldState = {}, action) => {
@@ -18,6 +19,10 @@ const bizReducer = (oldState = {}, action) => {
       newState[action.payload.business.id].reviewIds = newReviewIds;
       return newState;
     case RECEIVE_BUSINESSES:
+      return Object.assign({}, oldState, action.payload.businesses);
+    // case RECEIVE_USER:
+      // return Object.assign({}, oldState, { [action.payload.id]: action.payload });
+    case RECEIVE_USERS:
       return Object.assign({}, oldState, action.payload.businesses);
     default:
       return oldState;

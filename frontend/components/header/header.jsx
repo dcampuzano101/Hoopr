@@ -5,7 +5,7 @@ class Header extends React.Component {
       super(props);
       console.log(props);
 
-
+      debugger;
       let { query } = ""; //notsure about this yet.
       console.log(query)
       this.state = { query };
@@ -50,6 +50,7 @@ class Header extends React.Component {
   }
   
   render(){
+    debugger;
     const { currentUser, logout } = this.props;
 
     const display = () => {
@@ -66,7 +67,7 @@ class Header extends React.Component {
           <Link to="#"><img className="fav-icon" src={window.cloud} /></Link>
           <Link to="#"><img className="fav-icon" src={window.whistle} /></Link>
           <div className="profile-pic">
-            <img className="yelp-profile" src={window.pf} />
+            <img className="yelp-profile" src={currentUser.profilePhotoUrl} />
             <button className="nav-links" id="logout" onClick={logout}>Logout</button>
           </div>
         </div>

@@ -19,7 +19,8 @@ const msp = (state, ownProps) => {
         currentUser: state.entities.users[state.session.id],
         reviews: selectReviewsForUser(reviewObj, state.entities.reviews),
         users: state.entities.users,
-        profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
+        businesses: state.entities.businesses
+        // profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
       });
 };
 

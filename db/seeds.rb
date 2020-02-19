@@ -5,41 +5,62 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
+
 User.destroy_all
 Business.destroy_all
 Review.destroy_all
 
-user1 = User.create({ 
+user1 = User.create({
   email: 'kingjames@lakers.com',
   password: 'michaeljordan',
   first_name: 'Lebron',
   last_name: 'James',
   zip_code: 11211
-})
+  })
 
-user2 = User.create({ 
+file1 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/lebron_james_pf.png')
+
+user1.profile_photo.attach(io: file1, filename: 'lebron_james_pf.png')
+
+
+user2 = User.create({
   email: 'chefcurry@warriors.com',
   password: 'splashbro',
   first_name: 'Stephen',
   last_name: 'Curry',
   zip_code: 11237
-})
+  })
 
-user3 = User.create({ 
+file2 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/stephen_curry_pf.png')
+
+user2.profile_photo.attach(io: file2, filename: 'stepen_curry.png')
+
+user3 = User.create({
   email: 'killaklay@warriors.com',
   password: 'splashbro',
   first_name: 'Klay',
   last_name: 'Thompson',
   zip_code: 11207
-})
+  })
 
-user4 = User.create({ 
+file3 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/klay_thompson_pf.png')
+
+user3.profile_photo.attach(io: file3, filename: 'klay_thompson_pf.png')
+
+
+
+user4 = User.create({
   email: 'luka@mavs.com',
   password: 'eurostep',
   first_name: 'Luka',
   last_name: 'Doncic',
   zip_code: 11008
-})
+  })
+
+file4 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/luka_doncic_pf.png')
+
+user4.profile_photo.attach(io: file4, filename: 'luka_doncic_pf.png')
 
 
 

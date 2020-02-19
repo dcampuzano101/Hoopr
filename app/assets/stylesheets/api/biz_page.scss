@@ -542,14 +542,17 @@ grid-column: 1/2;
   color: #0073BB;
 }
 
+
 .rating-review {
   display: grid;
   grid-template-rows: 30% 70%;
 }
 
 .static-rating {
+  text-align: center;
   grid-row: 1/2;
-  padding-top: 15px;
+  // padding-top: 15px;
+  // padding-bottom: 15px;
 }
 
 .review-body {
@@ -567,6 +570,7 @@ grid-column: 1/2;
   display: grid;
   width: 98%;
   justify-self: center;
+  margin: 10px;
 
 }
 .hr-row-top{
@@ -628,6 +632,7 @@ grid-column: 1/2;
 }
 
 .review-form{
+  text-align: center;
   grid-column: 2/2;
   // display: none;
   // width: 130px;

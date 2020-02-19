@@ -1409,9 +1409,11 @@ function (_React$Component) {
 
               return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
                 className: "profile-info"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[review.user_id].first_name, " ", users[review.user_id].last_name[0], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+                to: "/users/".concat(review.user_id)
+              }, users[review.user_id].first_name, " ", users[review.user_id].last_name[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
                 className: "yelp-profile",
-                src: window.pf
+                src: users[review.user_id].profilePhotoUrl
               })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "rating-review"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -1946,6 +1948,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
     console.log(props);
+    debugger;
     var _ref = "",
         query = _ref.query; //notsure about this yet.
 
@@ -2001,6 +2004,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      debugger;
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           logout = _this$props.logout;
@@ -2038,7 +2042,7 @@ function (_React$Component) {
             className: "profile-pic"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "yelp-profile",
-            src: window.pf
+            src: currentUser.profilePhotoUrl
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             className: "nav-links",
             id: "logout",
@@ -3637,6 +3641,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -3658,8 +3663,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- // import { Link, Redirect } from 'react-router-dom';
-// import { login, logoutCurrentUser } from '../../actions/session_actions';
+
+ // import { login, logoutCurrentUser } from '../../actions/session_actions';
 // import { openModal } from '../../actions/modal_actions';
 // import BizMap from '../../components/biz_map/biz_map';
 // import BizMapContainer from '../biz_map/biz_map_container';
@@ -3697,13 +3702,13 @@ function (_React$Component) {
     value: function componentDidUpdate(prevProps) {
       if (this.props.match.params.id != prevProps.match.params.id) {
         this.props.requestUser(this.props.match.params.id);
-        this.props.requestUsers();
       }
-    } // componentDidMount(){
-    //   this.props.requestUser(this.props.match.params.id);
-    //   this.props.requestUsers();
-    // }
-
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.requestUser(this.props.match.params.id);
+    }
   }, {
     key: "update",
     value: function update(field) {
@@ -3747,14 +3752,6 @@ function (_React$Component) {
     value: function render() {
       var _this5 = this;
 
-      // debugger;
-      // let authReview;
-      // // console.log(currentUser);
-      // if (this.props.currentUser) {
-      //   authReview = <button className="rvw-btn biz-info" onClick={() => openModal('createReview', {tempRating: this.state.temp_rating})}>&#9733; Write a Review</button>
-      // } else {
-      //   authReview = <Link className="log-btn biz-info" to="/login">&#9733; Write a Review</Link>
-      // }
       var basketballStatic = [];
 
       for (var i = 1; i <= 5; i++) {
@@ -3775,25 +3772,14 @@ function (_React$Component) {
       }
 
       var _this$props = this.props,
+          businesses = _this$props.businesses,
           user = _this$props.user,
           openModal = _this$props.openModal,
           reviews = _this$props.reviews,
           users = _this$props.users,
           deleteReview = _this$props.deleteReview,
           currentUser = _this$props.currentUser,
-          profilePhotoUrl = _this$props.profilePhotoUrl; // const sessionLinks = () => (
-      //   <nav className="review-form">
-      //     {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
-      //     {authReview}
-      //   </nav>
-      // );
-      // const updateLinks = (review) => (
-      //   <nav className="review-form">
-      //     <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
-      //     <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
-      //   </nav>
-      // );
-
+          profilePhotoUrl = _this$props.profilePhotoUrl;
       debugger;
 
       if (Object.values(reviews)) {
@@ -3802,6 +3788,7 @@ function (_React$Component) {
         if (Object.values(reviews).length) {
           reviewLis = Object.values(reviews).map(function (review) {
             var updateLinks;
+            debugger;
 
             if (_this5.props.currentUser) {
               if (_this5.props.currentUser.id === review.user_id) {
@@ -3824,45 +3811,47 @@ function (_React$Component) {
                     }
                   }, "\u2605 Delete Review"));
                 };
-              }
-            } else {
-              updateLinks = function updateLinks() {
-                return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-              };
-            }
-
-            var basketballs = [];
-
-            for (var _i = 1; _i <= 5; _i++) {
-              var _klass = 'ball-icon-header';
-
-              if (review.rating >= _i) {
-                _klass += ' is-selected';
+              } else {
+                updateLinks = function updateLinks() {
+                  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+                };
               }
 
-              var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                key: _i,
-                className: _klass,
-                src: window.ballicon
-              });
+              var basketballs = [];
 
-              basketballs.push(_icon);
+              for (var _i = 1; _i <= 5; _i++) {
+                var _klass = 'ball-icon-header';
+
+                if (review.rating >= _i) {
+                  _klass += ' is-selected';
+                }
+
+                var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                  key: _i,
+                  className: _klass,
+                  src: window.ballicon
+                });
+
+                basketballs.push(_icon);
+              }
+
+              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+                className: "profile-info"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+                to: "/businesses/".concat(review.business_id)
+              }, businesses[review.business_id].name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[review.user_id].first_name, " ", users[review.user_id].last_name[0], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                className: "yelp-profile",
+                src: users[review.user_id].profilePhotoUrl
+              })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "rating-review"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+                className: "static-rating"
+              }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+                key: review.id
+              }, review.body)), updateLinks(review), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "hr-row"
+              }));
             }
-
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-              className: "profile-info"
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[review.user_id].first_name, " ", users[review.user_id].last_name[0], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-              className: "yelp-profile",
-              src: "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b7f20f9e3305df3219363d93fa9fa1f4f207d705/linked_pf.jpeg"
-            })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              className: "rating-review"
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-              className: "static-rating"
-            }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-              key: review.id
-            }, review.body)), updateLinks(review), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              className: "hr-row"
-            }));
           });
         }
 
@@ -3874,10 +3863,14 @@ function (_React$Component) {
           logout: this.props.logout
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "show-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "user-profile-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "user-picture"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: profilePhotoUrl,
-          alt: ""
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "HELLO REVIEWS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "yelp-profile",
+          src: user.profilePhotoUrl
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.last_name)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-items"
@@ -3932,7 +3925,8 @@ var msp = function msp(state, ownProps) {
     currentUser: state.entities.users[state.session.id],
     reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectReviewsForUser"])(reviewObj, state.entities.reviews),
     users: state.entities.users,
-    profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
+    businesses: state.entities.businesses // profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
+
   };
 };
 
@@ -4084,7 +4078,9 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/biz_actions */ "./frontend/actions/biz_actions.js");
 /* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/review_actions */ "./frontend/actions/review_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -4110,6 +4106,11 @@ var bizReducer = function bizReducer() {
       return newState;
 
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BUSINESSES"]:
+      return Object.assign({}, oldState, action.payload.businesses);
+    // case RECEIVE_USER:
+    // return Object.assign({}, oldState, { [action.payload.id]: action.payload });
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_USERS"]:
       return Object.assign({}, oldState, action.payload.businesses);
 
     default:
@@ -37315,7 +37316,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

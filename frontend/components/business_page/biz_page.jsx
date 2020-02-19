@@ -144,8 +144,8 @@ class BizPage extends React.Component {
           return (
           <>
             <section className="profile-info">
-              <h3>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}.</h3>
-              <img className="yelp-profile" src={window.pf} />
+              <h3><Link to={`/users/${review.user_id}`}>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}</Link></h3>
+              <img className="yelp-profile" src={users[review.user_id].profilePhotoUrl} />
             </section>
             <div className="rating-review">
               <section className="static-rating">{basketballs}</section>
