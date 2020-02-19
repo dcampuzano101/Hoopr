@@ -25,7 +25,10 @@ const usersReducer = (oldState = {}, action) => {
     case RECEIVE_BUSINESS:
       return Object.assign({}, oldState, action.payload.users );
     case RECEIVE_CURRENT_USER:
+<<<<<<< HEAD
       // debugger;
+=======
+>>>>>>> master
       // return Object.assign({}, oldState, { [action.currentUser.id]: action.currentUser});
       return Object.assign({}, oldState, { [action.payload.id]: action.payload});
 

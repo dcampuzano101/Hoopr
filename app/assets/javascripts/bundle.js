@@ -4557,7 +4557,10 @@ var usersReducer = function usersReducer() {
       return Object.assign({}, oldState, action.payload.users);
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+<<<<<<< HEAD
       // debugger;
+=======
+>>>>>>> master
       // return Object.assign({}, oldState, { [action.currentUser.id]: action.currentUser});
       return Object.assign({}, oldState, _defineProperty({}, action.payload.id, action.payload));
 
