@@ -38,7 +38,7 @@ class BizIndex extends React.Component {
   render() {
     const { businesses, users } = this.props;
     if (businesses) {
-      debugger;
+      // debugger;
       let businessLis = Object.values(businesses).map(biz => {
         const basketballs = [];
         for (let i = 1; i <= 5; i++) {

@@ -1,7 +1,7 @@
 reviews = []
 
 json.users do
-  @users.each do |users|
+  @users.each do |user|
       # json.set! business.id do
       # json.partial! 'business', business: business
       # json.reviewIds []

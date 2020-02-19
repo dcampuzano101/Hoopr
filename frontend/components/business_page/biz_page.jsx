@@ -63,7 +63,11 @@ class BizPage extends React.Component {
     let authReview;
     // console.log(currentUser);
     if (this.props.currentUser) {
-      authReview = <button className="rvw-btn biz-info" onClick={() => openModal('createReview', {tempRating: this.state.temp_rating})}>&#9733; Write a Review</button>
+      authReview =
+      <> 
+        <button className="rvw-btn biz-info" onClick={() => openModal('createReview', {tempRating: this.state.temp_rating})}>&#9733; Write a Review</button>
+        <button className="add-photo" onClick={() => openModal('createPhoto')}> &#128247; Add Photo</button>
+      </>
     } else {
       authReview = <Link className="log-btn biz-info" to="/login">&#9733; Write a Review</Link>
     }
@@ -103,19 +107,21 @@ class BizPage extends React.Component {
 
     if (business.id) {
       let reviewLis;
+      debugger;
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
           let updateLinks;
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
+              debugger;
               updateLinks = (review) => (
               <nav className="review-form">
                 <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
                 <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
               </nav>
               )
-            }
-           } else {
+            } else {
+             debugger;
               updateLinks = () => (
               <div></div>
               )
@@ -150,7 +156,7 @@ class BizPage extends React.Component {
             <div className="hr-row"></div>
           </>
           )}
-        )
+          })
       }
       return (
         <div>

@@ -1,6 +1,6 @@
 export const selectReviewsForBiz = (review_ids = [], reviews) => {
   let result = [];
-  debugger;
+  // debugger;
   review_ids.forEach(id => {
     result.push(reviews[id]);
   });
@@ -10,7 +10,7 @@ export const selectReviewsForBiz = (review_ids = [], reviews) => {
 export const selectReviewsForUser = (review_ids = [], reviews) => {
   let result = [];
   debugger;
-  review_ids.forEach(id => {
+  Object.keys(review_ids).forEach(id => {
     result.push(reviews[id]);
   });
   return result;

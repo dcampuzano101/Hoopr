@@ -9,14 +9,17 @@ const msp = (state, ownProps) => {
     const user = state.entities.users[ownProps.match.params.id] || {};
     const reviewObj = state.entities.reviews;
     let query = ownProps.match.params || {};
+    let profilePhotoUrl = "";
+    debugger;
     return ({
         query,
         user,
         // businessId: ownProps.match.params.id,
         extraClass,
         currentUser: state.entities.users[state.session.id],
-        reviews: selectReviewsForUser(user.reviewIds, reviewObj),
-        users: state.entities.users
+        reviews: selectReviewsForUser(reviewObj, state.entities.reviews),
+        users: state.entities.users,
+        profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
       });
 };
 

@@ -7,7 +7,7 @@ class BizMap extends React.Component {
         super(props);
         this.addBizLocation = this.addBizLocation.bind(this);
         console.log(props);
-        debugger;
+        // debugger;
     }
 
     componentDidMount() {
@@ -60,7 +60,7 @@ class BizMap extends React.Component {
     }
 
     addBizLocation(business){
-        debugger;
+        // debugger;
         const lat = business.latitude;
         const lng = business.longitude;
 

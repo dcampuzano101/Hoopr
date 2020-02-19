@@ -1,12 +1,19 @@
 class Api::UsersController < ApplicationController
     def create
+      debugger
       @user = User.new(user_params)
       if @user.save
         login(@user)
         render json: @user
       else
         render json: @user.errors.full_messages, status: 404
+        #newbranch
+        #newbranch2
       end
+    end
+
+    def index
+      @users = User.all
     end
 
     def new
