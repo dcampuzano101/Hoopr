@@ -8,6 +8,7 @@ class Api::UsersController < ApplicationController
       else
         render json: @user.errors.full_messages, status: 404
         #newbranch
+        #newbranch2
       end
     end
 
