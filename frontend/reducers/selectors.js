@@ -9,7 +9,7 @@ export const selectReviewsForBiz = (review_ids = [], reviews) => {
 
 export const selectPhotosForBiz = (photo_ids = [], photos) => {
   let result = [];
-  // debugger;
+  debugger;
   photo_ids.forEach(id => {
     result.push(photos[id]);
   });

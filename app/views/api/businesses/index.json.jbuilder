@@ -11,6 +11,8 @@ json.businesses do
       json.extract! business, :id, :name, :owner_id, :email, :price_range, :latitude, :longitude, :neighborhood, :website, :address, :rating, :court_type, :start_time, :end_time, :website
       
       json.reviewIds business.reviews.pluck(:id)
+
+      json.photoIds business.photos.pluck(:id)
     end
     reviews.concat(business.reviews)
     photos.concat(business.photos)

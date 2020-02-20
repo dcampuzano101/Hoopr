@@ -13,7 +13,7 @@ import UpdateForm from '../update_form/update_form_container';
 class BizPage extends React.Component {
   constructor(props){
     super(props);
-    ////debugger;
+    debugger;
     this.state = {
       rating: null,
       temp_rating: null

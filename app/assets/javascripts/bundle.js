@@ -1236,8 +1236,8 @@ function (_React$Component) {
 
     _classCallCheck(this, BizPage);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizPage).call(this, props)); ////debugger;
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizPage).call(this, props));
+    debugger;
     _this.state = {
       rating: null,
       temp_rating: null
@@ -4432,8 +4432,8 @@ var selectReviewsForBiz = function selectReviewsForBiz() {
 var selectPhotosForBiz = function selectPhotosForBiz() {
   var photo_ids = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var photos = arguments.length > 1 ? arguments[1] : undefined;
-  var result = []; // debugger;
-
+  var result = [];
+  debugger;
   photo_ids.forEach(function (id) {
     result.push(photos[id]);
   });
