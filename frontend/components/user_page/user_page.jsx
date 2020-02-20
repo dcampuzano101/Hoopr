@@ -83,10 +83,10 @@ class UserPage extends React.Component {
 
 
     debugger;
-    if (Object.values(reviews)) {
+    if (reviews) {
       let reviewLis;
-      if (Object.values(reviews).length) {
-        reviewLis = Object.values(reviews).map(review =>{
+      if (reviews.length) {
+        reviewLis = reviews.map(review =>{
           let updateLinks;
           debugger;
           if(this.props.currentUser) {

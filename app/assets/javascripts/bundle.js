@@ -3779,11 +3779,11 @@ function (_React$Component) {
           profilePhotoUrl = _this$props.profilePhotoUrl;
       debugger;
 
-      if (Object.values(reviews)) {
+      if (reviews) {
         var reviewLis;
 
-        if (Object.values(reviews).length) {
-          reviewLis = Object.values(reviews).map(function (review) {
+        if (reviews.length) {
+          reviewLis = reviews.map(function (review) {
             var updateLinks;
             debugger;
 
@@ -3920,7 +3920,7 @@ var msp = function msp(state, ownProps) {
     // businessId: ownProps.match.params.id,
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
-    reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectReviewsForUser"])(reviewObj, state.entities.reviews),
+    reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectReviewsForUser"])(user.reviewIds, reviewObj),
     users: state.entities.users,
     businesses: state.entities.businesses // profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
 
@@ -4399,7 +4399,7 @@ var selectReviewsForUser = function selectReviewsForUser() {
   var reviews = arguments.length > 1 ? arguments[1] : undefined;
   var result = [];
   debugger;
-  Object.keys(review_ids).forEach(function (id) {
+  review_ids.forEach(function (id) {
     result.push(reviews[id]);
   });
   return result;
