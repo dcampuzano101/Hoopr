@@ -89,7 +89,7 @@ class BizPage extends React.Component {
       basketballStatic.push(icon);
     }
 
-    const { business, openModal, reviews, users, deleteReview, currentUser } = this.props;
+    const { business, openModal, reviews, users, deleteReview, currentUser, photos } = this.props;
     const sessionLinks = () => (
       <nav className="review-form">
         {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
@@ -104,7 +104,7 @@ class BizPage extends React.Component {
     //   </nav>
     // );
 
-
+    debugger;
     if (business.id) {
       let reviewLis;
       //debugger;
@@ -163,12 +163,13 @@ class BizPage extends React.Component {
           {/* <Link id=""to="/"><img id="logo-biz-page" src={window.logo} /></Link> */}
           <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
             logout={this.props.logout}/>
-          
-          <div className="gallery-container">
-            <img className="hoop" src={window.hoop} />
-            <img className="ai" src={window.ai} />
-            <img className="venice" src={window.venice} />
-            <img className="shoot" src={window.shoot} />
+          <div className="gal-con">
+            <div className="gallery-container">
+              <img className="gal-img" src={photos[photos.length-1].photoUrl} />
+              <img className="gal-img" src={photos[photos.length-2].photoUrl} />
+              <img className="gal-img" src={photos[photos.length-3].photoUrl} />
+              <img className="gal-img" src={photos[photos.length-4].photoUrl} />
+            </div>
           </div>
           <div className="show-container">
             <div className="biz-info-container">

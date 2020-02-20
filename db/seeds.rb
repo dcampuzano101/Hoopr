@@ -215,13 +215,24 @@ b7 = Business.create({
   longitude: -73.959064
 })
 
-#PHOTOSEEDS :business_id, :user_id, :description, :photo_file
+
+# user1 = User.create({
+#   email: 'kingjames@lakers.com',
+#   password: 'michaeljordan',
+#   first_name: 'Lebron',
+#   last_name: 'James',
+#   zip_code: 11211
+#   })
+
+# file1 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/lebron_james_pf.png')
+
+# user1.profile_photo.attach(io: file1, filename: 'lebron_james_pf.png')
 
 rucker1 = Photo.create({
   business_id: b1.id,
   user_id: user1.id,
-  description: 'rucker '
-  })
+  description: 'rucker 1'
+})
 
 ruckerPhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/rucker_seed_1.jpg')
 
@@ -313,7 +324,7 @@ canal2 = Photo.create({
   description: 'canal 2'
   })
 
-canalPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/canal_seed_2.jpg')
+canalPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/canal_seed_2.jpeg')
 
 canal2.photo_file.attach(io: canalPhotoFile2, filename: 'canal_seed_2.jpg')
 

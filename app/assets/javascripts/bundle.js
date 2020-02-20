@@ -1354,7 +1354,8 @@ function (_React$Component) {
           reviews = _this$props.reviews,
           users = _this$props.users,
           deleteReview = _this$props.deleteReview,
-          currentUser = _this$props.currentUser;
+          currentUser = _this$props.currentUser,
+          photos = _this$props.photos;
 
       var sessionLinks = function sessionLinks() {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -1367,6 +1368,8 @@ function (_React$Component) {
       //   </nav>
       // );
 
+
+      debugger;
 
       if (business.id) {
         var reviewLis; //debugger;
@@ -1448,20 +1451,22 @@ function (_React$Component) {
           currentUser: this.props.currentUser,
           logout: this.props.logout
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "gal-con"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "gallery-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "hoop",
-          src: window.hoop
+          className: "gal-img",
+          src: photos[photos.length - 1].photoUrl
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "ai",
-          src: window.ai
+          className: "gal-img",
+          src: photos[photos.length - 2].photoUrl
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "venice",
-          src: window.venice
+          className: "gal-img",
+          src: photos[photos.length - 3].photoUrl
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "shoot",
-          src: window.shoot
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "gal-img",
+          src: photos[photos.length - 4].photoUrl
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "show-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-info-container"

@@ -287,14 +287,24 @@
 
 
 .gallery-container {
-  width: 100%;
+  width: 25%;
   // height: 250px;
   margin: 0 auto;
-  border: 1px solid black;
   margin-top: 25px;
   margin-bottom: 25px;
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.gal-con {
+  display: flex;
+  height: 250px;
+}
+
+.gal-img {
+  width: 100%;
+  height: auto;
+  border: 1px solid white;
+  box-sizing: border-box;
 }
 
 .show-container {
