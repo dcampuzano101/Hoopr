@@ -44,17 +44,17 @@ class PhotoForm extends React.Component {
     handleFile(e) {
         debugger;
         e.preventDefault();
-        // const file = e.currentTarget.files[0];  
-        // const fileReader = new FileReader();
+        const file = e.currentTarget.files[0];  
+        const fileReader = new FileReader();
         
-        // fileReader.onloadend = () => {
+        fileReader.onloadend = () => {
             debugger;
-        this.setState({ photoFiles: Array.from(e.currentTarget.files) })
+        this.setState({photoFile: file, photoUrl: fileReader.result})
 
-        // };
-        // if (file) {
-        //     fileReader.readAsDataURL(file);
-        // }
+        };
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
     }
 
   handleSubmit(e) {
@@ -64,10 +64,10 @@ class PhotoForm extends React.Component {
     formData.append('photo[user_id]', this.state.user_id)
     formData.append('photo[business_id]', this.state.business_id)
     formData.append('photo[description]', this.state.description)
-    // formData.append('photo[photo_file]', this.state.photoFile)
-    this.state.photoFiles.forEach(file => {
-        formData.append('photo[images][]', file);
-    });
+    formData.append('photo[photo_file]', this.state.photoFile)
+    // this.state.photoFiles.forEach(file => {
+    //     formData.append('photo[images][]', file);
+    // });
 
     debugger;
     this.props.processForm(formData, this.state.business_id).then(this.props.closeModal);

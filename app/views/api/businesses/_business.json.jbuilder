@@ -14,10 +14,13 @@ json.business do
 
   json.reviewIds business.review_ids
 
+  json.photoIds business.photo_ids
+
   json.ratings ratingsNums
 end
 
 users = [];
+photos = [];
 
 json.set! :reviews do
   business.reviews.each do |review|
@@ -26,6 +29,15 @@ json.set! :reviews do
     end
 
     users.push(review.user)
+  end
+  business.photos.each do |photo|
+    json.set! photo.id do
+      json.extract! photo, :id, :user_id, :business_id, :description
+      
+      if photo.photo_file.attached?
+        json.photoUrl url_for(photo.photo_file)
+      end
+    end
   end
 end
 
@@ -37,6 +49,19 @@ json.set! :users do
       if user.profile_photo.attached?
         json.profilePhotoUrl url_for(user.profile_photo)
       end
+    end
+  end
+end
+# debugger;
+
+json.set! :photos do
+  photos.each do |photo|
+    json.set! photo.id do
+      #json.extract! photo, :id, :user_id, :business_id, :description, :photo_file
+      # debugger;
+      # if photo.attached?
+      #   json.photoFileUrl url_for(photo)
+      # end
     end
   end
 end

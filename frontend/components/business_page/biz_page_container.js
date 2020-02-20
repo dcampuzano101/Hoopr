@@ -4,7 +4,7 @@ import { login, logout } from '../../actions/session_actions';
 import BizPage from './biz_page';
 import { openModal } from '../../actions/modal_actions';
 import { deleteReview } from '../../actions/review_actions';
-import { selectReviewsForBiz } from '../../reducers/selectors';
+import { selectReviewsForBiz, selectPhotosForBiz } from '../../reducers/selectors';
 import { search } from '../../actions/search_actions';
 
 
@@ -14,6 +14,7 @@ const msp = (state, ownProps) => {
   // const bizId = ownProps.match.params.id;
   const business = state.entities.businesses[ownProps.match.params.id] || {};
   const reviewObj = state.entities.reviews;
+  const photoObj = state.entities.photos;
   let query = ownProps.match.params || {};
   // debugger;
     return ({
@@ -23,6 +24,7 @@ const msp = (state, ownProps) => {
     extraClass,
     currentUser: state.entities.users[state.session.id],
     reviews: selectReviewsForBiz(business.reviewIds, reviewObj),
+    photos: selectPhotosForBiz(business.photoIds, photoObj),
     users: state.entities.users
   });
 };

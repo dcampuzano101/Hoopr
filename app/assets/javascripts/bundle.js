@@ -180,21 +180,25 @@ var openModal = function openModal(modal, props) {
 /*!*******************************************!*\
   !*** ./frontend/actions/photo_actions.js ***!
   \*******************************************/
-/*! exports provided: RECEIVE_PHOTO, REMOVE_PHOTO, receivePhoto, removePhoto, requestPhoto, createPhoto, deletePhoto */
+/*! exports provided: RECEIVE_PHOTO, RECEIVE_PHOTOS, REMOVE_PHOTO, receivePhoto, receivePhotos, removePhoto, requestPhotos, requestPhoto, createPhoto, deletePhoto */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PHOTO", function() { return RECEIVE_PHOTO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PHOTOS", function() { return RECEIVE_PHOTOS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PHOTO", function() { return REMOVE_PHOTO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePhoto", function() { return receivePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePhotos", function() { return receivePhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removePhoto", function() { return removePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestPhotos", function() { return requestPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestPhoto", function() { return requestPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPhoto", function() { return createPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePhoto", function() { return deletePhoto; });
 /* harmony import */ var _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/photo_api_util */ "./frontend/util/photo_api_util.jsx");
 
 var RECEIVE_PHOTO = "RECEIVE_PHOTO";
+var RECEIVE_PHOTOS = "RECEIVE_PHOTOS";
 var REMOVE_PHOTO = "REMOVE_PHOTO";
 var receivePhoto = function receivePhoto(payload) {
   return {
@@ -202,10 +206,24 @@ var receivePhoto = function receivePhoto(payload) {
     payload: payload
   };
 };
+var receivePhotos = function receivePhotos(payload) {
+  return {
+    type: RECEIVE_PHOTOS,
+    payload: payload
+  };
+};
 var removePhoto = function removePhoto(payload) {
   return {
     type: REMOVE_PHOTO,
     payload: payload
+  };
+};
+var requestPhotos = function requestPhotos() {
+  return function (dispatch) {
+    debugger;
+    return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchPhotos"]().then(function (payload) {
+      return dispatch(receivePhotos(payload));
+    });
   };
 };
 var requestPhoto = function requestPhoto(photoId) {
@@ -1544,6 +1562,7 @@ var msp = function msp(state, ownProps) {
 
   var business = state.entities.businesses[ownProps.match.params.id] || {};
   var reviewObj = state.entities.reviews;
+  var photoObj = state.entities.photos;
   var query = ownProps.match.params || {}; // debugger;
 
   return {
@@ -1553,6 +1572,7 @@ var msp = function msp(state, ownProps) {
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
     reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_6__["selectReviewsForBiz"])(business.reviewIds, reviewObj),
+    photos: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_6__["selectPhotosForBiz"])(business.photoIds, photoObj),
     users: state.entities.users
   };
 };
@@ -1648,7 +1668,7 @@ function (_React$Component) {
   _createClass(BizIndexItem, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.requestBusinesses();
+      this.props.requestBusinesses(); // this.props.requestPhotos();
     }
   }, {
     key: "render",
@@ -1806,7 +1826,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
-/* harmony import */ var _business_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./business_index_item */ "./frontend/components/header/business_index_item.js");
+/* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/photo_actions */ "./frontend/actions/photo_actions.js");
+/* harmony import */ var _business_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./business_index_item */ "./frontend/components/header/business_index_item.js");
+
 
 
 
@@ -1826,7 +1848,7 @@ var mdp = function mdp(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_business_index_item__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_business_index_item__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -2349,18 +2371,25 @@ function (_React$Component) {
   }, {
     key: "handleFile",
     value: function handleFile(e) {
-      debugger;
-      e.preventDefault(); // const file = e.currentTarget.files[0];  
-      // const fileReader = new FileReader();
-      // fileReader.onloadend = () => {
+      var _this3 = this;
 
       debugger;
-      this.setState({
-        photoFiles: Array.from(e.currentTarget.files)
-      }); // };
-      // if (file) {
-      //     fileReader.readAsDataURL(file);
-      // }
+      e.preventDefault();
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        debugger;
+
+        _this3.setState({
+          photoFile: file,
+          photoUrl: fileReader.result
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
     }
   }, {
     key: "handleSubmit",
@@ -2370,11 +2399,11 @@ function (_React$Component) {
       var formData = new FormData();
       formData.append('photo[user_id]', this.state.user_id);
       formData.append('photo[business_id]', this.state.business_id);
-      formData.append('photo[description]', this.state.description); // formData.append('photo[photo_file]', this.state.photoFile)
+      formData.append('photo[description]', this.state.description);
+      formData.append('photo[photo_file]', this.state.photoFile); // this.state.photoFiles.forEach(file => {
+      //     formData.append('photo[images][]', file);
+      // });
 
-      this.state.photoFiles.forEach(function (file) {
-        formData.append('photo[images][]', file);
-      });
       debugger;
       this.props.processForm(formData, this.state.business_id).then(this.props.closeModal); // this.props.submitForm(formData);
       // e.preventDefault();
@@ -4076,7 +4105,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/biz_actions */ "./frontend/actions/biz_actions.js");
 /* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/review_actions */ "./frontend/actions/review_actions.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/photo_actions */ "./frontend/actions/photo_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -4090,8 +4121,10 @@ var bizReducer = function bizReducer() {
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BUSINESS"]:
       return Object.assign({}, oldState, _defineProperty({}, action.payload.business.id, action.payload.business));
+    // case RECEIVE_REVIEW:
+    //   return Object.assign({}, oldState, { [action.payload.business.id]: action.payload.business });
 
-    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_REVIEW"]:
+    case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_3__["RECEIVE_PHOTO"]:
       return Object.assign({}, oldState, _defineProperty({}, action.payload.business.id, action.payload.business));
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_REVIEW"]:
@@ -4231,7 +4264,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var photosReducer = function photosReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  // debugger;
   Object.freeze(oldState);
 
   switch (action.type) {
@@ -4240,8 +4272,10 @@ var photosReducer = function photosReducer() {
       return Object.assign({}, oldState, action.payload.photos);
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTO"]:
-      // debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.payload.photo.id, action.payload.photo));
+
+    case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTOS"]:
+      return Object.assign({}, oldState, action.payload.photos);
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PHOTO"]:
       // debugger;
@@ -4376,12 +4410,13 @@ var searchReducer = function searchReducer() {
 /*!****************************************!*\
   !*** ./frontend/reducers/selectors.js ***!
   \****************************************/
-/*! exports provided: selectReviewsForBiz, selectReviewsForUser, selectBusinessesForSearch */
+/*! exports provided: selectReviewsForBiz, selectPhotosForBiz, selectReviewsForUser, selectBusinessesForSearch */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectReviewsForBiz", function() { return selectReviewsForBiz; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectPhotosForBiz", function() { return selectPhotosForBiz; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectReviewsForUser", function() { return selectReviewsForUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectBusinessesForSearch", function() { return selectBusinessesForSearch; });
 var selectReviewsForBiz = function selectReviewsForBiz() {
@@ -4391,6 +4426,16 @@ var selectReviewsForBiz = function selectReviewsForBiz() {
 
   review_ids.forEach(function (id) {
     result.push(reviews[id]);
+  });
+  return result;
+};
+var selectPhotosForBiz = function selectPhotosForBiz() {
+  var photo_ids = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var photos = arguments.length > 1 ? arguments[1] : undefined;
+  var result = []; // debugger;
+
+  photo_ids.forEach(function (id) {
+    result.push(photos[id]);
   });
   return result;
 };
@@ -4636,12 +4681,13 @@ var createBusiness = function createBusiness(business) {
 /*!******************************************!*\
   !*** ./frontend/util/photo_api_util.jsx ***!
   \******************************************/
-/*! exports provided: createPhoto, fetchPhoto, deletePhoto */
+/*! exports provided: createPhoto, fetchPhotos, fetchPhoto, deletePhoto */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPhoto", function() { return createPhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhotos", function() { return fetchPhotos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPhoto", function() { return fetchPhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePhoto", function() { return deletePhoto; });
 //Photo API Util
@@ -4653,6 +4699,12 @@ var createPhoto = function createPhoto(formData, businessId) {
     data: formData,
     contentType: false,
     processData: false
+  });
+};
+var fetchPhotos = function fetchPhotos() {
+  return $.ajax({
+    method: "GET",
+    url: "api/photos"
   });
 };
 var fetchPhoto = function fetchPhoto(photoId) {
