@@ -64,8 +64,6 @@ class Header extends React.Component {
 
       const profileIcon = () => (
         <div className="right-nav-bar">
-          <Link to="#"><img className="fav-icon" src={window.cloud} /></Link>
-          <Link to="#"><img className="fav-icon" src={window.whistle} /></Link>
           <div className="profile-pic">
             <Link to={`/users/${currentUser.id}`}><img className="yelp-profile" src={currentUser.profilePhotoUrl} /></Link>
             <button className="nav-links" id="logout" onClick={logout}>Logout</button>
@@ -106,7 +104,9 @@ class Header extends React.Component {
             <section className="links-header">
               {/* <Link to="#" className={"nav-links " + this.props.extraClass}>Write a Review</Link> */}
               <Link to="/businesses" className={"nav-links " + this.props.extraClass}>All Parks</Link>
-              <Link to="#" className={"nav-links " + this.props.extraClass}>About</Link>
+              <a href="https://angel.co/david-campuzano-1" className={"nav-links " + this.props.extraClass}><i className="fab fa-angellist"></i></a>
+              <a href="https://www.linkedin.com/in/david-campuzano-992882168/" className={"nav-links " + this.props.extraClass}><i className="fab fa-linkedin"></i></a>
+              <a href="https://github.com/dcampuzano101" className={"nav-links " + this.props.extraClass}><i className="fab fa-github"></i></a>
             </section>
             <Link id="logo-wrapper" to="/"><img id="logo-biz-page" src={window.logo} /></Link>
             <div className="logo-header-div">

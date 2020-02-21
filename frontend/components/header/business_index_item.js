@@ -6,8 +6,24 @@ import { Link } from 'react-router-dom';
 class BizIndexItem extends React.Component {
   constructor(props){
     super(props);
+    let { borough } = ""; //notsure about this yet.
+    console.log(borough)
+    this.state = { borough };
+    this.handleFilter = this.handleFilter.bind(this);
     // console.log(props);
     
+  }
+
+  handleFilter(e) {
+    debugger;
+    let borough = e.currentTarget.value
+    console.log(borough);
+    this.setState({ borough });
+    
+    
+    (borough) ? this.props.filterByBorough(borough) : borough = "";
+    this.props.history.push('/filter/' + borough );
+    // debugger;
   }
 
   componentDidMount(){
@@ -71,14 +87,19 @@ class BizIndexItem extends React.Component {
         return (
         <>
           <div className="hoopr-brooklyn-container">
-            <h3>Hoopr Brooklyn</h3>
+            <h3>Hoopr NYC</h3>
             <div className="bk-neighborhoods">
-              <Link id="neighborhood-links" to="/">Bushwick</Link>
-              <Link id="neighborhood-links" to="/">Williamsburg</Link>
-              <Link id="neighborhood-links" to="/">Greenpoint</Link>
-              <Link id="neighborhood-links" to="/">Park Slope</Link>
-              <Link id="neighborhood-links" to="/">Crown Heights</Link>
-              <Link id="neighborhood-links" to="/">Bed-Stuy</Link>
+              <button id="neighborhood-links" value="queens" onClick={this.handleFilter}>Queens</button>
+              <button id="neighborhood-links" value="brooklyn" onClick={this.handleFilter}>Brooklyn</button>
+              <button id="neighborhood-links" value="manhattan" onClick={this.handleFilter}>Manhattan</button>
+              <button id="neighborhood-links" value="bronx" onClick={this.handleFilter}>Bronx</button>
+              <button id="neighborhood-links" value="staten island" onClick={this.handleFilter}>Staten Island</button>
+{/* 
+              <Link id="neighborhood-links" to="/">Queens</Link>
+              <Link id="neighborhood-links" to="/">Brooklyn</Link>
+              <Link id="neighborhood-links" to="/">Manhattan</Link>
+              <Link id="neighborhood-links" to="/">Bronx</Link>
+              <Link id="neighborhood-links" to="/">Staten Island</Link> */}
             </div>
             <div className="hr-row splash"></div>
           </div>

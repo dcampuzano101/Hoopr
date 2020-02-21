@@ -4,4 +4,10 @@ export const searchRequest = (query = "") => (
     $.ajax({
         url: `api/search/${query}`
     })
+)
+
+export const boroughRequest = (borough = "") => (
+    $.ajax({
+        url: `api/filter/${borough}`
+    })
 ) 

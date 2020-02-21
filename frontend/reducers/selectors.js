@@ -34,3 +34,12 @@ export const selectBusinessesForSearch = ( businessIds = [], businesses) => {
   });
   return result;
 }
+
+export const selectBusinessesForFilter = ( businessIds = [], businesses) => {
+  let result = [];
+  // debugger;
+  businessIds.forEach(id => {
+    result.push(businesses[id])
+  });
+  return result;
+}

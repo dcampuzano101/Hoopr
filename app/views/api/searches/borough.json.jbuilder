@@ -1,5 +1,5 @@
 json.searchResult do
-    json.query @query
+    json.borough @borough
     json.businessIds @businesses.pluck(:id)
 end
 
