@@ -9,6 +9,7 @@ import BizIndexItemContainer from './header/business_index_items_container';
 import Footer from './header/footer';
 import Modal from '../components/modal/modal';
 import BizIndex from '../components/biz_index/biz_index_container';
+import BizFilter from '../components/biz_filter/biz_filter_container';
 import BizSearch from '../components/biz_search/biz_search_results_container';
 import UserPage from './user_page/user_page_container';
 
@@ -32,6 +33,7 @@ const App = () => {
         <Route exact path="/" component={Footer} />
         <Route exact path="/businesses/:id" component={Footer} />
         <Route exact path="/search/:query" component={BizSearch} />
+        <Route exact path="/filter/:borough" component={BizFilter} />
         {/* <Route path="/businesses/:id" component={BizMap} /> */}
         {/* <Route path="/businesses/:id" component={BizInfo} /> */}
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_194819) do
+ActiveRecord::Schema.define(version: 2020_02_21_194739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_194819) do
     t.string "start_time"
     t.string "end_time"
     t.string "neighborhood"
+    t.string "borough"
     t.index ["id"], name: "index_businesses_on_id"
     t.index ["owner_id"], name: "index_businesses_on_owner_id"
   end

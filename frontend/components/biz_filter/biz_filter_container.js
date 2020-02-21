@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { requestBusinesses } from '../../actions/biz_actions';
 import { login, logout } from '../../actions/session_actions';
-import BizSearch from './biz_search_results';
+import BizFilter from './biz_filter_results';
 import { selectBusinessesForSearch } from '../../reducers/selectors';
-import { search } from '../../actions/search_actions';
+import { filterByBorough, search } from '../../actions/search_actions';
 
 const msp = (state, ownProps) => {
   debugger;
@@ -24,8 +24,9 @@ const mdp = dispatch => {
     logout: () => dispatch(logout()),
     submitForm: user => dispatch(login(user)),
     requestBusinesses: () => dispatch(requestBusinesses()),
-    search: query => dispatch(search(query))
+    search: query => dispatch(search(query)),
+    filterByBorough: borough => dispatch(filterByBorough(borough))
   });
 };
 
-export default withRouter(connect(msp, mdp)(BizSearch));
+export default withRouter(connect(msp, mdp)(BizFilter));

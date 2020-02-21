@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { requestBusinesses } from '../../actions/biz_actions';
 import { requestPhotos, requestPhoto } from '../../actions/photo_actions';
 import BizIndexItem from './business_index_item';
+import { filterByBorough } from '../../actions/search_actions'
 
 const msp = state => {
   console.log(state);
@@ -15,7 +16,8 @@ const msp = state => {
 const mdp = dispatch => {
 
   return ({
-    requestBusinesses: () => dispatch(requestBusinesses())
+    requestBusinesses: () => dispatch(requestBusinesses()),
+    filterByBorough: borough => dispatch(filterByBorough(borough))
   });
 };
 
