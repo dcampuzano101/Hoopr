@@ -1,4 +1,19 @@
 json.partial! '/api/businesses/business', business: @business
+
+photos = [];
+photos.concat(@business.photos)
+
+json.photos do
+  photos.each do |photo|
+    json.set! photo.id do
+      json.extract! photo, :business_id, :user_id, :description
+
+      if photo.photo_file.attached?
+        json.photoUrl url_for(photo.photo_file)
+      end
+    end
+  end
+end
   # json.reviewIds @business.reviews.pluck(:id)
 
 # @business.reviews.includes(:author).each do |review|
