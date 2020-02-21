@@ -138,6 +138,10 @@
   display: none;
 }
 
+.nav-links.footer{
+  color: black;
+}
+
 .nav-links.user-page{
   display: none;
 }
@@ -715,11 +719,12 @@ grid-column: 1/2;
 }
 
 .splash-header.someClass {
+  height: 450px;
   .new-header-container {
     position: relative;
     .search {
       position: absolute;
-      top: 304px;
+      top: 230px;
       left: 83px;
     }
     #logo-wrapper {
@@ -734,4 +739,12 @@ grid-column: 1/2;
   // height: auto;
   // width: auto;
   grid-column: 1/2;
+}
+
+.fab {
+  font-size: 30px;
+}
+
+#footer-icon {
+  color: black;
 }

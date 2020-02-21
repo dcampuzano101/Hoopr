@@ -8,8 +8,9 @@ class Footer extends React.Component {
     return(
       <>
         <footer className="footer-container">
-          <Link to="#"><img className="fav-icon" src={window.cloud} /></Link>
-          <Link to="#"><img className="fav-icon" src={window.whistle} /></Link>
+          <a href="https://angel.co/david-campuzano-1" className={"nav-links " + 'footer'}><i className="fab fa-angellist"></i></a>
+          <a href="https://www.linkedin.com/in/david-campuzano-992882168/" className={"nav-links " + 'footer'}><i className="fab fa-linkedin"></i></a>
+          <a href="https://github.com/dcampuzano101" className={"nav-links " + 'footer'}><i className="fab fa-github"></i></a>
         </footer>
       </>
     );
