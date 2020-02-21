@@ -107,13 +107,14 @@ class BizPage extends React.Component {
     debugger;
     if (business.id) {
       let reviewLis;
-      //debugger;
+      debugger;
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
           let updateLinks;
+          debugger;
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
-              //debugger;
+              debugger;
               updateLinks = (review) => (
               <nav className="review-form">
                 <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>

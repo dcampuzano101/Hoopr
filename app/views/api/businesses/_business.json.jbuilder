@@ -30,15 +30,15 @@ json.set! :reviews do
 
     users.push(review.user)
   end
-  business.photos.each do |photo|
-    json.set! photo.id do
-      json.extract! photo, :id, :user_id, :business_id, :description
+  # business.photos.each do |photo|
+  #   json.set! photo.id do
+  #     json.extract! photo, :id, :user_id, :business_id, :description
       
-      if photo.photo_file.attached?
-        json.photoUrl url_for(photo.photo_file)
-      end
-    end
-  end
+  #     if photo.photo_file.attached?
+  #       json.photoUrl url_for(photo.photo_file)
+  #     end
+  #   end
+  # end
 end
 
 json.set! :users do

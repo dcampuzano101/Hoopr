@@ -1372,15 +1372,18 @@ function (_React$Component) {
       debugger;
 
       if (business.id) {
-        var reviewLis; //debugger;
+        var reviewLis;
+        debugger;
 
         if (reviews.length) {
           reviewLis = reviews.map(function (review) {
             var updateLinks;
+            debugger;
 
             if (_this5.props.currentUser) {
               if (_this5.props.currentUser.id === review.user_id) {
-                //debugger;
+                debugger;
+
                 updateLinks = function updateLinks(review) {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
                     className: "review-form"
@@ -2064,10 +2067,12 @@ function (_React$Component) {
             src: window.whistle
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "profile-pic"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/users/".concat(currentUser.id)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "yelp-profile",
             src: currentUser.profilePhotoUrl
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             className: "nav-links",
             id: "logout",
             onClick: logout
