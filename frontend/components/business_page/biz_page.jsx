@@ -59,7 +59,7 @@ class BizPage extends React.Component {
   }
 
   render(){
-    // debugger;
+    // ////debugger;
     let authReview;
     // console.log(currentUser);
     if (this.props.currentUser) {
@@ -89,7 +89,7 @@ class BizPage extends React.Component {
       basketballStatic.push(icon);
     }
 
-    const { business, openModal, reviews, users, deleteReview, currentUser } = this.props;
+    const { business, openModal, reviews, users, deleteReview, currentUser, photos } = this.props;
     const sessionLinks = () => (
       <nav className="review-form">
         {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
@@ -104,13 +104,14 @@ class BizPage extends React.Component {
     //   </nav>
     // );
 
-
+    debugger;
     if (business.id) {
       let reviewLis;
       debugger;
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
           let updateLinks;
+          debugger;
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
               debugger;
@@ -121,7 +122,7 @@ class BizPage extends React.Component {
               </nav>
               )
             } else {
-             debugger;
+             //debugger;
               updateLinks = () => (
               <div></div>
               )
@@ -144,8 +145,8 @@ class BizPage extends React.Component {
           return (
           <>
             <section className="profile-info">
-              <h3>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}.</h3>
-              <img className="yelp-profile" src={window.pf} />
+              <h3><Link to={`/users/${review.user_id}`}>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}</Link></h3>
+              <img className="yelp-profile" src={users[review.user_id].profilePhotoUrl} />
             </section>
             <div className="rating-review">
               <section className="static-rating">{basketballs}</section>
@@ -163,12 +164,13 @@ class BizPage extends React.Component {
           {/* <Link id=""to="/"><img id="logo-biz-page" src={window.logo} /></Link> */}
           <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
             logout={this.props.logout}/>
-          
-          <div className="gallery-container">
-            <img className="hoop" src={window.hoop} />
-            <img className="ai" src={window.ai} />
-            <img className="venice" src={window.venice} />
-            <img className="shoot" src={window.shoot} />
+          <div className="gal-con">
+            <div className="gallery-container">
+              <img className="gal-img" src={photos[photos.length-1].photoUrl} />
+              <img className="gal-img" src={photos[photos.length-2].photoUrl} />
+              <img className="gal-img" src={photos[photos.length-3].photoUrl} />
+              <img className="gal-img" src={photos[photos.length-4].photoUrl} />
+            </div>
           </div>
           <div className="show-container">
             <div className="biz-info-container">

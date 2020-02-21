@@ -15,6 +15,6 @@ Rails.application.routes.draw do
       resources :photos, only: [:create, :show, :destroy]
     end
     resources :reviews, only: [:update, :show]
-    resources :photos, only: [:show]
+    resources :photos, only: [:show, :index]
   end
 end

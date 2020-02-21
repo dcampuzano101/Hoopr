@@ -28,6 +28,10 @@ class Api::PhotosController < ApplicationController
         render json: @photo.errors.full_messages, status: :unprocessable_entity
       end
     end
+
+    def index 
+      @photos = Photo.all
+    end
   
     def destroy
       @photo = Photo.find(params[:id])
@@ -39,6 +43,6 @@ class Api::PhotosController < ApplicationController
     private
   
     def photo_params
-      params.require(:photo).permit(:business_id, :user_id, :description, :photo_file, images:[])
+      params.require(:photo).permit(:business_id, :user_id, :description, :photo_file)
     end
   end

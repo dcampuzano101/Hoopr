@@ -12,6 +12,7 @@ class BizIndexItem extends React.Component {
 
   componentDidMount(){
     this.props.requestBusinesses();
+    // this.props.requestPhotos();
   }
 
   render(){

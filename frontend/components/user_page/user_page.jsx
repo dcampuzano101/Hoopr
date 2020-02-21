@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../header/header';
-// import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 // import { login, logoutCurrentUser } from '../../actions/session_actions';
 // import { openModal } from '../../actions/modal_actions';
 // import BizMap from '../../components/biz_map/biz_map';
@@ -28,14 +28,12 @@ class UserPage extends React.Component {
   componentDidUpdate(prevProps){
     if (this.props.match.params.id != prevProps.match.params.id) {
       this.props.requestUser(this.props.match.params.id);
-      this.props.requestUsers();
     }
   }
 
-  // componentDidMount(){
-  //   this.props.requestUser(this.props.match.params.id);
-  //   this.props.requestUsers();
-  // }
+  componentDidMount(){
+    this.props.requestUser(this.props.match.params.id);
+  }
 
   update(field) {
     return e => this.setState({
@@ -62,14 +60,7 @@ class UserPage extends React.Component {
   }
 
   render(){
-    // debugger;
-    // let authReview;
-    // // console.log(currentUser);
-    // if (this.props.currentUser) {
-    //   authReview = <button className="rvw-btn biz-info" onClick={() => openModal('createReview', {tempRating: this.state.temp_rating})}>&#9733; Write a Review</button>
-    // } else {
-    //   authReview = <Link className="log-btn biz-info" to="/login">&#9733; Write a Review</Link>
-    // }
+
     const basketballStatic = [];
 
     for (let i = 1; i <= 5; i++) {
@@ -88,27 +79,16 @@ class UserPage extends React.Component {
       basketballStatic.push(icon);
     }
 
-    const { user, openModal, reviews, users, deleteReview, currentUser, profilePhotoUrl } = this.props;
-    // const sessionLinks = () => (
-    //   <nav className="review-form">
-    //     {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
-    //     {authReview}
-    //   </nav>
-    // );
+    const { businesses, user, openModal, reviews, users, deleteReview, currentUser, profilePhotoUrl } = this.props;
 
-    // const updateLinks = (review) => (
-    //   <nav className="review-form">
-    //     <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
-    //     <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
-    //   </nav>
-    // );
 
     debugger;
-    if (Object.values(reviews)) {
+    if (reviews) {
       let reviewLis;
-      if (Object.values(reviews).length) {
-        reviewLis = Object.values(reviews).map(review =>{
+      if (reviews.length) {
+        reviewLis = reviews.map(review =>{
           let updateLinks;
+          debugger;
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
               updateLinks = (review) => (
@@ -117,7 +97,6 @@ class UserPage extends React.Component {
                 <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
               </nav>
               )
-            }
            } else {
               updateLinks = () => (
               <div></div>
@@ -141,8 +120,9 @@ class UserPage extends React.Component {
           return (
           <>
             <section className="profile-info">
+              <h2><Link to={`/businesses/${review.business_id}`}>{businesses[review.business_id].name}</Link></h2>
               <h3>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}.</h3>
-              <img className="yelp-profile" src="/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b7f20f9e3305df3219363d93fa9fa1f4f207d705/linked_pf.jpeg" />
+              <img className="yelp-profile" src={users[review.user_id].profilePhotoUrl} />
             </section>
             <div className="rating-review">
               <section className="static-rating">{basketballs}</section>
@@ -153,7 +133,7 @@ class UserPage extends React.Component {
             <div className="hr-row"></div>
           </>
           )}
-        )
+        })
       }
       debugger;
       return (
@@ -169,65 +149,15 @@ class UserPage extends React.Component {
             <img className="shoot" src={window.shoot} />
           </div> */}
           <div className="show-container">
-            {/* <div className="biz-info-container">
-              <h1>{business.name}</h1>
-              <h3>Rating: {business.rating} - 16 reviews</h3>
-              <h3><Link to="#">{business.court_type}</Link></h3>
-              <section className="info-buttons">
-                <nav className="review-form">
-                  {authReview}
-                  {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
-                {/* </nav> */}
-                {/* <button className="add-photo"> &#128247; Add Photo</button> */}
-              {/* </section> */}
-            {/* </div> */} 
-            {/* <div className="sticky-info">
-              <div className="sticky-links">
-                <img className="phone" src={window.home} />
-                <span>{business.neighborhood}</span>
-                <div className="hr-row-sticky"></div>
-                <img className="web" src={window.web} />
-                <span><a href={business.website}>{business.name}</a></span>
-                <div className="hr-row-sticky"></div>
-                <img className="whistle" src={window.whistle} />
-                <span>Call your own Fouls</span>
-              </div>
-              <a href=""></a>
-            </div> */}
-            {/* <div className="hr-row-top"></div> */}
-            {/* <div className="location-info">
-              <h3>Location & Hours</h3>
-              <div className="map-container">
-                <BizMapContainer />
-                <div className="hours">
-                  <p>Mon</p> 
-                  <span>{business.start_time} - {business.end_time}</span>
-                  <p>Tues</p> 
-                  <span>{business.start_time} - {business.end_time}</span>
-                  <p>Wed</p>
-                  <span>{business.start_time} - {business.end_time}</span>
-                  <p>Thurs</p> 
-                  <span>{business.start_time} - {business.end_time}</span>
-                  <p>Fri</p>
-                  <span>{business.start_time} - {business.end_time}</span>
-                  <p>Sat</p> 
-                  <span>{business.start_time} - {business.end_time}</span>
-                  <p>Sun</p> 
-                  <span>{business.start_time} - {business.end_time}</span>
+            <section>
+              <div className="user-profile-container">
+                <div className="user-picture">
+                  <img className="yelp-profile" src={user.profilePhotoUrl} />
+                  <h3>{user.first_name}</h3>
+                  <h3>{user.last_name}</h3>
                 </div>
               </div>
-            </div> */}
-            {/* <div className="hr-row-top"></div>
-            <div className="create-review-photo">
-              <div className="review-container-info">
-                <div className="ball-rating">
-                  {basketballStatic}
-                </div>
-                {sessionLinks()}
-              </div>
-            </div> */}
-            <img src={profilePhotoUrl} alt=""/>
-            <h3>HELLO REVIEWS</h3>
+            </section>
             <div className="review-container">
               <div className="review-items">
                 <div className="profile-section">

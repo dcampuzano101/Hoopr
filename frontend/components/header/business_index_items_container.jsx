@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { requestBusinesses } from '../../actions/biz_actions';
+import { requestPhotos, requestPhoto } from '../../actions/photo_actions';
 import BizIndexItem from './business_index_item';
 
 const msp = state => {

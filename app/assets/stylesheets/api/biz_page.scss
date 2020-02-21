@@ -287,14 +287,24 @@
 
 
 .gallery-container {
-  width: 100%;
+  width: 25%;
   // height: 250px;
   margin: 0 auto;
-  border: 1px solid black;
   margin-top: 25px;
   margin-bottom: 25px;
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.gal-con {
+  display: flex;
+  height: 250px;
+}
+
+.gal-img {
+  width: 100%;
+  height: auto;
+  border: 1px solid white;
+  box-sizing: border-box;
 }
 
 .show-container {
@@ -542,14 +552,17 @@ grid-column: 1/2;
   color: #0073BB;
 }
 
+
 .rating-review {
   display: grid;
   grid-template-rows: 30% 70%;
 }
 
 .static-rating {
+  text-align: center;
   grid-row: 1/2;
-  padding-top: 15px;
+  // padding-top: 15px;
+  // padding-bottom: 15px;
 }
 
 .review-body {
@@ -567,6 +580,7 @@ grid-column: 1/2;
   display: grid;
   width: 98%;
   justify-self: center;
+  margin: 10px;
 
 }
 .hr-row-top{
@@ -628,6 +642,7 @@ grid-column: 1/2;
 }
 
 .review-form{
+  text-align: center;
   grid-column: 2/2;
   // display: none;
   // width: 130px;

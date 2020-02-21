@@ -32,7 +32,7 @@ class Business < ApplicationRecord
 
   has_many :reviews
 
-  has_many_attached :photos
+  has_many :photos
   
 
 end

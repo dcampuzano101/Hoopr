@@ -11,6 +11,14 @@ export const createPhoto = (formData, businessId) => {
     });
   };
 
+export const fetchPhotos = () => {
+
+  return $.ajax({
+    method: "GET",
+    url: "api/photos",
+  });
+};
+
 export const fetchPhoto = (photoId) => {
   return $.ajax({
     method: "GET",

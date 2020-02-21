@@ -5,41 +5,63 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
+
 User.destroy_all
 Business.destroy_all
 Review.destroy_all
+Photo.destroy_all
 
-user1 = User.create({ 
+user1 = User.create({
   email: 'kingjames@lakers.com',
   password: 'michaeljordan',
   first_name: 'Lebron',
   last_name: 'James',
   zip_code: 11211
-})
+  })
 
-user2 = User.create({ 
+file1 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/lebron_james_pf.png')
+
+user1.profile_photo.attach(io: file1, filename: 'lebron_james_pf.png')
+
+
+user2 = User.create({
   email: 'chefcurry@warriors.com',
   password: 'splashbro',
   first_name: 'Stephen',
   last_name: 'Curry',
   zip_code: 11237
-})
+  })
 
-user3 = User.create({ 
+file2 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/stephen_curry_pf.png')
+
+user2.profile_photo.attach(io: file2, filename: 'stepen_curry.png')
+
+user3 = User.create({
   email: 'killaklay@warriors.com',
   password: 'splashbro',
   first_name: 'Klay',
   last_name: 'Thompson',
   zip_code: 11207
-})
+  })
 
-user4 = User.create({ 
+file3 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/klay_thompson_pf.png')
+
+user3.profile_photo.attach(io: file3, filename: 'klay_thompson_pf.png')
+
+
+
+user4 = User.create({
   email: 'luka@mavs.com',
   password: 'eurostep',
   first_name: 'Luka',
   last_name: 'Doncic',
   zip_code: 11008
-})
+  })
+
+file4 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/luka_doncic_pf.png')
+
+user4.profile_photo.attach(io: file4, filename: 'luka_doncic_pf.png')
 
 
 
@@ -192,3 +214,136 @@ b7 = Business.create({
   latitude: 40.681569,
   longitude: -73.959064
 })
+
+
+# user1 = User.create({
+#   email: 'kingjames@lakers.com',
+#   password: 'michaeljordan',
+#   first_name: 'Lebron',
+#   last_name: 'James',
+#   zip_code: 11211
+#   })
+
+# file1 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/lebron_james_pf.png')
+
+# user1.profile_photo.attach(io: file1, filename: 'lebron_james_pf.png')
+
+rucker1 = Photo.create({
+  business_id: b1.id,
+  user_id: user1.id,
+  description: 'rucker 1'
+})
+
+ruckerPhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/rucker_seed_1.jpg')
+
+rucker1.photo_file.attach(io: ruckerPhotoFile1, filename: 'rucker_seed_1.jpg')
+
+rucker2 = Photo.create({
+  business_id: b1.id,
+  user_id: user1.id,
+  description: 'rucker 2'
+  })
+
+ruckerPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/rucker_seed_2.jpg')
+
+rucker2.photo_file.attach(io: ruckerPhotoFile2, filename: 'rucker_seed_2.jpg')
+
+rucker3 = Photo.create({
+  business_id: b1.id,
+  user_id: user1.id,
+  description: 'rucker 3'
+  })
+
+ruckerPhotoFile3 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/rucker_seed_3.jpg')
+
+rucker3.photo_file.attach(io: ruckerPhotoFile3, filename: 'rucker_seed_3.jpg')
+
+rucker4 = Photo.create({
+  business_id: b1.id,
+  user_id: user1.id,
+  description: 'rucker 4'
+  })
+
+ruckerPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/rucker_seed_4.jpg')
+
+rucker4.photo_file.attach(io: ruckerPhotoFile4, filename: 'rucker_seed_4.jpg')
+
+cage1 = Photo.create({
+  business_id: b2.id,
+  user_id: user2.id,
+  description: 'cage 1'
+  })
+
+cagePhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/cage_seed_1.jpg')
+
+cage1.photo_file.attach(io: cagePhotoFile1, filename: 'cage_seed_1.jpg')
+
+cage2 = Photo.create({
+  business_id: b2.id,
+  user_id: user2.id,
+  description: 'cage 2'
+  })
+
+cagePhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/cage_seed_2.jpg')
+
+cage2.photo_file.attach(io: cagePhotoFile2, filename: 'cage_seed_2.jpg')
+
+cage3 = Photo.create({
+  business_id: b2.id,
+  user_id: user2.id,
+  description: 'cage 3'
+  })
+
+cagePhotoFile3 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/cage_seed_3.jpg')
+
+cage3.photo_file.attach(io: cagePhotoFile3, filename: 'cage_seed_3.jpg')
+
+cage4 = Photo.create({
+  business_id: b2.id,
+  user_id: user2.id,
+  description: 'cage 4'
+  })
+
+cagePhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/cage_seed_4.jpg')
+
+cage4.photo_file.attach(io: cagePhotoFile4, filename: 'cage_seed_4.jpg')
+
+canal1 = Photo.create({
+  business_id: b3.id,
+  user_id: user3.id,
+  description: 'canal 1'
+  })
+
+canalPhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/canal_seed_1.jpg')
+
+canal1.photo_file.attach(io: canalPhotoFile1, filename: 'canal_seed_1.jpg')
+
+canal2 = Photo.create({
+  business_id: b3.id,
+  user_id: user3.id,
+  description: 'canal 2'
+  })
+
+canalPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/canal_seed_2.jpeg')
+
+canal2.photo_file.attach(io: canalPhotoFile2, filename: 'canal_seed_2.jpg')
+
+canal3 = Photo.create({
+  business_id: b3.id,
+  user_id: user3.id,
+  description: 'canal 3'
+  })
+
+canalPhotoFile3 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/canal_seed_3.jpg')
+
+canal3.photo_file.attach(io: canalPhotoFile3, filename: 'canal_seed_3.jpg')
+
+canal4 = Photo.create({
+  business_id: b3.id,
+  user_id: user3.id,
+  description: 'canal 4'
+  })
+
+canalPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/canal_seed_4.jpg')
+
+canal4.photo_file.attach(io: canalPhotoFile4, filename: 'canal_seed_4.jpg')
