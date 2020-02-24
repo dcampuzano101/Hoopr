@@ -1489,6 +1489,8 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
+      debugger;
+
       if (this.props.match.params.id != prevProps.match.params.id) {
         this.props.requestBusiness(this.props.match.params.id);
       }
@@ -1496,6 +1498,7 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
+      debugger;
       this.props.requestBusiness(this.props.match.params.id);
     }
   }, {
@@ -1535,6 +1538,7 @@ function (_React$Component) {
       e.preventDefault();
       var review = Object.assign({}, this.state);
       this.props.processForm(review).then(this.props.closeModal);
+      this.forceUpdate();
     }
   }, {
     key: "render",
@@ -2961,6 +2965,7 @@ function (_React$Component) {
       e.preventDefault();
       var review = Object.assign({}, this.state);
       this.props.processForm(review).then(this.props.closeModal);
+      this.forceUpdate();
     }
   }, {
     key: "componentDidMount",
