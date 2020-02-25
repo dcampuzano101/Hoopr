@@ -2365,13 +2365,13 @@ function (_React$Component) {
         className: "search-field " + this.props.extraClass,
         type: "text",
         value: this.state.query,
-        placeholder: "basketball courts, parks.. "
+        placeholder: "basketball courts, parks.."
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "divider"
       }, "|"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "static-search"
+        id: "static-search-near"
       }, "Near"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "search-field " + this.props.extraClass,
+        className: "search-field-brooklyn " + this.props.extraClass,
         type: "text",
         placeholder: "Brooklyn, NY"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
