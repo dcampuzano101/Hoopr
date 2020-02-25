@@ -5,7 +5,7 @@ class Header extends React.Component {
       super(props);
       console.log(props);
 
-      //debugger;
+      debugger;
       let { query } = ""; //notsure about this yet.
       console.log(query)
       this.state = { query };
@@ -69,6 +69,7 @@ class Header extends React.Component {
             <button className="nav-links" id="logout" onClick={logout}>Logout</button>
           </div>
         </div>
+        
       )
       return currentUser ? profileIcon() : sessionLinks();
     }
@@ -81,13 +82,13 @@ class Header extends React.Component {
             </div>
             <div className={"search " + this.props.extraClass}>
               <div className={"search-bar " + this.props.extraClass}>
-                <span id="static-search">Find</span>
+                <span id="static-search">Search</span>
                 <input
                   id="search-field"
                   className={"search-field " + this.props.extraClass}
                   type="text"
                   value={this.state.query}
-                  placeholder="basketball courts, parks.."
+                  placeholder="borough, neighborhood, or name..."
                 />
                 <span id="divider">|</span>
                 <span id="static-search-near">Near</span>

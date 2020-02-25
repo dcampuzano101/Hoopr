@@ -39,6 +39,18 @@ class BizFilter extends React.Component {
     let query = e.currentTarget.value;
   }
 
+  getPhotoUrl(photoObj, businessId) {
+    let result = "";
+    debugger;
+
+    Object.values(photoObj).forEach( photo => {
+      if (photo.business_id === businessId) {
+        result = photo.photoUrl;
+      }
+    })
+    return result;
+  }
+
   handleSearch(e) {
     // debugger;
     let query = document.getElementById('search-field').value

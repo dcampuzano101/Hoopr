@@ -6,9 +6,10 @@ import { filterByBorough } from '../../actions/search_actions'
 
 const msp = state => {
   console.log(state);
-
+  debugger;
   return ({
-    businesses: state.entities.businesses
+    businesses: state.entities.businesses,
+    photos: state.entities.photos
   });
 };
 
@@ -17,6 +18,7 @@ const mdp = dispatch => {
 
   return ({
     requestBusinesses: () => dispatch(requestBusinesses()),
+    requestPhotos: () => dispatch(requestPhotos()),
     filterByBorough: borough => dispatch(filterByBorough(borough))
   });
 };

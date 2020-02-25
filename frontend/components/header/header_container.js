@@ -10,7 +10,8 @@ const msp = state => {
   return({
     currentUser: state.entities.users[state.session.id],
     extraClass: "someClass",
-    businesses: state.entities.businesses
+    businesses: state.entities.businesses,
+    photos: state.entities.photos
   });
 };
 

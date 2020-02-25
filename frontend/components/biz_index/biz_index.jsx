@@ -15,6 +15,18 @@ class BizIndex extends React.Component {
     this.props.submitForm(user);
   }
 
+  getPhotoUrl(photoObj, businessId) {
+    let result = "";
+    debugger;
+
+    Object.values(photoObj).forEach( photo => {
+      if (photo.business_id === businessId) {
+        result = photo.photoUrl;
+      }
+    })
+    return result;
+  }
+
   // componentDidUpdate(prevProps) {
   //   console.log(prevProps);
   //   if (this.props.match.params.url !== prevProps.match.params.url) {

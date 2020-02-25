@@ -10,8 +10,9 @@ class BizIndexItem extends React.Component {
     console.log(borough)
     this.state = { borough };
     this.handleFilter = this.handleFilter.bind(this);
-    // console.log(props);
-    
+    this.getPhotoUrl = this.getPhotoUrl.bind(this);
+    console.log(props);
+    debugger;
   }
 
   handleFilter(e) {
@@ -24,6 +25,18 @@ class BizIndexItem extends React.Component {
     (borough) ? this.props.filterByBorough(borough) : borough = "";
     this.props.history.push('/filter/' + borough );
     // debugger;
+  }
+
+  getPhotoUrl(photoObj, businessId) {
+    let result = "";
+    debugger;
+
+    Object.values(photoObj).forEach( photo => {
+      if (photo.business_id === businessId) {
+        result = photo.photoUrl;
+      }
+    })
+    return result;
   }
 
   componentDidMount(){
@@ -41,25 +54,13 @@ class BizIndexItem extends React.Component {
 
 
       // if (Object.keys(businesses).length) {
-      if (b1 && b2 && b3) {
-        const basketball1 = [];
-        for (let i = 1; i <= 5; i++) {
-          let klass = 'ball-icon-header';
-          if (b1.rating >= i) {
-            klass += ' is-selected';
-          }
-          const icon =
-            <img
-              key={i}
-              className={klass}
-              src={window.ballicon}
-            />;
-          basketball1.push(icon);
-        } 
-          const basketball2 = [];
+        debugger;
+      if (Object.values(this.props.photos).length > 0) {
+        if (b1 && b2 && b3) {
+          const basketball1 = [];
           for (let i = 1; i <= 5; i++) {
-          let klass = 'ball-icon-header';
-            if (b2.rating >= i) {
+            let klass = 'ball-icon-header';
+            if (b1.rating >= i) {
               klass += ' is-selected';
             }
             const icon =
@@ -68,77 +69,92 @@ class BizIndexItem extends React.Component {
                 className={klass}
                 src={window.ballicon}
               />;
-          basketball2.push(icon);
-          }
-          const basketball3 = [];
-          for (let i = 1; i <= 5; i++) {
+            basketball1.push(icon);
+          } 
+            const basketball2 = [];
+            for (let i = 1; i <= 5; i++) {
             let klass = 'ball-icon-header';
-          if (b3.rating >= i) {
-            klass += ' is-selected';
+              if (b2.rating >= i) {
+                klass += ' is-selected';
+              }
+              const icon =
+                <img
+                  key={i}
+                  className={klass}
+                  src={window.ballicon}
+                />;
+            basketball2.push(icon);
+            }
+            const basketball3 = [];
+            for (let i = 1; i <= 5; i++) {
+              let klass = 'ball-icon-header';
+            if (b3.rating >= i) {
+              klass += ' is-selected';
+            }
+              const icon =
+                <img
+                  key={i}
+                  className={klass}
+                  src={window.ballicon}
+                />;
+            basketball3.push(icon);
           }
-            const icon =
-              <img
-                key={i}
-                className={klass}
-                src={window.ballicon}
-              />;
-          basketball3.push(icon);
+          return (
+          <>
+            <div className="hoopr-brooklyn-container">
+              <h3>Hoopr NYC</h3>
+              <div className="bk-neighborhoods">
+                <button id="neighborhood-links" value="queens" onClick={this.handleFilter}>Queens</button>
+                <button id="neighborhood-links" value="brooklyn" onClick={this.handleFilter}>Brooklyn</button>
+                <button id="neighborhood-links" value="manhattan" onClick={this.handleFilter}>Manhattan</button>
+                <button id="neighborhood-links" value="bronx" onClick={this.handleFilter}>Bronx</button>
+                <button id="neighborhood-links" value="staten island" onClick={this.handleFilter}>Staten Island</button>
+  {/* 
+                <Link id="neighborhood-links" to="/">Queens</Link>
+                <Link id="neighborhood-links" to="/">Brooklyn</Link>
+                <Link id="neighborhood-links" to="/">Manhattan</Link>
+                <Link id="neighborhood-links" to="/">Bronx</Link>
+                <Link id="neighborhood-links" to="/">Staten Island</Link> */}
+              </div>
+              <div className="hr-row splash"></div>
+            </div>
+
+            <div className="biz-index-items-container">
+              <div className="biz-index-item b1">
+                <div className="row-1">
+                    <img className="rucker" src={this.getPhotoUrl(this.props.photos, b1.id)} />
+                </div>
+                <div className="row-2">
+                  <Link className="b-name" to={`/businesses/${b1.id}`}><h3>{b1.name}</h3></Link>
+                  <section className="static-rating-splash">{basketball1}</section>
+                  {/* <h3>Court Type: {b1.court_type}</h3> */}
+                </div>
+              </div>
+
+              <div className="biz-index-item b2">
+                <div className="row-1">
+                  <img className="cage" src={this.getPhotoUrl(this.props.photos, b2.id)} />
+                </div>
+                <div className="row-2">
+                  <Link className="b-name" to={`/businesses/${b2.id}`}><h3>{b2.name}</h3></Link>
+                  <section className="static-rating-splash">{basketball2}</section>
+                </div>
+              </div>
+
+              <div className="biz-index-item b3">
+                <div className="row-1">
+                  <img className="canal" src={this.getPhotoUrl(this.props.photos, b3.id)} />
+                </div>
+                <div className="row-2">
+                  <Link className="b-name" to={`/businesses/${b3.id}`}><h3>{b3.name}</h3></Link>
+                  <section className="static-rating-splash">{basketball3}</section>
+                </div>
+              </div>
+            </div>
+          </>
+        );
         }
-        return (
-        <>
-          <div className="hoopr-brooklyn-container">
-            <h3>Hoopr NYC</h3>
-            <div className="bk-neighborhoods">
-              <button id="neighborhood-links" value="queens" onClick={this.handleFilter}>Queens</button>
-              <button id="neighborhood-links" value="brooklyn" onClick={this.handleFilter}>Brooklyn</button>
-              <button id="neighborhood-links" value="manhattan" onClick={this.handleFilter}>Manhattan</button>
-              <button id="neighborhood-links" value="bronx" onClick={this.handleFilter}>Bronx</button>
-              <button id="neighborhood-links" value="staten island" onClick={this.handleFilter}>Staten Island</button>
-{/* 
-              <Link id="neighborhood-links" to="/">Queens</Link>
-              <Link id="neighborhood-links" to="/">Brooklyn</Link>
-              <Link id="neighborhood-links" to="/">Manhattan</Link>
-              <Link id="neighborhood-links" to="/">Bronx</Link>
-              <Link id="neighborhood-links" to="/">Staten Island</Link> */}
-            </div>
-            <div className="hr-row splash"></div>
-          </div>
-
-          <div className="biz-index-items-container">
-            <div className="biz-index-item b1">
-              <div className="row-1">
-                  <img className="rucker" src={window.rucker} />
-              </div>
-              <div className="row-2">
-                <Link className="b-name" to={`/businesses/${b1.id}`}><h3>{b1.name}</h3></Link>
-                <section className="static-rating-splash">{basketball1}</section>
-                {/* <h3>Court Type: {b1.court_type}</h3> */}
-              </div>
-            </div>
-
-            <div className="biz-index-item b2">
-              <div className="row-1">
-                <img className="cage" src={window.cage} />
-              </div>
-              <div className="row-2">
-                <Link className="b-name" to={`/businesses/${b2.id}`}><h3>{b2.name}</h3></Link>
-                <section className="static-rating-splash">{basketball2}</section>
-              </div>
-            </div>
-
-            <div className="biz-index-item b3">
-              <div className="row-1">
-                <img className="canal" src={window.canal} />
-              </div>
-              <div className="row-2">
-                <Link className="b-name" to={`/businesses/${b3.id}`}><h3>{b3.name}</h3></Link>
-                <section className="static-rating-splash">{basketball3}</section>
-              </div>
-            </div>
-          </div>
-        </>
-      );
-      } else {
+       } else {
         return (null)
       }
   }
