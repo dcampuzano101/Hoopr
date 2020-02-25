@@ -18,6 +18,7 @@ class BizPage extends React.Component {
       rating: null,
       temp_rating: null
     };
+
     this.updateSearch = this.updateSearch.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -176,9 +177,9 @@ class BizPage extends React.Component {
             <div className="rating-review">
               <section className="static-rating">{basketballs}</section>
               <h3 key={review.id}>{review.body}</h3>
+              {updateLinks(review)}
             </div>
             {/* <UpdateForm review={review}/> */}
-              {updateLinks(review)}
             <div className="hr-row"></div>
           </>
           )}

@@ -1808,7 +1808,7 @@ function (_React$Component) {
                 className: "static-rating"
               }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
                 key: review.id
-              }, review.body)), updateLinks(review), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              }, review.body), updateLinks(review)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "hr-row"
               }));
             }
