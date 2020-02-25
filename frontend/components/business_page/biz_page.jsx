@@ -25,12 +25,14 @@ class BizPage extends React.Component {
   }
 
   componentDidUpdate(prevProps){
+    debugger;
     if (this.props.match.params.id != prevProps.match.params.id) {
       this.props.requestBusiness(this.props.match.params.id);
     }
   }
 
   componentDidMount(){
+    debugger;
     this.props.requestBusiness(this.props.match.params.id);
   }
 
@@ -56,6 +58,7 @@ class BizPage extends React.Component {
     e.preventDefault();
     const review = Object.assign({}, this.state);
     this.props.processForm(review).then(this.props.closeModal);
+    this.forceUpdate();
   }
 
   render(){
