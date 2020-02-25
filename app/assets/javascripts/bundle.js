@@ -4283,7 +4283,7 @@ function (_React$Component) {
           profilePhotoUrl = _this$props.profilePhotoUrl;
       debugger;
 
-      if (reviews) {
+      if (reviews[0] !== undefined || reviews.length !== 0) {
         var reviewLis;
 
         if (reviews.length) {
@@ -4297,7 +4297,7 @@ function (_React$Component) {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
                     className: "review-form"
                   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-                    className: "rvw-btn biz-info",
+                    className: "rvw-btn biz-info edit",
                     onClick: function onClick() {
                       return openModal('updateReview', {
                         id: review.id
@@ -4341,7 +4341,7 @@ function (_React$Component) {
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
                 to: "/businesses/".concat(review.business_id)
               }, businesses[review.business_id].name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[review.user_id].first_name, " ", users[review.user_id].last_name[0], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                className: "yelp-profile",
+                className: "yelp-profile-user",
                 src: users[review.user_id].profilePhotoUrl
               })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "rating-review"
@@ -4349,7 +4349,7 @@ function (_React$Component) {
                 className: "static-rating"
               }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
                 key: review.id
-              }, review.body)), updateLinks(review), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              }, review.body), updateLinks(review)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "hr-row"
               }));
             }
@@ -4363,15 +4363,17 @@ function (_React$Component) {
           currentUser: this.props.currentUser,
           logout: this.props.logout
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "show-container"
+          className: "show-container user"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-profile-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-picture"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "yelp-profile",
+          className: "yelp-profile-user",
           src: user.profilePhotoUrl
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.last_name)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "user-profile-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Name:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, user.first_name, " ", user.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Number of reviews:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, reviews.length))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-items"

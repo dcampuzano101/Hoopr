@@ -321,6 +321,14 @@
   margin: 0 auto;
   grid-gap: 15px;
 }
+.show-container.user{
+  width: 750px;
+  display: grid;
+  grid-template-columns: 100%;
+  // border: 1px solid black;
+  margin: 0 auto;
+  grid-gap: 15px;
+}
 
 .gallery{
   display: grid;
@@ -447,6 +455,18 @@ grid-column: 1/2;
   margin-left: 15px;
 }
 
+.rvw-btn.biz-info.edit {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all .4s;
+  font-size: 12px;
+  color: #D32323;
+  padding: 5px 8px;
+  // margin: 0 16px 0 0;
+  border-radius: 3px;
+  height: 18px; 
+  margin-left: 0px;
+}
+
 .rvw-btn.biz-info:hover {
   background-color: #FDF6F6;
 }
@@ -526,22 +546,28 @@ grid-column: 1/2;
 
 .review-item{
   display: grid;
-  grid-template-columns: 40% 60%
+  grid-template-columns: 35% 60%
 }
 
 .profile-info{
-  display: grid;
-  grid-template-columns: 40% 60%;
-  grid-template-rows: none;
+  // display: grid;
+  // grid-template-columns: 40% 60%;
+  // grid-template-rows: none;
+  flex-direction: column-reverse;
+  display: flex;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 5px;
+  padding: 14px;
+  width: 200px;
 }
 
 .profile-info img{
   width: 60px;
   height: 60px;
-  grid-column: 1/2;
-  grid-row: 1/2;
-  justify-self: center;
-  margin: 20px 0;
+  // grid-column: 1/2;
+  // grid-row: 1/2;
+  // justify-self: center;
+  margin: 5px 0;
   border-radius: 4px;
 }
 
@@ -551,17 +577,51 @@ grid-column: 1/2;
 
 .profile-info h3{
   grid-column: 2/2;
-  margin-top: 20px; 
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 20px;
   justify-self: flex-start;
   color: #0073BB;
+  text-align: start;
+  margin: 0;
+}
+
+.user-picture {
+  display: flex;
+  border: 1px solid rgba(0,0,0,.2);
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.user-profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.user-profile-info h3{
+  color: black;
+  font-size: 16px;
+  text-align: start;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.user-profile-info h2{
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-left: 5px;
 }
 
 
 .rating-review {
-  display: grid;
-  grid-template-rows: 30% 70%;
+  // display: grid;
+  // grid-template-rows: 30% 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
 }
 
 .static-rating {
@@ -626,6 +686,7 @@ grid-column: 1/2;
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
+  padding-left: 5px;
 }
 
 .create-review-photo{
@@ -648,12 +709,13 @@ grid-column: 1/2;
 }
 
 .review-form{
-  text-align: center;
-  grid-column: 2/2;
+  // text-align: center;
+  // grid-column: 2/2;
   // display: none;
   // width: 130px;
   // // background-color: #F5F5F5;
   // margin: 5px;
+
 }
 
 .write-review-photo-upload{
@@ -749,4 +811,10 @@ grid-column: 1/2;
 
 #footer-icon {
   color: black;
+}
+
+.yelp-profile-user {
+  display: block;
+  width: auto;
+  height: auto;
 }
