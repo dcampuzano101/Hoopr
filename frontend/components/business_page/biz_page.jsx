@@ -18,6 +18,28 @@ class BizPage extends React.Component {
       rating: null,
       temp_rating: null
     };
+    this.updateSearch = this.updateSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  updateSearch(e) {
+    // debugger;
+    e.preventDefault();
+    let query = e.currentTarget.value;
+    // this.setState({ query });
+    // this.props.history.push('/search' + query )
+  }
+
+  handleSearch(e) {
+    // debugger;
+    let query = document.getElementById('search-field').value
+    console.log(query);
+    this.setState({ query });
+    
+    
+    (query) ? this.props.search(query) : query = "";
+    this.props.history.push('/search/' + query );
+    // debugger;
   }
 
   handleDemoSubmit(user) {

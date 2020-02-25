@@ -603,7 +603,8 @@ var msp = function msp(state, ownProps) {
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
     users: state.entities.users,
-    photos: state.entities.photos
+    photos: state.entities.photos,
+    reviews: state.entities.reviews
   };
 };
 
@@ -643,7 +644,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
-/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -661,6 +663,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -718,6 +721,11 @@ function (_React$Component) {
       var query = e.currentTarget.value;
     }
   }, {
+    key: "capitalizeWord",
+    value: function capitalizeWord(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  }, {
     key: "getPhotoUrl",
     value: function getPhotoUrl(photoObj, businessId) {
       var result = "";
@@ -728,6 +736,19 @@ function (_React$Component) {
         }
       });
       return result;
+    }
+  }, {
+    key: "getFirstReview",
+    value: function getFirstReview(reviewObj, businessId) {
+      var result = "";
+      debugger;
+
+      for (var i = 0; i < Object.values(reviewObj).length; i++) {
+        if (Object.values(reviewObj)[i].business_id === businessId) {
+          result = "\"".concat(Object.values(reviewObj)[i].body, " ...\" -").concat(this.props.users[Object.values(reviewObj)[i].user_id].first_name, " ").concat(this.props.users[Object.values(reviewObj)[i].user_id].last_name[0]);
+          return result;
+        }
+      }
     }
   }, {
     key: "handleSearch",
@@ -744,6 +765,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
@@ -769,25 +792,35 @@ function (_React$Component) {
             basketballs.push(icon);
           }
 
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+            to: "businesses/".concat(biz.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-item-wrapper"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-pic"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "canal",
-            src: window.canal
+            src: _this2.getPhotoUrl(_this2.props.photos, biz.id)
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-info"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            id: "index-biz-name"
+          }, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
             className: "static-rating-splash"
-          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
+          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            id: "index-biz-borough"
+          }, _this2.capitalizeWord(biz.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+            id: "index-biz-neighborhood"
+          }, biz.neighborhood), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "index-review"
+          }, _this2.getFirstReview(_this2.props.reviews, biz.id))))));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
           extraClass: this.props.extraClass,
           submitForm: this.props.submitForm,
           currentUser: this.props.currentUser,
           logout: this.props.logout
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-container"
         }, businessLis));
       } else {
@@ -1515,9 +1548,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1550,10 +1583,32 @@ function (_React$Component) {
       rating: null,
       temp_rating: null
     };
+    _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
+    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(BizPage, [{
+    key: "updateSearch",
+    value: function updateSearch(e) {
+      // debugger;
+      e.preventDefault();
+      var query = e.currentTarget.value; // this.setState({ query });
+      // this.props.history.push('/search' + query )
+    }
+  }, {
+    key: "handleSearch",
+    value: function handleSearch(e) {
+      // debugger;
+      var query = document.getElementById('search-field').value;
+      console.log(query);
+      this.setState({
+        query: query
+      });
+      query ? this.props.search(query) : query = "";
+      this.props.history.push('/search/' + query); // debugger;
+    }
+  }, {
     key: "handleDemoSubmit",
     value: function handleDemoSubmit(user) {
       this.props.submitForm(user);
@@ -2029,6 +2084,11 @@ function (_React$Component) {
       this.props.requestBusinesses(); // this.props.requestPhotos();
     }
   }, {
+    key: "capitalizeWord",
+    value: function capitalizeWord(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  }, {
     key: "render",
     value: function render() {
       var businesses = this.props.businesses;
@@ -2134,9 +2194,19 @@ function (_React$Component) {
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             className: "b-name",
             to: "/businesses/".concat(b1.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "biz-name-index"
+          }, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
             className: "static-rating-splash"
-          }, basketball1))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }, basketball1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "manhattan",
+            onClick: this.handleFilter
+          }, this.capitalizeWord(b1.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "harlem",
+            onClick: this.handleFilter
+          }, b1.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-item b2"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "row-1"
@@ -2148,9 +2218,19 @@ function (_React$Component) {
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             className: "b-name",
             to: "/businesses/".concat(b2.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b2.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "biz-name-index"
+          }, b2.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
             className: "static-rating-splash"
-          }, basketball2))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }, basketball2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "manhattan",
+            onClick: this.handleFilter
+          }, this.capitalizeWord(b2.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "west village",
+            onClick: this.handleFilter
+          }, b2.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-item b3"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "row-1"
@@ -2162,9 +2242,19 @@ function (_React$Component) {
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
             className: "b-name",
             to: "/businesses/".concat(b3.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b3.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "biz-name-index"
+          }, b3.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
             className: "static-rating-splash"
-          }, basketball3)))));
+          }, basketball3), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "manhattan",
+            onClick: this.handleFilter
+          }, this.capitalizeWord(b3.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "lower-manhattan",
+            onClick: this.handleFilter
+          }, b3.neighborhood)))));
         }
       } else {
         return null;

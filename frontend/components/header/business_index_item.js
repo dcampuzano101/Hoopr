@@ -43,6 +43,9 @@ class BizIndexItem extends React.Component {
     this.props.requestBusinesses();
     // this.props.requestPhotos();
   }
+  capitalizeWord(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
 
   render(){
     const { businesses } = this.props;
@@ -125,9 +128,10 @@ class BizIndexItem extends React.Component {
                     <img className="rucker" src={this.getPhotoUrl(this.props.photos, b1.id)} />
                 </div>
                 <div className="row-2">
-                  <Link className="b-name" to={`/businesses/${b1.id}`}><h3>{b1.name}</h3></Link>
+                  <Link className="b-name" to={`/businesses/${b1.id}`}><h3 id="biz-name-index">{b1.name}</h3></Link>
                   <section className="static-rating-splash">{basketball1}</section>
-                  {/* <h3>Court Type: {b1.court_type}</h3> */}
+                  <button className="b-borough" value="manhattan" onClick={this.handleFilter}>{this.capitalizeWord(b1.borough)}</button><br></br>
+                  <button className="b-borough" value="harlem" onClick={this.handleFilter}>{b1.neighborhood}</button>
                 </div>
               </div>
 
@@ -136,8 +140,10 @@ class BizIndexItem extends React.Component {
                   <img className="cage" src={this.getPhotoUrl(this.props.photos, b2.id)} />
                 </div>
                 <div className="row-2">
-                  <Link className="b-name" to={`/businesses/${b2.id}`}><h3>{b2.name}</h3></Link>
+                  <Link className="b-name" to={`/businesses/${b2.id}`}><h3 id="biz-name-index">{b2.name}</h3></Link>
                   <section className="static-rating-splash">{basketball2}</section>
+                  <button className="b-borough" value="manhattan" onClick={this.handleFilter}>{this.capitalizeWord(b2.borough)}</button><br></br>
+                  <button className="b-borough" value="west village" onClick={this.handleFilter}>{b2.neighborhood}</button>
                 </div>
               </div>
 
@@ -146,8 +152,10 @@ class BizIndexItem extends React.Component {
                   <img className="canal" src={this.getPhotoUrl(this.props.photos, b3.id)} />
                 </div>
                 <div className="row-2">
-                  <Link className="b-name" to={`/businesses/${b3.id}`}><h3>{b3.name}</h3></Link>
+                  <Link className="b-name" to={`/businesses/${b3.id}`}><h3 id="biz-name-index">{b3.name}</h3></Link>
                   <section className="static-rating-splash">{basketball3}</section>
+                  <button className="b-borough" value="manhattan" onClick={this.handleFilter}>{this.capitalizeWord(b3.borough)}</button>
+                  <button className="b-borough" value="lower-manhattan" onClick={this.handleFilter}>{b3.neighborhood}</button>
                 </div>
               </div>
             </div>
