@@ -12,7 +12,8 @@ const msp = (state, ownProps) => {
     extraClass,
     currentUser: state.entities.users[state.session.id],
     users: state.entities.users,
-    photos: state.entities.photos
+    photos: state.entities.photos,
+    reviews: state.entities.reviews
   });
 };
 

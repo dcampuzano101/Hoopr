@@ -71,7 +71,8 @@ class BizMap extends React.Component {
 
         const marker = new google.maps.Marker({
             position: position,
-            map: this.map
+            map: this.map,
+            title: business.name
         });
     }
 

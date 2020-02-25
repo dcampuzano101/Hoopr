@@ -854,6 +854,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props)); // this.moveTo = this.moveTo.bind(this);
 
     _this.child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    debugger;
     return _this;
   }
 
@@ -873,6 +874,25 @@ function (_React$Component) {
         }
       });
       return result;
+    }
+  }, {
+    key: "getFirstReview",
+    value: function getFirstReview(reviewObj, businessId) {
+      var result = "";
+      debugger; // Object.values(reviewObj).forEach( review => {
+      // })
+
+      for (var i = 0; i < Object.values(reviewObj).length; i++) {
+        if (Object.values(reviewObj)[i].business_id === businessId) {
+          result = "\"".concat(Object.values(reviewObj)[i].body, " ...\" -").concat(this.props.users[Object.values(reviewObj)[i].user_id].first_name, " ").concat(this.props.users[Object.values(reviewObj)[i].user_id].last_name[0]);
+          return result;
+        }
+      }
+    }
+  }, {
+    key: "capitalizeWord",
+    value: function capitalizeWord(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
     } // componentDidUpdate(prevProps) {
     //   console.log(prevProps);
     //   if (this.props.match.params.url !== prevProps.match.params.url) {
@@ -896,6 +916,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
@@ -920,18 +942,28 @@ function (_React$Component) {
             basketballs.push(icon);
           }
 
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+            to: "businesses/".concat(biz.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-item-wrapper"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-pic"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "canal",
-            src: window.canal
+            src: _this2.getPhotoUrl(_this2.props.photos, biz.id)
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-info"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            id: "index-biz-name"
+          }, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
             className: "static-rating-splash"
-          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
+          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            id: "index-biz-borough"
+          }, _this2.capitalizeWord(biz.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+            id: "index-biz-neighborhood"
+          }, biz.neighborhood), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "index-review"
+          }, _this2.getFirstReview(_this2.props.reviews, biz.id))))));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
           extraClass: this.props.extraClass,
@@ -984,7 +1016,8 @@ var msp = function msp(state, ownProps) {
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
     users: state.entities.users,
-    photos: state.entities.photos
+    photos: state.entities.photos,
+    reviews: state.entities.reviews
   };
 };
 
@@ -1120,7 +1153,8 @@ function (_React$Component) {
       });
       var marker = new google.maps.Marker({
         position: position,
-        map: this.map
+        map: this.map,
+        title: business.name
       });
     } // // panMap(lat, lng){
     // //     this.map.panTo
