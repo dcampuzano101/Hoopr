@@ -87,12 +87,12 @@ class Header extends React.Component {
                   className={"search-field " + this.props.extraClass}
                   type="text"
                   value={this.state.query}
-                  placeholder="basketball courts, parks.. "
+                  placeholder="basketball courts, parks.."
                 />
                 <span id="divider">|</span>
-                <span id="static-search">Near</span>
+                <span id="static-search-near">Near</span>
                 <input
-                  className={"search-field " + this.props.extraClass}
+                  className={"search-field-brooklyn " + this.props.extraClass}
                   type="text"
                   placeholder="Brooklyn, NY"
                 />

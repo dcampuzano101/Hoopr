@@ -158,15 +158,20 @@ body{
   border-radius: 3px;
   // margin-bottom: 120px;
   opacity: .9;
-  width: 700px;
   display: flex;
   align-items: center;
 }
 
-.search-field {
+.search-field-brooklyn {
   font-size: 14px;
   width: 285px;
+  display: none;
 }
+
+#search-field {
+  width: 260px;
+}
+
 
 
 .right-nav-bar {
@@ -208,12 +213,18 @@ body{
 
 #static-search {
   padding: 0 10px;
+  // display: none;
+}
+#static-search-near {
+  padding: 0 10px;
+  display: none;
 }
 
 #divider {
   opacity: .3;
   align-items: center;
   height: 100%;
+  display: none;
 
 }
 
