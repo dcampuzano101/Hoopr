@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../header/header';
+import { Link } from 'react-router-dom';
 import BizMapContainer from '../biz_map/biz_map_container';
 
 class BizFilter extends React.Component {
@@ -39,6 +40,34 @@ class BizFilter extends React.Component {
     let query = e.currentTarget.value;
   }
 
+  capitalizeWord(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
+  getPhotoUrl(photoObj, businessId) {
+    let result = "";
+    debugger;
+
+    Object.values(photoObj).forEach( photo => {
+      if (photo.business_id === businessId) {
+        result = photo.photoUrl;
+      }
+    })
+    return result;
+  }
+
+  getFirstReview(reviewObj, businessId) {
+    let result = "";
+    debugger;
+
+    for (let i = 0; i < Object.values(reviewObj).length; i++) {
+      if (Object.values(reviewObj)[i].business_id === businessId) {
+        result = `"${Object.values(reviewObj)[i].body} ..." -${this.props.users[Object.values(reviewObj)[i].user_id].first_name} ${this.props.users[Object.values(reviewObj)[i].user_id].last_name[0]}`;
+        return result;
+      }
+    }
+  }
+
   handleSearch(e) {
     // debugger;
     let query = document.getElementById('search-field').value
@@ -74,17 +103,20 @@ class BizFilter extends React.Component {
 
         return(
           <>
+          <Link to={`businesses/${biz.id}`}>
           <div className="biz-index-item-wrapper">
             <div className="biz-index-pic">
-              <img className="canal" src={window.canal} />
+              <img className="canal" src={this.getPhotoUrl(this.props.photos, biz.id)} />
             </div>
             <div className="biz-index-info">
-              <h1>{biz.name}</h1>
+              <h1 id="index-biz-name">{biz.name}</h1>
               <section className="static-rating-splash">{basketballs}</section>
-              <h1>{biz.neighborhood}</h1>
+              <h1 id="index-biz-borough">{this.capitalizeWord(biz.borough)}</h1>
+              <h2 id="index-biz-neighborhood">{biz.neighborhood}</h2>
+              <h3 id="index-review">{this.getFirstReview(this.props.reviews, biz.id)}</h3>
             </div>
-
           </div>
+          </Link>
           </>
         )});
       return(

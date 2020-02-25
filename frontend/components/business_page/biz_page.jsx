@@ -18,6 +18,29 @@ class BizPage extends React.Component {
       rating: null,
       temp_rating: null
     };
+
+    this.updateSearch = this.updateSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  updateSearch(e) {
+    // debugger;
+    e.preventDefault();
+    let query = e.currentTarget.value;
+    // this.setState({ query });
+    // this.props.history.push('/search' + query )
+  }
+
+  handleSearch(e) {
+    // debugger;
+    let query = document.getElementById('search-field').value
+    console.log(query);
+    this.setState({ query });
+    
+    
+    (query) ? this.props.search(query) : query = "";
+    this.props.history.push('/search/' + query );
+    // debugger;
   }
 
   handleDemoSubmit(user) {
@@ -154,9 +177,9 @@ class BizPage extends React.Component {
             <div className="rating-review">
               <section className="static-rating">{basketballs}</section>
               <h3 key={review.id}>{review.body}</h3>
+              {updateLinks(review)}
             </div>
             {/* <UpdateForm review={review}/> */}
-              {updateLinks(review)}
             <div className="hr-row"></div>
           </>
           )}

@@ -602,7 +602,9 @@ var msp = function msp(state, ownProps) {
     businesses: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_5__["selectBusinessesForSearch"])(businessObj, businesses),
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
-    users: state.entities.users
+    users: state.entities.users,
+    photos: state.entities.photos,
+    reviews: state.entities.reviews
   };
 };
 
@@ -642,7 +644,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
-/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -660,6 +663,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -717,6 +721,36 @@ function (_React$Component) {
       var query = e.currentTarget.value;
     }
   }, {
+    key: "capitalizeWord",
+    value: function capitalizeWord(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  }, {
+    key: "getPhotoUrl",
+    value: function getPhotoUrl(photoObj, businessId) {
+      var result = "";
+      debugger;
+      Object.values(photoObj).forEach(function (photo) {
+        if (photo.business_id === businessId) {
+          result = photo.photoUrl;
+        }
+      });
+      return result;
+    }
+  }, {
+    key: "getFirstReview",
+    value: function getFirstReview(reviewObj, businessId) {
+      var result = "";
+      debugger;
+
+      for (var i = 0; i < Object.values(reviewObj).length; i++) {
+        if (Object.values(reviewObj)[i].business_id === businessId) {
+          result = "\"".concat(Object.values(reviewObj)[i].body, " ...\" -").concat(this.props.users[Object.values(reviewObj)[i].user_id].first_name, " ").concat(this.props.users[Object.values(reviewObj)[i].user_id].last_name[0]);
+          return result;
+        }
+      }
+    }
+  }, {
     key: "handleSearch",
     value: function handleSearch(e) {
       // debugger;
@@ -731,6 +765,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
@@ -756,25 +792,35 @@ function (_React$Component) {
             basketballs.push(icon);
           }
 
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+            to: "businesses/".concat(biz.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-item-wrapper"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-pic"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "canal",
-            src: window.canal
+            src: _this2.getPhotoUrl(_this2.props.photos, biz.id)
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-info"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            id: "index-biz-name"
+          }, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
             className: "static-rating-splash"
-          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
+          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            id: "index-biz-borough"
+          }, _this2.capitalizeWord(biz.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+            id: "index-biz-neighborhood"
+          }, biz.neighborhood), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "index-review"
+          }, _this2.getFirstReview(_this2.props.reviews, biz.id))))));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
           extraClass: this.props.extraClass,
           submitForm: this.props.submitForm,
           currentUser: this.props.currentUser,
           logout: this.props.logout
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-container"
         }, businessLis));
       } else {
@@ -841,6 +887,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props)); // this.moveTo = this.moveTo.bind(this);
 
     _this.child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    debugger;
     return _this;
   }
 
@@ -848,6 +895,37 @@ function (_React$Component) {
     key: "handleDemoSubmit",
     value: function handleDemoSubmit(user) {
       this.props.submitForm(user);
+    }
+  }, {
+    key: "getPhotoUrl",
+    value: function getPhotoUrl(photoObj, businessId) {
+      var result = "";
+      debugger;
+      Object.values(photoObj).forEach(function (photo) {
+        if (photo.business_id === businessId) {
+          result = photo.photoUrl;
+        }
+      });
+      return result;
+    }
+  }, {
+    key: "getFirstReview",
+    value: function getFirstReview(reviewObj, businessId) {
+      var result = "";
+      debugger; // Object.values(reviewObj).forEach( review => {
+      // })
+
+      for (var i = 0; i < Object.values(reviewObj).length; i++) {
+        if (Object.values(reviewObj)[i].business_id === businessId) {
+          result = "\"".concat(Object.values(reviewObj)[i].body, " ...\" -").concat(this.props.users[Object.values(reviewObj)[i].user_id].first_name, " ").concat(this.props.users[Object.values(reviewObj)[i].user_id].last_name[0]);
+          return result;
+        }
+      }
+    }
+  }, {
+    key: "capitalizeWord",
+    value: function capitalizeWord(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
     } // componentDidUpdate(prevProps) {
     //   console.log(prevProps);
     //   if (this.props.match.params.url !== prevProps.match.params.url) {
@@ -871,6 +949,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
@@ -895,18 +975,28 @@ function (_React$Component) {
             basketballs.push(icon);
           }
 
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+            to: "businesses/".concat(biz.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-item-wrapper"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-pic"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "canal",
-            src: window.canal
+            src: _this2.getPhotoUrl(_this2.props.photos, biz.id)
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-info"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            id: "index-biz-name"
+          }, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
             className: "static-rating-splash"
-          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
+          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            id: "index-biz-borough"
+          }, _this2.capitalizeWord(biz.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+            id: "index-biz-neighborhood"
+          }, biz.neighborhood), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "index-review"
+          }, _this2.getFirstReview(_this2.props.reviews, biz.id))))));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
           extraClass: this.props.extraClass,
@@ -958,7 +1048,9 @@ var msp = function msp(state, ownProps) {
     businesses: businesses,
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
-    users: state.entities.users
+    users: state.entities.users,
+    photos: state.entities.photos,
+    reviews: state.entities.reviews
   };
 };
 
@@ -1094,7 +1186,8 @@ function (_React$Component) {
       });
       var marker = new google.maps.Marker({
         position: position,
-        map: this.map
+        map: this.map,
+        title: business.name
       });
     } // // panMap(lat, lng){
     // //     this.map.panTo
@@ -1262,6 +1355,18 @@ function (_React$Component) {
     key: "handleDemoSubmit",
     value: function handleDemoSubmit(user) {
       this.props.submitForm(user);
+    }
+  }, {
+    key: "getPhotoUrl",
+    value: function getPhotoUrl(photoObj, businessId) {
+      var result = "";
+      debugger;
+      Object.values(photoObj).forEach(function (photo) {
+        if (photo.business_id === businessId) {
+          result = photo.photoUrl;
+        }
+      });
+      return result;
     }
   }, {
     key: "componentDidMount",
@@ -1443,9 +1548,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1478,10 +1583,32 @@ function (_React$Component) {
       rating: null,
       temp_rating: null
     };
+    _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
+    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(BizPage, [{
+    key: "updateSearch",
+    value: function updateSearch(e) {
+      // debugger;
+      e.preventDefault();
+      var query = e.currentTarget.value; // this.setState({ query });
+      // this.props.history.push('/search' + query )
+    }
+  }, {
+    key: "handleSearch",
+    value: function handleSearch(e) {
+      // debugger;
+      var query = document.getElementById('search-field').value;
+      console.log(query);
+      this.setState({
+        query: query
+      });
+      query ? this.props.search(query) : query = "";
+      this.props.history.push('/search/' + query); // debugger;
+    }
+  }, {
     key: "handleDemoSubmit",
     value: function handleDemoSubmit(user) {
       this.props.submitForm(user);
@@ -1681,7 +1808,7 @@ function (_React$Component) {
                 className: "static-rating"
               }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
                 key: review.id
-              }, review.body)), updateLinks(review), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              }, review.body), updateLinks(review)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "hr-row"
               }));
             }
@@ -1920,8 +2047,10 @@ function (_React$Component) {
     _this.state = {
       borough: borough
     };
-    _this.handleFilter = _this.handleFilter.bind(_assertThisInitialized(_this)); // console.log(props);
-
+    _this.handleFilter = _this.handleFilter.bind(_assertThisInitialized(_this));
+    _this.getPhotoUrl = _this.getPhotoUrl.bind(_assertThisInitialized(_this));
+    console.log(props);
+    debugger;
     return _this;
   }
 
@@ -1938,9 +2067,26 @@ function (_React$Component) {
       this.props.history.push('/filter/' + borough); // debugger;
     }
   }, {
+    key: "getPhotoUrl",
+    value: function getPhotoUrl(photoObj, businessId) {
+      var result = "";
+      debugger;
+      Object.values(photoObj).forEach(function (photo) {
+        if (photo.business_id === businessId) {
+          result = photo.photoUrl;
+        }
+      });
+      return result;
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestBusinesses(); // this.props.requestPhotos();
+    }
+  }, {
+    key: "capitalizeWord",
+    value: function capitalizeWord(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
     }
   }, {
     key: "render",
@@ -1951,131 +2097,165 @@ function (_React$Component) {
       var b2 = businesses[bizKeys[1]];
       var b3 = businesses[bizKeys[2]]; // if (Object.keys(businesses).length) {
 
-      if (b1 && b2 && b3) {
-        var basketball1 = [];
+      debugger;
 
-        for (var i = 1; i <= 5; i++) {
-          var klass = 'ball-icon-header';
+      if (Object.values(this.props.photos).length > 0) {
+        if (b1 && b2 && b3) {
+          var basketball1 = [];
 
-          if (b1.rating >= i) {
-            klass += ' is-selected';
+          for (var i = 1; i <= 5; i++) {
+            var klass = 'ball-icon-header';
+
+            if (b1.rating >= i) {
+              klass += ' is-selected';
+            }
+
+            var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              key: i,
+              className: klass,
+              src: window.ballicon
+            });
+            basketball1.push(icon);
           }
 
-          var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            key: i,
-            className: klass,
-            src: window.ballicon
-          });
-          basketball1.push(icon);
-        }
+          var basketball2 = [];
 
-        var basketball2 = [];
+          for (var _i = 1; _i <= 5; _i++) {
+            var _klass = 'ball-icon-header';
 
-        for (var _i = 1; _i <= 5; _i++) {
-          var _klass = 'ball-icon-header';
+            if (b2.rating >= _i) {
+              _klass += ' is-selected';
+            }
 
-          if (b2.rating >= _i) {
-            _klass += ' is-selected';
+            var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              key: _i,
+              className: _klass,
+              src: window.ballicon
+            });
+
+            basketball2.push(_icon);
           }
 
-          var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            key: _i,
-            className: _klass,
-            src: window.ballicon
-          });
+          var basketball3 = [];
 
-          basketball2.push(_icon);
-        }
+          for (var _i2 = 1; _i2 <= 5; _i2++) {
+            var _klass2 = 'ball-icon-header';
 
-        var basketball3 = [];
+            if (b3.rating >= _i2) {
+              _klass2 += ' is-selected';
+            }
 
-        for (var _i2 = 1; _i2 <= 5; _i2++) {
-          var _klass2 = 'ball-icon-header';
+            var _icon2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              key: _i2,
+              className: _klass2,
+              src: window.ballicon
+            });
 
-          if (b3.rating >= _i2) {
-            _klass2 += ' is-selected';
+            basketball3.push(_icon2);
           }
 
-          var _icon2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            key: _i2,
-            className: _klass2,
-            src: window.ballicon
-          });
-
-          basketball3.push(_icon2);
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "hoopr-brooklyn-container"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Hoopr NYC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "bk-neighborhoods"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            id: "neighborhood-links",
+            value: "queens",
+            onClick: this.handleFilter
+          }, "Queens"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            id: "neighborhood-links",
+            value: "brooklyn",
+            onClick: this.handleFilter
+          }, "Brooklyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            id: "neighborhood-links",
+            value: "manhattan",
+            onClick: this.handleFilter
+          }, "Manhattan"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            id: "neighborhood-links",
+            value: "bronx",
+            onClick: this.handleFilter
+          }, "Bronx"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            id: "neighborhood-links",
+            value: "staten island",
+            onClick: this.handleFilter
+          }, "Staten Island")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "hr-row splash"
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-items-container"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-item b1"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row-1"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "rucker",
+            src: this.getPhotoUrl(this.props.photos, b1.id)
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row-2"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            className: "b-name",
+            to: "/businesses/".concat(b1.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "biz-name-index"
+          }, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+            className: "static-rating-splash"
+          }, basketball1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "manhattan",
+            onClick: this.handleFilter
+          }, this.capitalizeWord(b1.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "harlem",
+            onClick: this.handleFilter
+          }, b1.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-item b2"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row-1"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "cage",
+            src: this.getPhotoUrl(this.props.photos, b2.id)
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row-2"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            className: "b-name",
+            to: "/businesses/".concat(b2.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "biz-name-index"
+          }, b2.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+            className: "static-rating-splash"
+          }, basketball2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "manhattan",
+            onClick: this.handleFilter
+          }, this.capitalizeWord(b2.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "west village",
+            onClick: this.handleFilter
+          }, b2.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "biz-index-item b3"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row-1"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "canal",
+            src: this.getPhotoUrl(this.props.photos, b3.id)
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "row-2"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            className: "b-name",
+            to: "/businesses/".concat(b3.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "biz-name-index"
+          }, b3.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+            className: "static-rating-splash"
+          }, basketball3), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "manhattan",
+            onClick: this.handleFilter
+          }, this.capitalizeWord(b3.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "b-borough",
+            value: "lower-manhattan",
+            onClick: this.handleFilter
+          }, b3.neighborhood)))));
         }
-
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "hoopr-brooklyn-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Hoopr NYC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "bk-neighborhoods"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          id: "neighborhood-links",
-          value: "queens",
-          onClick: this.handleFilter
-        }, "Queens"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          id: "neighborhood-links",
-          value: "brooklyn",
-          onClick: this.handleFilter
-        }, "Brooklyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          id: "neighborhood-links",
-          value: "manhattan",
-          onClick: this.handleFilter
-        }, "Manhattan"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          id: "neighborhood-links",
-          value: "bronx",
-          onClick: this.handleFilter
-        }, "Bronx"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          id: "neighborhood-links",
-          value: "staten island",
-          onClick: this.handleFilter
-        }, "Staten Island")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "hr-row splash"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-items-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-item b1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row-1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "rucker",
-          src: window.rucker
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row-2"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          className: "b-name",
-          to: "/businesses/".concat(b1.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "static-rating-splash"
-        }, basketball1))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-item b2"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row-1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "cage",
-          src: window.cage
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row-2"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          className: "b-name",
-          to: "/businesses/".concat(b2.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b2.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "static-rating-splash"
-        }, basketball2))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "biz-index-item b3"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row-1"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "canal",
-          src: window.canal
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "row-2"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          className: "b-name",
-          to: "/businesses/".concat(b3.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, b3.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "static-rating-splash"
-        }, basketball3)))));
       } else {
         return null;
       }
@@ -2111,8 +2291,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   console.log(state);
+  debugger;
   return {
-    businesses: state.entities.businesses
+    businesses: state.entities.businesses,
+    photos: state.entities.photos
   };
 };
 
@@ -2120,6 +2302,9 @@ var mdp = function mdp(dispatch) {
   return {
     requestBusinesses: function requestBusinesses() {
       return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["requestBusinesses"])());
+    },
+    requestPhotos: function requestPhotos() {
+      return dispatch(Object(_actions_photo_actions__WEBPACK_IMPORTED_MODULE_2__["requestPhotos"])());
     },
     filterByBorough: function filterByBorough(borough) {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["filterByBorough"])(borough));
@@ -2250,8 +2435,8 @@ function (_React$Component) {
     _classCallCheck(this, Header);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
-    console.log(props); //debugger;
-
+    console.log(props);
+    debugger;
     var _ref = "",
         query = _ref.query; //notsure about this yet.
 
@@ -2360,12 +2545,12 @@ function (_React$Component) {
         className: "search-bar " + this.props.extraClass
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "static-search"
-      }, "Find"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Search"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "search-field",
         className: "search-field " + this.props.extraClass,
         type: "text",
         value: this.state.query,
-        placeholder: "basketball courts, parks.."
+        placeholder: "borough, neighborhood, or name..."
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "divider"
       }, "|"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -2454,7 +2639,8 @@ var msp = function msp(state) {
   return {
     currentUser: state.entities.users[state.session.id],
     extraClass: "someClass",
-    businesses: state.entities.businesses
+    businesses: state.entities.businesses,
+    photos: state.entities.photos
   };
 };
 
@@ -4097,7 +4283,7 @@ function (_React$Component) {
           profilePhotoUrl = _this$props.profilePhotoUrl;
       debugger;
 
-      if (reviews) {
+      if (reviews[0] !== undefined || reviews.length !== 0) {
         var reviewLis;
 
         if (reviews.length) {
@@ -4111,7 +4297,7 @@ function (_React$Component) {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
                     className: "review-form"
                   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-                    className: "rvw-btn biz-info",
+                    className: "rvw-btn biz-info edit",
                     onClick: function onClick() {
                       return openModal('updateReview', {
                         id: review.id
@@ -4155,7 +4341,7 @@ function (_React$Component) {
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
                 to: "/businesses/".concat(review.business_id)
               }, businesses[review.business_id].name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, users[review.user_id].first_name, " ", users[review.user_id].last_name[0], "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                className: "yelp-profile",
+                className: "yelp-profile-user",
                 src: users[review.user_id].profilePhotoUrl
               })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "rating-review"
@@ -4163,7 +4349,7 @@ function (_React$Component) {
                 className: "static-rating"
               }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
                 key: review.id
-              }, review.body)), updateLinks(review), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              }, review.body), updateLinks(review)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
                 className: "hr-row"
               }));
             }
@@ -4177,15 +4363,17 @@ function (_React$Component) {
           currentUser: this.props.currentUser,
           logout: this.props.logout
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "show-container"
+          className: "show-container user"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-profile-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-picture"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "yelp-profile",
+          className: "yelp-profile-user",
           src: user.profilePhotoUrl
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, user.last_name)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "user-profile-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Name:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, user.first_name, " ", user.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Number of reviews:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, reviews.length))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-items"

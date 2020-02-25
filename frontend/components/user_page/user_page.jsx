@@ -83,7 +83,7 @@ class UserPage extends React.Component {
 
 
     debugger;
-    if (reviews) {
+    if (reviews[0] !== undefined || reviews.length !== 0) {
       let reviewLis;
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
@@ -93,7 +93,7 @@ class UserPage extends React.Component {
             if (this.props.currentUser.id === review.user_id) {
               updateLinks = (review) => (
               <nav className="review-form">
-                <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
+                <button className="rvw-btn biz-info edit" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
                 <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
               </nav>
               )
@@ -122,14 +122,14 @@ class UserPage extends React.Component {
             <section className="profile-info">
               <h2><Link to={`/businesses/${review.business_id}`}>{businesses[review.business_id].name}</Link></h2>
               <h3>{users[review.user_id].first_name} {users[review.user_id].last_name[0]}.</h3>
-              <img className="yelp-profile" src={users[review.user_id].profilePhotoUrl} />
+              <img className="yelp-profile-user" src={users[review.user_id].profilePhotoUrl} />
             </section>
             <div className="rating-review">
               <section className="static-rating">{basketballs}</section>
               <h3 key={review.id}>{review.body}</h3>
+              {updateLinks(review)}
             </div>
             {/* <UpdateForm review={review}/> */}
-              {updateLinks(review)}
             <div className="hr-row"></div>
           </>
           )}
@@ -148,13 +148,15 @@ class UserPage extends React.Component {
             <img className="venice" src={window.venice} />
             <img className="shoot" src={window.shoot} />
           </div> */}
-          <div className="show-container">
+          <div className="show-container user">
             <section>
               <div className="user-profile-container">
                 <div className="user-picture">
-                  <img className="yelp-profile" src={user.profilePhotoUrl} />
-                  <h3>{user.first_name}</h3>
-                  <h3>{user.last_name}</h3>
+                  <img className="yelp-profile-user" src={user.profilePhotoUrl} />
+                  <div className="user-profile-info">
+                    <h3>Name:</h3><h2>{user.first_name} {user.last_name}</h2><br></br>
+                    <h3>Number of reviews:</h3><h2>{reviews.length}</h2>
+                  </div>
                 </div>
               </div>
             </section>
@@ -162,9 +164,9 @@ class UserPage extends React.Component {
               <div className="review-items">
                 <div className="profile-section">
                 </div>
-                <div className="review-item">
-                  {reviewLis}
-                </div>
+              <div className="review-item">
+                {reviewLis}
+              </div>
               </div>
             </div>
           </div>

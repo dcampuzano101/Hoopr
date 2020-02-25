@@ -7,7 +7,7 @@ class Api::SearchesController < ApplicationController
     
     def search
         @query = params[:query].downcase
-        @businesses = Business.where('lower(name) like ? or lower(neighborhood) like ?',  "%#{@query}%", "%#{@query}%")
+        @businesses = Business.where('lower(borough) like ? or lower(neighborhood) like ? or lower(name) like ?',  "%#{@query}%", "%#{@query}%", "%#{@query}%")
         render 'api/searches/search'
     end
 
