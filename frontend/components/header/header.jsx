@@ -5,7 +5,7 @@ class Header extends React.Component {
       super(props);
       console.log(props);
 
-      debugger;
+      // debugger;
       let { query } = ""; //notsure about this yet.
       console.log(query)
       this.state = { query };

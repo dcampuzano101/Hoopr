@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
     get '/search/:query', to: 'searches#search'
     get '/filter/:borough', to: 'searches#borough'
-    post '/businesses/:business_id/photos', to: 'photos#create'
+    # post '/businesses/:business_id/photos', to: 'photos#create'
 		resource :search, only: :show
 
     resources :businesses, only: [:create, :show, :index] do

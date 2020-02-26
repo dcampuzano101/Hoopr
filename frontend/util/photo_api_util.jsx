@@ -9,6 +9,7 @@ export const createPhoto = (formData, businessId) => {
       contentType: false,
       processData: false
     });
+    debugger;
   };
 
 export const fetchPhotos = () => {

@@ -7,7 +7,7 @@ import { requestBusiness } from '../../actions/biz_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
+  // debugger;
   return {
     // errors: errors.session,
     formType: 'createReview',

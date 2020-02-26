@@ -46,7 +46,7 @@ class BizFilter extends React.Component {
 
   getPhotoUrl(photoObj, businessId) {
     let result = "";
-    debugger;
+    // debugger;
 
     Object.values(photoObj).forEach( photo => {
       if (photo.business_id === businessId) {
@@ -58,7 +58,7 @@ class BizFilter extends React.Component {
 
   getFirstReview(reviewObj, businessId) {
     let result = "";
-    debugger;
+    // debugger;
 
     for (let i = 0; i < Object.values(reviewObj).length; i++) {
       if (Object.values(reviewObj)[i].business_id === businessId) {

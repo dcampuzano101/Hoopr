@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
  
 const msp = (state, ownProps) => {
   let review = state.entities.reviews[ownProps.id];
-  debugger;
+  // debugger;
   return({
     review,
     currentUser: state.entities.users[state.session.id],

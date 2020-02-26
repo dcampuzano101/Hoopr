@@ -54,14 +54,14 @@ json.set! :users do
 end
 # debugger;
 
-json.set! :photos do
+json.photos do
   photos.each do |photo|
     json.set! photo.id do
-      #json.extract! photo, :id, :user_id, :business_id, :description, :photo_file
-      # debugger;
-      # if photo.attached?
-      #   json.photoFileUrl url_for(photo)
-      # end
+      json.extract! photo, :business_id, :user_id, :description
+
+      if photo.photo_file.attached?
+        json.photoUrl url_for(photo.photo_file)
+      end
     end
   end
 end

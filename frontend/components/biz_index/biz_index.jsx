@@ -9,7 +9,7 @@ class BizIndex extends React.Component {
     super(props);
     // this.moveTo = this.moveTo.bind(this);
     this.child = React.createRef();
-    debugger;
+    // debugger;
   }
 
   handleDemoSubmit(user) {
@@ -18,7 +18,7 @@ class BizIndex extends React.Component {
 
   getPhotoUrl(photoObj, businessId) {
     let result = "";
-    debugger;
+    // debugger;
 
     Object.values(photoObj).forEach( photo => {
       if (photo.business_id === businessId) {
@@ -30,7 +30,7 @@ class BizIndex extends React.Component {
 
   getFirstReview(reviewObj, businessId) {
     let result = "";
-    debugger;
+    // debugger;
 
     // Object.values(reviewObj).forEach( review => {
     // })

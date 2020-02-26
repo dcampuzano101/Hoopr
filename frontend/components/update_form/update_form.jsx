@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class UpdateForm extends React.Component{
   constructor(props){
-    debugger;
+    // debugger;
     super(props);
     const { review, currentBiz, currentUser } = this.props;
     // debugger;

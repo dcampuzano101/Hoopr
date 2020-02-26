@@ -6,10 +6,10 @@ import { RECEIVE_PHOTO, RECEIVE_PHOTOS } from '../actions/photo_actions';
 
 const bizReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-  // debugger;
+  debugger;
   switch (action.type) {
     case RECEIVE_BUSINESS:
-      return Object.assign({}, oldState, { [action.payload.business.id]: action.payload.business });
+      return Object.assign({}, oldState, { [action.payload.business.id]: action.payload.business, });
 
     // case RECEIVE_REVIEW:
     //   return Object.assign({}, oldState, { [action.payload.business.id]: action.payload.business });
