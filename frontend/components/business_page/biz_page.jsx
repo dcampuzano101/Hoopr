@@ -52,11 +52,17 @@ class BizPage extends React.Component {
     if (this.props.match.params.id != prevProps.match.params.id) {
       this.props.requestBusiness(this.props.match.params.id);
     }
+    debugger;
+    if (Object.values(prevProps.reviewObj).length != Object.values(this.props.reviewObj).length) {
+      this.props.requestBusiness(this.props.match.params.id);
+      this.forceUpdate();
+    }
   }
 
   componentDidMount(){
     debugger;
     this.props.requestBusiness(this.props.match.params.id);
+
   }
 
   update(field) {

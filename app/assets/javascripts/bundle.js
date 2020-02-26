@@ -1621,6 +1621,13 @@ function (_React$Component) {
       if (this.props.match.params.id != prevProps.match.params.id) {
         this.props.requestBusiness(this.props.match.params.id);
       }
+
+      debugger;
+
+      if (Object.values(prevProps.reviewObj).length != Object.values(this.props.reviewObj).length) {
+        this.props.requestBusiness(this.props.match.params.id);
+        this.forceUpdate();
+      }
     }
   }, {
     key: "componentDidMount",
@@ -1945,6 +1952,7 @@ var msp = function msp(state, ownProps) {
     business: business,
     // businessId: ownProps.match.params.id,
     extraClass: extraClass,
+    reviewObj: reviewObj,
     currentUser: state.entities.users[state.session.id],
     reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_6__["selectReviewsForBiz"])(business.reviewIds, reviewObj),
     photos: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_6__["selectPhotosForBiz"])(business.photoIds, photoObj),
@@ -2097,165 +2105,163 @@ function (_React$Component) {
       var b2 = businesses[bizKeys[1]];
       var b3 = businesses[bizKeys[2]]; // if (Object.keys(businesses).length) {
 
-      debugger;
+      debugger; // if (Object.values(this.props.photos).length > 0) {
 
-      if (Object.values(this.props.photos).length > 0) {
-        if (b1 && b2 && b3) {
-          var basketball1 = [];
+      if (b1 && b2 && b3) {
+        var basketball1 = [];
 
-          for (var i = 1; i <= 5; i++) {
-            var klass = 'ball-icon-header';
+        for (var i = 1; i <= 5; i++) {
+          var klass = 'ball-icon-header';
 
-            if (b1.rating >= i) {
-              klass += ' is-selected';
-            }
-
-            var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-              key: i,
-              className: klass,
-              src: window.ballicon
-            });
-            basketball1.push(icon);
+          if (b1.rating >= i) {
+            klass += ' is-selected';
           }
 
-          var basketball2 = [];
-
-          for (var _i = 1; _i <= 5; _i++) {
-            var _klass = 'ball-icon-header';
-
-            if (b2.rating >= _i) {
-              _klass += ' is-selected';
-            }
-
-            var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-              key: _i,
-              className: _klass,
-              src: window.ballicon
-            });
-
-            basketball2.push(_icon);
-          }
-
-          var basketball3 = [];
-
-          for (var _i2 = 1; _i2 <= 5; _i2++) {
-            var _klass2 = 'ball-icon-header';
-
-            if (b3.rating >= _i2) {
-              _klass2 += ' is-selected';
-            }
-
-            var _icon2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-              key: _i2,
-              className: _klass2,
-              src: window.ballicon
-            });
-
-            basketball3.push(_icon2);
-          }
-
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "hoopr-brooklyn-container"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Hoopr NYC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "bk-neighborhoods"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            id: "neighborhood-links",
-            value: "queens",
-            onClick: this.handleFilter
-          }, "Queens"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            id: "neighborhood-links",
-            value: "brooklyn",
-            onClick: this.handleFilter
-          }, "Brooklyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            id: "neighborhood-links",
-            value: "manhattan",
-            onClick: this.handleFilter
-          }, "Manhattan"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            id: "neighborhood-links",
-            value: "bronx",
-            onClick: this.handleFilter
-          }, "Bronx"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            id: "neighborhood-links",
-            value: "staten island",
-            onClick: this.handleFilter
-          }, "Staten Island")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "hr-row splash"
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "biz-index-items-container"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "biz-index-item b1"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "row-1"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "rucker",
-            src: this.getPhotoUrl(this.props.photos, b1.id)
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "row-2"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            className: "b-name",
-            to: "/businesses/".concat(b1.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-            id: "biz-name-index"
-          }, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-            className: "static-rating-splash"
-          }, basketball1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "b-borough",
-            value: "manhattan",
-            onClick: this.handleFilter
-          }, this.capitalizeWord(b1.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "b-borough",
-            value: "harlem",
-            onClick: this.handleFilter
-          }, b1.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "biz-index-item b2"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "row-1"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "cage",
-            src: this.getPhotoUrl(this.props.photos, b2.id)
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "row-2"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            className: "b-name",
-            to: "/businesses/".concat(b2.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-            id: "biz-name-index"
-          }, b2.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-            className: "static-rating-splash"
-          }, basketball2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "b-borough",
-            value: "manhattan",
-            onClick: this.handleFilter
-          }, this.capitalizeWord(b2.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "b-borough",
-            value: "west village",
-            onClick: this.handleFilter
-          }, b2.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "biz-index-item b3"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "row-1"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "canal",
-            src: this.getPhotoUrl(this.props.photos, b3.id)
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "row-2"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            className: "b-name",
-            to: "/businesses/".concat(b3.id)
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-            id: "biz-name-index"
-          }, b3.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-            className: "static-rating-splash"
-          }, basketball3), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "b-borough",
-            value: "manhattan",
-            onClick: this.handleFilter
-          }, this.capitalizeWord(b3.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            className: "b-borough",
-            value: "lower-manhattan",
-            onClick: this.handleFilter
-          }, b3.neighborhood)))));
+          var icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: i,
+            className: klass,
+            src: window.ballicon
+          });
+          basketball1.push(icon);
         }
+
+        var basketball2 = [];
+
+        for (var _i = 1; _i <= 5; _i++) {
+          var _klass = 'ball-icon-header';
+
+          if (b2.rating >= _i) {
+            _klass += ' is-selected';
+          }
+
+          var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: _i,
+            className: _klass,
+            src: window.ballicon
+          });
+
+          basketball2.push(_icon);
+        }
+
+        var basketball3 = [];
+
+        for (var _i2 = 1; _i2 <= 5; _i2++) {
+          var _klass2 = 'ball-icon-header';
+
+          if (b3.rating >= _i2) {
+            _klass2 += ' is-selected';
+          }
+
+          var _icon2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            key: _i2,
+            className: _klass2,
+            src: window.ballicon
+          });
+
+          basketball3.push(_icon2);
+        }
+
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "hoopr-brooklyn-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Hoopr NYC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bk-neighborhoods"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "neighborhood-links",
+          value: "queens",
+          onClick: this.handleFilter
+        }, "Queens"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "neighborhood-links",
+          value: "brooklyn",
+          onClick: this.handleFilter
+        }, "Brooklyn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "neighborhood-links",
+          value: "manhattan",
+          onClick: this.handleFilter
+        }, "Manhattan"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "neighborhood-links",
+          value: "bronx",
+          onClick: this.handleFilter
+        }, "Bronx"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "neighborhood-links",
+          value: "staten island",
+          onClick: this.handleFilter
+        }, "Staten Island")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "hr-row splash"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-items-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-item b1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "rucker",
+          src: this.getPhotoUrl(this.props.photos, b1.id)
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "b-name",
+          to: "/businesses/".concat(b1.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          id: "biz-name-index"
+        }, b1.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "static-rating-splash"
+        }, basketball1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "b-borough",
+          value: "manhattan",
+          onClick: this.handleFilter
+        }, this.capitalizeWord(b1.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "b-borough",
+          value: "harlem",
+          onClick: this.handleFilter
+        }, b1.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-item b2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "cage",
+          src: this.getPhotoUrl(this.props.photos, b2.id)
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "b-name",
+          to: "/businesses/".concat(b2.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          id: "biz-name-index"
+        }, b2.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "static-rating-splash"
+        }, basketball2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "b-borough",
+          value: "manhattan",
+          onClick: this.handleFilter
+        }, this.capitalizeWord(b2.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "b-borough",
+          value: "west village",
+          onClick: this.handleFilter
+        }, b2.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "biz-index-item b3"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-1"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "canal",
+          src: this.getPhotoUrl(this.props.photos, b3.id)
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "row-2"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "b-name",
+          to: "/businesses/".concat(b3.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          id: "biz-name-index"
+        }, b3.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "static-rating-splash"
+        }, basketball3), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "b-borough",
+          value: "manhattan",
+          onClick: this.handleFilter
+        }, this.capitalizeWord(b3.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "b-borough",
+          value: "lower-manhattan",
+          onClick: this.handleFilter
+        }, b3.neighborhood))))); // }
       } else {
         return null;
       }

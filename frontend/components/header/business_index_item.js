@@ -41,6 +41,7 @@ class BizIndexItem extends React.Component {
 
   componentDidMount(){
     this.props.requestBusinesses();
+    
     // this.props.requestPhotos();
   }
   capitalizeWord(word) {
@@ -58,7 +59,7 @@ class BizIndexItem extends React.Component {
 
       // if (Object.keys(businesses).length) {
         debugger;
-      if (Object.values(this.props.photos).length > 0) {
+      // if (Object.values(this.props.photos).length > 0) {
         if (b1 && b2 && b3) {
           const basketball1 = [];
           for (let i = 1; i <= 5; i++) {
@@ -161,7 +162,7 @@ class BizIndexItem extends React.Component {
             </div>
           </>
         );
-        }
+        // }
        } else {
         return (null)
       }

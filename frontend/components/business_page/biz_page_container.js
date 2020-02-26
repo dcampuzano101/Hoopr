@@ -22,6 +22,7 @@ const msp = (state, ownProps) => {
     business,
     // businessId: ownProps.match.params.id,
     extraClass,
+    reviewObj,
     currentUser: state.entities.users[state.session.id],
     reviews: selectReviewsForBiz(business.reviewIds, reviewObj),
     photos: selectPhotosForBiz(business.photoIds, photoObj),
