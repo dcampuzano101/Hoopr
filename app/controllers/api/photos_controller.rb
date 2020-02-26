@@ -3,11 +3,11 @@ class Api::PhotosController < ApplicationController
   
     def create
       @photo = Photo.new(photo_params)
-  
+      debugger;
       if @photo.save
         #should i render the biz show page??
-        #render :show
-        render json: 'successful upload'
+        render :show
+        # render json: 'success'
 
       else
 #        render json: @photo, status: :unprocessable_entity

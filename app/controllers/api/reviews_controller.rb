@@ -3,7 +3,7 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.new(review_params)
-
+    debugger;
     if @review.save
       #should i render the biz show page??
       render :show

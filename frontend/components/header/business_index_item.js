@@ -12,11 +12,11 @@ class BizIndexItem extends React.Component {
     this.handleFilter = this.handleFilter.bind(this);
     this.getPhotoUrl = this.getPhotoUrl.bind(this);
     console.log(props);
-    debugger;
+    // debugger;
   }
 
   handleFilter(e) {
-    debugger;
+    // debugger;
     let borough = e.currentTarget.value
     console.log(borough);
     this.setState({ borough });
@@ -29,7 +29,7 @@ class BizIndexItem extends React.Component {
 
   getPhotoUrl(photoObj, businessId) {
     let result = "";
-    debugger;
+    // debugger;
 
     Object.values(photoObj).forEach( photo => {
       if (photo.business_id === businessId) {
@@ -58,7 +58,7 @@ class BizIndexItem extends React.Component {
 
 
       // if (Object.keys(businesses).length) {
-        debugger;
+        // debugger;
       // if (Object.values(this.props.photos).length > 0) {
         if (b1 && b2 && b3) {
           const basketball1 = [];

@@ -13,7 +13,7 @@ import UpdateForm from '../update_form/update_form_container';
 class BizPage extends React.Component {
   constructor(props){
     super(props);
-    debugger;
+    // debugger;
     this.state = {
       rating: null,
       temp_rating: null
@@ -48,20 +48,25 @@ class BizPage extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    debugger;
+    // debugger;
     if (this.props.match.params.id != prevProps.match.params.id) {
       this.props.requestBusiness(this.props.match.params.id);
     }
-    debugger;
+    // debugger;
     if (Object.values(prevProps.reviewObj).length != Object.values(this.props.reviewObj).length) {
       this.props.requestBusiness(this.props.match.params.id);
       this.forceUpdate();
     }
+    // debugger;
+    if (Object.values(prevProps.photoObj).length != Object.values(this.props.photoObj).length) {
+      this.props.requestBusiness(this.props.match.params.id);
+    }
   }
 
   componentDidMount(){
-    debugger;
+    // debugger;
     this.props.requestBusiness(this.props.match.params.id);
+    // this.props.requestPhotos();
 
   }
 
@@ -97,7 +102,7 @@ class BizPage extends React.Component {
     if (this.props.currentUser) {
       authReview =
       <> 
-        <button className="rvw-btn biz-info" onClick={() => openModal('createReview', {tempRating: this.state.temp_rating})}>&#9733; Write a Review</button>
+        <button id="rvw-btn" onClick={() => openModal('createReview', {tempRating: this.state.temp_rating})}>&#9733; Write a Review</button>
         <button className="add-photo" onClick={() => openModal('createPhoto')}> &#128247; Add Photo</button>
       </>
     } else {
@@ -136,17 +141,17 @@ class BizPage extends React.Component {
     //   </nav>
     // );
 
-    debugger;
+    // debugger;
     if (business.id) {
       let reviewLis;
-      debugger;
+      // debugger;
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
           let updateLinks;
-          debugger;
+          // debugger;
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
-              debugger;
+              // debugger;
               updateLinks = (review) => (
               <nav className="review-form">
                 <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
@@ -210,11 +215,10 @@ class BizPage extends React.Component {
               <h3>Rating: {business.rating} - 16 reviews</h3>
               <h3><Link to="#">{business.court_type}</Link></h3>
               <section className="info-buttons">
-                <nav className="review-form">
+                {/* <nav className="review-form">
                   {authReview}
                   {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
-                </nav>
-                {/* <button className="add-photo"> &#128247; Add Photo</button> */}
+                {/* </nav> */}
               </section>
             </div>
             <div className="sticky-info">

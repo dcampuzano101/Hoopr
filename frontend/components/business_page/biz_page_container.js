@@ -4,6 +4,7 @@ import { login, logout } from '../../actions/session_actions';
 import BizPage from './biz_page';
 import { openModal } from '../../actions/modal_actions';
 import { deleteReview } from '../../actions/review_actions';
+import { requestPhotos } from '../../actions/photo_actions';
 import { selectReviewsForBiz, selectPhotosForBiz } from '../../reducers/selectors';
 import { search } from '../../actions/search_actions';
 
@@ -23,6 +24,7 @@ const msp = (state, ownProps) => {
     // businessId: ownProps.match.params.id,
     extraClass,
     reviewObj,
+    photoObj,
     currentUser: state.entities.users[state.session.id],
     reviews: selectReviewsForBiz(business.reviewIds, reviewObj),
     photos: selectPhotosForBiz(business.photoIds, photoObj),
@@ -37,6 +39,7 @@ const mdp = dispatch => {
     submitForm: user => dispatch(login(user)),
     openModal: (modal, props) => dispatch(openModal(modal, props)),
     requestBusinesses: () => dispatch(requestBusinesses()),
+    requestPhotos: () => dispatch(requestPhotos()),
     deleteReview: (reviewId, businessId) => dispatch(deleteReview(reviewId, businessId)),
     search: query => dispatch(search(query))
   });
