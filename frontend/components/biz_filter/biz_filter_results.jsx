@@ -103,7 +103,7 @@ class BizFilter extends React.Component {
 
         return(
           <>
-          <Link to={`businesses/${biz.id}`}>
+          <Link to={`/businesses/${biz.id}`}>
           <div className="biz-index-item-wrapper">
             <div className="biz-index-pic">
               <img className="canal" src={this.getPhotoUrl(this.props.photos, biz.id)} />

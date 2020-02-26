@@ -788,7 +788,7 @@ function (_React$Component) {
           }
 
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-            to: "businesses/".concat(biz.id)
+            to: "/businesses/".concat(biz.id)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-item-wrapper"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
