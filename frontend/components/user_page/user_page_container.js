@@ -10,7 +10,7 @@ const msp = (state, ownProps) => {
     const reviewObj = state.entities.reviews;
     let query = ownProps.match.params || {};
     let profilePhotoUrl = "";
-    // debugger;
+      
     return ({
         query,
         user,

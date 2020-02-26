@@ -15,7 +15,7 @@ class BizSearch extends React.Component {
     this.updateSearch = this.updateSearch.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
 
-    // debugger;
+      
   }
 
   handleDemoSubmit(user) {
@@ -24,7 +24,7 @@ class BizSearch extends React.Component {
 
   getPhotoUrl(photoObj, businessId) {
     let result = "";
-    debugger;
+      ;
 
     Object.values(photoObj).forEach( photo => {
       if (photo.business_id === businessId) {
@@ -46,13 +46,13 @@ class BizSearch extends React.Component {
   }
 
   updateSearch(e) {
-    // debugger;
+      
     e.preventDefault();
     let query = e.currentTarget.value;
   }
 
   handleSearch(e) {
-    // debugger;
+      
     let query = document.getElementById('search-field').value
     console.log(query);
     this.setState({ query });
@@ -60,14 +60,14 @@ class BizSearch extends React.Component {
     
     (query) ? this.props.search(query) : query = "";
     this.props.history.push('/search/' + query );
-    // debugger;
+      
   }
 
   render() {
     const { businesses, users } = this.props;
-    // debugger;
+      
     if (businesses.length > 0) {
-      // debugger;
+        
       let businessLis = Object.values(businesses).map(biz => {
         const basketballs = [];
         for (let i = 1; i <= 5; i++) {

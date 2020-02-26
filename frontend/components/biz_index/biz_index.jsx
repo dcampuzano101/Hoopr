@@ -9,7 +9,7 @@ class BizIndex extends React.Component {
     super(props);
     // this.moveTo = this.moveTo.bind(this);
     this.child = React.createRef();
-    // debugger;
+      
   }
 
   handleDemoSubmit(user) {
@@ -18,7 +18,7 @@ class BizIndex extends React.Component {
 
   getPhotoUrl(photoObj, businessId) {
     let result = "";
-    // debugger;
+      
 
     Object.values(photoObj).forEach( photo => {
       if (photo.business_id === businessId) {
@@ -30,7 +30,7 @@ class BizIndex extends React.Component {
 
   getFirstReview(reviewObj, businessId) {
     let result = "";
-    // debugger;
+      
 
     // Object.values(reviewObj).forEach( review => {
     // })
@@ -63,14 +63,14 @@ class BizIndex extends React.Component {
   // }
 
   // onMouseOver(lat, lng){
-  //   debugger;
+  //     ;
   //   this.child.current.moveTo(lat, lng);
   // };
 
   render() {
     const { businesses, users } = this.props;
     if (businesses) {
-      // debugger;
+        
       let businessLis = Object.values(businesses).map(biz => {
         const basketballs = [];
         for (let i = 1; i <= 5; i++) {

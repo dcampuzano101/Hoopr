@@ -1,6 +1,6 @@
 export const selectReviewsForBiz = (review_ids = [], reviews) => {
   let result = [];
-  // debugger;
+    
   review_ids.forEach(id => {
     result.push(reviews[id]);
   });
@@ -9,7 +9,7 @@ export const selectReviewsForBiz = (review_ids = [], reviews) => {
 
 export const selectPhotosForBiz = (photo_ids = [], photos) => {
   let result = [];
-  debugger;
+    ;
   photo_ids.forEach(id => {
     result.push(photos[id]);
   });
@@ -18,7 +18,7 @@ export const selectPhotosForBiz = (photo_ids = [], photos) => {
 
 export const selectReviewsForUser = (review_ids = [], reviews) => {
   let result = [];
-  debugger;
+    ;
   review_ids.forEach(id => {
     result.push(reviews[id]);
   });
@@ -28,7 +28,7 @@ export const selectReviewsForUser = (review_ids = [], reviews) => {
 
 export const selectBusinessesForSearch = ( businessIds = [], businesses) => {
   let result = [];
-  // debugger;
+    
   businessIds.forEach(id => {
     result.push(businesses[id])
   });
@@ -37,7 +37,7 @@ export const selectBusinessesForSearch = ( businessIds = [], businesses) => {
 
 export const selectBusinessesForFilter = ( businessIds = [], businesses) => {
   let result = [];
-  // debugger;
+    
   businessIds.forEach(id => {
     result.push(businesses[id])
   });

@@ -160,7 +160,6 @@ __webpack_require__.r(__webpack_exports__);
 var CLOSE_MODAL = "CLOSE_MODAL";
 var OPEN_MODAL = "OPEN_MODAL";
 var closeModal = function closeModal() {
-  // debugger;
   return {
     type: CLOSE_MODAL
   };
@@ -201,14 +200,14 @@ var RECEIVE_PHOTO = "RECEIVE_PHOTO";
 var RECEIVE_PHOTOS = "RECEIVE_PHOTOS";
 var REMOVE_PHOTO = "REMOVE_PHOTO";
 var receivePhoto = function receivePhoto(payload) {
-  debugger;
+  ;
   return {
     type: RECEIVE_PHOTO,
     payload: payload
   };
 };
 var receivePhotos = function receivePhotos(payload) {
-  debugger;
+  ;
   return {
     type: RECEIVE_PHOTOS,
     payload: payload
@@ -222,7 +221,7 @@ var removePhoto = function removePhoto(payload) {
 };
 var requestPhotos = function requestPhotos() {
   return function (dispatch) {
-    debugger;
+    ;
     return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchPhotos"]().then(function (payload) {
       return dispatch(receivePhotos(payload));
     });
@@ -230,7 +229,7 @@ var requestPhotos = function requestPhotos() {
 };
 var requestPhoto = function requestPhoto(photoId) {
   return function (dispatch) {
-    debugger;
+    ;
     return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchPhoto"](photoId).then(function (payload) {
       return dispatch(receivePhoto(payload));
     });
@@ -239,7 +238,7 @@ var requestPhoto = function requestPhoto(photoId) {
 
 var createPhoto = function createPhoto(photo, businessId) {
   return function (dispatch) {
-    debugger;
+    ;
     return _util_photo_api_util__WEBPACK_IMPORTED_MODULE_0__["createPhoto"](photo, businessId).then(function (res) {
       return dispatch(receivePhoto(res));
     });
@@ -300,7 +299,7 @@ var requestReview = function requestReview(reviewId) {
 };
 var createReview = function createReview(review) {
   return function (dispatch) {
-    debugger;
+    ;
     return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["createReview"](review).then(function (review) {
       return dispatch(receiveReview(review));
     });
@@ -347,7 +346,6 @@ var receiveSearch = function receiveSearch(payload) {
 };
 var search = function search(query) {
   return function (dispatch) {
-    // debugger;
     return Object(_util_search_api_util__WEBPACK_IMPORTED_MODULE_0__["searchRequest"])(query).then(function (payload) {
       return dispatch(receiveSearch(payload));
     });
@@ -355,7 +353,6 @@ var search = function search(query) {
 };
 var filterByBorough = function filterByBorough(borough) {
   return function (dispatch) {
-    // debugger;
     return Object(_util_search_api_util__WEBPACK_IMPORTED_MODULE_0__["boroughRequest"])(borough).then(function (payload) {
       return dispatch(receiveSearch(payload));
     });
@@ -597,7 +594,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  debugger;
+  ;
   var extraClass = "biz-index";
   var businesses = state.entities.businesses;
   var businessObj = state.entities.search.businessIds;
@@ -693,8 +690,7 @@ function (_React$Component) {
       borough: borough
     };
     _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
-    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this)); // debugger;
-
+    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -719,7 +715,6 @@ function (_React$Component) {
   }, {
     key: "updateSearch",
     value: function updateSearch(e) {
-      // debugger;
       e.preventDefault();
       var query = e.currentTarget.value;
     }
@@ -731,8 +726,7 @@ function (_React$Component) {
   }, {
     key: "getPhotoUrl",
     value: function getPhotoUrl(photoObj, businessId) {
-      var result = ""; // debugger;
-
+      var result = "";
       Object.values(photoObj).forEach(function (photo) {
         if (photo.business_id === businessId) {
           result = photo.photoUrl;
@@ -743,7 +737,7 @@ function (_React$Component) {
   }, {
     key: "getFirstReview",
     value: function getFirstReview(reviewObj, businessId) {
-      var result = ""; // debugger;
+      var result = "";
 
       for (var i = 0; i < Object.values(reviewObj).length; i++) {
         if (Object.values(reviewObj)[i].business_id === businessId) {
@@ -755,14 +749,13 @@ function (_React$Component) {
   }, {
     key: "handleSearch",
     value: function handleSearch(e) {
-      // debugger;
       var query = document.getElementById('search-field').value;
       console.log(query);
       this.setState({
         query: query
       });
       query ? this.props.search(query) : query = "";
-      this.props.history.push('/search/' + query); // debugger;
+      this.props.history.push('/search/' + query);
     }
   }, {
     key: "render",
@@ -772,10 +765,10 @@ function (_React$Component) {
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
-      debugger;
+      ;
 
       if (businesses.length > 0) {
-        debugger;
+        ;
         var businessLis = Object.values(businesses).map(function (biz) {
           var basketballs = [];
 
@@ -888,8 +881,7 @@ function (_React$Component) {
     console.log(props);
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props)); // this.moveTo = this.moveTo.bind(this);
 
-    _this.child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef(); // debugger;
-
+    _this.child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     return _this;
   }
 
@@ -901,8 +893,7 @@ function (_React$Component) {
   }, {
     key: "getPhotoUrl",
     value: function getPhotoUrl(photoObj, businessId) {
-      var result = ""; // debugger;
-
+      var result = "";
       Object.values(photoObj).forEach(function (photo) {
         if (photo.business_id === businessId) {
           result = photo.photoUrl;
@@ -913,8 +904,7 @@ function (_React$Component) {
   }, {
     key: "getFirstReview",
     value: function getFirstReview(reviewObj, businessId) {
-      var result = ""; // debugger;
-      // Object.values(reviewObj).forEach( review => {
+      var result = ""; // Object.values(reviewObj).forEach( review => {
       // })
 
       for (var i = 0; i < Object.values(reviewObj).length; i++) {
@@ -944,7 +934,7 @@ function (_React$Component) {
     //   this.map.panTo(latLng); 
     // }
     // onMouseOver(lat, lng){
-    //   debugger;
+    //     ;
     //   this.child.current.moveTo(lat, lng);
     // };
 
@@ -958,7 +948,6 @@ function (_React$Component) {
           users = _this$props.users;
 
       if (businesses) {
-        // debugger;
         var businessLis = Object.values(businesses).map(function (biz) {
           var basketballs = [];
 
@@ -1123,8 +1112,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizMap).call(this, props));
     _this.addBizLocation = _this.addBizLocation.bind(_assertThisInitialized(_this));
-    console.log(props); // debugger;
-
+    console.log(props);
     return _this;
   }
 
@@ -1179,7 +1167,6 @@ function (_React$Component) {
   }, {
     key: "addBizLocation",
     value: function addBizLocation(business) {
-      // debugger;
       var lat = business.latitude;
       var lng = business.longitude;
       var position = new google.maps.LatLng({
@@ -1238,8 +1225,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state, ownProps) {
   console.log(ownProps);
-  var biz = state.entities.businesses[ownProps.match.params.id]; // debugger;
-
+  var biz = state.entities.businesses[ownProps.match.params.id];
   var center = {};
   var zoom = 18;
 
@@ -1262,7 +1248,7 @@ var msp = function msp(state, ownProps) {
       };
       zoom = 18;
     }
-  } // debugger
+  } //   
 
 
   if (biz) {
@@ -1273,8 +1259,7 @@ var msp = function msp(state, ownProps) {
       };
       zoom = 18;
     }
-  } // debugger;
-
+  }
 
   return {
     businesses: state.entities.businesses,
@@ -1348,8 +1333,7 @@ function (_React$Component) {
       query: query
     };
     _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
-    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this)); // debugger;
-
+    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1362,7 +1346,7 @@ function (_React$Component) {
     key: "getPhotoUrl",
     value: function getPhotoUrl(photoObj, businessId) {
       var result = "";
-      debugger;
+      ;
       Object.values(photoObj).forEach(function (photo) {
         if (photo.business_id === businessId) {
           result = photo.photoUrl;
@@ -1386,31 +1370,28 @@ function (_React$Component) {
   }, {
     key: "updateSearch",
     value: function updateSearch(e) {
-      // debugger;
       e.preventDefault();
       var query = e.currentTarget.value;
     }
   }, {
     key: "handleSearch",
     value: function handleSearch(e) {
-      // debugger;
       var query = document.getElementById('search-field').value;
       console.log(query);
       this.setState({
         query: query
       });
       query ? this.props.search(query) : query = "";
-      this.props.history.push('/search/' + query); // debugger;
+      this.props.history.push('/search/' + query);
     }
   }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           businesses = _this$props.businesses,
-          users = _this$props.users; // debugger;
+          users = _this$props.users;
 
       if (businesses.length > 0) {
-        // debugger;
         var businessLis = Object.values(businesses).map(function (biz) {
           var basketballs = [];
 
@@ -1488,7 +1469,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  debugger;
+  ;
   var extraClass = "biz-index";
   var businesses = state.entities.businesses;
   var businessObj = state.entities.search.businessIds;
@@ -1579,8 +1560,7 @@ function (_React$Component) {
 
     _classCallCheck(this, BizPage);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizPage).call(this, props)); // debugger;
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizPage).call(this, props));
     _this.state = {
       rating: null,
       temp_rating: null
@@ -1593,7 +1573,6 @@ function (_React$Component) {
   _createClass(BizPage, [{
     key: "updateSearch",
     value: function updateSearch(e) {
-      // debugger;
       e.preventDefault();
       var query = e.currentTarget.value; // this.setState({ query });
       // this.props.history.push('/search' + query )
@@ -1601,14 +1580,13 @@ function (_React$Component) {
   }, {
     key: "handleSearch",
     value: function handleSearch(e) {
-      // debugger;
       var query = document.getElementById('search-field').value;
       console.log(query);
       this.setState({
         query: query
       });
       query ? this.props.search(query) : query = "";
-      this.props.history.push('/search/' + query); // debugger;
+      this.props.history.push('/search/' + query);
     }
   }, {
     key: "handleDemoSubmit",
@@ -1618,17 +1596,14 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      // debugger;
       if (this.props.match.params.id != prevProps.match.params.id) {
         this.props.requestBusiness(this.props.match.params.id);
-      } // debugger;
-
+      }
 
       if (Object.values(prevProps.reviewObj).length != Object.values(this.props.reviewObj).length) {
         this.props.requestBusiness(this.props.match.params.id);
         this.forceUpdate();
-      } // debugger;
-
+      }
 
       if (Object.values(prevProps.photoObj).length != Object.values(this.props.photoObj).length) {
         this.props.requestBusiness(this.props.match.params.id);
@@ -1637,7 +1612,6 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger;
       this.props.requestBusiness(this.props.match.params.id); // this.props.requestPhotos();
     }
   }, {
@@ -1684,7 +1658,7 @@ function (_React$Component) {
     value: function render() {
       var _this5 = this;
 
-      // ////debugger;
+      // ////  ;
       var authReview; // console.log(currentUser);
 
       if (this.props.currentUser) {
@@ -1746,19 +1720,17 @@ function (_React$Component) {
       //     <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
       //   </nav>
       // );
-      // debugger;
 
 
       if (business.id) {
-        var reviewLis; // debugger;
+        var reviewLis;
 
         if (reviews.length) {
           reviewLis = reviews.map(function (review) {
-            var updateLinks; // debugger;
+            var updateLinks;
 
             if (_this5.props.currentUser) {
               if (_this5.props.currentUser.id === review.user_id) {
-                // debugger;
                 updateLinks = function updateLinks(review) {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
                     className: "review-form"
@@ -1779,7 +1751,7 @@ function (_React$Component) {
                   }, "\u2605 Delete Review"));
                 };
               } else {
-                //debugger;
+                //  ;
                 updateLinks = function updateLinks() {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
                 };
@@ -1946,8 +1918,7 @@ var msp = function msp(state, ownProps) {
   var business = state.entities.businesses[ownProps.match.params.id] || {};
   var reviewObj = state.entities.reviews;
   var photoObj = state.entities.photos;
-  var query = ownProps.match.params || {}; // debugger;
-
+  var query = ownProps.match.params || {};
   return {
     query: query,
     business: business,
@@ -2062,28 +2033,25 @@ function (_React$Component) {
     };
     _this.handleFilter = _this.handleFilter.bind(_assertThisInitialized(_this));
     _this.getPhotoUrl = _this.getPhotoUrl.bind(_assertThisInitialized(_this));
-    console.log(props); // debugger;
-
+    console.log(props);
     return _this;
   }
 
   _createClass(BizIndexItem, [{
     key: "handleFilter",
     value: function handleFilter(e) {
-      // debugger;
       var borough = e.currentTarget.value;
       console.log(borough);
       this.setState({
         borough: borough
       });
       borough ? this.props.filterByBorough(borough) : borough = "";
-      this.props.history.push('/filter/' + borough); // debugger;
+      this.props.history.push('/filter/' + borough);
     }
   }, {
     key: "getPhotoUrl",
     value: function getPhotoUrl(photoObj, businessId) {
-      var result = ""; // debugger;
-
+      var result = "";
       Object.values(photoObj).forEach(function (photo) {
         if (photo.business_id === businessId) {
           result = photo.photoUrl;
@@ -2109,7 +2077,6 @@ function (_React$Component) {
       var b1 = businesses[bizKeys[0]];
       var b2 = businesses[bizKeys[1]];
       var b3 = businesses[bizKeys[2]]; // if (Object.keys(businesses).length) {
-      // debugger;
       // if (Object.values(this.props.photos).length > 0) {
 
       if (b1 && b2 && b3) {
@@ -2301,8 +2268,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
-  console.log(state); // debugger;
-
+  console.log(state);
   return {
     businesses: state.entities.businesses,
     photos: state.entities.photos
@@ -2446,8 +2412,7 @@ function (_React$Component) {
     _classCallCheck(this, Header);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
-    console.log(props); // debugger;
-
+    console.log(props);
     var _ref = "",
         query = _ref.query; //notsure about this yet.
 
@@ -2481,7 +2446,6 @@ function (_React$Component) {
   }, {
     key: "updateSearch",
     value: function updateSearch(e) {
-      // debugger;
       e.preventDefault();
       var query = e.currentTarget.value; // this.setState({ query });
       // this.props.history.push('/search' + query )
@@ -2489,21 +2453,19 @@ function (_React$Component) {
   }, {
     key: "handleSearch",
     value: function handleSearch(e) {
-      // debugger;
       var query = document.getElementById('search-field').value;
       console.log(query);
       this.setState({
         query: query
       });
       query ? this.props.search(query) : query = "";
-      this.props.history.push('/search/' + query); // debugger;
+      this.props.history.push('/search/' + query);
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      // debugger;
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           logout = _this$props.logout;
@@ -2813,13 +2775,11 @@ function (_React$Component) {
 
     _classCallCheck(this, PhotoForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PhotoForm).call(this, props)); // debugger;
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PhotoForm).call(this, props));
     console.log(_this.props);
     var _this$props = _this.props,
         currentBiz = _this$props.currentBiz,
-        currentUser = _this$props.currentUser; // debugger;
-
+        currentUser = _this$props.currentUser;
     _this.state = {
       business_id: currentBiz.id,
       description: "",
@@ -2858,13 +2818,11 @@ function (_React$Component) {
     value: function handleFile(e) {
       var _this3 = this;
 
-      // debugger;
       e.preventDefault();
       var file = e.currentTarget.files[0];
       var fileReader = new FileReader();
 
       fileReader.onloadend = function () {
-        // debugger;
         _this3.setState({
           photoFile: file,
           photoUrl: fileReader.result
@@ -2887,7 +2845,6 @@ function (_React$Component) {
       formData.append('photo[photo_file]', this.state.photoFile); // this.state.photoFiles.forEach(file => {
       //     formData.append('photo[images][]', file);
       // });
-      // debugger;
 
       this.props.processForm(formData, this.state.business_id).then(this.props.closeModal);
       this.forceUpdate(); // this.props.submitForm(formData);
@@ -3027,7 +2984,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
+  ;
   return {
     // errors: errors.session,
     formType: 'createPhoto',
@@ -3110,8 +3067,7 @@ function (_React$Component) {
     console.log(_this.props);
     var _this$props = _this.props,
         currentBiz = _this$props.currentBiz,
-        currentUser = _this$props.currentUser; // debugger;
-
+        currentUser = _this$props.currentUser;
     _this.state = {
       business_id: currentBiz.id,
       body: "",
@@ -3252,7 +3208,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  // debugger;
   return {
     // errors: errors.session,
     formType: 'createReview',
@@ -3611,8 +3566,7 @@ function (_React$Component) {
       formData.append('user[email]', this.state.email);
       formData.append('user[zip_code]', this.state.zip_code);
       formData.append('user[password]', this.state.password);
-      formData.append('user[profile_photo]', this.state.photoFile); // debugger;
-
+      formData.append('user[profile_photo]', this.state.photoFile);
       this.props.submitForm(formData);
     }
   }, {
@@ -3644,7 +3598,6 @@ function (_React$Component) {
     value: function handleFile(e) {
       var _this3 = this;
 
-      // debugger;
       var file = e.currentTarget.files[0];
       var fileReader = new FileReader();
 
@@ -3851,13 +3804,11 @@ function (_React$Component) {
 
     _classCallCheck(this, UpdateForm);
 
-    // debugger;
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UpdateForm).call(this, props));
     var _this$props = _this.props,
         review = _this$props.review,
         currentBiz = _this$props.currentBiz,
-        currentUser = _this$props.currentUser; // debugger;
-
+        currentUser = _this$props.currentUser;
     _this.state = {
       id: review.id,
       business_id: currentBiz.id,
@@ -3996,7 +3947,7 @@ function (_React$Component) {
 //     super(props);
 //     console.log(`REVIEWFORMPROPS: ${this.props}`);
 //     const { currentBiz, currentUser } = this.props;
-//     // debugger;
+//       
 //     this.state = {
 //       business_id: currentBiz.id,
 //       body: "",
@@ -4109,8 +4060,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  var review = state.entities.reviews[ownProps.id]; // debugger;
-
+  var review = state.entities.reviews[ownProps.id];
   return {
     review: review,
     currentUser: state.entities.users[state.session.id],
@@ -4195,8 +4145,7 @@ function (_React$Component) {
     _classCallCheck(this, UserPage);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UserPage).call(this, props));
-    console.log(props); // debugger;
-
+    console.log(props);
     _this.state = {
       rating: null,
       temp_rating: null
@@ -4291,14 +4240,14 @@ function (_React$Component) {
           users = _this$props.users,
           deleteReview = _this$props.deleteReview,
           currentUser = _this$props.currentUser,
-          profilePhotoUrl = _this$props.profilePhotoUrl; // debugger;
+          profilePhotoUrl = _this$props.profilePhotoUrl;
 
       if (reviews[0] !== undefined || reviews.length !== 0) {
         var reviewLis;
 
         if (reviews.length) {
           reviewLis = reviews.map(function (review) {
-            var updateLinks; // debugger;
+            var updateLinks;
 
             if (_this5.props.currentUser) {
               if (_this5.props.currentUser.id === review.user_id) {
@@ -4363,8 +4312,7 @@ function (_React$Component) {
               }));
             }
           });
-        } // debugger;
-
+        }
 
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
           extraClass: this.props.extraClass,
@@ -4427,8 +4375,7 @@ var msp = function msp(state, ownProps) {
   var user = state.entities.users[ownProps.match.params.id] || {};
   var reviewObj = state.entities.reviews;
   var query = ownProps.match.params || {};
-  var profilePhotoUrl = ""; // debugger;
-
+  var profilePhotoUrl = "";
   return {
     query: query,
     user: user,
@@ -4536,7 +4483,7 @@ document.addEventListener("DOMContentLoaded", function () {
   count += 1;
   console.log(count);
   var root = document.getElementById("root");
-  var store; // debugger;
+  var store;
 
   if (window.currentUser) {
     var _window = window,
@@ -4603,7 +4550,7 @@ var bizReducer = function bizReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
-  debugger;
+  ;
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BUSINESS"]:
@@ -4752,23 +4699,22 @@ var photosReducer = function photosReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
-  debugger;
+  ;
 
   switch (action.type) {
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BUSINESSES"]:
     case _actions_biz_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BUSINESS"]:
-      debugger;
+      ;
       return Object.assign({}, oldState, action.payload.photos);
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTO"]:
-      debugger;
+      ;
       return Object.assign({}, oldState, _defineProperty({}, action.payload.photo.id, action.payload.photo));
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PHOTOS"]:
       return Object.assign({}, oldState, action.payload.photos);
 
     case _actions_photo_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_PHOTO"]:
-      // debugger;
       var newState = Object.assign({}, oldState);
       delete newState[action.payload.photo.id];
       return newState;
@@ -4801,7 +4747,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var reviewsReducer = function reviewsReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  // debugger;
   Object.freeze(oldState);
 
   switch (action.type) {
@@ -4810,11 +4755,9 @@ var reviewsReducer = function reviewsReducer() {
       return Object.assign({}, oldState, action.payload.reviews);
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
-      // debugger;
       return Object.assign({}, oldState, _defineProperty({}, action.payload.review.id, action.payload.review));
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_REVIEW"]:
-      // debugger;
       var newState = Object.assign({}, oldState);
       delete newState[action.payload.review.id];
       return newState;
@@ -4913,8 +4856,7 @@ __webpack_require__.r(__webpack_exports__);
 var selectReviewsForBiz = function selectReviewsForBiz() {
   var review_ids = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var reviews = arguments.length > 1 ? arguments[1] : undefined;
-  var result = []; // debugger;
-
+  var result = [];
   review_ids.forEach(function (id) {
     result.push(reviews[id]);
   });
@@ -4924,7 +4866,7 @@ var selectPhotosForBiz = function selectPhotosForBiz() {
   var photo_ids = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var photos = arguments.length > 1 ? arguments[1] : undefined;
   var result = [];
-  debugger;
+  ;
   photo_ids.forEach(function (id) {
     result.push(photos[id]);
   });
@@ -4934,7 +4876,7 @@ var selectReviewsForUser = function selectReviewsForUser() {
   var review_ids = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var reviews = arguments.length > 1 ? arguments[1] : undefined;
   var result = [];
-  debugger;
+  ;
   review_ids.forEach(function (id) {
     result.push(reviews[id]);
   });
@@ -4943,8 +4885,7 @@ var selectReviewsForUser = function selectReviewsForUser() {
 var selectBusinessesForSearch = function selectBusinessesForSearch() {
   var businessIds = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var businesses = arguments.length > 1 ? arguments[1] : undefined;
-  var result = []; // debugger;
-
+  var result = [];
   businessIds.forEach(function (id) {
     result.push(businesses[id]);
   });
@@ -4953,8 +4894,7 @@ var selectBusinessesForSearch = function selectBusinessesForSearch() {
 var selectBusinessesForFilter = function selectBusinessesForFilter() {
   var businessIds = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var businesses = arguments.length > 1 ? arguments[1] : undefined;
-  var result = []; // debugger;
-
+  var result = [];
   businessIds.forEach(function (id) {
     result.push(businesses[id]);
   });
@@ -5079,7 +5019,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var usersReducer = function usersReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(oldState); // debugger;
+  Object.freeze(oldState);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER"]:
@@ -5193,7 +5133,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePhoto", function() { return deletePhoto; });
 //Photo API Util
 var createPhoto = function createPhoto(formData, businessId) {
-  debugger;
   return $.ajax({
     method: "POST",
     url: "api/businesses/".concat(businessId, "/photos"),
@@ -5201,7 +5140,7 @@ var createPhoto = function createPhoto(formData, businessId) {
     contentType: false,
     processData: false
   });
-  debugger;
+  ;
 };
 var fetchPhotos = function fetchPhotos() {
   return $.ajax({
@@ -5239,7 +5178,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteReview", function() { return deleteReview; });
 //Review API Util
 var createReview = function createReview(review) {
-  debugger;
+  ;
   return $.ajax({
     method: "POST",
     url: "/api/businesses/".concat(review.business_id, "/reviews"),
@@ -5247,7 +5186,7 @@ var createReview = function createReview(review) {
       review: review
     }
   });
-  debugger;
+  ;
 };
 var updateReview = function updateReview(review) {
   return $.ajax({
@@ -37874,7 +37813,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

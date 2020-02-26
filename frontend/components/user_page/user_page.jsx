@@ -14,7 +14,7 @@ class UserPage extends React.Component {
   constructor(props){
     super(props);
     console.log(props);
-    // debugger;
+      
     this.state = {
       rating: null,
       temp_rating: null
@@ -82,13 +82,13 @@ class UserPage extends React.Component {
     const { businesses, user, openModal, reviews, users, deleteReview, currentUser, profilePhotoUrl } = this.props;
 
 
-    // debugger;
+      
     if (reviews[0] !== undefined || reviews.length !== 0) {
       let reviewLis;
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
           let updateLinks;
-          // debugger;
+            
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
               updateLinks = (review) => (
@@ -135,7 +135,7 @@ class UserPage extends React.Component {
           )}
         })
       }
-      // debugger;
+        
       return (
         <div>
           {/* <Link id=""to="/"><img id="logo-biz-page" src={window.logo} /></Link> */}

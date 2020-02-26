@@ -4,7 +4,7 @@ import { RECEIVE_BUSINESS, RECEIVE_BUSINESSES } from '../actions/biz_actions';
 
 const usersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-  // debugger;
+    
   switch (action.type) {
     case RECEIVE_USER:
       return Object.assign({}, oldState, { [action.payload.id]: action.payload });

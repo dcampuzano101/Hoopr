@@ -13,7 +13,7 @@ import UpdateForm from '../update_form/update_form_container';
 class BizPage extends React.Component {
   constructor(props){
     super(props);
-    // debugger;
+      
     this.state = {
       rating: null,
       temp_rating: null
@@ -24,7 +24,7 @@ class BizPage extends React.Component {
   }
 
   updateSearch(e) {
-    // debugger;
+      
     e.preventDefault();
     let query = e.currentTarget.value;
     // this.setState({ query });
@@ -32,7 +32,7 @@ class BizPage extends React.Component {
   }
 
   handleSearch(e) {
-    // debugger;
+      
     let query = document.getElementById('search-field').value
     console.log(query);
     this.setState({ query });
@@ -40,7 +40,7 @@ class BizPage extends React.Component {
     
     (query) ? this.props.search(query) : query = "";
     this.props.history.push('/search/' + query );
-    // debugger;
+      
   }
 
   handleDemoSubmit(user) {
@@ -48,23 +48,23 @@ class BizPage extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    // debugger;
+      
     if (this.props.match.params.id != prevProps.match.params.id) {
       this.props.requestBusiness(this.props.match.params.id);
     }
-    // debugger;
+      
     if (Object.values(prevProps.reviewObj).length != Object.values(this.props.reviewObj).length) {
       this.props.requestBusiness(this.props.match.params.id);
       this.forceUpdate();
     }
-    // debugger;
+      
     if (Object.values(prevProps.photoObj).length != Object.values(this.props.photoObj).length) {
       this.props.requestBusiness(this.props.match.params.id);
     }
   }
 
   componentDidMount(){
-    // debugger;
+      
     this.props.requestBusiness(this.props.match.params.id);
     // this.props.requestPhotos();
 
@@ -96,7 +96,7 @@ class BizPage extends React.Component {
   }
 
   render(){
-    // ////debugger;
+    // ////  ;
     let authReview;
     // console.log(currentUser);
     if (this.props.currentUser) {
@@ -141,17 +141,17 @@ class BizPage extends React.Component {
     //   </nav>
     // );
 
-    // debugger;
+      
     if (business.id) {
       let reviewLis;
-      // debugger;
+        
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
           let updateLinks;
-          // debugger;
+            
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
-              // debugger;
+                
               updateLinks = (review) => (
               <nav className="review-form">
                 <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
@@ -159,7 +159,7 @@ class BizPage extends React.Component {
               </nav>
               )
             } else {
-             //debugger;
+             //  ;
               updateLinks = () => (
               <div></div>
               )

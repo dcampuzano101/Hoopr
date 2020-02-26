@@ -52,7 +52,7 @@ json.set! :users do
     end
   end
 end
-# debugger;
+#   ;
 
 json.photos do
   photos.each do |photo|

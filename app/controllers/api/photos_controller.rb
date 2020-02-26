@@ -3,7 +3,7 @@ class Api::PhotosController < ApplicationController
   
     def create
       @photo = Photo.new(photo_params)
-      debugger;
+        ;
       if @photo.save
         #should i render the biz show page??
         render :show

@@ -5,7 +5,7 @@ class Header extends React.Component {
       super(props);
       console.log(props);
 
-      // debugger;
+        
       let { query } = ""; //notsure about this yet.
       console.log(query)
       this.state = { query };
@@ -28,7 +28,7 @@ class Header extends React.Component {
   }
 
   updateSearch(e) {
-    // debugger;
+      
     e.preventDefault();
     let query = e.currentTarget.value;
     // this.setState({ query });
@@ -38,7 +38,7 @@ class Header extends React.Component {
 
 
   handleSearch(e) {
-    // debugger;
+      
     let query = document.getElementById('search-field').value
     console.log(query);
     this.setState({ query });
@@ -46,11 +46,11 @@ class Header extends React.Component {
     
     (query) ? this.props.search(query) : query = "";
     this.props.history.push('/search/' + query );
-    // debugger;
+      
   }
   
   render(){
-    // debugger;
+      
     const { currentUser, logout } = this.props;
 
     const display = () => {

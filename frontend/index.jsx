@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(count);
   const root = document.getElementById("root");
   let store;
-  // debugger;
+    
   if (window.currentUser) {
     const { currentUser } = window;
     const { id } = currentUser;

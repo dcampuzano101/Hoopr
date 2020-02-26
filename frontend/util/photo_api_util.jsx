@@ -1,7 +1,7 @@
 //Photo API Util
 
 export const createPhoto = (formData, businessId) => {
-    debugger
+      
     return $.ajax({
       method: "POST",
       url: `api/businesses/${businessId}/photos`,
@@ -9,7 +9,7 @@ export const createPhoto = (formData, businessId) => {
       contentType: false,
       processData: false
     });
-    debugger;
+      ;
   };
 
 export const fetchPhotos = () => {

@@ -14,9 +14,9 @@ class Api::BusinessesController < ApplicationController
   end
 
   def uploadPhoto
-    # debugger
+    #   
     @business = Business.find(params[:business_id])
-    # debugger
+    #   
     # Attach the blob to the project by creating the association in the database directly.
     @business.photos.attach(io: params[:photo_file], filename: params[:filename])
     #BLOB MUST EXIST!!! 
