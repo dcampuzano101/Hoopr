@@ -7,7 +7,7 @@ class ReviewForm extends React.Component {
     super(props);
     console.log(this.props);
     const { currentBiz, currentUser } = this.props;
-    // debugger;
+      
     this.state = {
       business_id: currentBiz.id,
       body: "",

@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 const msp = (state, ownProps) => {
     console.log(ownProps)
     let biz = state.entities.businesses[ownProps.match.params.id];
-    // debugger;
+      
     let center = {  }
     let zoom = 18
 
@@ -36,7 +36,7 @@ const msp = (state, ownProps) => {
             zoom = 18;
         } 
     }
-    // debugger
+    //   
     if (biz) {
         if (biz.id.toString() === ownProps.match.params.id) {
             center = {
@@ -46,7 +46,7 @@ const msp = (state, ownProps) => {
             zoom = 18;
         }
     }
-    // debugger;
+      
     return ({
         businesses: state.entities.businesses,
         center: center,

@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 class PhotoForm extends React.Component {
   constructor(props){
     super(props);
-    // debugger;
+      
     console.log(this.props);
     const { currentBiz, currentUser } = this.props;
-    // debugger;
+      
     this.state = {
       business_id: currentBiz.id,
       description: "",
@@ -42,13 +42,13 @@ class PhotoForm extends React.Component {
 // this.setState({photoFile: file, photoUrl: fileReader.result});
 
     handleFile(e) {
-        // debugger;
+          
         e.preventDefault();
         const file = e.currentTarget.files[0];  
         const fileReader = new FileReader();
         
         fileReader.onloadend = () => {
-            // debugger;
+              
         this.setState({photoFile: file, photoUrl: fileReader.result})
 
         };
@@ -69,7 +69,7 @@ class PhotoForm extends React.Component {
     //     formData.append('photo[images][]', file);
     // });
 
-    // debugger;
+      
     this.props.processForm(formData, this.state.business_id).then(this.props.closeModal);
     this.forceUpdate();
     // this.props.submitForm(formData);

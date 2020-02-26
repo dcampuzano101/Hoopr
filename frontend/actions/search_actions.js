@@ -8,13 +8,13 @@ export const receiveSearch = (payload) => ({
 })
 
 export const search = (query) => dispatch => {
-    // debugger;
+      
     return searchRequest(query)
     .then(payload => dispatch(receiveSearch(payload)));
 }
 
 export const filterByBorough = (borough) => dispatch => {
-    // debugger;
+      
     return boroughRequest(borough)
     .then(payload => dispatch(receiveSearch(payload)));
 }

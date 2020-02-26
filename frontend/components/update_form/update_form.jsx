@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 class UpdateForm extends React.Component{
   constructor(props){
-    // debugger;
+      
     super(props);
     const { review, currentBiz, currentUser } = this.props;
-    // debugger;
+      
     this.state = {
       id: review.id,
       business_id: currentBiz.id,
@@ -142,7 +142,7 @@ export default UpdateForm;
 //     super(props);
 //     console.log(`REVIEWFORMPROPS: ${this.props}`);
 //     const { currentBiz, currentUser } = this.props;
-//     // debugger;
+//       
 //     this.state = {
 //       business_id: currentBiz.id,
 //       body: "",

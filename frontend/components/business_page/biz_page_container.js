@@ -17,7 +17,7 @@ const msp = (state, ownProps) => {
   const reviewObj = state.entities.reviews;
   const photoObj = state.entities.photos;
   let query = ownProps.match.params || {};
-  // debugger;
+    
     return ({
     query,
     business,

@@ -6,7 +6,7 @@ import { filterByBorough } from '../../actions/search_actions'
 
 const msp = state => {
   console.log(state);
-  // debugger;
+    
   return ({
     businesses: state.entities.businesses,
     photos: state.entities.photos

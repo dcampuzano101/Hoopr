@@ -177,7 +177,7 @@ b7 = Business.create({
   longitude: -73.936259
 })
 
-b7 = Business.create({
+b8 = Business.create({
   name: 'Dean Playground',
   email: 'n/a',
   price_range: '$',
@@ -193,7 +193,7 @@ b7 = Business.create({
   longitude: -73.973160
 })
 
-b7 = Business.create({
+b9 = Business.create({
   name: 'Brower Park',
   email: 'n/a',
   price_range: '$',
@@ -209,21 +209,21 @@ b7 = Business.create({
   longitude: -73.943803
 })
 
-b7 = Business.create({
-  name: 'Christopher "Biggie" Wallace Basketball Courts',
-  email: 'n/a',
-  price_range: '$',
-  owner_id: user2.id,
-  rating: 4,
-  court_type: 'Outdoor',
-  start_time: 'Sunrise',
-  end_time: 'Dusk',
-  neighborhood: 'bedford-stuyvesant',
-  borough: 'brooklyn',
-  website: 'https://www.nycgovparks.org/parks/crispus-attucks-playground/',
-  latitude: 40.681569,
-  longitude: -73.959064
-})
+# b10 = Business.create({
+#   name: 'Christopher "Biggie" Wallace Basketball Courts',
+#   email: 'n/a',
+#   price_range: '$',
+#   owner_id: user2.id,
+#   rating: 4,
+#   court_type: 'Outdoor',
+#   start_time: 'Sunrise',
+#   end_time: 'Dusk',
+#   neighborhood: 'bedford-stuyvesant',
+#   borough: 'brooklyn',
+#   website: 'https://www.nycgovparks.org/parks/crispus-attucks-playground/',
+#   latitude: 40.681569,
+#   longitude: -73.959064
+# })
 
 
 # user1 = User.create({
@@ -357,3 +357,243 @@ canal4 = Photo.create({
 canalPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/canal_seed_4.jpg')
 
 canal4.photo_file.attach(io: canalPhotoFile4, filename: 'canal_seed_4.jpg')
+
+bbp1 = Photo.create({
+  business_id: b4.id,
+  user_id: user3.id,
+  description: 'bbp 1'
+  })
+
+bbpPhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/bbp_seed_1.jpg')
+
+bbp1.photo_file.attach(io: bbpPhotoFile1, filename: 'bbp_seed_1.jpg')
+
+bbp2 = Photo.create({
+  business_id: b4.id,
+  user_id: user3.id,
+  description: 'bbp 2'
+  })
+
+bbpPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/bbp_seed_2.jpg')
+
+bbp2.photo_file.attach(io: bbpPhotoFile2, filename: 'bbp_seed_2.jpg')
+
+bbp3 = Photo.create({
+  business_id: b4.id,
+  user_id: user3.id,
+  description: 'bbp 3'
+  })
+
+bbpPhotoFile3 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/bbp_seed_3.jpg')
+
+bbp3.photo_file.attach(io: bbpPhotoFile3, filename: 'bbp_seed_3.jpg')
+
+bbp4 = Photo.create({
+  business_id: b4.id,
+  user_id: user3.id,
+  description: 'bbp 4'
+  })
+
+bbpPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/bbp_seed_4.jpg')
+
+bbp4.photo_file.attach(io: bbpPhotoFile4, filename: 'bbp_seed_4.jpg')
+
+ap1 = Photo.create({
+  business_id: b5.id,
+  user_id: user4.id,
+  description: 'ap 1'
+  })
+
+apPhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/ap_seed_1.jpg')
+
+ap1.photo_file.attach(io: apPhotoFile1, filename: 'ap_seed_1.jpg')
+
+ap2 = Photo.create({
+  business_id: b5.id,
+  user_id: user4.id,
+  description: 'ap 2'
+  })
+
+apPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/ap_seed_2.jpg')
+
+ap2.photo_file.attach(io: apPhotoFile2, filename: 'ap_seed_2.jpg')
+
+ap3 = Photo.create({
+  business_id: b5.id,
+  user_id: user4.id,
+  description: 'ap 3'
+  })
+
+apPhotoFile3 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/ap_seed_3.jpg')
+
+ap3.photo_file.attach(io: apPhotoFile3, filename: 'ap_seed_3.jpg')
+
+ap4 = Photo.create({
+  business_id: b5.id,
+  user_id: user4.id,
+  description: 'ap 4'
+  })
+
+apPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/ap_seed_4.jpg')
+
+ap4.photo_file.attach(io: apPhotoFile4, filename: 'ap_seed_4.jpg')
+
+maria1 = Photo.create({
+  business_id: b6.id,
+  user_id: user4.id,
+  description: 'maria 1'
+  })
+
+mariaPhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/maria_seed_1.jpg')
+
+maria1.photo_file.attach(io: mariaPhotoFile1, filename: 'maria_seed_1.jpg')
+
+maria2 = Photo.create({
+  business_id: b6.id,
+  user_id: user4.id,
+  description: 'maria 2'
+  })
+
+mariaPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/maria_seed_2.jpg')
+
+maria2.photo_file.attach(io: mariaPhotoFile2, filename: 'maria_seed_2.jpg')
+
+maria3 = Photo.create({
+  business_id: b6.id,
+  user_id: user4.id,
+  description: 'maria 3'
+  })
+
+mariaPhotoFile3 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/maria_seed_3.jpg')
+
+maria3.photo_file.attach(io: mariaPhotoFile3, filename: 'maria_seed_3.jpg')
+
+maria4 = Photo.create({
+  business_id: b6.id,
+  user_id: user4.id,
+  description: 'maria 4'
+  })
+
+mariaPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/maria_seed_4.jpg')
+
+maria4.photo_file.attach(io: mariaPhotoFile4, filename: 'maria_seed_4.jpg')
+
+cooper1 = Photo.create({
+  business_id: b7.id,
+  user_id: user1.id,
+  description: 'cooper 1'
+  })
+
+cooperPhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/cooper_seed_1.jpg')
+
+cooper1.photo_file.attach(io: cooperPhotoFile1, filename: 'cooper_seed_1.jpg')
+
+cooper2 = Photo.create({
+  business_id: b7.id,
+  user_id: user1.id,
+  description: 'cooper 2'
+  })
+
+cooperPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/cooper_seed_2.jpg')
+
+cooper2.photo_file.attach(io: cooperPhotoFile2, filename: 'cooper_seed_2.jpg')
+
+cooper3 = Photo.create({
+  business_id: b7.id,
+  user_id: user1.id,
+  description: 'cooper 3'
+  })
+
+cooperPhotoFile3 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/cooper_seed_3.jpg')
+
+cooper3.photo_file.attach(io: cooperPhotoFile3, filename: 'cooper_seed_3.jpg')
+
+cooper4 = Photo.create({
+  business_id: b7.id,
+  user_id: user1.id,
+  description: 'cooper 4'
+  })
+
+cooperPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/cooper_seed_4.jpg')
+
+cooper4.photo_file.attach(io: cooperPhotoFile4, filename: 'cooper_seed_4.jpg')
+
+dean1 = Photo.create({
+  business_id: b8.id,
+  user_id: user2.id,
+  description: 'dean 1'
+  })
+
+deanPhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/dean_seed_1.jpg')
+
+dean1.photo_file.attach(io: deanPhotoFile1, filename: 'dean_seed_1.jpg')
+
+dean2 = Photo.create({
+  business_id: b8.id,
+  user_id: user2.id,
+  description: 'dean 2'
+  })
+
+deanPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/dean_seed_2.jpg')
+
+dean2.photo_file.attach(io: deanPhotoFile2, filename: 'dean_seed_2.jpg')
+
+dean3 = Photo.create({
+  business_id: b8.id,
+  user_id: user2.id,
+  description: 'dean 3'
+  })
+
+deanPhotoFile3 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/dean_seed_3.jpg')
+
+dean3.photo_file.attach(io: deanPhotoFile3, filename: 'dean_seed_3.jpg')
+
+dean4 = Photo.create({
+  business_id: b8.id,
+  user_id: user2.id,
+  description: 'dean 4'
+  })
+
+deanPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/dean_seed_4.jpg')
+
+dean4.photo_file.attach(io: deanPhotoFile4, filename: 'dean_seed_4.jpg')
+
+brower1 = Photo.create({
+  business_id: b9.id,
+  user_id: user3.id,
+  description: 'brower 1'
+  })
+
+browerPhotoFile1 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/brower_seed_1.jpg')
+
+brower1.photo_file.attach(io: browerPhotoFile1, filename: 'brower_seed_1.jpg')
+
+brower2 = Photo.create({
+  business_id: b9.id,
+  user_id: user3.id,
+  description: 'brower 2'
+  })
+
+browerPhotoFile2 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/brower_seed_2.jpg')
+
+brower2.photo_file.attach(io: browerPhotoFile2, filename: 'brower_seed_2.jpg')
+
+brower3 = Photo.create({
+  business_id: b9.id,
+  user_id: user3.id,
+  description: 'brower 3'
+  })
+
+browerPhotoFile3 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/brower_seed_3.jpg')
+
+brower3.photo_file.attach(io: browerPhotoFile3, filename: 'brower_seed_3.jpg')
+
+brower4 = Photo.create({
+  business_id: b9.id,
+  user_id: user3.id,
+  description: 'brower 4'
+  })
+
+browerPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/brower_seed_4.jpg')
+
+brower4.photo_file.attach(io: browerPhotoFile4, filename: 'brower_seed_4.jpg')
