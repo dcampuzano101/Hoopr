@@ -63,6 +63,8 @@ file4 = open('https://hoopr-seeds.s3.amazonaws.com/profile_photos/luka_doncic_pf
 
 user4.profile_photo.attach(io: file4, filename: 'luka_doncic_pf.png')
 
+# params.require(:review).permit(:rating, :body, :business_id, :user_id, :temp_rating)
+
 
 
 b1 = Business.create({
@@ -597,3 +599,124 @@ brower4 = Photo.create({
 browerPhotoFile4 = open('https://hoopr-seeds.s3.amazonaws.com/park_pics/brower_seed_4.jpg')
 
 brower4.photo_file.attach(io: browerPhotoFile4, filename: 'brower_seed_4.jpg')
+
+
+
+r1 = Review.create({
+  rating: 4,
+  business_id: b1.id,
+  user_id: user1.id,
+  body: 'Came with some of my boys, had a great time. The courts were awesome. Fresh paint on the floor. '
+})
+
+r2 = Review.create({
+  rating: 3,
+  business_id: b1.id,
+  user_id: user2.id,
+  body: 'Weird group of people, but we had a good time. Shooters always shoot. Courts were tight.'
+})
+
+r3 = Review.create({
+  rating: 4,
+  business_id: b1.id,
+  user_id: user3.id,
+  body: 'Court was super packed, but we got a chance to play. Even though people were kind of annoying it was overall aight.'
+})
+
+r4 = Review.create({
+  rating: 5,
+  business_id: b2.id,
+  user_id: user1.id,
+  body: 'Dudes were trying to fight, but in the end. The games were competitive and we all had a decent time. Probably wouldnt come back though.'
+})
+
+r5 = Review.create({
+  rating: 3,
+  business_id: b2.id,
+  user_id: user3.id,
+  body: 'What is good with the courts here they sucked, the rims were double so everytime you shot the ball it popped out. WEAK!'
+})
+
+r6 = Review.create({
+  rating: 4,
+  business_id: b2.id,
+  user_id: user4.id,
+  body: 'Dude everyone was wack, but I came through I dominated all good, 4/5 would come back.'
+})
+
+r7 = Review.create({
+  rating: 3,
+  business_id: b3.id,
+  user_id: user1.id,
+  body: 'Came all the way to the city to play at these weak ass courts man. Wouldnt come back, some bums hanging around too. smelled bad.'
+})
+
+r8 = Review.create({
+  rating: 2,
+  business_id: b2.id,
+  user_id: user4.id,
+  body: 'I come I shoot I make'
+})
+
+r9 = Review.create({
+  rating: 4,
+  business_id: b1.id,
+  user_id: user2.id,
+  body: 'Buckets all day at this court, solid competition. Next time bring your own ball cause all the balls at the court sucked.'
+})
+
+r10 = Review.create({
+  rating: 5,
+  business_id: b2.id,
+  user_id: user1.id,
+  body: 'Amazing, courts, 5/5, competition 5/5, atmosphere 5/5'
+})
+
+r11 = Review.create({
+  rating: 4,
+  business_id: b3.id,
+  user_id: user1.id,
+  body: 'Good mix of people here, everyone shared the ball and everyone had a sick time. 4/5'
+})
+
+r12 = Review.create({
+  rating: 3,
+  business_id: b1.id,
+  user_id: user4.id,
+  body: '3/5, would not come back'
+})
+
+r13 = Review.create({
+  rating: 3,
+  business_id: b3.id,
+  user_id: user1.id,
+  body: 'Dont test the king.'
+})
+
+r14 = Review.create({
+  rating: 4,
+  business_id: b1.id,
+  user_id: user1.id,
+  body: 'Solid courts, weak competition.'
+})
+
+r15 = Review.create({
+  rating: 5,
+  business_id: b3.id,
+  user_id: user3.id,
+  body: ''
+})
+
+r16 = Review.create({
+  rating: 4,
+  business_id: b2.id,
+  user_id: user2.id,
+  body: 'I would come back, shot 95% from the field, competition WEAK!'
+})
+
+r17 = Review.create({
+  rating: 3,
+  business_id: b1.id,
+  user_id: user1.id,
+  body: '3/5 would come back.'
+})
