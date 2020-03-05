@@ -37,9 +37,9 @@
 ## Reviews:
   * Modal that allows users that are logged in to create a review and rate a basketball court. The rating system temporarily sets the state as users choose their rating. The rating then persists and is automatically added to the profile of the basketball court.
 </hr>
-
+<p align="center">
 ![Image of Reviews](https://media.giphy.com/media/Ti143B8hRwxb8wf8q5/giphy.gif)
-
+</p>
 Code snippets to highlight your best code (markdown code snippets, NOT screenshots):
 ```JSX
 render(){
