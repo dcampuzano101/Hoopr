@@ -1,4 +1,4 @@
-# README
+
 <div style="align-text:center"><img src="https://hoopr.herokuapp.com/assets/hoopr_logo-4226649bf78ff71ec2459fabfd440f8a7dc6bf96c69360ebd06348b4a645b0c3.png" /></div>
 
 <!-- ![Image of Hoopr-logo](https://hoopr.herokuapp.com/assets/hoopr_logo-4226649bf78ff71ec2459fabfd440f8a7dc6bf96c69360ebd06348b4a645b0c3.png) -->
