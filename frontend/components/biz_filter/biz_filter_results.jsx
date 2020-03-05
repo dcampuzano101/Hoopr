@@ -5,18 +5,12 @@ import BizMapContainer from '../biz_map/biz_map_container';
 
 class BizFilter extends React.Component {
   constructor(props){
-    console.log(props);
     super(props);
     let { borough } = "" || this.props.match.params;
-    
-    
 
-    console.log(borough)
     this.state = { borough };
     this.updateSearch = this.updateSearch.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-
-      
   }
 
   handleDemoSubmit(user) {
@@ -47,7 +41,6 @@ class BizFilter extends React.Component {
   getPhotoUrl(photoObj, businessId) {
     let result = "";
       
-
     Object.values(photoObj).forEach( photo => {
       if (photo.business_id === businessId) {
         result = photo.photoUrl;
@@ -59,7 +52,6 @@ class BizFilter extends React.Component {
   getFirstReview(reviewObj, businessId) {
     let result = "";
       
-
     for (let i = 0; i < Object.values(reviewObj).length; i++) {
       if (Object.values(reviewObj)[i].business_id === businessId) {
         result = `"${Object.values(reviewObj)[i].body} ..." -${this.props.users[Object.values(reviewObj)[i].user_id].first_name} ${this.props.users[Object.values(reviewObj)[i].user_id].last_name[0]}`;
@@ -68,23 +60,19 @@ class BizFilter extends React.Component {
     }
   }
 
-  handleSearch(e) {
-      
+  handleSearch(e) {  
     let query = document.getElementById('search-field').value
     console.log(query);
     this.setState({ query });
     
-    
     (query) ? this.props.search(query) : query = "";
     this.props.history.push('/search/' + query );
-      
   }
 
   render() {
     const { businesses, users } = this.props;
-      ;
+
     if (businesses.length > 0) {
-        ;
       let businessLis = Object.values(businesses).map(biz => {
         const basketballs = [];
         for (let i = 1; i <= 5; i++) {
@@ -100,7 +88,6 @@ class BizFilter extends React.Component {
             />;
           basketballs.push(icon);
         }
-
         return(
           <>
           <Link to={`/businesses/${biz.id}`}>
@@ -112,7 +99,7 @@ class BizFilter extends React.Component {
               <h1 id="index-biz-name">{biz.name}</h1>
               <section className="static-rating-splash">{basketballs}</section>
               <h1 id="index-biz-borough">{this.capitalizeWord(biz.borough)}</h1>
-              <h2 id="index-biz-neighborhood">{biz.neighborhood}</h2>
+              <h2 id="index-biz-neighborhood">{this.capitalizeWord(biz.neighborhood)}</h2>
               <h3 id="index-review">{this.getFirstReview(this.props.reviews, biz.id)}</h3>
             </div>
           </div>

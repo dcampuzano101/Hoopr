@@ -594,7 +594,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  ;
   var extraClass = "biz-index";
   var businesses = state.entities.businesses;
   var businessObj = state.entities.search.businessIds;
@@ -679,13 +678,11 @@ function (_React$Component) {
 
     _classCallCheck(this, BizFilter);
 
-    console.log(props);
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizFilter).call(this, props));
 
     var _ref =  false || _this.props.match.params,
         borough = _ref.borough;
 
-    console.log(borough);
     _this.state = {
       borough: borough
     };
@@ -765,10 +762,8 @@ function (_React$Component) {
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
-      ;
 
       if (businesses.length > 0) {
-        ;
         var businessLis = Object.values(businesses).map(function (biz) {
           var basketballs = [];
 
@@ -806,7 +801,7 @@ function (_React$Component) {
             id: "index-biz-borough"
           }, _this2.capitalizeWord(biz.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
             id: "index-biz-neighborhood"
-          }, biz.neighborhood), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          }, _this2.capitalizeWord(biz.neighborhood)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
             id: "index-review"
           }, _this2.getFirstReview(_this2.props.reviews, biz.id))))));
         });
@@ -878,9 +873,7 @@ function (_React$Component) {
 
     _classCallCheck(this, BizIndex);
 
-    console.log(props);
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props)); // this.moveTo = this.moveTo.bind(this);
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BizIndex).call(this, props));
     _this.child = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     return _this;
   }
@@ -889,6 +882,11 @@ function (_React$Component) {
     key: "handleDemoSubmit",
     value: function handleDemoSubmit(user) {
       this.props.submitForm(user);
+    }
+  }, {
+    key: "capitalizeWord",
+    value: function capitalizeWord(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
     }
   }, {
     key: "getPhotoUrl",
@@ -904,8 +902,7 @@ function (_React$Component) {
   }, {
     key: "getFirstReview",
     value: function getFirstReview(reviewObj, businessId) {
-      var result = ""; // Object.values(reviewObj).forEach( review => {
-      // })
+      var result = "";
 
       for (var i = 0; i < Object.values(reviewObj).length; i++) {
         if (Object.values(reviewObj)[i].business_id === businessId) {
@@ -918,26 +915,12 @@ function (_React$Component) {
     key: "capitalizeWord",
     value: function capitalizeWord(word) {
       return word.charAt(0).toUpperCase() + word.slice(1);
-    } // componentDidUpdate(prevProps) {
-    //   console.log(prevProps);
-    //   if (this.props.match.params.url !== prevProps.match.params.url) {
-    //     this.props.requestBusinesses();
-    //   }
-    // }
-
+    }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestBusinesses();
-    } // moveTo(lat, lng) {
-    //   let latLng = new google.maps.LatLng(lat, lng); 
-    //   this.map.panTo(latLng); 
-    // }
-    // onMouseOver(lat, lng){
-    //     ;
-    //   this.child.current.moveTo(lat, lng);
-    // };
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -985,7 +968,7 @@ function (_React$Component) {
             id: "index-biz-borough"
           }, _this2.capitalizeWord(biz.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
             id: "index-biz-neighborhood"
-          }, biz.neighborhood), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          }, _this2.capitalizeWord(biz.neighborhood)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
             id: "index-review"
           }, _this2.getFirstReview(_this2.props.reviews, biz.id))))));
         });
@@ -1112,30 +1095,10 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizMap).call(this, props));
     _this.addBizLocation = _this.addBizLocation.bind(_assertThisInitialized(_this));
-    console.log(props);
     return _this;
   }
 
   _createClass(BizMap, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {// if (this.props.center) {
-      //     const map = ReactDOM.findDOMNode(this.refs.map);
-      //     const mapOptions = {
-      //         center: this.props.center,
-      //         zoom: this.props.zoom,
-      //         streetViewControl: false,
-      //         fullscreenControl: false,
-      //         mapTypeControl: false,
-      //         scaleControl: true,
-      //         scrollwheel: false
-      //     }
-      //     this.map = new google.maps.Map(map, mapOptions);
-      // }
-      // Object.values(this.props.businesses).forEach( business => {
-      //     this.addBizLocation(business)
-      // })
-    }
-  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       var _this2 = this;
@@ -1178,10 +1141,7 @@ function (_React$Component) {
         map: this.map,
         title: business.name
       });
-    } // // panMap(lat, lng){
-    // //     this.map.panTo
-    // // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -1218,10 +1178,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
- // function moveTo(lat, lng) {
-//     let latLng = new google.maps.LatLng(lat, lng); 
-//     this.map.panTo(latLng); 
-// }
+
 
 var msp = function msp(state, ownProps) {
   console.log(ownProps);
@@ -1248,8 +1205,7 @@ var msp = function msp(state, ownProps) {
       };
       zoom = 18;
     }
-  } //   
-
+  }
 
   if (biz) {
     if (biz.id.toString() === ownProps.match.params.id) {
@@ -1266,12 +1222,7 @@ var msp = function msp(state, ownProps) {
     center: center,
     zoom: zoom
   };
-}; // const mdp = dispatch => {
-//     return({
-//         moveTo: (lat, lng) => dispatch(moveTo(lat, lng))
-//     });
-// }
-
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp)(_biz_map__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
@@ -1290,6 +1241,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
 /* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1312,6 +1264,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var BizSearch =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1322,13 +1275,11 @@ function (_React$Component) {
 
     _classCallCheck(this, BizSearch);
 
-    console.log(props);
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizSearch).call(this, props));
 
     var _ref =  false || _this.props.match.params,
         query = _ref.query;
 
-    console.log(query);
     _this.state = {
       query: query
     };
@@ -1343,6 +1294,11 @@ function (_React$Component) {
       this.props.submitForm(user);
     }
   }, {
+    key: "capitalizeWord",
+    value: function capitalizeWord(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  }, {
     key: "getPhotoUrl",
     value: function getPhotoUrl(photoObj, businessId) {
       var result = "";
@@ -1353,6 +1309,18 @@ function (_React$Component) {
         }
       });
       return result;
+    }
+  }, {
+    key: "getFirstReview",
+    value: function getFirstReview(reviewObj, businessId) {
+      var result = "";
+
+      for (var i = 0; i < Object.values(reviewObj).length; i++) {
+        if (Object.values(reviewObj)[i].business_id === businessId) {
+          result = "\"".concat(Object.values(reviewObj)[i].body, " ...\" -").concat(this.props.users[Object.values(reviewObj)[i].user_id].first_name, " ").concat(this.props.users[Object.values(reviewObj)[i].user_id].last_name[0]);
+          return result;
+        }
+      }
     }
   }, {
     key: "componentDidMount",
@@ -1377,7 +1345,6 @@ function (_React$Component) {
     key: "handleSearch",
     value: function handleSearch(e) {
       var query = document.getElementById('search-field').value;
-      console.log(query);
       this.setState({
         query: query
       });
@@ -1387,6 +1354,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           businesses = _this$props.businesses,
           users = _this$props.users;
@@ -1410,18 +1379,26 @@ function (_React$Component) {
             basketballs.push(icon);
           }
 
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+            to: "/businesses/".concat(biz.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-item-wrapper"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-pic"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "canal",
-            src: window.canal
+            src: _this2.getPhotoUrl(_this2.props.photos, biz.id)
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "biz-index-info"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
             className: "static-rating-splash"
-          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, biz.neighborhood))));
+          }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+            id: "index-biz-borough"
+          }, _this2.capitalizeWord(biz.borough)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+            id: "index-biz-neighborhood"
+          }, _this2.capitalizeWord(biz.neighborhood)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+            id: "index-review"
+          }, _this2.getFirstReview(_this2.props.reviews, biz.id))))));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
           extraClass: this.props.extraClass,
@@ -1469,7 +1446,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  ;
   var extraClass = "biz-index";
   var businesses = state.entities.businesses;
   var businessObj = state.entities.search.businessIds;
@@ -1477,7 +1453,9 @@ var msp = function msp(state, ownProps) {
     businesses: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_5__["selectBusinessesForSearch"])(businessObj, businesses),
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
-    users: state.entities.users
+    users: state.entities.users,
+    photos: state.entities.photos,
+    reviews: state.entities.reviews
   };
 };
 
@@ -1494,6 +1472,9 @@ var mdp = function mdp(dispatch) {
     },
     search: function search(query) {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_6__["search"])(query));
+    },
+    filterByBorough: function filterByBorough(borough) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_6__["filterByBorough"])(borough));
     }
   };
 };
@@ -1515,10 +1496,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header */ "./frontend/components/header/header.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
-/* harmony import */ var _biz_page_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./biz_page_container */ "./frontend/components/business_page/biz_page_container.js");
-/* harmony import */ var _update_form_update_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../update_form/update_form_container */ "./frontend/components/update_form/update_form_container.js");
+/* harmony import */ var _biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../biz_map/biz_map_container */ "./frontend/components/biz_map/biz_map_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1541,12 +1519,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
- // import { openModal } from '../../actions/modal_actions';
-// import BizMap from '../../components/biz_map/biz_map';
-
-
- // import Review from './review_list_item_container';
 
 
 
@@ -1574,14 +1546,12 @@ function (_React$Component) {
     key: "updateSearch",
     value: function updateSearch(e) {
       e.preventDefault();
-      var query = e.currentTarget.value; // this.setState({ query });
-      // this.props.history.push('/search' + query )
+      var query = e.currentTarget.value;
     }
   }, {
     key: "handleSearch",
     value: function handleSearch(e) {
       var query = document.getElementById('search-field').value;
-      console.log(query);
       this.setState({
         query: query
       });
@@ -1612,7 +1582,7 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.requestBusiness(this.props.match.params.id); // this.props.requestPhotos();
+      this.props.requestBusiness(this.props.match.params.id);
     }
   }, {
     key: "update",
@@ -1658,8 +1628,7 @@ function (_React$Component) {
     value: function render() {
       var _this5 = this;
 
-      // ////  ;
-      var authReview; // console.log(currentUser);
+      var authReview;
 
       if (this.props.currentUser) {
         authReview = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1714,13 +1683,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
           className: "review-form"
         }, authReview);
-      }; // const updateLinks = (review) => (
-      //   <nav className="review-form">
-      //     <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
-      //     <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
-      //   </nav>
-      // );
-
+      };
 
       if (business.id) {
         var reviewLis;
@@ -1755,7 +1718,6 @@ function (_React$Component) {
                   }, "\u2605 Delete Review"));
                 };
               } else {
-                //  ;
                 updateLinks = function updateLinks() {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
                 };
@@ -1855,7 +1817,7 @@ function (_React$Component) {
           className: "location-info"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Location & Hours"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "map-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_biz_map_biz_map_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hours"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Mon"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Tues"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Wed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Thurs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Fri"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Sat"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Sun"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, business.start_time, " - ", business.end_time)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "hr-row-top"
@@ -1916,9 +1878,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  var extraClass = "biz-page"; // console.log(ownProps.match.params.id);
-  // const bizId = ownProps.match.params.id;
-
+  var extraClass = "biz-page";
   var business = state.entities.businesses[ownProps.match.params.id] || {};
   var reviewObj = state.entities.reviews;
   var photoObj = state.entities.photos;
@@ -1926,7 +1886,6 @@ var msp = function msp(state, ownProps) {
   return {
     query: query,
     business: business,
-    // businessId: ownProps.match.params.id,
     extraClass: extraClass,
     reviewObj: reviewObj,
     photoObj: photoObj,
@@ -1976,10 +1935,7 @@ var mdp = function mdp(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_biz_page__WEBPACK_IMPORTED_MODULE_3__["default"])); // const BizPageContainer = (component) => {
-//   return connect(msp, mdp)(component);
-// };
-// export default BizPageContainer;
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_biz_page__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -2029,15 +1985,12 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BizIndexItem).call(this, props));
     var _ref = "",
-        borough = _ref.borough; //notsure about this yet.
-
-    console.log(borough);
+        borough = _ref.borough;
     _this.state = {
       borough: borough
     };
     _this.handleFilter = _this.handleFilter.bind(_assertThisInitialized(_this));
     _this.getPhotoUrl = _this.getPhotoUrl.bind(_assertThisInitialized(_this));
-    console.log(props);
     return _this;
   }
 
@@ -2066,7 +2019,7 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.requestBusinesses(); // this.props.requestPhotos();
+      this.props.requestBusinesses();
     }
   }, {
     key: "capitalizeWord",
@@ -2080,8 +2033,7 @@ function (_React$Component) {
       var bizKeys = Object.keys(businesses);
       var b1 = businesses[bizKeys[0]];
       var b2 = businesses[bizKeys[1]];
-      var b3 = businesses[bizKeys[2]]; // if (Object.keys(businesses).length) {
-      // if (Object.values(this.props.photos).length > 0) {
+      var b3 = businesses[bizKeys[2]];
 
       if (b1 && b2 && b3) {
         var basketball1 = [];
@@ -2189,7 +2141,7 @@ function (_React$Component) {
           className: "b-borough",
           value: "harlem",
           onClick: this.handleFilter
-        }, b1.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, this.capitalizeWord(b1.neighborhood)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-item b2"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row-1"
@@ -2213,7 +2165,7 @@ function (_React$Component) {
           className: "b-borough",
           value: "west village",
           onClick: this.handleFilter
-        }, b2.neighborhood))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, this.capitalizeWord(b2.neighborhood)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "biz-index-item b3"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row-1"
@@ -2237,7 +2189,7 @@ function (_React$Component) {
           className: "b-borough",
           value: "lower-manhattan",
           onClick: this.handleFilter
-        }, b3.neighborhood))))); // }
+        }, this.capitalizeWord(b3.neighborhood)))))); // }
       } else {
         return null;
       }
@@ -2272,7 +2224,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
-  console.log(state);
   return {
     businesses: state.entities.businesses,
     photos: state.entities.photos
@@ -2416,11 +2367,9 @@ function (_React$Component) {
     _classCallCheck(this, Header);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
-    console.log(props);
     var _ref = "",
         query = _ref.query; //notsure about this yet.
 
-    console.log(query);
     _this.state = {
       query: query
     };
@@ -2451,14 +2400,12 @@ function (_React$Component) {
     key: "updateSearch",
     value: function updateSearch(e) {
       e.preventDefault();
-      var query = e.currentTarget.value; // this.setState({ query });
-      // this.props.history.push('/search' + query )
+      var query = e.currentTarget.value;
     }
   }, {
     key: "handleSearch",
     value: function handleSearch(e) {
       var query = document.getElementById('search-field').value;
-      console.log(query);
       this.setState({
         query: query
       });
@@ -2600,12 +2547,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./header */ "./frontend/components/header/header.jsx");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
-/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
-
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_biz_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/biz_actions */ "./frontend/actions/biz_actions.js");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
 
 
 
@@ -2624,7 +2568,7 @@ var msp = function msp(state) {
 var mdp = function mdp(dispatch) {
   return {
     logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
     },
     receiveCurrentUser: function receiveCurrentUser(currentUser) {
       return function (currentUser) {
@@ -2632,13 +2576,13 @@ var mdp = function mdp(dispatch) {
       };
     },
     submitForm: function submitForm(user) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
     },
     requestBusinesses: function requestBusinesses() {
-      return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_4__["requestBusinesses"])());
+      return dispatch(Object(_actions_biz_actions__WEBPACK_IMPORTED_MODULE_3__["requestBusinesses"])());
     },
     search: function search(query) {
-      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_5__["search"])(query));
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["search"])(query));
     }
   };
 };
@@ -2677,7 +2621,6 @@ function Modal(_ref) {
   var name = _ref.name,
       closeModal = _ref.closeModal,
       props = _ref.props;
-  console.log(name, props);
 
   if (!name) {
     return null;
@@ -2780,7 +2723,6 @@ function (_React$Component) {
     _classCallCheck(this, PhotoForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PhotoForm).call(this, props));
-    console.log(_this.props);
     var _this$props = _this.props,
         currentBiz = _this$props.currentBiz,
         currentUser = _this$props.currentUser;
@@ -2791,9 +2733,7 @@ function (_React$Component) {
       photoFiles: []
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this)); // this.ball_out = this.ball_out.bind(this);
-    // this.ball_over = this.ball_over.bind(this);
-
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2805,18 +2745,7 @@ function (_React$Component) {
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
-    } //   rate(numRating) {
-    //     return e => this.setState({
-    //       rating: numRating
-    //     });
-    //   }
-    //   ball_over(rating) {
-    //     return e => this.setState({
-    //       temp_rating: rating
-    //     });
-    //   }
-    // this.setState({photoFile: file, photoUrl: fileReader.result});
-
+    }
   }, {
     key: "handleFile",
     value: function handleFile(e) {
@@ -2846,68 +2775,18 @@ function (_React$Component) {
       formData.append('photo[user_id]', this.state.user_id);
       formData.append('photo[business_id]', this.state.business_id);
       formData.append('photo[description]', this.state.description);
-      formData.append('photo[photo_file]', this.state.photoFile); // this.state.photoFiles.forEach(file => {
-      //     formData.append('photo[images][]', file);
-      // });
-
+      formData.append('photo[photo_file]', this.state.photoFile);
       this.props.processForm(formData, this.state.business_id).then(this.props.closeModal);
-      this.forceUpdate(); // this.props.submitForm(formData);
-      // e.preventDefault();
-      // const photo = Object.assign({}, this.state);
+      this.forceUpdate();
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      //possibly have to render null first
       this.props.requestBusiness(this.props.currentBiz.id);
     }
   }, {
     key: "render",
     value: function render() {
-      // const basketballs = [];
-      // for (let i = 1; i <= 5; i++) {
-      //   let klass = 'ball-icon';
-      //   if (this.state.temp_rating >= i && this.state.temp_rating != null) {
-      //       klass += ' is-selected';
-      //   }
-      //   const icon = 
-      //     <img 
-      //       className={klass}
-      //       src={window.ballicon}
-      //       onClick={this.rate(i)}
-      //       key={i}
-      //       onMouseOver={this.ball_over(i)}
-      //     />;
-      //   basketballs.push(icon);
-      // }
-      // const { currentBiz } = this.props;
-      // if (this.props)
-      // return(
-      //   <div>
-      //     <div className="review-form-container">
-      //       <Link to={`/businesses/${currentBiz.id}`}><h1>{currentBiz.name}</h1></Link>
-      //         <form onSubmit={this.handleSubmit}>
-      //         <section className="form-wrapper">
-      //           <div className="ball-rating modal">
-      //               {basketballs}
-      //           </div>
-      //           <label>
-      //             <textarea
-      //               placeholder="I decided to stop by the park. Perfect opportunity to sweat out last night's tacos and cerveza. The gang was all there shooting hoops. One of the best spots to play pick up in nyc. 4/5 Would come back."
-      //               // maxlength="5000"
-      //               value={this.state.body}
-      //               onChange={this.update('body')}
-      //               className="review-body"
-      //               rows="10"
-      //               cols="65">
-      //             </textarea>
-      //           </label>
-      //         </section>
-      //         <input className="review-submit" type="submit" value="Post Review" />
-      //         </form>
-      //     </div>
-      //   </div>
-      // );
       var _this$props2 = this.props,
           formType = _this$props2.formType,
           currentBiz = _this$props2.currentBiz,
@@ -2988,9 +2867,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  ;
   return {
-    // errors: errors.session,
     formType: 'createPhoto',
     currentUser: state.entities.users[state.session.id],
     currentBiz: state.entities.businesses[ownProps.match.params.id]
@@ -3068,7 +2945,6 @@ function (_React$Component) {
     _classCallCheck(this, ReviewForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ReviewForm).call(this, props));
-    console.log(_this.props);
     var _this$props = _this.props,
         currentBiz = _this$props.currentBiz,
         currentUser = _this$props.currentUser;
@@ -3079,8 +2955,7 @@ function (_React$Component) {
       rating: _this.props.tempRating,
       temp_rating: _this.props.tempRating
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.ball_out = this.ball_out.bind(this);
-
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.ball_over = _this.ball_over.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -3127,7 +3002,6 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      //possibly have to render null first
       this.props.requestBusiness(this.props.currentBiz.id);
     }
   }, {
@@ -3213,7 +3087,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    // errors: errors.session,
     formType: 'createReview',
     currentUser: state.entities.users[state.session.id],
     currentBiz: state.entities.businesses[ownProps.match.params.id]
@@ -3372,8 +3245,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this)); // this.handleErrors = this.handleErrors.bind(this);
-
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.state = {
       email: "",
       password: "",
@@ -3404,12 +3276,7 @@ function (_React$Component) {
           });
         }
       }
-    } // handleErrors() {
-    //   if (this.props.errors.length > 0) {
-    //     this.setState( { sessErrors: "session-errors show" });
-    //   }
-    // }
-
+    }
   }, {
     key: "handleClick",
     value: function handleClick(e) {
@@ -3430,8 +3297,7 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           formType = _this$props.formType,
-          errors = _this$props.errors; // errors.length > 0 ? this.handleErrors() : null;
-
+          errors = _this$props.errors;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         id: "login-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -3821,8 +3687,7 @@ function (_React$Component) {
       rating: null,
       temp_rating: null
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.ball_out = this.ball_out.bind(this);
-
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.ball_over = _this.ball_over.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -3868,7 +3733,6 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      //possibly have to render null first
       this.props.requestBusiness(this.props.currentBiz.id);
       this.setState({
         body: this.props.review.body,
@@ -3895,23 +3759,7 @@ function (_React$Component) {
           onMouseOver: this.ball_over(i)
         });
         basketballs.push(icon);
-      } // const basketballs = [];
-      // for (let i = 1; i <= 5; i++) {
-      //   let klass = 'ball-icon';
-      //   if (this.state.temp_rating >= i && this.state.temp_rating != null) {
-      //     klass += ' is-selected';
-      //   }
-      //   const icon =
-      //     <img
-      //       className={klass}
-      //       src={window.ballicon}
-      //       onClick={this.rate(i)}
-      //       key={i}
-      //       onMouseOver={this.ball_over(i)}
-      //     />;
-      //   basketballs.push(icon);
-      // }
-
+      }
 
       var currentBiz = this.props.currentBiz;
       if (this.props) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3943,98 +3791,7 @@ function (_React$Component) {
   return UpdateForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (UpdateForm); // import React from 'react';
-// import { logoutCurrentUser } from '../../actions/session_actions';
-// import { Link } from 'react-router-dom';
-// class ReviewForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     console.log(`REVIEWFORMPROPS: ${this.props}`);
-//     const { currentBiz, currentUser } = this.props;
-//       
-//     this.state = {
-//       business_id: currentBiz.id,
-//       body: "",
-//       user_id: currentUser.id,
-//       rating: null,
-//       temp_rating: null
-//     };
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//     // this.ball_out = this.ball_out.bind(this);
-//     this.ball_over = this.ball_over.bind(this);
-//   }
-//   update(field) {
-//     return e => this.setState({
-//       [field]: e.currentTarget.value
-//     });
-//   }
-//   rate(numRating) {
-//     return e => this.setState({
-//       rating: numRating
-//     });
-//   }
-//   ball_over(rating) {
-//     return e => this.setState({
-//       temp_rating: rating
-//     });
-//   }
-//   handleSubmit(e) {
-//     e.preventDefault();
-//     const review = Object.assign({}, this.state);
-//     this.props.processForm(review).then(this.props.closeModal);
-//   }
-//   componentDidMount() {
-//     //possibly have to render null first
-//     this.props.requestBusiness(this.props.currentBiz.id);
-//   }
-//   render() {
-//     const basketballs = [];
-//     for (let i = 1; i <= 5; i++) {
-//       let klass = 'ball-icon';
-//       if (this.state.temp_rating >= i && this.state.temp_rating != null) {
-//         klass += ' is-selected';
-//       }
-//       const icon =
-//         <img
-//           className={klass}
-//           src={window.ballicon}
-//           onClick={this.rate(i)}
-//           key={i}
-//           onMouseOver={this.ball_over(i)}
-//         />;
-//       basketballs.push(icon);
-//     }
-//     const { currentBiz } = this.props;
-//     if (this.props)
-//       return (
-//         <div>
-//           <div className="review-form-container">
-//             <Link to={`/businesses/${currentBiz.id}`}><h1>{currentBiz.name}</h1></Link>
-//             <form onSubmit={this.handleSubmit}>
-//               <section className="form-wrapper">
-//                 <div className="ball-rating modal">
-//                   {basketballs}
-//                 </div>
-//                 <label>
-//                   <textarea
-//                     placeholder="I decided to stop by the park. Perfect opportunity to sweat out last night's tacos and cerveza. The gang was all there shooting hoops. One of the best spots to play pick up in nyc. 4/5 Would come back."
-//                     // maxlength="5000"
-//                     value={this.state.body}
-//                     onChange={this.update('body')}
-//                     className="review-body"
-//                     rows="10"
-//                     cols="65">
-//                   </textarea>
-//                 </label>
-//               </section>
-//               <input className="review-submit" type="submit" value="Post Review" />
-//             </form>
-//           </div>
-//         </div>
-//       );
-//   }
-// }
-// export default ReviewForm;
+/* harmony default export */ __webpack_exports__["default"] = (UpdateForm);
 
 /***/ }),
 
@@ -4383,13 +4140,11 @@ var msp = function msp(state, ownProps) {
   return {
     query: query,
     user: user,
-    // businessId: ownProps.match.params.id,
     extraClass: extraClass,
     currentUser: state.entities.users[state.session.id],
     reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectReviewsForUser"])(user.reviewIds, reviewObj),
     users: state.entities.users,
-    businesses: state.entities.businesses // profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
-
+    businesses: state.entities.businesses
   };
 };
 

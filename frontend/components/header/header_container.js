@@ -1,12 +1,10 @@
   import  { connect } from 'react-redux';
 import Header from './header';
-import React from 'react';
 import { logout, login } from '../../actions/session_actions';
 import { requestBusinesses } from '../../actions/biz_actions';
 import { search } from '../../actions/search_actions';
 
 const msp = state => {
-  
   return({
     currentUser: state.entities.users[state.session.id],
     extraClass: "someClass",
@@ -17,7 +15,6 @@ const msp = state => {
 
 
 const mdp = dispatch => {
-  
   return ({
     logout: () => dispatch(logout()),
     receiveCurrentUser: currentUser => (currentUser => dispatch(currentUser)),

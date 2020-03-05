@@ -3,11 +3,6 @@ import { connect } from 'react-redux';
 import BizMap from './biz_map';
 import { withRouter } from 'react-router-dom';
 
-// function moveTo(lat, lng) {
-//     let latLng = new google.maps.LatLng(lat, lng); 
-//     this.map.panTo(latLng); 
-// }
-
 const msp = (state, ownProps) => {
     console.log(ownProps)
     let biz = state.entities.businesses[ownProps.match.params.id];
@@ -36,7 +31,6 @@ const msp = (state, ownProps) => {
             zoom = 18;
         } 
     }
-    //   
     if (biz) {
         if (biz.id.toString() === ownProps.match.params.id) {
             center = {
@@ -53,11 +47,5 @@ const msp = (state, ownProps) => {
         zoom: zoom
     })
 }
-
-// const mdp = dispatch => {
-//     return({
-//         moveTo: (lat, lng) => dispatch(moveTo(lat, lng))
-//     });
-// }
 
 export default withRouter(connect(msp)(BizMap));

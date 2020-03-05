@@ -29,7 +29,6 @@ class SignupForm extends React.Component {
     formData.append('user[password]', this.state.password)
     formData.append('user[profile_photo]', this.state.photoFile)
 
-      
     this.props.submitForm(formData);
   }
 
@@ -51,7 +50,6 @@ class SignupForm extends React.Component {
   }
 
   handleFile(e) {
-      
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
@@ -159,7 +157,6 @@ class SignupForm extends React.Component {
       </>
     );
   }
-
 };
 
 export default SignupForm;

@@ -7,9 +7,7 @@ import { requestBusiness } from '../../actions/biz_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-    ;
   return {
-    // errors: errors.session,
     formType: 'createPhoto',
     currentUser: state.entities.users[state.session.id],
     currentBiz: state.entities.businesses[ownProps.match.params.id]
@@ -17,7 +15,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  
   return {
     requestBusiness: (businessId) => dispatch(requestBusiness(businessId)),
     processForm: (photo, businessId) => dispatch(createPhoto(photo, businessId)),

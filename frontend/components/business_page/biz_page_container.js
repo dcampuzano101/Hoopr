@@ -11,17 +11,13 @@ import { search } from '../../actions/search_actions';
 
 const msp = (state, ownProps) => {
   const extraClass = "biz-page";
-  // console.log(ownProps.match.params.id);
-  // const bizId = ownProps.match.params.id;
   const business = state.entities.businesses[ownProps.match.params.id] || {};
   const reviewObj = state.entities.reviews;
   const photoObj = state.entities.photos;
   let query = ownProps.match.params || {};
-    
     return ({
     query,
     business,
-    // businessId: ownProps.match.params.id,
     extraClass,
     reviewObj,
     photoObj,
@@ -46,9 +42,3 @@ const mdp = dispatch => {
 };
 
 export default connect(msp, mdp)(BizPage);
-
-// const BizPageContainer = (component) => {
-//   return connect(msp, mdp)(component);
-// };
-
-// export default BizPageContainer;

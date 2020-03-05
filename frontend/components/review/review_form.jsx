@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 class ReviewForm extends React.Component {
   constructor(props){
     super(props);
-    console.log(this.props);
     const { currentBiz, currentUser } = this.props;
       
     this.state = {
@@ -16,7 +15,6 @@ class ReviewForm extends React.Component {
       temp_rating: this.props.tempRating
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.ball_out = this.ball_out.bind(this);
     this.ball_over = this.ball_over.bind(this);
   }
 
@@ -46,7 +44,6 @@ class ReviewForm extends React.Component {
   }
 
   componentDidMount(){
-    //possibly have to render null first
     this.props.requestBusiness(this.props.currentBiz.id);
   }
 
@@ -96,14 +93,6 @@ class ReviewForm extends React.Component {
             <input className="review-submit" type="submit" value="Post Review" />
             </form>
         </div>
-
-
-
-
-
-
-          
-
       </div>
     );
   }

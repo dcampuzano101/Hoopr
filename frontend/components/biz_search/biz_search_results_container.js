@@ -4,10 +4,9 @@ import { requestBusinesses } from '../../actions/biz_actions';
 import { login, logout } from '../../actions/session_actions';
 import BizSearch from './biz_search_results';
 import { selectBusinessesForSearch } from '../../reducers/selectors';
-import { search } from '../../actions/search_actions';
+import { search, filterByBorough } from '../../actions/search_actions';
 
 const msp = (state, ownProps) => {
-    ;
   const extraClass = "biz-index";
   const businesses = state.entities.businesses;
   const businessObj = state.entities.search.businessIds;
@@ -15,7 +14,9 @@ const msp = (state, ownProps) => {
     businesses: selectBusinessesForSearch(businessObj, businesses),
     extraClass,
     currentUser: state.entities.users[state.session.id],
-    users: state.entities.users
+    users: state.entities.users,
+    photos: state.entities.photos,
+    reviews: state.entities.reviews
   });
 };
 
@@ -24,7 +25,8 @@ const mdp = dispatch => {
     logout: () => dispatch(logout()),
     submitForm: user => dispatch(login(user)),
     requestBusinesses: () => dispatch(requestBusinesses()),
-    search: query => dispatch(search(query))
+    search: query => dispatch(search(query)),
+    filterByBorough: borough => dispatch(filterByBorough(borough))
   });
 };
 
