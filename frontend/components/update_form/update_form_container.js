@@ -8,7 +8,6 @@ import { withRouter } from 'react-router-dom';
  
 const msp = (state, ownProps) => {
   let review = state.entities.reviews[ownProps.id];
-    
   return({
     review,
     currentUser: state.entities.users[state.session.id],
@@ -28,6 +27,5 @@ const mdp = dispatch => {
     closeModal: () => dispatch(closeModal())
   });
 };
-
 
 export default withRouter(connect(msp, mdp)(UpdateForm));

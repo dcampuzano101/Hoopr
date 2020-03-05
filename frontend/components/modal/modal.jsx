@@ -8,7 +8,6 @@ import UpdateForm from '../update_form/update_form_container';
 import PhotoFormContainer from '../photo_form/photo_form_container';
 
 function Modal({ name, closeModal, props }) {
-  console.log(name, props);
   if (!name) {
     return null;
   }

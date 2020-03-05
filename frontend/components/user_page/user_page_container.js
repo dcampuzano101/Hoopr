@@ -14,13 +14,11 @@ const msp = (state, ownProps) => {
     return ({
         query,
         user,
-        // businessId: ownProps.match.params.id,
         extraClass,
         currentUser: state.entities.users[state.session.id],
         reviews: selectReviewsForUser(user.reviewIds, reviewObj),
         users: state.entities.users,
         businesses: state.entities.businesses
-        // profilePhotoUrl: state.entities.users[ownProps.match.params.id].profilePhotoUrl
       });
 };
 

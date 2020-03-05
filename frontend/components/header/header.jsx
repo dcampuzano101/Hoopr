@@ -3,15 +3,11 @@ import { Route, Link } from 'react-router-dom';
 class Header extends React.Component {
   constructor(props){
       super(props);
-      console.log(props);
 
-        
       let { query } = ""; //notsure about this yet.
-      console.log(query)
       this.state = { query };
       this.updateSearch = this.updateSearch.bind(this);
       this.handleSearch = this.handleSearch.bind(this);
-
       this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
 
@@ -28,31 +24,20 @@ class Header extends React.Component {
   }
 
   updateSearch(e) {
-      
     e.preventDefault();
     let query = e.currentTarget.value;
-    // this.setState({ query });
-    // this.props.history.push('/search' + query )
   }
 
-
-
   handleSearch(e) {
-      
     let query = document.getElementById('search-field').value
-    console.log(query);
     this.setState({ query });
-    
     
     (query) ? this.props.search(query) : query = "";
     this.props.history.push('/search/' + query );
-      
   }
   
   render(){
-      
     const { currentUser, logout } = this.props;
-
     const display = () => {
       const sessionLinks = () => (
         <div className={"session-links " + this.props.extraClass}>
@@ -103,7 +88,6 @@ class Header extends React.Component {
               </div>
             </div>
             <section className="links-header">
-              {/* <Link to="#" className={"nav-links " + this.props.extraClass}>Write a Review</Link> */}
               <Link to="/businesses" className={"nav-links " + this.props.extraClass}>All Parks</Link>
               <a href="https://angel.co/david-campuzano-1" className={"nav-links " + this.props.extraClass}><i className="fab fa-angellist"></i></a>
               <a href="https://www.linkedin.com/in/david-campuzano-992882168/" className={"nav-links " + this.props.extraClass}><i className="fab fa-linkedin"></i></a>

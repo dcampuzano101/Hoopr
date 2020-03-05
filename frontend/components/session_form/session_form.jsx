@@ -6,7 +6,6 @@ class SessionForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    // this.handleErrors = this.handleErrors.bind(this);
     this.state = {
       email: "",
       password: "",
@@ -33,12 +32,6 @@ class SessionForm extends React.Component {
     }
   }
 
-  // handleErrors() {
-  //   if (this.props.errors.length > 0) {
-  //     this.setState( { sessErrors: "session-errors show" });
-  //   }
-  // }
-
   handleClick(e){
     e.preventDefault();
     this.props.clearErrors();
@@ -55,9 +48,7 @@ class SessionForm extends React.Component {
 
   render(){
     const { formType, errors } = this.props;
-
-    // errors.length > 0 ? this.handleErrors() : null;
-    
+   
     return(
       <>
         <header id="login-header">
@@ -103,10 +94,8 @@ class SessionForm extends React.Component {
           <main className="sidepic">
             <img className="photo" src={window.test} />
           </main>
-
         </div>
         <footer>
-          
         </footer>
       </>
     );

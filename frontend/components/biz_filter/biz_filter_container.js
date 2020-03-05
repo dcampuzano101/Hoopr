@@ -7,7 +7,6 @@ import { selectBusinessesForSearch } from '../../reducers/selectors';
 import { filterByBorough, search } from '../../actions/search_actions';
 
 const msp = (state, ownProps) => {
-    ;
   const extraClass = "biz-index";
   const businesses = state.entities.businesses;
   const businessObj = state.entities.search.businessIds;

@@ -1,25 +1,23 @@
 import React from 'react';
 import Header from '../header/header';
 import BizMapContainer from '../biz_map/biz_map_container';
+import { Link } from 'react-router-dom'
 
 class BizSearch extends React.Component {
   constructor(props){
-    console.log(props);
     super(props);
     let { query } = "" || this.props.match.params;
-    
-    
-
-    console.log(query)
     this.state = { query };
     this.updateSearch = this.updateSearch.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-
-      
   }
 
   handleDemoSubmit(user) {
     this.props.submitForm(user);
+  }
+
+  capitalizeWord(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
   getPhotoUrl(photoObj, businessId) {
@@ -34,6 +32,17 @@ class BizSearch extends React.Component {
     return result;
   }
 
+  getFirstReview(reviewObj, businessId) {
+    let result = "";
+      
+    for (let i = 0; i < Object.values(reviewObj).length; i++) {
+      if (Object.values(reviewObj)[i].business_id === businessId) {
+        result = `"${Object.values(reviewObj)[i].body} ..." -${this.props.users[Object.values(reviewObj)[i].user_id].first_name} ${this.props.users[Object.values(reviewObj)[i].user_id].last_name[0]}`;
+        return result;
+      }
+    }
+  }
+
   componentDidMount() {
     this.props.requestBusinesses();
     (this.state.query.length > 0) ? this.props.search(this.state.query) : query = "";
@@ -46,17 +55,13 @@ class BizSearch extends React.Component {
   }
 
   updateSearch(e) {
-      
     e.preventDefault();
     let query = e.currentTarget.value;
   }
 
   handleSearch(e) {
-      
     let query = document.getElementById('search-field').value
-    console.log(query);
     this.setState({ query });
-    
     
     (query) ? this.props.search(query) : query = "";
     this.props.history.push('/search/' + query );
@@ -86,17 +91,21 @@ class BizSearch extends React.Component {
 
         return(
           <>
+          <Link to={`/businesses/${biz.id}`}>
           <div className="biz-index-item-wrapper">
             <div className="biz-index-pic">
-              <img className="canal" src={window.canal} />
+              <img className="canal" src={this.getPhotoUrl(this.props.photos, biz.id)} />
             </div>
             <div className="biz-index-info">
               <h1>{biz.name}</h1>
               <section className="static-rating-splash">{basketballs}</section>
-              <h1>{biz.neighborhood}</h1>
+              <h1 id="index-biz-borough">{this.capitalizeWord(biz.borough)}</h1>
+              <h2 id="index-biz-neighborhood">{this.capitalizeWord(biz.neighborhood)}</h2>
+              <h3 id="index-review">{this.getFirstReview(this.props.reviews, biz.id)}</h3>
             </div>
 
           </div>
+          </Link>
           </>
         )});
       return(

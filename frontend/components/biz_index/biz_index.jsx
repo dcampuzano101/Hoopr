@@ -5,21 +5,21 @@ import BizMapContainer from '../biz_map/biz_map_container';
 
 class BizIndex extends React.Component {
   constructor(props){
-    console.log(props);
     super(props);
-    // this.moveTo = this.moveTo.bind(this);
-    this.child = React.createRef();
-      
+    this.child = React.createRef();   
   }
 
   handleDemoSubmit(user) {
     this.props.submitForm(user);
   }
 
+  capitalizeWord(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
   getPhotoUrl(photoObj, businessId) {
     let result = "";
       
-
     Object.values(photoObj).forEach( photo => {
       if (photo.business_id === businessId) {
         result = photo.photoUrl;
@@ -30,10 +30,6 @@ class BizIndex extends React.Component {
 
   getFirstReview(reviewObj, businessId) {
     let result = "";
-      
-
-    // Object.values(reviewObj).forEach( review => {
-    // })
 
     for (let i = 0; i < Object.values(reviewObj).length; i++) {
       if (Object.values(reviewObj)[i].business_id === businessId) {
@@ -47,25 +43,9 @@ class BizIndex extends React.Component {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps);
-  //   if (this.props.match.params.url !== prevProps.match.params.url) {
-  //     this.props.requestBusinesses();
-  //   }
-  // }
-
   componentDidMount() {
     this.props.requestBusinesses();
   }
-  // moveTo(lat, lng) {
-  //   let latLng = new google.maps.LatLng(lat, lng); 
-  //   this.map.panTo(latLng); 
-  // }
-
-  // onMouseOver(lat, lng){
-  //     ;
-  //   this.child.current.moveTo(lat, lng);
-  // };
 
   render() {
     const { businesses, users } = this.props;
@@ -98,7 +78,7 @@ class BizIndex extends React.Component {
               <h1 id="index-biz-name">{biz.name}</h1>
               <section className="static-rating-splash">{basketballs}</section>
               <h1 id="index-biz-borough">{this.capitalizeWord(biz.borough)}</h1>
-              <h2 id="index-biz-neighborhood">{biz.neighborhood}</h2>
+              <h2 id="index-biz-neighborhood">{this.capitalizeWord(biz.neighborhood)}</h2>
               <h3 id="index-review">{this.getFirstReview(this.props.reviews, biz.id)}</h3>
             </div>
           </div>

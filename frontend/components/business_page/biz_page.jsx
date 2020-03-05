@@ -1,14 +1,7 @@
 import React from 'react';
 import Header from '../header/header';
-import { Link, Redirect } from 'react-router-dom';
-import { login, logoutCurrentUser } from '../../actions/session_actions';
-// import { openModal } from '../../actions/modal_actions';
-// import BizMap from '../../components/biz_map/biz_map';
+import { Link} from 'react-router-dom';
 import BizMapContainer from '../biz_map/biz_map_container';
-import BizPageContainer from './biz_page_container';
-// import Review from './review_list_item_container';
-import UpdateForm from '../update_form/update_form_container';
-
 
 class BizPage extends React.Component {
   constructor(props){
@@ -18,29 +11,21 @@ class BizPage extends React.Component {
       rating: null,
       temp_rating: null
     };
-
     this.updateSearch = this.updateSearch.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
 
   updateSearch(e) {
-      
     e.preventDefault();
     let query = e.currentTarget.value;
-    // this.setState({ query });
-    // this.props.history.push('/search' + query )
   }
 
   handleSearch(e) {
-      
     let query = document.getElementById('search-field').value
-    console.log(query);
     this.setState({ query });
-    
-    
+
     (query) ? this.props.search(query) : query = "";
     this.props.history.push('/search/' + query );
-      
   }
 
   handleDemoSubmit(user) {
@@ -48,26 +33,20 @@ class BizPage extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-      
     if (this.props.match.params.id != prevProps.match.params.id) {
       this.props.requestBusiness(this.props.match.params.id);
     }
-      
     if (Object.values(prevProps.reviewObj).length != Object.values(this.props.reviewObj).length) {
       this.props.requestBusiness(this.props.match.params.id);
       this.forceUpdate();
     }
-      
     if (Object.values(prevProps.photoObj).length != Object.values(this.props.photoObj).length) {
       this.props.requestBusiness(this.props.match.params.id);
     }
   }
 
   componentDidMount(){
-      
     this.props.requestBusiness(this.props.match.params.id);
-    // this.props.requestPhotos();
-
   }
 
   update(field) {
@@ -96,9 +75,7 @@ class BizPage extends React.Component {
   }
 
   render(){
-    // ////  ;
     let authReview;
-    // console.log(currentUser);
     if (this.props.currentUser) {
       authReview =
       <> 
@@ -129,18 +106,9 @@ class BizPage extends React.Component {
     const { business, openModal, reviews, users, deleteReview, currentUser, photos } = this.props;
     const sessionLinks = () => (
       <nav className="review-form">
-        {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
         {authReview}
       </nav>
     );
-
-    // const updateLinks = (review) => (
-    //   <nav className="review-form">
-    //     <button className="rvw-btn biz-info" onClick={() => openModal('updateReview', {id: review.id}, {tempRating: this.state.temp_rating})}>&#9733; Edit Review</button>
-    //     <button className="rvw-btn biz-info" onClick={() => deleteReview(review.id, business.id)}>&#9733; Delete Review</button>
-    //   </nav>
-    // );
-
       
     if (business.id) {
       let reviewLis;
@@ -161,7 +129,6 @@ class BizPage extends React.Component {
               </nav>
               )
             } else {
-             //  ;
               updateLinks = () => (
               <div></div>
               )
@@ -192,14 +159,12 @@ class BizPage extends React.Component {
               <h3 key={review.id}>{review.body}</h3>
               {updateLinks(review)}
             </div>
-            {/* <UpdateForm review={review}/> */}
             <div className="hr-row"></div>
           </>
       )})
           }
       return (
         <div>
-          {/* <Link id=""to="/"><img id="logo-biz-page" src={window.logo} /></Link> */}
           <Header extraClass={this.props.extraClass} submitForm={this.props.submitForm} currentUser={this.props.currentUser}
             logout={this.props.logout}/>
           <div className="gal-con">
@@ -216,10 +181,6 @@ class BizPage extends React.Component {
               <h3>Rating: {business.rating} - 16 reviews</h3>
               <h3><Link to="#">{business.court_type}</Link></h3>
               <section className="info-buttons">
-                {/* <nav className="review-form">
-                  {authReview}
-                  {/* <button className="rvw-btn biz-info" onClick={() => openModal('createReview')}>&#9733; Write a Review</button> */}
-                {/* </nav> */}
               </section>
             </div>
             <div className="sticky-info">

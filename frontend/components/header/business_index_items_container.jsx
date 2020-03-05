@@ -4,18 +4,14 @@ import { requestPhotos, requestPhoto } from '../../actions/photo_actions';
 import BizIndexItem from './business_index_item';
 import { filterByBorough } from '../../actions/search_actions'
 
-const msp = state => {
-  console.log(state);
-    
+const msp = state => {    
   return ({
     businesses: state.entities.businesses,
     photos: state.entities.photos
   });
 };
 
-
 const mdp = dispatch => {
-
   return ({
     requestBusinesses: () => dispatch(requestBusinesses()),
     requestPhotos: () => dispatch(requestPhotos()),
