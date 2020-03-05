@@ -147,8 +147,10 @@ class BizPage extends React.Component {
         
       if (reviews.length) {
         reviewLis = reviews.map(review =>{
-          let updateLinks;
-            
+          let updateLinks = () => (
+            <div></div>
+          )
+          debugger;
           if(this.props.currentUser) {
             if (this.props.currentUser.id === review.user_id) {
                 
@@ -163,22 +165,22 @@ class BizPage extends React.Component {
               updateLinks = () => (
               <div></div>
               )
-          }
-          const basketballs = [];
-          for (let i = 1; i <= 5; i++) {
-            let klass = 'ball-icon-header';
-            if (review.rating >= i) {
-              klass += ' is-selected';
             }
-            const icon =
-              <img
-                key={i}
-                className={klass}
-                src={window.ballicon}
-              />;
-            basketballs.push(icon);
           }
-
+        const basketballs = [];
+        for (let i = 1; i <= 5; i++) {
+          let klass = 'ball-icon-header';
+          if (review.rating >= i) {
+            klass += ' is-selected';
+          }
+          const icon =
+            <img
+              key={i}
+              className={klass}
+              src={window.ballicon}
+            />;
+          basketballs.push(icon);
+        }
           return (
           <>
             <section className="profile-info">
@@ -193,9 +195,8 @@ class BizPage extends React.Component {
             {/* <UpdateForm review={review}/> */}
             <div className="hr-row"></div>
           </>
-          )}
-          })
-      }
+      )})
+          }
       return (
         <div>
           {/* <Link id=""to="/"><img id="logo-biz-page" src={window.logo} /></Link> */}
