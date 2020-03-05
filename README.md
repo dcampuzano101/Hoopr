@@ -1,8 +1,6 @@
 
 <p align="center"><img src="https://hoopr.herokuapp.com/assets/hoopr_logo-4226649bf78ff71ec2459fabfd440f8a7dc6bf96c69360ebd06348b4a645b0c3.png" /></p>
 
-<!-- ![Image of Hoopr-logo](https://hoopr.herokuapp.com/assets/hoopr_logo-4226649bf78ff71ec2459fabfd440f8a7dc6bf96c69360ebd06348b4a645b0c3.png) -->
-
 </hr>
 
 #### Hoopr is a place where basketball enthusiasts can find parks and gyms to play the sport they love. Know before you go: Hoopr allows users to write reviews and check if a park or gym meets their needs.
@@ -38,7 +36,7 @@
   * Modal that allows users that are logged in to create a review and rate a basketball court. The rating system temporarily sets the state as users choose their rating. The rating then persists and is automatically added to the profile of the basketball court.
 </hr>
 
-<p align="center"><img style="width:100%;" src="https://media.giphy.com/media/Ti143B8hRwxb8wf8q5/giphy.gif" /></p>
+<p align="center"><img width="100%" src="http://davidcampuzano.com/images/hoopr_review.gif" /></p>
 
 ```JSX
 render(){
