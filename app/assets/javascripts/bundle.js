@@ -1727,7 +1727,11 @@ function (_React$Component) {
 
         if (reviews.length) {
           reviewLis = reviews.map(function (review) {
-            var updateLinks;
+            var updateLinks = function updateLinks() {
+              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+            };
+
+            debugger;
 
             if (_this5.props.currentUser) {
               if (_this5.props.currentUser.id === review.user_id) {
@@ -1756,42 +1760,42 @@ function (_React$Component) {
                   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
                 };
               }
+            }
 
-              var basketballs = [];
+            var basketballs = [];
 
-              for (var _i = 1; _i <= 5; _i++) {
-                var _klass = 'ball-icon-header';
+            for (var _i = 1; _i <= 5; _i++) {
+              var _klass = 'ball-icon-header';
 
-                if (review.rating >= _i) {
-                  _klass += ' is-selected';
-                }
-
-                var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                  key: _i,
-                  className: _klass,
-                  src: window.ballicon
-                });
-
-                basketballs.push(_icon);
+              if (review.rating >= _i) {
+                _klass += ' is-selected';
               }
 
-              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-                className: "profile-info"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-                to: "/users/".concat(review.user_id)
-              }, users[review.user_id].first_name, " ", users[review.user_id].last_name[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-                className: "yelp-profile",
-                src: users[review.user_id].profilePhotoUrl
-              })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "rating-review"
-              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-                className: "static-rating"
-              }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-                key: review.id
-              }, review.body), updateLinks(review)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "hr-row"
-              }));
+              var _icon = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+                key: _i,
+                className: _klass,
+                src: window.ballicon
+              });
+
+              basketballs.push(_icon);
             }
+
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+              className: "profile-info"
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+              to: "/users/".concat(review.user_id)
+            }, users[review.user_id].first_name, " ", users[review.user_id].last_name[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              className: "yelp-profile",
+              src: users[review.user_id].profilePhotoUrl
+            })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              className: "rating-review"
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+              className: "static-rating"
+            }, basketballs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+              key: review.id
+            }, review.body), updateLinks(review)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              className: "hr-row"
+            }));
           });
         }
 
