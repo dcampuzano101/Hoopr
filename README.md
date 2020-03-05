@@ -87,4 +87,7 @@ render(){
         </div>
 ```
 
+## Search:
+  * Hoopr's search function allows users to search by borough, neighborhood, or park name. It also displays a map that is relevant to the user's query.
 
+<p align="center"><img width="100%" src="http://davidcampuzano.com/images/hoopr_search.gif" /></p>
